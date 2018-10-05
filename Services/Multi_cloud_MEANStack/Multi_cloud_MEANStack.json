@@ -1,0 +1,1894 @@
+{
+  "service": {
+    "specVersion": "v3",
+    "catalog_metadata": {
+      "name": "Multi Cloud - MEAN Stack deployment",
+      "description": "This service deploy MEAN stock on your choice of cloud.",
+      "image": "serviceicon_9.svg",
+      "category": "Hybrid Cloud",
+      "bullets": [
+        {
+          "title": "Clouds",
+          "description": "Vmware vSphere\nIBM Cloud/Softlayer\nAmazon EC2\nMicrosoft Azure"
+        },
+        {
+          "title": "Stack",
+          "description": "1. MongoDB:\ta NoSQL database\n2. Express.js:\ta web application framework that runs on Node.js\n3. Angular.js:\ta JavaScript MVC framework that runs in br"
+        },
+        {
+          "title": "Operating systems supported",
+          "description": "AWS: Ubuntu 16.04\nIBM Cloud: CentOS 7\nMicrosoft Azure: Ubuntu 16.04\nVMWare: Red Hat Enterprise Linux 7"
+        },
+        {
+          "title": "Usage and special notes",
+          "description": "1. Downloads latest releases of software.\n2. Deployment takes approximately 10 minutes to complete.\n3. To access the application and virtual machines,"
+        }
+      ],
+      "providerDisplayName": "IBM",
+      "longDescription": "Deploys a hybrid cloud MEAN stack (Mongo, Express, Angular, Node) on your choice of cloud.\nThis deployment also deploys a simple sample application to validate the stack is operational.",
+      "documentationUrl": "",
+      "supportUrl": "",
+      "bindable": false,
+      "updatable": "",
+      "author": "admin"
+    },
+    "tags": [],
+    "actions": [
+      {
+        "type": "provision",
+        "name": "Provision",
+        "description": "Default action for deployment of service",
+        "input_parameters": [
+          {
+            "name": "HybridCloud",
+            "label": "Hybrid Cloud",
+            "customtype": "string",
+            "type": "string",
+            "immutable": false,
+            "hidden": false,
+            "required": true,
+            "secured": false,
+            "options": [
+              {
+                "label": "VMware",
+                "value": "VMware",
+                "default": false
+              },
+              {
+                "label": "IBM",
+                "value": "IBM",
+                "default": false
+              },
+              {
+                "label": "AWS",
+                "value": "AWS",
+                "default": false
+              },
+              {
+                "label": "Azure",
+                "value": "Azure",
+                "default": false
+              }
+            ],
+            "description": "Selete the cloud to deploy MEAN stack"
+          },
+          {
+            "name": "CloudConnection",
+            "label": "Cloud Connection",
+            "customtype": "string",
+            "type": "string",
+            "immutable": false,
+            "hidden": false,
+            "required": true,
+            "secured": false,
+            "description": "Cloud Connection",
+            "default": "VMware"
+          },
+          {
+            "name": "hostname",
+            "label": "Host Name",
+            "customtype": "string",
+            "type": "string",
+            "immutable": false,
+            "hidden": false,
+            "required": false,
+            "secured": false,
+            "description": "VM Host Name",
+            "default": "demovm1"
+          },
+          {
+            "name": "vm_dns_servers",
+            "label": "DNS Server IP",
+            "customtype": "list",
+            "type": "list",
+            "immutable": false,
+            "hidden": false,
+            "required": false,
+            "secured": false,
+            "description": "DNS Server ip",
+            "default": [
+              ""
+            ]
+          },
+          {
+            "name": "vm_dns_suffixes",
+            "label": "DNS Suffixes",
+            "customtype": "list",
+            "type": "list",
+            "immutable": false,
+            "hidden": false,
+            "required": false,
+            "secured": false,
+            "description": "DNS Suffixes",
+            "default": [
+              "ibm.com"
+            ]
+          },
+          {
+            "name": "vm_domain",
+            "label": "Domain",
+            "customtype": "string",
+            "type": "string",
+            "immutable": false,
+            "hidden": false,
+            "required": false,
+            "secured": false,
+            "description": "Domain",
+            "default": "ibm.com"
+          },
+          {
+            "name": "mongodb_vm_image",
+            "label": "VM template",
+            "customtype": "string",
+            "type": "string",
+            "immutable": false,
+            "hidden": false,
+            "required": false,
+            "secured": false,
+            "description": "VC VM template to deploy vm",
+            "default": "mongo_ubuntu604"
+          },
+          {
+            "name": "mongodb_vm_os_admin_user",
+            "label": "OS User",
+            "customtype": "string",
+            "type": "string",
+            "immutable": false,
+            "hidden": false,
+            "required": false,
+            "secured": false,
+            "description": "OS user with root access",
+            "default": "root"
+          },
+          {
+            "name": "mongodb_vm_os_password",
+            "label": "OS Password",
+            "customtype": "password",
+            "type": "password",
+            "immutable": false,
+            "hidden": false,
+            "required": false,
+            "secured": false,
+            "description": "OS password for mongo VM",
+            "default": ""
+          },
+          {
+            "name": "mongodb_vm_root_disk_size",
+            "label": "Mongo root disk side",
+            "customtype": "string",
+            "type": "string",
+            "immutable": true,
+            "hidden": false,
+            "required": false,
+            "secured": false,
+            "description": "root disk size for mongo vm",
+            "default": "25"
+          },
+          {
+            "name": "mongodb_vm_name",
+            "label": "VM display name",
+            "customtype": "string",
+            "type": "string",
+            "immutable": false,
+            "hidden": false,
+            "required": false,
+            "secured": false,
+            "description": "VM display name for mongo VM",
+            "default": "mongo"
+          },
+          {
+            "name": "mongodb_vm_root_disk_datastore",
+            "customtype": "string",
+            "type": "string",
+            "immutable": true,
+            "hidden": true,
+            "required": false,
+            "secured": false,
+            "default": "datastore1",
+            "label": "Data Store",
+            "description": "Data Store to place VM files, like vmx, vmdk etc..."
+          },
+          {
+            "name": "mongodb_vm_ipv4_gateway",
+            "label": "Default Gateway",
+            "customtype": "string",
+            "type": "string",
+            "immutable": false,
+            "hidden": false,
+            "required": false,
+            "secured": false,
+            "description": "Default dateway",
+            "default": ""
+          },
+          {
+            "name": "mongodb_vm_memory",
+            "customtype": "string",
+            "type": "string",
+            "immutable": true,
+            "hidden": false,
+            "required": false,
+            "secured": false,
+            "default": "2048",
+            "label": "Mongo DB VM Memory",
+            "description": "Mongo DB VM Memory"
+          },
+          {
+            "name": "mongodb_vm_ipv4_prefix_length",
+            "label": "Netmask",
+            "customtype": "string",
+            "type": "string",
+            "immutable": false,
+            "hidden": false,
+            "required": false,
+            "secured": false,
+            "description": "Netmast legnth",
+            "default": "24"
+          },
+          {
+            "name": "mongodb_vm_number_of_vcpu",
+            "customtype": "string",
+            "type": "string",
+            "immutable": true,
+            "hidden": false,
+            "required": false,
+            "secured": false,
+            "default": "2",
+            "label": "Mongo DB VM CPU",
+            "description": "Mongo DB VM CPU"
+          },
+          {
+            "name": "mongodb_vm_network_interface_label",
+            "label": "Network Portgroup",
+            "customtype": "string",
+            "type": "string",
+            "immutable": false,
+            "hidden": false,
+            "required": false,
+            "secured": false,
+            "default": "VM Network",
+            "description": "VMWare Network Portgroup"
+          },
+          {
+            "name": "mongodb_vm_cluster",
+            "label": "VC Cluster",
+            "customtype": "string",
+            "type": "string",
+            "immutable": true,
+            "hidden": true,
+            "required": false,
+            "secured": false,
+            "description": "VC Cluster",
+            "default": "Cluster1"
+          },
+          {
+            "name": "vm_datacenter",
+            "label": "VC Datacenter",
+            "customtype": "string",
+            "type": "string",
+            "immutable": true,
+            "hidden": true,
+            "required": false,
+            "secured": false,
+            "description": "VC Data Center",
+            "default": "DC1"
+          },
+          {
+            "name": "vm_folder",
+            "label": "VC Folder",
+            "customtype": "string",
+            "type": "string",
+            "immutable": false,
+            "hidden": false,
+            "required": false,
+            "secured": false,
+            "description": "VC Folder to keep the VMs",
+            "default": ""
+          },
+          {
+            "name": "resource_pool",
+            "customtype": "string",
+            "type": "string",
+            "immutable": true,
+            "hidden": true,
+            "required": false,
+            "secured": false,
+            "default": "rp1"
+          },
+          {
+            "name": "nodejs_vm_root_disk_size",
+            "label": "nodejs root disk size",
+            "customtype": "string",
+            "type": "string",
+            "immutable": true,
+            "hidden": false,
+            "required": false,
+            "secured": false,
+            "description": "nodejs root disk size, minimum 25GB",
+            "default": "25"
+          },
+          {
+            "name": "nodejs_vm_name",
+            "label": "NodeJS VM display Name",
+            "customtype": "string",
+            "type": "string",
+            "immutable": false,
+            "hidden": false,
+            "required": false,
+            "secured": false,
+            "description": "VC display name for nodejs VM",
+            "default": "nodejs"
+          },
+          {
+            "name": "nodejs_vm_memory",
+            "customtype": "string",
+            "type": "string",
+            "immutable": true,
+            "hidden": false,
+            "required": false,
+            "secured": false,
+            "default": "2048",
+            "label": "NodeJS VM Memory",
+            "description": "NodeJS VM Memory"
+          },
+          {
+            "name": "nodejs_vm_number_of_vcpu",
+            "customtype": "string",
+            "type": "string",
+            "immutable": true,
+            "hidden": false,
+            "required": false,
+            "secured": false,
+            "default": "2",
+            "label": "NodeJS VM Memory",
+            "description": "NodeJS VM Memory"
+          },
+          {
+            "name": "aws_access_key",
+            "label": "AWS Access Key",
+            "customtype": "password",
+            "type": "password",
+            "immutable": false,
+            "hidden": false,
+            "required": false,
+            "secured": false,
+            "description": "AWS Access Key",
+            "default": ""
+          },
+          {
+            "name": "aws_secret_key",
+            "label": "AWS Secret Key",
+            "customtype": "password",
+            "type": "password",
+            "immutable": false,
+            "hidden": false,
+            "required": false,
+            "secured": false,
+            "description": "AWS Secret Key",
+            "default": ""
+          },
+          {
+            "name": "network_name_prefix",
+            "label": "AWS Network prefix",
+            "customtype": "string",
+            "type": "string",
+            "immutable": false,
+            "hidden": false,
+            "required": false,
+            "secured": false,
+            "description": "The prefix of names for VPC, Gateway, Subnet and Security Group; Allow 1 to 240 alphanumeric characters and special characters +=._:/@- as tag value that is not starting with aws",
+            "default": "opencontent-meanstack-hybrid"
+          },
+          {
+            "name": "public_ssh_key_name",
+            "label": "AWS Public key name",
+            "customtype": "string",
+            "type": "string",
+            "immutable": false,
+            "hidden": false,
+            "required": false,
+            "secured": false,
+            "description": "public_ssh_key_name",
+            "default": "cam-public-key-meanstack-hybrid"
+          },
+          {
+            "name": "public_ssh_key",
+            "label": "AWS Public SSH Key",
+            "customtype": "string",
+            "type": "string",
+            "immutable": false,
+            "hidden": false,
+            "required": false,
+            "secured": false,
+            "description": "AWS Public SSH Key",
+            "default": ""
+          },
+          {
+            "name": "hostname-db",
+            "label": "DB Hostname",
+            "customtype": "string",
+            "type": "string",
+            "immutable": false,
+            "hidden": false,
+            "required": false,
+            "secured": false,
+            "description": "The hostname of server with mongo; Allow 1 to 200 alphanumeric characters and non-consecutive non-leading non-ending dashes",
+            "default": "meanstack-db"
+          },
+          {
+            "name": "hostname-nodejs",
+            "label": "NodeJS hostname",
+            "customtype": "string",
+            "type": "string",
+            "immutable": false,
+            "hidden": false,
+            "required": false,
+            "secured": false,
+            "description": "The hostname of server with nodejs; Allow 1 to 255 alphanumeric characters and special characters +=._:/@- as tag value that is not starting with aws",
+            "default": "meanstack-nodejs"
+          },
+          {
+            "name": "aws_image",
+            "label": "AWS Operating System ID",
+            "customtype": "string",
+            "type": "string",
+            "immutable": false,
+            "hidden": false,
+            "required": false,
+            "secured": false,
+            "description": "Operating system image id / template that should be used when creating the virtual image",
+            "default": "ubuntu/images/hvm-ssd/ubuntu-xenial-16.04-amd64-server-*"
+          },
+          {
+            "name": "aws_ami_owner_id",
+            "label": "AWS AMI Owner ID",
+            "customtype": "string",
+            "type": "string",
+            "immutable": false,
+            "hidden": false,
+            "required": false,
+            "secured": false,
+            "description": "AWS AMI Owner ID for IBM Cloud",
+            "default": "099720109477"
+          },
+          {
+            "name": "Azure-name_prefix",
+            "label": "Azure Prefix of Resource Names",
+            "customtype": "string",
+            "type": "string",
+            "immutable": false,
+            "hidden": false,
+            "required": false,
+            "secured": false,
+            "description": "Prefix of names for Azure resources; The name prefix must be 1-52 alphanumeric characters and dash",
+            "default": "meanstack"
+          },
+          {
+            "name": "admin_user",
+            "label": "Admin User to Access Virtual Machines",
+            "customtype": "string",
+            "type": "string",
+            "immutable": false,
+            "hidden": false,
+            "required": false,
+            "secured": false,
+            "description": "Name of an administrative user to be created in all virtual machines in this deployment; The user name must be 1-32 alphanumeric (with beginning at letters) and special characters including -._",
+            "default": "ibmadmin"
+          },
+          {
+            "name": "admin_user_password",
+            "label": "Admin User to Access Virtual Machines",
+            "customtype": "password",
+            "type": "password",
+            "immutable": false,
+            "hidden": false,
+            "required": false,
+            "secured": false,
+            "description": "Password of the newly created administrative user; The supplied password must be between 6-72 characters long and must satisfy at least 3 of password complexity requirements from the following: 1) Contains an uppercase character; 2) Contains a lowercase character; 3) Contains a numeric digit; 4) Contains a special character",
+            "default": ""
+          }
+        ],
+        "flow": {
+          "conditions": [
+            {
+              "decision": {
+                "title": "Cloud",
+                "options": [
+                  {
+                    "case": "VMware",
+                    "sequence": {
+                      "0": "infoblox2e569087",
+                      "1": "meanstac8be2854a"
+                    }
+                  },
+                  {
+                    "case": "IBM",
+                    "sequence": {
+                      "0": "meanstac79ffc96e"
+                    }
+                  },
+                  {
+                    "case": "AWS",
+                    "sequence": {
+                      "0": "meanstac8ca7eecd"
+                    }
+                  },
+                  {
+                    "case": "Azure",
+                    "sequence": {
+                      "0": "meanstac111cd421"
+                    }
+                  }
+                ],
+                "id": "decisionbdccbdd0",
+                "mapped_parameter": "${input_parameters.HybridCloud}"
+              }
+            }
+          ],
+          "templates": [
+            {
+              "Infoblox Integration Template": {
+                "title": "Infoblox",
+                "template_name": "Infoblox Integration Template",
+                "version": "2.1",
+                "id": "infoblox2e569087",
+                "template_type": "Terraform",
+                "template_content_type": "Integration",
+                "template_provider": "Other",
+                "instance_name": "",
+                "cloud_connection_name": "Other",
+                "template_data_objects": {
+                  "bastionhost": "DefaultNoBastionHostRequired",
+                  "ipam\\uff0einfoblox": ""
+                },
+                "template_params": {
+                  "hostname": "${input_parameters.hostname}",
+                  "domain": "${ipam.infoblox.domain}",
+                  "configure_for_dns": "${ipam.infoblox.configure_for_dns}",
+                  "infoblox_ip_address": "${ipam.infoblox.infoblox_ip_address}",
+                  "infoblox_user": "${ipam.infoblox.infoblox_user}",
+                  "infoblox_user_password": "${ipam.infoblox.infoblox_user_password}",
+                  "network": "${ipam.infoblox.network}"
+                },
+                "outputs": [
+                  "assigned_ip_address",
+                  "associated_domain",
+                  "associated_hostname"
+                ]
+              }
+            },
+            {
+              "MEAN stack deployment": {
+                "title": "MEAN stack VMW",
+                "template_name": "MEAN stack deployment",
+                "version": "2.1",
+                "id": "meanstac8be2854a",
+                "template_type": "Terraform",
+                "template_content_type": "VMware vSphere",
+                "template_provider": "VMware vSphere",
+                "instance_name": "",
+                "cloud_connection_name": "${parameters.CloudConnection}",
+                "template_data_objects": {
+                  "bastionhost": "DefaultNoBastionHostRequired"
+                },
+                "template_params": {
+                  "mongodb_vm_dns_servers": "${input_parameters.vm_dns_servers}",
+                  "mongodb_vm_dns_suffixes": "${input_parameters.vm_dns_suffixes}",
+                  "mongodb_vm_domain": "${input_parameters.vm_domain}",
+                  "mongodb_vm_image": "${input_parameters.mongodb_vm_image}",
+                  "mongodb_vm_os_admin_user": "${input_parameters.mongodb_vm_os_admin_user}",
+                  "mongodb_vm_os_password": "${input_parameters.mongodb_vm_os_password}",
+                  "mongodb_vm_root_disk_size": "${input_parameters.mongodb_vm_root_disk_size}",
+                  "mongodb_vm_name": "${input_parameters.mongodb_vm_name}",
+                  "mongodb_vm_root_disk_controller_type": "scsi",
+                  "mongodb_vm_root_disk_datastore": "${input_parameters.mongodb_vm_root_disk_datastore}",
+                  "mongodb_vm_root_disk_type": "eager_zeroed",
+                  "mongodb_vm_ipv4_gateway": "${input_parameters.mongodb_vm_ipv4_gateway}",
+                  "mongodb_vm_ipv4_address": "${templates.infoblox2e569087.output.assigned_ip_address}",
+                  "mongodb_vm_memory": "${input_parameters.mongodb_vm_memory}",
+                  "mongodb_vm_ipv4_prefix_length": "${input_parameters.mongodb_vm_ipv4_prefix_length}",
+                  "mongodb_vm_number_of_vcpu": "${input_parameters.mongodb_vm_number_of_vcpu}",
+                  "mongodb_vm_network_interface_label": "${input_parameters.mongodb_vm_network_interface_label}",
+                  "mongodb_vm_cluster": "${input_parameters.mongodb_vm_cluster}",
+                  "mongodb_vm_datacenter": "${input_parameters.vm_datacenter}",
+                  "mongodb_vm_folder": "${input_parameters.vm_folder}",
+                  "mongodb_vm_adapter_type": "vmxnet3",
+                  "mongodb_vm_resource_pool": "${input_parameters.resource_pool}",
+                  "nodejs_vm_dns_servers": "${input_parameters.vm_dns_servers}",
+                  "nodejs_vm_dns_suffixes": "${input_parameters.vm_dns_suffixes}",
+                  "nodejs_vm_domain": "${input_parameters.vm_domain}",
+                  "nodejs_vm_image": "${input_parameters.mongodb_vm_image}",
+                  "nodejs_vm_os_admin_user": "${input_parameters.mongodb_vm_os_admin_user}",
+                  "nodejs_vm_os_password": "${input_parameters.mongodb_vm_os_password}",
+                  "nodejs_vm_root_disk_size": "${input_parameters.nodejs_vm_root_disk_size}",
+                  "nodejs_vm_name": "${input_parameters.nodejs_vm_name}",
+                  "nodejs_vm_root_disk_controller_type": "scsi",
+                  "nodejs_vm_root_disk_datastore": "${input_parameters.mongodb_vm_root_disk_datastore}",
+                  "nodejs_vm_root_disk_type": "eager_zeroed",
+                  "nodejs_vm_ipv4_gateway": "${input_parameters.mongodb_vm_ipv4_gateway}",
+                  "nodejs_vm_ipv4_address": "${templates.infoblox2e569087.output.assigned_ip_address}",
+                  "nodejs_vm_memory": "${input_parameters.nodejs_vm_memory}",
+                  "nodejs_vm_ipv4_prefix_length": "${input_parameters.mongodb_vm_ipv4_prefix_length}",
+                  "nodejs_vm_number_of_vcpu": "${input_parameters.nodejs_vm_number_of_vcpu}",
+                  "nodejs_vm_network_interface_label": "${input_parameters.ongodb_vm_network_interface_label}",
+                  "nodejs_vm_cluster": "${input_parameters.mongodb_vm_cluster}",
+                  "nodejs_vm_datacenter": "${input_parameters.vm_datacenter}",
+                  "nodejs_vm_folder": "${input_parameters.vm_folder}",
+                  "nodejs_vm_adapter_type": "vmxnet3",
+                  "nodejs_vm_resource_pool": "${input_parameters.resource_pool}",
+                  "user_public_ssh_key": "None"
+                },
+                "outputs": []
+              }
+            },
+            {
+              "MEAN stack deployment (hybrid-cloud)": {
+                "title": "MEAN stack SL",
+                "template_name": "MEAN stack deployment (hybrid-cloud)",
+                "version": "2.1",
+                "id": "meanstac79ffc96e",
+                "template_type": "Terraform",
+                "template_content_type": "IBM",
+                "template_provider": "IBM",
+                "instance_name": "",
+                "cloud_connection_name": "${parameters.CloudConnection}",
+                "template_data_objects": {
+                  "bastionhost": "DefaultNoBastionHostRequired"
+                },
+                "template_params": {
+                  "aws_access_key": "${input_parameters.aws_access_key}",
+                  "aws_secret_key": "${input_parameters.aws_secret_key}",
+                  "aws_region": "us-east-2",
+                  "aws_image": "${input_parameters.aws_image}",
+                  "aws_ami_owner_id": "${input_parameters.aws_ami_owner_id}",
+                  "network_name_prefix": "${input_parameters.network_name_prefix}",
+                  "public_ssh_key_name": "${input_parameters.public_ssh_key_name}",
+                  "public_ssh_key": "${input_parameters.public_ssh_key}",
+                  "hostname-db": "${input_parameters.hostname-db}",
+                  "hostname-nodejs": "${input_parameters.hostname-nodejs}",
+                  "softlayer_datacenter": "ams01"
+                },
+                "outputs": []
+              }
+            },
+            {
+              "MEAN stack deployment": {
+                "title": "MEAN stack AWS",
+                "template_name": "MEAN stack deployment",
+                "version": "2.1",
+                "id": "meanstac8ca7eecd",
+                "template_type": "Terraform",
+                "template_content_type": "Amazon EC2",
+                "template_provider": "Amazon EC2",
+                "instance_name": "",
+                "cloud_connection_name": "${parameters.CloudConnection}",
+                "template_data_objects": {
+                  "bastionhost": "DefaultNoBastionHostRequired"
+                },
+                "template_params": {
+                  "aws_region": "us-east-1",
+                  "aws_image": "${input_parameters.aws_image}",
+                  "aws_ami_owner_id": "${input_parameters.aws_ami_owner_id}",
+                  "network_name_prefix": "${input_parameters.network_name_prefix}",
+                  "public_ssh_key_name": "${input_parameters.public_ssh_key_name}",
+                  "public_ssh_key": "${input_parameters.public_ssh_key}",
+                  "hostname-db": "${input_parameters.hostname-db}",
+                  "hostname-nodejs": "${input_parameters.hostname-nodejs}"
+                },
+                "outputs": []
+              }
+            },
+            {
+              "MEAN stack deployment on Microsoft Azure": {
+                "title": "MEAN stack Azure",
+                "template_name": "MEAN stack deployment on Microsoft Azure",
+                "version": "2.1",
+                "id": "meanstac111cd421",
+                "template_type": "Terraform",
+                "template_content_type": "Microsoft Azure",
+                "template_provider": "Microsoft Azure",
+                "instance_name": "",
+                "cloud_connection_name": "",
+                "template_data_objects": {
+                  "bastionhost": "DefaultNoBastionHostRequired"
+                },
+                "template_params": {
+                  "azure_region": "West US",
+                  "name_prefix": "${input_parameters.Azure-name_prefix}",
+                  "admin_user": "${input_parameters.admin_user}",
+                  "admin_user_password": "${input_parameters.admin_user_password}",
+                  "user_public_key": "${input_parameters.public_ssh_key}"
+                },
+                "outputs": []
+              }
+            },
+            {
+              "ServiceNow CMDB Configuration Template": {
+                "title": "SNow CMDB",
+                "template_name": "ServiceNow CMDB Configuration Template",
+                "version": "2.0",
+                "id": "servicend6b96b5b",
+                "template_type": "Terraform",
+                "template_content_type": "Integration",
+                "template_provider": "Other",
+                "instance_name": "",
+                "cloud_connection_name": "Other",
+                "template_data_objects": {},
+                "template_params": {
+                  "cmdb_user": "admin",
+                  "cmdb_pass": "^(cm9vdA==)",
+                  "cmdb_instance": "dev58546",
+                  "cmdb_key": "${templates.meanstac8be2854a.nodejs_vm_name||templates.meanstac79ffc96e.hostname-db||templates.meanstac8ca7eecd.hostname-nodejs}",
+                  "cmdb_record": {
+                    "name": "${templates.meanstac8be2854a.nodejs_vm_name||templates.meanstac79ffc96e.hostname-db||templates.meanstac8ca7eecd.hostname-nodejs}",
+                    "description": "${templates.meanstac8be2854a.nodejs_vm_name||templates.meanstac79ffc96e.hostname-db||templates.meanstac8ca7eecd.hostname-nodejs}",
+                    "hostname": "${templates.meanstac8be2854a.nodejs_vm_name||templates.meanstac79ffc96e.hostname-db||templates.meanstac8ca7eecd.hostname-nodejs}"
+                  }
+                },
+                "outputs": []
+              }
+            }
+          ],
+          "resthooks": [],
+          "notifications": [
+            {
+              "emailnotification": {
+                "title": "Email",
+                "type": "email",
+                "receiverList": "test@test.com",
+                "id": "emailnotc82d4727",
+                "sender": "CAMadmin",
+                "copyToList": "",
+                "subject": "Test",
+                "body": "Test"
+              }
+            }
+          ],
+          "sequence": {
+            "0": "decisionbdccbdd0",
+            "1": "servicend6b96b5b",
+            "2": "emailnotc82d4727"
+          }
+        },
+        "output_parameters": []
+      }
+    ],
+    "plans": [
+      {
+        "name": "AWS EC2",
+        "description": "Amazon EC2 Cloud",
+        "plan_parameters": [
+          {
+            "name": "hostname",
+            "label": "Host Name",
+            "customtype": "string",
+            "type": "string",
+            "immutable": true,
+            "hidden": true,
+            "required": false,
+            "secured": false,
+            "description": "VM Host Name",
+            "default": "demovm1"
+          },
+          {
+            "name": "vm_dns_servers",
+            "label": "DNS Server IP",
+            "customtype": "list",
+            "type": "list",
+            "immutable": true,
+            "hidden": true,
+            "required": false,
+            "secured": false,
+            "description": "DNS Server ip",
+            "default": [
+              "notrequire"
+            ]
+          },
+          {
+            "name": "HybridCloud",
+            "label": "Hybrid Cloud",
+            "customtype": "string",
+            "type": "string",
+            "immutable": true,
+            "hidden": true,
+            "required": true,
+            "secured": false,
+            "description": "Selete the cloud to deploy MEAN stack",
+            "default": "AWS"
+          },
+          {
+            "name": "CloudConnection",
+            "label": "Cloud Connection",
+            "customtype": "string",
+            "type": "string",
+            "immutable": false,
+            "hidden": false,
+            "required": true,
+            "secured": false,
+            "description": "Cloud Connection",
+            "default": "AWS"
+          },
+          {
+            "name": "vm_dns_suffixes",
+            "label": "DNS Suffixes",
+            "customtype": "list",
+            "type": "list",
+            "immutable": true,
+            "hidden": true,
+            "required": false,
+            "secured": false,
+            "description": "DNS Suffixes",
+            "default": [
+              "ibm.com"
+            ]
+          },
+          {
+            "name": "vm_domain",
+            "label": "Domain",
+            "customtype": "string",
+            "type": "string",
+            "immutable": true,
+            "hidden": true,
+            "required": false,
+            "secured": false,
+            "description": "Domain",
+            "default": "ibm.com"
+          },
+          {
+            "name": "mongodb_vm_image",
+            "label": "VM template",
+            "customtype": "string",
+            "type": "string",
+            "immutable": true,
+            "hidden": true,
+            "required": false,
+            "secured": false,
+            "description": "VC VM template to deploy vm",
+            "default": "mongo_ubuntu604"
+          },
+          {
+            "name": "mongodb_vm_os_admin_user",
+            "label": "OS User",
+            "customtype": "string",
+            "type": "string",
+            "immutable": true,
+            "hidden": true,
+            "required": false,
+            "secured": false,
+            "description": "OS user with root access",
+            "default": "root"
+          },
+          {
+            "name": "mongodb_vm_os_password",
+            "label": "OS Password",
+            "customtype": "password",
+            "type": "password",
+            "immutable": true,
+            "hidden": true,
+            "required": false,
+            "secured": true,
+            "description": "OS password for mongo VM",
+            "default": "^(bm90UmVxdWlyZQ==)"
+          },
+          {
+            "name": "mongodb_vm_root_disk_size",
+            "label": "Mongo root disk side",
+            "customtype": "string",
+            "type": "string",
+            "immutable": true,
+            "hidden": true,
+            "required": false,
+            "secured": false,
+            "description": "root disk size for mongo vm",
+            "default": "25"
+          },
+          {
+            "name": "mongodb_vm_name",
+            "label": "VM display name",
+            "customtype": "string",
+            "type": "string",
+            "immutable": true,
+            "hidden": true,
+            "required": false,
+            "secured": false,
+            "description": "VM display name for mongo VM",
+            "default": "mongo"
+          },
+          {
+            "name": "mongodb_vm_ipv4_gateway",
+            "label": "Default Gateway",
+            "customtype": "string",
+            "type": "string",
+            "immutable": true,
+            "hidden": true,
+            "required": false,
+            "secured": false,
+            "description": "Default dateway",
+            "default": "notRequire"
+          },
+          {
+            "name": "mongodb_vm_memory",
+            "label": "Mongo DB VM Memory",
+            "customtype": "string",
+            "type": "string",
+            "immutable": true,
+            "hidden": true,
+            "required": false,
+            "secured": false,
+            "description": "Mongo DB VM Memory",
+            "default": "2048"
+          },
+          {
+            "name": "mongodb_vm_ipv4_prefix_length",
+            "label": "Netmask",
+            "customtype": "string",
+            "type": "string",
+            "immutable": true,
+            "hidden": true,
+            "required": false,
+            "secured": false,
+            "description": "Netmast legnth",
+            "default": "24"
+          },
+          {
+            "name": "mongodb_vm_number_of_vcpu",
+            "label": "Mongo DB VM CPU",
+            "customtype": "string",
+            "type": "string",
+            "immutable": true,
+            "hidden": true,
+            "required": false,
+            "secured": false,
+            "description": "Mongo DB VM CPU",
+            "default": "2"
+          },
+          {
+            "name": "mongodb_vm_network_interface_label",
+            "label": "Network Portgroup",
+            "customtype": "string",
+            "type": "string",
+            "immutable": true,
+            "hidden": true,
+            "required": false,
+            "secured": false,
+            "description": "VMWare Network Portgroup",
+            "default": "VM Network"
+          },
+          {
+            "name": "vm_folder",
+            "label": "VC Folder",
+            "customtype": "string",
+            "type": "string",
+            "immutable": true,
+            "hidden": true,
+            "required": false,
+            "secured": false,
+            "description": "VC Folder to keep the VMs",
+            "default": "notRequire"
+          },
+          {
+            "name": "nodejs_vm_root_disk_size",
+            "label": "nodejs root disk size",
+            "customtype": "string",
+            "type": "string",
+            "immutable": true,
+            "hidden": true,
+            "required": false,
+            "secured": false,
+            "description": "nodejs root disk size, minimum 25GB",
+            "default": "25"
+          },
+          {
+            "name": "nodejs_vm_name",
+            "label": "NodeJS VM display Name",
+            "customtype": "string",
+            "type": "string",
+            "immutable": true,
+            "hidden": true,
+            "required": false,
+            "secured": false,
+            "description": "VC display name for nodejs VM",
+            "default": "nodejs"
+          },
+          {
+            "name": "nodejs_vm_memory",
+            "label": "NodeJS VM Memory",
+            "customtype": "string",
+            "type": "string",
+            "immutable": true,
+            "hidden": true,
+            "required": false,
+            "secured": false,
+            "description": "NodeJS VM Memory",
+            "default": "2048"
+          },
+          {
+            "name": "nodejs_vm_number_of_vcpu",
+            "label": "NodeJS VM Memory",
+            "customtype": "string",
+            "type": "string",
+            "immutable": true,
+            "hidden": true,
+            "required": false,
+            "secured": false,
+            "description": "NodeJS VM Memory",
+            "default": "2"
+          },
+          {
+            "name": "Azure-name_prefix",
+            "label": "Azure Prefix of Resource Names",
+            "customtype": "string",
+            "type": "string",
+            "immutable": true,
+            "hidden": true,
+            "required": false,
+            "secured": false,
+            "description": "Prefix of names for Azure resources; The name prefix must be 1-52 alphanumeric characters and dash",
+            "default": "meanstack"
+          },
+          {
+            "name": "admin_user",
+            "label": "Admin User to Access Virtual Machines",
+            "customtype": "string",
+            "type": "string",
+            "immutable": true,
+            "hidden": true,
+            "required": false,
+            "secured": false,
+            "description": "Name of an administrative user to be created in all virtual machines in this deployment; The user name must be 1-32 alphanumeric (with beginning at letters) and special characters including -._",
+            "default": "ibmadmin"
+          },
+          {
+            "name": "admin_user_password",
+            "label": "Admin User to Access Virtual Machines",
+            "customtype": "password",
+            "type": "password",
+            "immutable": true,
+            "hidden": true,
+            "required": false,
+            "secured": true,
+            "description": "Password of the newly created administrative user; The supplied password must be between 6-72 characters long and must satisfy at least 3 of password complexity requirements from the following: 1) Contains an uppercase character; 2) Contains a lowercase character; 3) Contains a numeric digit; 4) Contains a special character",
+            "default": "^(bm90UmVxdWlyZQ==)"
+          },
+          {
+            "name": "aws_access_key",
+            "label": "AWS Access Key",
+            "customtype": "password",
+            "type": "password",
+            "immutable": true,
+            "hidden": true,
+            "required": false,
+            "secured": true,
+            "description": "AWS Access Key",
+            "default": "^(bm90UmVxdWlyZQ==)"
+          },
+          {
+            "name": "aws_secret_key",
+            "label": "AWS Secret Key",
+            "customtype": "password",
+            "type": "password",
+            "immutable": true,
+            "hidden": true,
+            "required": false,
+            "secured": true,
+            "description": "AWS Secret Key",
+            "default": "^(bm90UmVxdWlyZQ==)"
+          }
+        ]
+      },
+      {
+        "name": "VMWare vSphere",
+        "description": "This will deploy MEAN stack on VMWare vSphere backend",
+        "plan_parameters": [
+          {
+            "name": "HybridCloud",
+            "label": "Hybrid Cloud",
+            "customtype": "string",
+            "type": "string",
+            "immutable": true,
+            "hidden": true,
+            "required": true,
+            "secured": false,
+            "description": "Selete the cloud to deploy MEAN stack",
+            "default": "VMware"
+          },
+          {
+            "name": "aws_access_key",
+            "label": "AWS Access Key",
+            "customtype": "password",
+            "type": "password",
+            "immutable": true,
+            "hidden": true,
+            "required": false,
+            "secured": true,
+            "description": "AWS Access Key",
+            "default": "^(bm90UmVxdWlyZQ==)"
+          },
+          {
+            "name": "aws_secret_key",
+            "label": "AWS Secret Key",
+            "customtype": "password",
+            "type": "password",
+            "immutable": true,
+            "hidden": true,
+            "required": false,
+            "secured": true,
+            "description": "AWS Secret Key",
+            "default": "^(bm90UmVxdWlyZQ==)"
+          },
+          {
+            "name": "network_name_prefix",
+            "label": "AWS Network prefix",
+            "customtype": "string",
+            "type": "string",
+            "immutable": true,
+            "hidden": true,
+            "required": false,
+            "secured": false,
+            "description": "The prefix of names for VPC, Gateway, Subnet and Security Group; Allow 1 to 240 alphanumeric characters and special characters +=._:/@- as tag value that is not starting with aws",
+            "default": "opencontent-meanstack-hybrid"
+          },
+          {
+            "name": "public_ssh_key_name",
+            "label": "AWS Public key name",
+            "customtype": "string",
+            "type": "string",
+            "immutable": true,
+            "hidden": true,
+            "required": false,
+            "secured": false,
+            "description": "public_ssh_key_name",
+            "default": "cam-public-key-meanstack-hybrid"
+          },
+          {
+            "name": "aws_image",
+            "label": "AWS Operating System ID",
+            "customtype": "string",
+            "type": "string",
+            "immutable": true,
+            "hidden": true,
+            "required": false,
+            "secured": false,
+            "description": "Operating system image id / template that should be used when creating the virtual image",
+            "default": "ubuntu/images/hvm-ssd/ubuntu-xenial-16.04-amd64-server-*"
+          },
+          {
+            "name": "aws_ami_owner_id",
+            "label": "AWS AMI Owner ID",
+            "customtype": "string",
+            "type": "string",
+            "immutable": true,
+            "hidden": true,
+            "required": false,
+            "secured": false,
+            "description": "AWS AMI Owner ID for IBM Cloud",
+            "default": "099720109477"
+          },
+          {
+            "name": "Azure-name_prefix",
+            "label": "Azure Prefix of Resource Names",
+            "customtype": "string",
+            "type": "string",
+            "immutable": true,
+            "hidden": true,
+            "required": false,
+            "secured": false,
+            "description": "Prefix of names for Azure resources; The name prefix must be 1-52 alphanumeric characters and dash",
+            "default": "meanstack"
+          },
+          {
+            "name": "mongodb_vm_cluster",
+            "label": "VC Cluster",
+            "customtype": "string",
+            "type": "string",
+            "immutable": true,
+            "hidden": true,
+            "required": false,
+            "secured": false,
+            "description": "Target vSphere cluster to host the virtual machine",
+            "default": "Cluster1"
+          },
+          {
+            "name": "admin_user",
+            "label": "Admin User to Access Virtual Machines",
+            "customtype": "string",
+            "type": "string",
+            "immutable": true,
+            "hidden": true,
+            "required": false,
+            "secured": false,
+            "description": "Name of an administrative user to be created in all virtual machines in this deployment; The user name must be 1-32 alphanumeric (with beginning at letters) and special characters including -._",
+            "default": "ibmadmin"
+          },
+          {
+            "name": "admin_user_password",
+            "label": "Admin User to Access Virtual Machines",
+            "customtype": "password",
+            "type": "password",
+            "immutable": true,
+            "hidden": true,
+            "required": false,
+            "secured": true,
+            "description": "Password of the newly created administrative user; The supplied password must be between 6-72 characters long and must satisfy at least 3 of password complexity requirements from the following: 1) Contains an uppercase character; 2) Contains a lowercase character; 3) Contains a numeric digit; 4) Contains a special character",
+            "default": "^(bm90cmVxdWlyZQ==)"
+          }
+        ]
+      },
+      {
+        "name": "IBM Cloud",
+        "description": "Deploy MEAN stack on IBM Cloud and AWS",
+        "plan_parameters": [
+          {
+            "name": "HybridCloud",
+            "label": "Hybrid Cloud",
+            "customtype": "string",
+            "type": "string",
+            "immutable": true,
+            "hidden": true,
+            "required": true,
+            "secured": false,
+            "description": "Selete the cloud to deploy MEAN stack",
+            "default": "IBM"
+          },
+          {
+            "name": "CloudConnection",
+            "label": "Cloud Connection",
+            "customtype": "string",
+            "type": "string",
+            "immutable": false,
+            "hidden": false,
+            "required": true,
+            "secured": false,
+            "description": "Cloud Connection",
+            "default": "IBM"
+          },
+          {
+            "name": "hostname",
+            "label": "Host Name",
+            "customtype": "string",
+            "type": "string",
+            "immutable": true,
+            "hidden": true,
+            "required": false,
+            "secured": false,
+            "description": "VM Host Name",
+            "default": "demovm1"
+          },
+          {
+            "name": "vm_dns_servers",
+            "label": "DNS Server IP",
+            "customtype": "list",
+            "type": "list",
+            "immutable": true,
+            "hidden": true,
+            "required": false,
+            "secured": false,
+            "description": "DNS Server ip",
+            "default": [
+              "notRequire"
+            ]
+          },
+          {
+            "name": "vm_dns_suffixes",
+            "label": "DNS Suffixes",
+            "customtype": "list",
+            "type": "list",
+            "immutable": true,
+            "hidden": true,
+            "required": false,
+            "secured": false,
+            "description": "DNS Suffixes",
+            "default": [
+              "ibm.com"
+            ]
+          },
+          {
+            "name": "vm_domain",
+            "label": "Domain",
+            "customtype": "string",
+            "type": "string",
+            "immutable": true,
+            "hidden": true,
+            "required": false,
+            "secured": false,
+            "description": "Domain",
+            "default": "ibm.com"
+          },
+          {
+            "name": "mongodb_vm_image",
+            "label": "VM template",
+            "customtype": "string",
+            "type": "string",
+            "immutable": true,
+            "hidden": true,
+            "required": false,
+            "secured": false,
+            "description": "VC VM template to deploy vm",
+            "default": "mongo_ubuntu604"
+          },
+          {
+            "name": "mongodb_vm_os_admin_user",
+            "label": "OS User",
+            "customtype": "string",
+            "type": "string",
+            "immutable": true,
+            "hidden": true,
+            "required": false,
+            "secured": false,
+            "description": "OS user with root access",
+            "default": "root"
+          },
+          {
+            "name": "mongodb_vm_os_password",
+            "label": "OS Password",
+            "customtype": "password",
+            "type": "password",
+            "immutable": true,
+            "hidden": true,
+            "required": false,
+            "secured": true,
+            "description": "OS password for mongo VM",
+            "default": "^(bm90UmVxdWlyZQ==)"
+          },
+          {
+            "name": "mongodb_vm_root_disk_size",
+            "label": "Mongo root disk side",
+            "customtype": "string",
+            "type": "string",
+            "immutable": true,
+            "hidden": true,
+            "required": false,
+            "secured": false,
+            "description": "root disk size for mongo vm",
+            "default": "25"
+          },
+          {
+            "name": "mongodb_vm_name",
+            "label": "VM display name",
+            "customtype": "string",
+            "type": "string",
+            "immutable": true,
+            "hidden": true,
+            "required": false,
+            "secured": false,
+            "description": "VM display name for mongo VM",
+            "default": "mongo"
+          },
+          {
+            "name": "mongodb_vm_ipv4_gateway",
+            "label": "Default Gateway",
+            "customtype": "string",
+            "type": "string",
+            "immutable": true,
+            "hidden": true,
+            "required": false,
+            "secured": false,
+            "description": "Default dateway",
+            "default": "notRequire"
+          },
+          {
+            "name": "mongodb_vm_memory",
+            "label": "Mongo DB VM Memory",
+            "customtype": "string",
+            "type": "string",
+            "immutable": true,
+            "hidden": true,
+            "required": false,
+            "secured": false,
+            "description": "Mongo DB VM Memory",
+            "default": "2048"
+          },
+          {
+            "name": "mongodb_vm_ipv4_prefix_length",
+            "label": "Netmask",
+            "customtype": "string",
+            "type": "string",
+            "immutable": true,
+            "hidden": true,
+            "required": false,
+            "secured": false,
+            "description": "Netmast legnth",
+            "default": "24"
+          },
+          {
+            "name": "mongodb_vm_number_of_vcpu",
+            "label": "Mongo DB VM CPU",
+            "customtype": "string",
+            "type": "string",
+            "immutable": true,
+            "hidden": true,
+            "required": false,
+            "secured": false,
+            "description": "Mongo DB VM CPU",
+            "default": "2"
+          },
+          {
+            "name": "vm_folder",
+            "label": "VC Folder",
+            "customtype": "string",
+            "type": "string",
+            "immutable": true,
+            "hidden": true,
+            "required": false,
+            "secured": false,
+            "description": "VC Folder to keep the VMs",
+            "default": "notRequire"
+          },
+          {
+            "name": "mongodb_vm_network_interface_label",
+            "label": "Network Portgroup",
+            "customtype": "string",
+            "type": "string",
+            "immutable": true,
+            "hidden": true,
+            "required": false,
+            "secured": false,
+            "description": "VMWare Network Portgroup",
+            "default": "VM Network"
+          },
+          {
+            "name": "nodejs_vm_name",
+            "label": "NodeJS VM display Name",
+            "customtype": "string",
+            "type": "string",
+            "immutable": true,
+            "hidden": true,
+            "required": false,
+            "secured": false,
+            "description": "VC display name for nodejs VM",
+            "default": "nodejs"
+          },
+          {
+            "name": "nodejs_vm_root_disk_size",
+            "label": "nodejs root disk size",
+            "customtype": "string",
+            "type": "string",
+            "immutable": true,
+            "hidden": true,
+            "required": false,
+            "secured": false,
+            "description": "nodejs root disk size, minimum 25GB",
+            "default": "25"
+          },
+          {
+            "name": "nodejs_vm_memory",
+            "label": "NodeJS VM Memory",
+            "customtype": "string",
+            "type": "string",
+            "immutable": true,
+            "hidden": true,
+            "required": false,
+            "secured": false,
+            "description": "NodeJS VM Memory",
+            "default": "2048"
+          },
+          {
+            "name": "nodejs_vm_number_of_vcpu",
+            "label": "NodeJS VM Memory",
+            "customtype": "string",
+            "type": "string",
+            "immutable": true,
+            "hidden": true,
+            "required": false,
+            "secured": false,
+            "description": "NodeJS VM Memory",
+            "default": "2"
+          },
+          {
+            "name": "Azure-name_prefix",
+            "label": "Azure Prefix of Resource Names",
+            "customtype": "string",
+            "type": "string",
+            "immutable": true,
+            "hidden": true,
+            "required": false,
+            "secured": false,
+            "description": "Prefix of names for Azure resources; The name prefix must be 1-52 alphanumeric characters and dash",
+            "default": "meanstack"
+          },
+          {
+            "name": "admin_user",
+            "label": "Admin User to Access Virtual Machines",
+            "customtype": "string",
+            "type": "string",
+            "immutable": true,
+            "hidden": true,
+            "required": false,
+            "secured": false,
+            "description": "Name of an administrative user to be created in all virtual machines in this deployment; The user name must be 1-32 alphanumeric (with beginning at letters) and special characters including -._",
+            "default": "ibmadmin"
+          },
+          {
+            "name": "admin_user_password",
+            "label": "Admin User to Access Virtual Machines",
+            "customtype": "password",
+            "type": "password",
+            "immutable": true,
+            "hidden": true,
+            "required": false,
+            "secured": true,
+            "description": "Password of the newly created administrative user; The supplied password must be between 6-72 characters long and must satisfy at least 3 of password complexity requirements from the following: 1) Contains an uppercase character; 2) Contains a lowercase character; 3) Contains a numeric digit; 4) Contains a special character",
+            "default": "^(bm90UmVxdWlyZQ==)"
+          }
+        ]
+      },
+      {
+        "name": "Azure",
+        "description": "Deploys a MEAN stack (Mongo, Express, Angular, Node) in Microsoft Azure providing a complete development environment.",
+        "plan_parameters": [
+          {
+            "name": "HybridCloud",
+            "label": "Hybrid Cloud",
+            "customtype": "string",
+            "type": "string",
+            "immutable": true,
+            "hidden": true,
+            "required": true,
+            "secured": false,
+            "description": "Selete the cloud to deploy MEAN stack",
+            "default": "Azure"
+          },
+          {
+            "name": "CloudConnection",
+            "label": "Cloud Connection",
+            "customtype": "string",
+            "type": "string",
+            "immutable": true,
+            "hidden": true,
+            "required": true,
+            "secured": false,
+            "description": "Cloud Connection",
+            "default": "Azure"
+          },
+          {
+            "name": "hostname",
+            "label": "Host Name",
+            "customtype": "string",
+            "type": "string",
+            "immutable": true,
+            "hidden": true,
+            "required": false,
+            "secured": false,
+            "description": "VM Host Name",
+            "default": "demovm1"
+          },
+          {
+            "name": "vm_dns_servers",
+            "label": "DNS Server IP",
+            "customtype": "list",
+            "type": "list",
+            "immutable": true,
+            "hidden": true,
+            "required": false,
+            "secured": false,
+            "description": "DNS Server ip",
+            "default": [
+              "notRequire"
+            ]
+          },
+          {
+            "name": "vm_dns_suffixes",
+            "label": "DNS Suffixes",
+            "customtype": "list",
+            "type": "list",
+            "immutable": true,
+            "hidden": true,
+            "required": false,
+            "secured": false,
+            "description": "DNS Suffixes",
+            "default": [
+              "ibm.com"
+            ]
+          },
+          {
+            "name": "vm_domain",
+            "label": "Domain",
+            "customtype": "string",
+            "type": "string",
+            "immutable": true,
+            "hidden": true,
+            "required": false,
+            "secured": false,
+            "description": "Domain",
+            "default": "ibm.com"
+          },
+          {
+            "name": "mongodb_vm_image",
+            "label": "VM template",
+            "customtype": "string",
+            "type": "string",
+            "immutable": true,
+            "hidden": true,
+            "required": false,
+            "secured": false,
+            "description": "VC VM template to deploy vm",
+            "default": "mongo_ubuntu604"
+          },
+          {
+            "name": "mongodb_vm_os_admin_user",
+            "label": "OS User",
+            "customtype": "string",
+            "type": "string",
+            "immutable": true,
+            "hidden": true,
+            "required": false,
+            "secured": false,
+            "description": "OS user with root access",
+            "default": "root"
+          },
+          {
+            "name": "mongodb_vm_os_password",
+            "label": "OS Password",
+            "customtype": "password",
+            "type": "password",
+            "immutable": true,
+            "hidden": true,
+            "required": false,
+            "secured": true,
+            "description": "OS password for mongo VM",
+            "default": "^(bm90UmVxdWlyZQ==)"
+          },
+          {
+            "name": "mongodb_vm_root_disk_size",
+            "label": "Mongo root disk side",
+            "customtype": "string",
+            "type": "string",
+            "immutable": true,
+            "hidden": true,
+            "required": false,
+            "secured": false,
+            "description": "root disk size for mongo vm",
+            "default": "25"
+          },
+          {
+            "name": "mongodb_vm_name",
+            "label": "VM display name",
+            "customtype": "string",
+            "type": "string",
+            "immutable": true,
+            "hidden": true,
+            "required": false,
+            "secured": false,
+            "description": "VM display name for mongo VM",
+            "default": "mongo"
+          },
+          {
+            "name": "mongodb_vm_ipv4_gateway",
+            "label": "Default Gateway",
+            "customtype": "string",
+            "type": "string",
+            "immutable": true,
+            "hidden": true,
+            "required": false,
+            "secured": false,
+            "description": "Default dateway",
+            "default": "notRequire"
+          },
+          {
+            "name": "mongodb_vm_memory",
+            "label": "Mongo DB VM Memory",
+            "customtype": "string",
+            "type": "string",
+            "immutable": true,
+            "hidden": true,
+            "required": false,
+            "secured": false,
+            "description": "Mongo DB VM Memory",
+            "default": "2048"
+          },
+          {
+            "name": "mongodb_vm_ipv4_prefix_length",
+            "label": "Netmask",
+            "customtype": "string",
+            "type": "string",
+            "immutable": true,
+            "hidden": true,
+            "required": false,
+            "secured": false,
+            "description": "Netmast legnth",
+            "default": "24"
+          },
+          {
+            "name": "mongodb_vm_number_of_vcpu",
+            "label": "Mongo DB VM CPU",
+            "customtype": "string",
+            "type": "string",
+            "immutable": true,
+            "hidden": true,
+            "required": false,
+            "secured": false,
+            "description": "Mongo DB VM CPU",
+            "default": "2"
+          },
+          {
+            "name": "mongodb_vm_network_interface_label",
+            "label": "Network Portgroup",
+            "customtype": "string",
+            "type": "string",
+            "immutable": true,
+            "hidden": true,
+            "required": false,
+            "secured": false,
+            "description": "VMWare Network Portgroup",
+            "default": "VM Network"
+          },
+          {
+            "name": "vm_folder",
+            "label": "VC Folder",
+            "customtype": "string",
+            "type": "string",
+            "immutable": true,
+            "hidden": true,
+            "required": false,
+            "secured": false,
+            "description": "VC Folder to keep the VMs",
+            "default": "notRequire"
+          },
+          {
+            "name": "nodejs_vm_root_disk_size",
+            "label": "nodejs root disk size",
+            "customtype": "string",
+            "type": "string",
+            "immutable": true,
+            "hidden": true,
+            "required": false,
+            "secured": false,
+            "description": "nodejs root disk size, minimum 25GB",
+            "default": "25"
+          },
+          {
+            "name": "nodejs_vm_name",
+            "label": "NodeJS VM display Name",
+            "customtype": "string",
+            "type": "string",
+            "immutable": true,
+            "hidden": true,
+            "required": false,
+            "secured": false,
+            "description": "VC display name for nodejs VM",
+            "default": "nodejs"
+          },
+          {
+            "name": "nodejs_vm_memory",
+            "label": "NodeJS VM Memory",
+            "customtype": "string",
+            "type": "string",
+            "immutable": true,
+            "hidden": true,
+            "required": false,
+            "secured": false,
+            "description": "NodeJS VM Memory",
+            "default": "2048"
+          },
+          {
+            "name": "nodejs_vm_number_of_vcpu",
+            "label": "NodeJS VM Memory",
+            "customtype": "string",
+            "type": "string",
+            "immutable": true,
+            "hidden": true,
+            "required": false,
+            "secured": false,
+            "description": "NodeJS VM Memory",
+            "default": "2"
+          },
+          {
+            "name": "aws_access_key",
+            "label": "AWS Access Key",
+            "customtype": "password",
+            "type": "password",
+            "immutable": true,
+            "hidden": true,
+            "required": false,
+            "secured": true,
+            "description": "AWS Access Key",
+            "default": "^(bm90UmVxdWlyZQ==)"
+          },
+          {
+            "name": "aws_secret_key",
+            "label": "AWS Secret Key",
+            "customtype": "password",
+            "type": "password",
+            "immutable": true,
+            "hidden": true,
+            "required": false,
+            "secured": true,
+            "description": "AWS Secret Key",
+            "default": "^(bm90UmVxdWlyZQ==)"
+          },
+          {
+            "name": "network_name_prefix",
+            "label": "AWS Network prefix",
+            "customtype": "string",
+            "type": "string",
+            "immutable": true,
+            "hidden": true,
+            "required": false,
+            "secured": false,
+            "description": "The prefix of names for VPC, Gateway, Subnet and Security Group; Allow 1 to 240 alphanumeric characters and special characters +=._:/@- as tag value that is not starting with aws",
+            "default": "opencontent-meanstack-hybrid"
+          },
+          {
+            "name": "public_ssh_key_name",
+            "label": "AWS Public key name",
+            "customtype": "string",
+            "type": "string",
+            "immutable": true,
+            "hidden": true,
+            "required": false,
+            "secured": false,
+            "description": "public_ssh_key_name",
+            "default": "cam-public-key-meanstack-hybrid"
+          },
+          {
+            "name": "hostname-db",
+            "label": "DB Hostname",
+            "customtype": "string",
+            "type": "string",
+            "immutable": true,
+            "hidden": true,
+            "required": false,
+            "secured": false,
+            "description": "The hostname of server with mongo; Allow 1 to 200 alphanumeric characters and non-consecutive non-leading non-ending dashes",
+            "default": "meanstack-db"
+          },
+          {
+            "name": "hostname-nodejs",
+            "label": "NodeJS hostname",
+            "customtype": "string",
+            "type": "string",
+            "immutable": true,
+            "hidden": true,
+            "required": false,
+            "secured": false,
+            "description": "The hostname of server with nodejs; Allow 1 to 255 alphanumeric characters and special characters +=._:/@- as tag value that is not starting with aws",
+            "default": "meanstack-nodejs"
+          },
+          {
+            "name": "aws_image",
+            "label": "AWS Operating System ID",
+            "customtype": "string",
+            "type": "string",
+            "immutable": true,
+            "hidden": true,
+            "required": false,
+            "secured": false,
+            "description": "Operating system image id / template that should be used when creating the virtual image",
+            "default": "ubuntu/images/hvm-ssd/ubuntu-xenial-16.04-amd64-server-*"
+          },
+          {
+            "name": "aws_ami_owner_id",
+            "label": "AWS AMI Owner ID",
+            "customtype": "string",
+            "type": "string",
+            "immutable": true,
+            "hidden": true,
+            "required": false,
+            "secured": false,
+            "description": "AWS AMI Owner ID for IBM Cloud",
+            "default": "099720109477"
+          }
+        ]
+      }
+    ]
+  }
+}
