@@ -948,12 +948,12 @@
             "label": "ICp EE Image Location",
             "customtype": "string",
             "type": "string",
-            "immutable": false,
-            "hidden": false,
+            "immutable": true,
+            "hidden": true,
             "required": false,
             "secured": false,
             "description": "",
-            "default": ""
+            "default": "not_in_use"
           },
           {
             "name": "boot",
@@ -1308,12 +1308,12 @@
             "label": "ICp EE Image Location",
             "customtype": "string",
             "type": "string",
-            "immutable": false,
-            "hidden": false,
+            "immutable": true,
+            "hidden": true,
             "required": false,
             "secured": false,
             "description": "",
-            "default": ""
+            "default": "not_in_use"
           },
           {
             "name": "boot",
