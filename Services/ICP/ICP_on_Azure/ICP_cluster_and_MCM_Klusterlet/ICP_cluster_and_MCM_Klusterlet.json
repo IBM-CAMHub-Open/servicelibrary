@@ -2,7 +2,7 @@
   "service": {
     "specVersion": "v3",
     "catalog_metadata": {
-      "name": "ICP cluster on Microsoft Azure Maps",
+      "name": "ICP cluster on Microsoft Azure",
       "description": "Deploy ICP cluster onto Microsoft Azure, loads the MCM docker images and deploys the MCM Klusterlet",
       "image": "serviceicon_1.svg",
       "category": "ICP on Microsoft Azure",
