@@ -1330,7 +1330,7 @@
                   "compliance-pullPolicy": "Always",
                   "compliance-cemIntegration-enabled": false,
                   "router-image-repository": "${input_parameters.icp_cluster_name}.${input_parameters.vm_domain}:8500/kube-system/icp-management-ingress",
-                  "router-image-tag": "2.2.3",
+                  "router-image-tag": "2.2.0",
                   "pullSecret-token": "",
                   "nodeSelector-enabled": false,
                   "nodeSelector-arch": "",

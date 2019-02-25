@@ -580,7 +580,7 @@
               "MEAN stack deployment": {
                 "title": "MEAN stack VMW",
                 "template_name": "MEAN stack deployment",
-                "version": "2.1",
+                "version": "2.3",
                 "id": "meanstac8be2854a",
                 "template_type": "Terraform",
                 "template_content_type": "VMware vSphere",
@@ -644,7 +644,7 @@
               "MEAN stack deployment (hybrid-cloud)": {
                 "title": "MEAN stack SL",
                 "template_name": "MEAN stack deployment (hybrid-cloud)",
-                "version": "2.1",
+                "version": "2.3",
                 "id": "meanstac79ffc96e",
                 "template_type": "Terraform",
                 "template_content_type": "IBM",
@@ -674,7 +674,7 @@
               "MEAN stack deployment": {
                 "title": "MEAN stack AWS",
                 "template_name": "MEAN stack deployment",
-                "version": "2.1",
+                "version": "2.3",
                 "id": "meanstac8ca7eecd",
                 "template_type": "Terraform",
                 "template_content_type": "Amazon EC2",
@@ -701,7 +701,7 @@
               "MEAN stack deployment on Microsoft Azure": {
                 "title": "MEAN stack Azure",
                 "template_name": "MEAN stack deployment on Microsoft Azure",
-                "version": "2.1",
+                "version": "2.3",
                 "id": "meanstac111cd421",
                 "template_type": "Terraform",
                 "template_content_type": "Microsoft Azure",
