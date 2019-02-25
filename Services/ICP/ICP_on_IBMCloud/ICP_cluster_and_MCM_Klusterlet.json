@@ -623,7 +623,7 @@
                   "bastionhost": "DefaultNoBastionHostRequired"
                 },
                 "template_params": {
-                  "master_node_ip": "${templates.ibmcloudae8a61bf.output.ibm_cloud_private_boot_ip||templates.ibmcloud941a9504.output.ibm_cloud_private_boot_ip||templates.ibmcloude347f135.boot}",
+                  "master_node_ip": "${templates.ibmcloudae8a61bf.output.ibm_cloud_private_boot_ip||templates.ibmcloud941a9504.output.ibm_cloud_private_boot_ip||templates.ibmcloude347f135.output.ibm_cloud_private_boot_ip}",
                   "vm_os_user": "root",
                   "vm_os_private_key": "${input_parameters.private_key}",
                   "vm_os_password": "",
