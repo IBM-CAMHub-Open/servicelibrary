@@ -1615,7 +1615,7 @@
                   "bastionhost": "DefaultNoBastionHostRequired"
                 },
                 "template_params": {
-                  "master_node_ip": "${templates.singleno708a819a.output.ibm_cloud_private_master_ip||templates.mediumnoa2ce1940.output.ibm_cloud_private_master_ip||templates.hanodedee28a0f0c.output.ibm_cloud_private_master_ip}",
+                  "boot_node_ip": "${templates.singleno708a819a.output.ibm_cloud_private_boot_ip||templates.mediumnoa2ce1940.output.ibm_cloud_private_boot_ip||templates.hanodedee28a0f0c.output.ibm_cloud_private_boot_ip}",
                   "vm_os_user": "${input_parameters.vm_os_user}",
                   "vm_os_private_key": "",
                   "vm_os_password": "${input_parameters.vm_os_password}",
@@ -1624,13 +1624,14 @@
                   "icp_version": "${input_parameters.icp_version}",
                   "cluster_name": "${input_parameters.icp_cluster_name}",
                   "cluster_ca_name": "${input_parameters.icp_cluster_name}.${input_parameters.vm_domain}",
+                  "cluster_docker_registry_server_name": "${input_parameters.icp_cluster_name}.${input_parameters.vm_domain}",
                   "mcm_binary_url": "${input_parameters.mcm_binary_url}",
                   "download_user": "",
                   "download_user_password": "",
                   "secret_name": "mcm-secret"
                 },
                 "outputs": [
-                  "ibm_cloud_private_master_ip"
+                  "ibm_cloud_private_boot_ip"
                 ]
               }
             },
@@ -2788,13 +2789,13 @@
             "name": "cloud_connection",
             "label": "Cloud Connection",
             "customtype": "string",
-            "type": "string",
+            "type": "connection",
+            "provider": "VMware vSphere",
             "immutable": false,
             "hidden": false,
             "required": false,
             "secured": false,
-            "description": "Name of cloud connection to use",
-            "default": "VMware"
+            "description": "Name of cloud connection to use"
           }
         ],
         "last_updated": "2018-11-12T22:15:46.044Z",
@@ -3931,13 +3932,13 @@
             "name": "cloud_connection",
             "label": "Cloud Connection",
             "customtype": "string",
-            "type": "string",
+            "type": "connection",
+            "provider": "VMware vSphere",
             "immutable": false,
             "hidden": false,
             "required": false,
             "secured": false,
-            "description": "Name of cloud connection to use",
-            "default": "VMware"
+            "description": "Name of cloud connection to use"
           }
         ]
       },
@@ -5072,13 +5073,13 @@
             "name": "cloud_connection",
             "label": "Cloud Connection",
             "customtype": "string",
-            "type": "string",
+            "type": "connection",
+            "provider": "VMware vSphere",
             "immutable": false,
             "hidden": false,
             "required": false,
             "secured": false,
-            "description": "Name of cloud connection to use",
-            "default": "VMware"
+            "description": "Name of cloud connection to use"
           }
         ]
       }

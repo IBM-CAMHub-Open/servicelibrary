@@ -558,20 +558,21 @@
 									"bastion_password": "${bastionhost.bastion_password}",
 									"bastion_host_key": "${bastionhost.bastion_host_key}",
 									"boot_ipv4_address": "${templates.ibmcloud069f4701.output.bootmaster}",
-									"master_node_ip": "${templates.ibmcloud069f4701.output.bootmaster}",
+									"boot_node_ip": "${templates.ibmcloud069f4701.output.bootmaster}",
 									"vm_os_user": "icpdeploy",
 									"vm_os_password": "",
 									"vm_os_private_key": "${templates.ibmcloud069f4701.output.vm_os_private_key}",
 									"icp_admin_user": "${templates.ibmcloud069f4701.output.ICP_Admin_Username}",
 									"icp_admin_user_password": "${templates.ibmcloud069f4701.output.ICP_Admin_Password}",
 									"cluster_ca_name": "${templates.ibmcloud069f4701.output.cluster_ca_domain}",
+									"cluster_docker_registry_server_name": "${templates.ibmcloud069f4701.output.cluster_ca_domain}",
 									"cluster_name": "${input_parameters.icp_instance_name}",
 									"mcm_binary_url": "${input_parameters.mcm_binary_url}",
 									"download_user": "",
 									"download_user_password": "",
 									"secret_name": "${input_parameters.mcm_secret_name}"
 								},
-								"outputs": ["ibm_cloud_private_master_ip"]
+								"outputs": ["ibm_cloud_private_boot_ip"]
 							}
 						}, {
 							"local-charts/ibm-mcmk-prod": {

@@ -173,8 +173,8 @@
             "description": ""
           },
           {
-            "name": "master_node_ipv4",
-            "label": "ICp master node IP",
+            "name": "boot_node_ipv4",
+            "label": "ICp boot node IP",
             "customtype": "string",
             "type": "string",
             "immutable": false,
@@ -251,7 +251,7 @@
                   "bastionhost": "DefaultNoBastionHostRequired"
                 },
                 "template_params": {
-                  "master_node_ip": "${input_parameters.master_node_ipv4}",
+                  "boot_node_ip": "${input_parameters.boot_node_ipv4}",
                   "vm_os_user": "root",
                   "vm_os_private_key": "${input_parameters.private_key}",
                   "vm_os_password": "",
@@ -267,7 +267,7 @@
                   "secret_name": "mcm-secret"
                 },
                 "outputs": [
-                  "ibm_cloud_private_master_ip"
+                  "ibm_cloud_private_boot_ip"
                 ]
               }
             },

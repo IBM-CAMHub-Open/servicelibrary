@@ -627,21 +627,22 @@
                   "bastionhost": "DefaultNoBastionHostRequired"
                 },
                 "template_params": {
-                  "master_node_ip": "${templates.ibmcloudae8a61bf.output.ibm_cloud_private_boot_ip||templates.ibmcloud941a9504.output.ibm_cloud_private_boot_ip||templates.ibmcloude347f135.output.ibm_cloud_private_boot_ip}",
+                  "boot_node_ip": "${templates.ibmcloudae8a61bf.output.ibm_cloud_private_boot_ip||templates.ibmcloud941a9504.output.ibm_cloud_private_boot_ip||templates.ibmcloude347f135.output.ibm_cloud_private_boot_ip}",
                   "vm_os_user": "root",
                   "vm_os_private_key": "${input_parameters.private_key}",
                   "vm_os_password": "",
                   "icp_admin_user": "admin",
                   "icp_admin_user_password": "${templates.ibmcloudae8a61bf.output.ibm_cloud_private_admin_password||templates.ibmcloud941a9504.output.ibm_cloud_private_admin_password||templates.ibmcloude347f135.output.ibm_cloud_private_admin_password}",
                   "cluster_name": "${input_parameters.cluster_name}",
-                  "cluster_ca_name": "${templates.ibmcloudae8a61bf.output.ibm_cloud_private_ca_domain_name||templates.ibmcloud941a9504.output.ibm_cloud_private_ca_domain_name||templates.ibmcloude347f135.output.ibm_cloud_private_registry_server}",
+                  "cluster_ca_name": "${templates.ibmcloudae8a61bf.output.ibm_cloud_private_ca_domain_name||templates.ibmcloud941a9504.output.ibm_cloud_private_ca_domain_name||templates.ibmcloude347f135.output.ibm_cloud_private_ca_domain_name}",
+                  "cluster_docker_registry_server_name": "${templates.ibmcloudae8a61bf.output.ibm_cloud_private_ca_domain_name||templates.ibmcloud941a9504.output.ibm_cloud_private_ca_domain_name||templates.ibmcloude347f135.output.ibm_cloud_private_registry_server}",
                   "mcm_binary_url": "${input_parameters.mcm_binary_url}",
                   "download_user": "",
                   "download_user_password": "",
                   "secret_name": "mcm-secret-311"
                 },
                 "outputs": [
-                  "ibm_cloud_private_master_ip"
+                  "ibm_cloud_private_boot_ip"
                 ]
               }
             },

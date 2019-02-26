@@ -2,7 +2,7 @@
     "service": {
       "specVersion": "v3",
       "catalog_metadata": {
-        "name": "ICP cluster on VMware add node",
+        "name": "ICP cluster add node",
         "description": "This service will add worker, proxy, and management nodes to your IBM Cloud Private cluster.\n\n",
         "image": "serviceicon_8.svg",
         "category": "ICP on VMware",
@@ -700,13 +700,13 @@
               "name": "cloud_connection",
               "label": "Cloud connection",
               "customtype": "string",
-              "type": "string",
+              "type": "connection",
+              "provider": "VMware vSphere",
               "immutable": false,
               "hidden": false,
               "required": true,
               "secured": false,
-              "description": "Cloud connection to connect to backend cloud for deployment",
-              "default": "VMware"
+              "description": "Cloud connection to connect to backend cloud for deployment"
             }
           ],
           "expanded": false
@@ -814,13 +814,13 @@
               "name": "cloud_connection",
               "label": "Cloud connection",
               "customtype": "string",
-              "type": "string",
+              "type": "connection",
+              "provider": "OpenStack",
               "immutable": false,
               "hidden": false,
               "required": true,
               "secured": false,
-              "description": "Cloud connection to connect to backend cloud for deployment",
-              "default": "Openstack"
+              "description": "Cloud connection to connect to backend cloud for deployment"
             }
           ]
         }
