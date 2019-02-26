@@ -2,7 +2,7 @@
   "service": {
     "specVersion": "v3",
     "catalog_metadata": {
-      "name": "MCM Klusterlet in ICP",
+      "name": "MCM Klusterlet on ICP",
       "description": "Loads the MCM docker images into an existing IBM Cloud ICp cluster and deploys the MCM Klusterlet",
       "image": "serviceicon_1.svg",
       "category": "MCM on ICP",
