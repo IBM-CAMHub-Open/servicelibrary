@@ -2,8 +2,8 @@
   "service": {
     "specVersion": "v3",
     "catalog_metadata": {
-      "name": "MCM Klusterlet - Deploys Chart in ICP",
-      "description": "Deploys the MCM Klusterlet into an existing IBM Cloud ICp cluster",
+      "name": "MCM Klusterlet in ICP",
+      "description": "Loads the MCM docker images into an existing IBM Cloud ICp cluster and deploys the MCM Klusterlet",
       "image": "serviceicon_1.svg",
       "category": "MCM on ICP",
       "bullets": [],
@@ -60,20 +60,6 @@
         "permission": "Read-Only"
       },
       {
-        "name": "Template_Identifier",
-        "label": "Template_Identifier",
-        "type": "string",
-        "immutable": true,
-        "hidden": false,
-        "required": false,
-        "secured": false,
-        "description": "Unique identifier of the template / service used to create the instance of the template provisioned.",
-        "isSystemTag": true,
-        "default": "${svc_instance.templateIds}",
-        "customtype": "string",
-        "permission": "Read-Only"
-      },
-      {
         "name": "Service_Identifier",
         "label": "Service_Identifier",
         "type": "string",
@@ -95,6 +81,19 @@
         "description": "Default action for deployment of service",
         "input_parameters": [
           {
+            "name": "public_key_name",
+            "label": "Public Key Name",
+            "customtype": "list",
+            "type": "list",
+            "immutable": false,
+            "hidden": false,
+            "required": true,
+            "secured": false,
+            "default": [
+              ""
+            ]
+          },
+          {
             "name": "cluster_name",
             "label": "Cluster Name",
             "customtype": "string",
@@ -104,6 +103,62 @@
             "required": true,
             "secured": false,
             "description": ""
+          },
+          {
+            "name": "cloud_connection_name",
+            "label": "ICP Cluster Cloud Connection Name",
+            "customtype": "string",
+            "type": "string",
+            "immutable": false,
+            "hidden": false,
+            "required": true,
+            "secured": false,
+            "description": ""
+          },          
+          {
+            "name": "cluster_ca_name",
+            "label": "Cluster CA Name",
+            "customtype": "string",
+            "type": "string",
+            "immutable": false,
+            "hidden": false,
+            "required": true,
+            "secured": false,
+            "description": ""
+          },
+          {
+            "name": "cluster_docker_registry_server_name",
+            "label": "Cluster Docker Registry Name",
+            "customtype": "string",
+            "type": "string",
+            "immutable": false,
+            "hidden": false,
+            "required": true,
+            "secured": false,
+            "description": ""
+          },
+          {
+            "name": "private_key",
+            "label": "Private Key (base64 encoded)",
+            "customtype": "password",
+            "type": "password",
+            "immutable": false,
+            "hidden": false,
+            "required": true,
+            "secured": true,
+            "description": "",
+            "default": ""
+          },
+          {
+            "name": "mcm_binary_url",
+            "label": "MCM binary URL",
+            "customtype": "string",
+            "type": "string",
+            "immutable": false,
+            "hidden": false,
+            "required": true,
+            "secured": false,
+            "default": ""
           },
           {
             "name": "klusterlet-apiserverConfig-server",
@@ -126,6 +181,16 @@
             "required": true,
             "secured": false,
             "description": ""
+          },
+          {
+            "name": "boot_node_ipv4",
+            "label": "ICp boot node IP",
+            "customtype": "string",
+            "type": "string",
+            "immutable": false,
+            "hidden": false,
+            "required": true,
+            "secured": false
           },
           {
             "name": "icp_admin_user",
@@ -155,32 +220,60 @@
           "conditions": [],
           "templates": [
             {
+              "IBM Multicloud Manager": {
+                "title": "IBM Multicloud Manager_e1a091",
+                "template_name": "IBM Multicloud Manager",
+                "version": "3.1.1",
+                "id": "ibmmulti48a790ea",
+                "template_type": "Terraform",
+                "template_content_type": "Other",
+                "template_provider": "Other",
+                "instance_name": "",
+                "cloud_connection_name": "Other",
+                "template_data_objects": {
+                  "bastionhost": "DefaultNoBastionHostRequired"
+                },
+                "template_params": {
+                  "boot_node_ip": "${input_parameters.boot_node_ipv4}",
+                  "vm_os_user": "root",
+                  "vm_os_private_key": "${input_parameters.private_key}",
+                  "vm_os_password": "",
+                  "icp_admin_user": "${input_parameters.icp_admin_user}",
+                  "icp_admin_user_password": "${input_parameters.icp_admin_user_password}",
+                  "cluster_location": "/root/ibm-cloud-private-x86_64-3.1.1/cluster",
+                  "cluster_name": "${input_parameters.cluster_name}",
+                  "cluster_ca_name": "${input_parameters.cluster_ca_name}",
+                  "cluster_docker_registry_server_name": "${input_parameters.cluster_docker_registry_server_name}",
+                  "mcm_binary_url": "${input_parameters.mcm_binary_url}",
+                  "download_user": "",
+                  "download_user_password": "",
+                  "secret_name": "mcm-secret"
+                },
+                "outputs": [
+                  "ibm_cloud_private_boot_ip"
+                ]
+              }
+            },
+            {
               "local-charts/ibm-mcmk-prod": {
-                "title": "local-charts/ibm-mcmk-prod_fea84e",
+                "title": "local-charts/ibm-mcmk-prod_4d5c1f",
                 "template_name": "ibm-mcmk-prod",
-                "version": "latest",
+                "version": "3.1.1",
                 "id": "localcha2df5f81e",
                 "template_type": "Helm",
                 "template_content_type": "IBM Cloud Private",
                 "template_provider": "IBM Cloud Private",
-                "instance_name": "",
-                "cloud_connection_name": "${input_parameters.cluster_name}",
+                "instance_name": "mcmk",
+                "cloud_connection_name": "${input_parameters.cloud_connection_name}",
                 "template_dataobjects": {},
                 "template_params": {
                   "namespace": "kube-system",
-                  "klusterlet-repository": "${input_parameters.cluster_name}.icp:8500/kube-system/mcm-klusterlet",
-                  "klusterlet-tag": "3.1.1",
-                  "klusterlet-pullPolicy": "Always",
                   "klusterlet-enabled": true,
                   "klusterlet-clusterName": "${input_parameters.cluster_name}",
-                  "klusterlet-clusterNamespace": "kube-system",
+                  "klusterlet-clusterNamespace": "mcm-${input_parameters.cluster_name}",
                   "klusterlet-tillersecret": "",
                   "klusterlet-autoGenTillerSecret": true,
                   "klusterlet-tillerUser": "admin",
-                  "klusterlet-apiserverConfig-server": "${input_parameters.klusterlet-apiserverConfig-server}",
-                  "klusterlet-apiserverConfig-token": "${input_parameters.klusterlet-apiserverConfig-token}",
-                  "klusterlet-apiserverConfig-enableBootstrap": true,
-                  "klusterlet-deployedOnHub": false,
                   "klusterlet-cloud": "IBM",
                   "klusterlet-vendor": "ICP",
                   "klusterlet-environment": "Dev",
@@ -193,14 +286,14 @@
                   "topology-enabled": true,
                   "topology-enableAuth": true,
                   "topology-updateInterval": 15,
-                  "topology-username": "${input_parameters.icp_admin_user}",
+                  "topology-username": "admin",
                   "topology-password": "${input_parameters.icp_admin_user_password}",
-                  "topology-weave-image-repository": "${input_parameters.cluster_name}.icp:8500/kube-system/mcm-weave-scope",
+                  "topology-weave-image-repository": "${input_parameters.cluster_docker_registry_server_name}:8500/kube-system/mcm-weave-scope",
                   "topology-weave-image-tag": "3.1.1",
                   "topology-weave-image-pullPolicy": "Always",
-                  "router-image-repository": "${input_parameters.cluster_name}.icp:8500/kube-system/icp-router",
+                  "router-image-repository": "${input_parameters.cluster_docker_registry_server_name}:8500/kube-system/icp-router",
                   "router-image-tag": "2.2.0",
-                  "compliance-repository": "${input_parameters.cluster_name}.icp:8500/kube-system/mcm-compliance",
+                  "compliance-repository": "${input_parameters.cluster_docker_registry_server_name}:8500/kube-system/mcm-compliance",
                   "compliance-tag": "3.1.1",
                   "compliance-pullPolicy": "Always",
                   "compliance-enabled": true,
@@ -210,7 +303,14 @@
                   "nodeSelector-os": "",
                   "nodeSelector-customLabelSelector": "",
                   "nodeSelector-customLabelValue": "",
-                  "pullSecret-token": ""
+                  "pullSecret-token": "",
+                  "klusterlet-repository": "${input_parameters.cluster_docker_registry_server_name}:8500/kube-system/mcm-klusterlet",
+                  "klusterlet-tag": "3.1.1",
+                  "klusterlet-pullPolicy": "Always",
+                  "klusterlet-apiserverConfig-server": "${input_parameters.klusterlet-apiserverConfig-server}",
+                  "klusterlet-apiserverConfig-token": "${input_parameters.klusterlet-apiserverConfig-token}",
+                  "klusterlet-apiserverConfig-enableBootstrap": true,
+                  "klusterlet-deployedOnHub": true
                 },
                 "outputs": [],
                 "template_repo": "local-charts"
@@ -220,7 +320,8 @@
           "resthooks": [],
           "notifications": [],
           "sequence": {
-            "0": "localcha2df5f81e"
+            "0": "ibmmulti48a790ea",
+            "1": "localcha2df5f81e"
           },
           "error_sequence": {}
         },
