@@ -81,19 +81,6 @@
         "description": "Default action for deployment of service",
         "input_parameters": [
           {
-            "name": "public_key_name",
-            "label": "Public Key Name",
-            "customtype": "list",
-            "type": "list",
-            "immutable": false,
-            "hidden": false,
-            "required": true,
-            "secured": false,
-            "default": [
-              ""
-            ]
-          },
-          {
             "name": "cluster_name",
             "label": "Cluster Name",
             "customtype": "string",
@@ -114,7 +101,7 @@
             "required": true,
             "secured": false,
             "description": ""
-          },          
+          },
           {
             "name": "cluster_ca_name",
             "label": "Cluster CA Name",
@@ -174,13 +161,14 @@
           {
             "name": "klusterlet-apiserverConfig-token",
             "label": "MCM controller token",
-            "customtype": "string",
-            "type": "string",
+            "customtype": "password",
+            "type": "password",
             "immutable": false,
             "hidden": false,
             "required": true,
-            "secured": false,
-            "description": ""
+            "secured": true,
+            "description": "",
+            "default": ""
           },
           {
             "name": "boot_node_ipv4",
@@ -207,13 +195,25 @@
           {
             "name": "icp_admin_user_password",
             "label": "ICp admin user password",
+            "customtype": "password",
+            "type": "password",
+            "immutable": false,
+            "hidden": false,
+            "required": true,
+            "secured": true,
+            "description": "",
+            "default": ""
+          },
+          {
+            "name": "boot_node_username",
+            "label": "Boot node user name",
             "customtype": "string",
             "type": "string",
             "immutable": false,
             "hidden": false,
             "required": true,
             "secured": false,
-            "description": ""
+            "default": "root"
           }
         ],
         "flow": {
@@ -235,7 +235,7 @@
                 },
                 "template_params": {
                   "boot_node_ip": "${input_parameters.boot_node_ipv4}",
-                  "vm_os_user": "root",
+                  "vm_os_user": "${input_parameters.boot_node_username}",
                   "vm_os_private_key": "${input_parameters.private_key}",
                   "vm_os_password": "",
                   "icp_admin_user": "${input_parameters.icp_admin_user}",
