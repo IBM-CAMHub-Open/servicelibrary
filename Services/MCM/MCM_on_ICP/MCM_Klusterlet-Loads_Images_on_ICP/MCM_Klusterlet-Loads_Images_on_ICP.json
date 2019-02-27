@@ -116,13 +116,14 @@
           {
             "name": "private_key",
             "label": "Private Key (base64 encoded)",
-            "type": "string",
+            "type": "password",
             "immutable": false,
             "hidden": false,
             "required": true,
             "secured": true,
-            "description": "",
-            "default": ""
+            "description": "Private key used to connect to the boot node",
+            "default": "",
+            "customtype": "password"
           },
           {
             "name": "mcm_binary_url",
@@ -137,7 +138,7 @@
           },
           {
             "name": "boot_node_ipv4",
-            "label": "ICp boot node IP",
+            "label": "ICP boot node IP",
             "customtype": "string",
             "type": "string",
             "immutable": false,
@@ -147,7 +148,7 @@
           },
           {
             "name": "icp_admin_user",
-            "label": "ICp admin user name",
+            "label": "ICP admin user name",
             "customtype": "string",
             "type": "string",
             "immutable": false,
@@ -159,14 +160,26 @@
           },
           {
             "name": "icp_admin_user_password",
-            "label": "ICp admin user password",
+            "label": "ICP admin user password",
+            "customtype": "string",
+            "type": "password",
+            "immutable": false,
+            "hidden": false,
+            "required": true,
+            "secured": true,
+            "description": ""
+          },
+          {
+            "name": "boot_node_username",
+            "label": "Boot node user name",
             "customtype": "string",
             "type": "string",
             "immutable": false,
             "hidden": false,
             "required": true,
             "secured": false,
-            "description": ""
+            "description": "User name used to connect to the ICP boot node",
+            "default": "root"
           }
         ],
         "flow": {
@@ -188,12 +201,11 @@
                 },
                 "template_params": {
                   "boot_node_ip": "${input_parameters.boot_node_ipv4}",
-                  "vm_os_user": "root",
+                  "vm_os_user": "${input_parameters.boot_node_username}",
                   "vm_os_password": "",
                   "vm_os_private_key": "${input_parameters.private_key}",
                   "icp_admin_user": "${input_parameters.icp_admin_user}",
                   "icp_admin_user_password": "${input_parameters.icp_admin_user_password}",
-                  "cluster_location": "/root/ibm-cloud-private-x86_64-3.1.1/cluster",
                   "cluster_name": "${input_parameters.cluster_name}",
                   "cluster_ca_name": "${input_parameters.cluster_ca_name}",
                   "cluster_docker_registry_server_name": "${input_parameters.cluster_docker_registry_server_name}",

@@ -240,7 +240,6 @@
                   "vm_os_password": "",
                   "icp_admin_user": "${input_parameters.icp_admin_user}",
                   "icp_admin_user_password": "${input_parameters.icp_admin_user_password}",
-                  "cluster_location": "/root/ibm-cloud-private-x86_64-3.1.1/cluster",
                   "cluster_name": "${input_parameters.cluster_name}",
                   "cluster_ca_name": "${input_parameters.cluster_ca_name}",
                   "cluster_docker_registry_server_name": "${input_parameters.cluster_docker_registry_server_name}",
