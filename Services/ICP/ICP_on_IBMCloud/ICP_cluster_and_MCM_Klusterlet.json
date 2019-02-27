@@ -14,7 +14,7 @@
 			],
       "providerDisplayName": "IBM",
       "longDescription": "Deploys ICP cluster on IBM Cloud, loads the MCM docker images and deploys the MCM Klusterlet to make this a managed cluster.",
-			"documentationUrl": "https://www.ibm.com/support/knowledgecenter/SS2L37_3.1.2.0/content/cam_content_overview_summary.html",
+      "documentationUrl": "https://www.ibm.com/support/knowledgecenter/SS2L37_3.1.2.0/content/cam_content_overview_summary.html",
 			"supportUrl": "https://www.ibm.com/support/knowledgecenter/SS2L37_3.1.2.0/cam_ordering_services.html",
       "bindable": false,
       "updatable": "",
