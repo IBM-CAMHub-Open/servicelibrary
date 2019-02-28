@@ -676,6 +676,7 @@
                   "docker_image_location": "${input_parameters.docker_image_location}",
                   "image_location_key": "${input_parameters.image_location_key}",
                   "icp_inception_image": "ibmcom/icp-inception-amd64:3.1.1-ee",
+                  "zones" : "3",
                   "install_verbosity": ""
                 },
                 "outputs": [
