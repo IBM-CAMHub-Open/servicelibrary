@@ -301,7 +301,7 @@
 						"description": "Master node details. Each master node will be created in a different AZS. Number of AZS, public subnet and private subnet must match the number of master node.",
 						"type": "map",
 						"default": {
-							"nodes": "1",
+							"nodes": "3",
 							"type": "m4.2xlarge",
 							"ami": "ami-0f9cf087c1f27d9b1",
 							"disk": "300",
@@ -320,7 +320,7 @@
 						"description": "Proxy node details. Each proxy node will be created in a different AZS. Number of AZS, public subnet and private subnet must match the number of proxy node.",
 						"type": "map",
 						"default": {
-							"nodes": "1",
+							"nodes": "3",
 							"type": "m4.xlarge",
 							"ami": "ami-0f9cf087c1f27d9b1",
 							"disk": "150",
@@ -339,7 +339,7 @@
 						"description": "Management node details. Each management node will be created in a different AZS. Number of AZS, public subnet and private subnet must match the number of management node.",
 						"type": "map",
 						"default": {
-							"nodes": "1",
+							"nodes": "3",
 							"type": "m4.2xlarge",
 							"ami": "ami-0f9cf087c1f27d9b1",
 							"disk": "300",
@@ -358,7 +358,7 @@
 						"description": "Worker node details. Each worker node will be created in a different AZS. Number of AZS, public subnet and private subnet must match the number of worker node.",
 						"type": "map",
 						"default": {
-							"nodes": "1",
+							"nodes": "3",
 							"type": "m4.2xlarge",
 							"ami": "ami-0f9cf087c1f27d9b1",
 							"disk": "150",

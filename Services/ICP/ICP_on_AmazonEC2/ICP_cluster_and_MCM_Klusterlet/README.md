@@ -35,8 +35,8 @@ Note: Bastion Node, Master Node, Proxy Node, Management Node, Worker Node and Vu
 | Vulnerability Advisor Node | {"nodes":"3","type":"m4.2xlarge","ami":"ami-0f9cf087c1f27d9b1","disk":"300","docker_vol":"100","ebs_optimized":true} | Vulnerability Advisor node details. Each VA node will be created in a different AZS. Number of AZS, public subnet and private subnet must match the number of VA node. |
 | Cluster Name | icp | ICP Cluster Name |
 | ICP Password |  | ICP user password |
-| Docker Package Location |  | Docker package location is required when installing ICP EE on RedHat. Prefix the location string with protocol. Example s3://, http:// or nfs://.  |
-| ICP EE Image Location |  | Image location of ICP EE. Prefix the location string with protocol Example: s3://, http:// or nfs://. |
+| Docker Package Location |  | Docker package location is required when installing ICP EE on RedHat. Package is expected in AWS s3 bucket. Prefix the location string with protocol s3://.  |
+| ICP EE Image Location |  | Image location of ICP EE. Package is expected in AWS s3 bucket. Prefix the location string with s3://. |
 | ICP Inception Image | ibmcom/icp-inception-amd64:3.1.1-ee | Name of the bootstrap installation image. |
 | VPC CIDR block | 10.10.0.0/16 | AWS VPC CIDR block. This is the primary CIDR block for your ICP node VPC. |
 | Subnet Name | icp-subnet | Subnet name prefix for public and private subnets used by ICP nodes. |
@@ -63,8 +63,8 @@ Note: Bastion Node, Master Node, Proxy Node, Management Node, Worker Node and Vu
 | aws_ami | ami-0f9cf087c1f27d9b1 | Default Amazon Machine Image ID that will be used if AMI ID for individual node is not provided. |
 | icp_instance_name | icp | ICP Cluster Name |
 | icp_password |  | ICP user password |
-| icp_docker_package_location |  | Docker package location is required when installing ICP EE on RedHat. Prefix the location string with protocol. Example s3://, http:// or nfs://.  |
-| icp_image_location |  | Image location of ICP EE. Prefix the location string with protocol Example: s3://, http:// or nfs://. |
+| icp_docker_package_location |  | Docker package location is required when installing ICP EE on RedHat. Package is expected in AWS s3 bucket. Prefix the location string with protocol s3://.  |
+| icp_image_location |  | Image location of ICP EE. Package is expected in AWS s3 bucket. Prefix the location string with s3://. |
 | icp_inception_image | ibmcom/icp-inception-amd64:3.1.1-ee | Name of the bootstrap installation image. |
 | aws_cidr | 10.10.0.0/16 | AWS VPC CIDR block. This is the primary CIDR block for your ICP node VPC. |
 | aws_subnetname | icp-subnet | Subnet name prefix for public and private subnets used by ICP nodes. |
