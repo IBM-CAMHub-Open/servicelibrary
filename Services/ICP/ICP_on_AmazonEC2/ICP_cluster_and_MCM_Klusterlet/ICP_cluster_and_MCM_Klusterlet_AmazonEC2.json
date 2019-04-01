@@ -3,7 +3,7 @@
 		"specVersion": "v3",
 		"catalog_metadata": {
 			"name": "ICP cluster on Amazon EC2",
-			"description": "Deploy ICP cluster onto Amazon EC2, loads the MCM docker images and deploys the MCM Klusterlet to make this a managed cluster.",
+			"description": "Deploy ICP cluster on Amazon EC2, loads the MCM docker images and deploys the MCM Klusterlet to make this a managed cluster.",
 			"image": "serviceicon_1.svg",
 			"category": "ICP on Amazon EC2",
 			"bullets": [
@@ -13,7 +13,7 @@
 				}
 			],
 			"providerDisplayName": "Amazon EC2",
-			"longDescription": "Deploy ICP cluster onto Amazon EC2, loads the MCM docker images and deploys the MCM Klusterlet to make this a managed cluster.",
+			"longDescription": "Deploy an ICP cluster on Amazon EC2, loads the MCM docker images and deploys the MCM Klusterlet to make this a managed cluster.",
 			"documentationUrl": "https://www.ibm.com/support/knowledgecenter/SS2L37_3.1.2.0/content/cam_content_overview_summary.html",
 			"supportUrl": "https://www.ibm.com/support/knowledgecenter/SS2L37_3.1.2.0/cam_ordering_services.html",
 			"bindable": false,
