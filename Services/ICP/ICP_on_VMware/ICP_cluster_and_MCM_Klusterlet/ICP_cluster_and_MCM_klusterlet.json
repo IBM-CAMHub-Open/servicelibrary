@@ -247,8 +247,8 @@
                 "default": false
               },
               {
-                "label": "3.1.1",
-                "value": "3.1.1",
+                "label": "3.1.2",
+                "value": "3.1.2",
                 "default": true
               }
             ]
@@ -1082,7 +1082,7 @@
             "required": false,
             "secured": false,
             "description": "Klusterlet cluster namespace",
-            "default": "defaut"
+            "default": "default"
           },
           {
             "name": "klusterlet-tillerUser",
@@ -1259,7 +1259,7 @@
             "required": false,
             "secured": false,
             "description": "Topology weave image tag",
-            "default": "3.1.1"
+            "default": "3.1.2"
           },
           {
             "name": "worker_vm_disk2_size",
@@ -1604,7 +1604,7 @@
               "IBM Multicloud Manager": {
                 "title": "IBM Multicloud Manager_e2ed2e",
                 "template_name": "IBM Multicloud Manager",
-                "version": "3.1.1",
+                "version": "3.1.2",
                 "id": "ibmmulti57d714ed",
                 "template_type": "Terraform",
                 "template_content_type": "Other",
@@ -1639,7 +1639,7 @@
               "local-charts/ibm-mcmk-prod": {
                 "title": "local-charts/ibm-mcmk-prod_c2559d",
                 "template_name": "ibm-mcmk-prod",
-                "version": "3.1.1",
+                "version": "3.1.2",
                 "id": "localchaa4346eac",
                 "template_type": "Helm",
                 "template_content_type": "IBM Cloud Private",
@@ -1682,7 +1682,7 @@
                   "router-image-repository": "${input_parameters.icp_cluster_name}.${input_parameters.vm_domain}:8500/kube-system/icp-router",
                   "router-image-tag": "2.2.0",
                   "compliance-repository": "${input_parameters.icp_cluster_name}.${input_parameters.vm_domain}:8500/kube-system/mcm-compliance",
-                  "compliance-tag": "3.1.1",
+                  "compliance-tag": "3.1.2",
                   "compliance-pullPolicy": "Always",
                   "compliance-enabled": true,
                   "logLevel": 5,
@@ -2618,7 +2618,7 @@
             "required": false,
             "secured": false,
             "description": "Klusterlet cluster namespace",
-            "default": "defaut"
+            "default": "default"
           },
           {
             "name": "klusterlet-tillerUser",
@@ -3737,7 +3737,7 @@
             "required": false,
             "secured": false,
             "description": "Klusterlet cluster namespace",
-            "default": "defaut"
+            "default": "default"
           },
           {
             "name": "klusterlet-tillerUser",
@@ -4878,7 +4878,7 @@
             "required": false,
             "secured": false,
             "description": "Klusterlet cluster namespace",
-            "default": "defaut"
+            "default": "default"
           },
           {
             "name": "klusterlet-tillerUser",

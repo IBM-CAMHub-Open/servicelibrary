@@ -3,7 +3,7 @@
     "specVersion": "v3",
     "catalog_metadata": {
       "name": "ICP cluster on Google Cloud",
-      "description": "Deploys ICP cluster onto Google Cloud, loads the MCM 3.1.1 docker images and deploys the MCM Klusterlet v3.1.1",
+      "description": "Deploys ICP cluster onto Google Cloud, loads the MCM 3.1.2 docker images and deploys the MCM Klusterlet v3.1.2",
       "image": "serviceicon_5.svg",
       "category": "ICP on Google Cloud",
       "bullets": [
@@ -13,7 +13,7 @@
         }
       ],
       "providerDisplayName": "Google",
-      "longDescription": "Deploys ICP cluster into Google Cloud, loads the MCM 3.1.1 docker images and deploys the MCM Klusterlet v3.1.1",
+      "longDescription": "Deploys ICP cluster into Google Cloud, loads the MCM 3.1.2 docker images and deploys the MCM Klusterlet v3.1.2",
       "documentationUrl": "https://www.ibm.com/support/knowledgecenter/SS2L37_3.1.2.0/content/cam_content_overview_summary.html",
       "supportUrl": "https://www.ibm.com/support/knowledgecenter/SS2L37_3.1.2.0/cam_ordering_services.html",
       "bindable": false,
@@ -442,7 +442,8 @@
               "disk_size": "400",
               "docker_disk_size": "100"
             }
-          },          {
+          },
+          {
             "name": "disabled_management_services",
             "label": "List of disabled management services",
             "customtype": "list",
@@ -496,7 +497,7 @@
               "IBM Cloud Private minimal installation on Google Cloud": {
                 "title": "IBM Cloud Private minimal installation on Google Cloud_6d3931",
                 "template_name": "IBM Cloud Private minimal installation on Google Cloud",
-                "version": "3.1.1",
+                "version": "3.1.2",
                 "id": "ibmcloudf317cf74",
                 "template_type": "Terraform",
                 "template_content_type": "Google Cloud",
@@ -526,7 +527,7 @@
                   "download_user_password": "",
                   "docker_package_location": "${input_parameters.icp_docker_package_location}",
                   "image_location": "${input_parameters.icp_image_location}",
-                  "icp_inception_image": "ibmcom/icp-inception:3.1.1"
+                  "icp_inception_image": "ibmcom/icp-inception:3.1.2"
                 },
                 "outputs": [
                   "ibm_cloud_private_boot_ip",
@@ -546,7 +547,7 @@
               "IBM Cloud Private with load balancers and boot node installation on Google Cloud": {
                 "title": "IBM Cloud Private with load balancers and boot node installation on Google Cloud_805470",
                 "template_name": "IBM Cloud Private installation with load balancers on Google Cloud",
-                "version": "3.1.1",
+                "version": "3.1.2",
                 "id": "ibmcloud78ba87ba",
                 "template_type": "Terraform",
                 "template_content_type": "Google Cloud",
@@ -577,7 +578,7 @@
                   "download_user_password": "",
                   "docker_package_location": "${input_parameters.icp_docker_package_location}",
                   "image_location": "${input_parameters.icp_image_location}",
-                  "icp_inception_image": "ibmcom/icp-inception-amd64:3.1.1-ee"
+                  "icp_inception_image": "ibmcom/icp-inception-amd64:3.1.2-ee"
                 },
                 "outputs": [
                   "ibm_cloud_private_boot_ip",
@@ -598,7 +599,7 @@
               "IBM Multicloud Manager": {
                 "title": "IBM Multicloud Manager_0e50d6",
                 "template_name": "IBM Multicloud Manager",
-                "version": "3.1.1",
+                "version": "3.1.2",
                 "id": "ibmmultif52a5609",
                 "template_type": "Terraform",
                 "template_content_type": "Other",
@@ -615,7 +616,7 @@
                   "vm_os_password": "",
                   "icp_admin_user": "admin",
                   "icp_admin_user_password": "${templates.ibmcloudf317cf74.output.ibm_cloud_private_admin_password||templates.ibmcloud78ba87ba.output.ibm_cloud_private_admin_password}",
-                  "icp_version": "3.1.1",
+                  "icp_version": "3.1.2",
                   "cluster_name": "${templates.ibmcloudf317cf74.output.ibm_cloud_private_cluster_name||templates.ibmcloud78ba87ba.output.ibm_cloud_private_cluster_name}",
                   "cluster_ca_name": "${templates.ibmcloudf317cf74.output.ibm_cloud_private_cluster_CA_domain_name||templates.ibmcloud78ba87ba.output.ibm_cloud_private_cluster_CA_domain_name}",
                   "cluster_docker_registry_server_name": "${templates.ibmcloudf317cf74.output.ibm_cloud_private_cluster_CA_domain_name||templates.ibmcloud78ba87ba.output.ibm_cloud_private_registry_server}",
@@ -631,10 +632,10 @@
             },
             {
               "local-charts/ibm-mcmk-prod": {
-                "title": "local-charts/ibm-mcmk-prod_4d5c1f",
+                "title": "local-charts/ibm-mcmk-prod_c9e24b",
                 "template_name": "ibm-mcmk-prod",
-                "version": "3.1.1",
-                "id": "localcha847c5386",
+                "version": "3.1.2",
+                "id": "mgmtchar9ea33a13",
                 "template_type": "Helm",
                 "template_content_type": "IBM Cloud Private",
                 "template_provider": "IBM Cloud Private",
@@ -644,48 +645,48 @@
                 "template_params": {
                   "namespace": "kube-system",
                   "klusterlet-enabled": true,
+                  "klusterlet-repository": "${templates.ibmcloudf317cf74.output.ibm_cloud_private_cluster_CA_domain_name||templates.ibmcloud78ba87ba.output.ibm_cloud_private_cluster_CA_domain_name}:8500/kube-system/mcm-klusterlet",
+                  "klusterlet-tag": "3.1.2",
+                  "klusterlet-pullPolicy": "IfNotPresent",
+                  "klusterlet-deployedOnHub": true,
+                  "klusterlet-apiserverConfig-server": "${input_parameters.k_apiserverConfig_server}",
+                  "klusterlet-apiserverConfig-token": "${input_parameters.k_apiserverConfig_token}",
+                  "klusterlet-apiserverConfig-enableBootstrap": true,
+                  "klusterlet-autoGenTillerSecret": true,
+                  "klusterlet-tillersecret": "",
+                  "klusterlet-tillerUser": "admin",
                   "klusterlet-clusterName": "${templates.ibmcloudf317cf74.output.connection_name||templates.ibmcloud78ba87ba.output.connection_name}",
                   "klusterlet-clusterNamespace": "kube-system",
-                  "klusterlet-tillersecret": "",
-                  "klusterlet-autoGenTillerSecret": true,
-                  "klusterlet-tillerUser": "admin",
                   "klusterlet-cloud": "Google",
                   "klusterlet-vendor": "ICP",
                   "klusterlet-environment": "Dev",
                   "klusterlet-region": "US",
                   "klusterlet-datacenter": "toronto",
                   "klusterlet-owner": "marketing",
-                  "klusterlet-prometheusAddress": "",
-                  "klusterlet-prometheusPort": "",
                   "klusterlet-httpsProxy": "",
+                  "klusterlet-ingressEnabled": true,
+                  "klusterlet-ingressHost": "",
+                  "klusterlet-ingressPort": "",
+                  "klusterlet-serviceType": "ClusterIP",
                   "topology-enabled": true,
-                  "topology-enableAuth": true,
                   "topology-updateInterval": 15,
-                  "topology-username": "admin",
-                  "topology-password": "${templates.ibmcloudf317cf74.output.ibm_cloud_private_admin_password||templates.ibmcloud78ba87ba.output.ibm_cloud_private_admin_password}",
                   "topology-weave-image-repository": "${templates.ibmcloudf317cf74.output.ibm_cloud_private_cluster_CA_domain_name||templates.ibmcloud78ba87ba.output.ibm_cloud_private_cluster_CA_domain_name}:8500/kube-system/mcm-weave-scope",
-                  "topology-weave-image-tag": "3.1.1",
-                  "topology-weave-image-pullPolicy": "Always",
-                  "router-image-repository": "${templates.ibmcloudf317cf74.output.ibm_cloud_private_cluster_CA_domain_name||templates.ibmcloud78ba87ba.output.ibm_cloud_private_cluster_CA_domain_name}:8500/kube-system/icp-router",
-                  "router-image-tag": "2.2.0",
-                  "compliance-repository": "${templates.ibmcloudf317cf74.output.ibm_cloud_private_cluster_CA_domain_name||templates.ibmcloud78ba87ba.output.ibm_cloud_private_cluster_CA_domain_name}:8500/kube-system/mcm-compliance",
-                  "compliance-tag": "3.1.1",
-                  "compliance-pullPolicy": "Always",
+                  "topology-weave-image-tag": "3.1.2",
+                  "topology-weave-image-pullPolicy": "IfNotPresent",
                   "compliance-enabled": true,
-                  "logLevel": 5,
+                  "compliance-repository": "${templates.ibmcloudf317cf74.output.ibm_cloud_private_cluster_CA_domain_name||templates.ibmcloud78ba87ba.output.ibm_cloud_private_cluster_CA_domain_name}:8500/kube-system/mcm-compliance",
+                  "compliance-tag": "3.1.2",
+                  "compliance-pullPolicy": "IfNotPresent",
+                  "compliance-cemIntegration-enabled": false,
+                  "router-image-repository": "${templates.ibmcloudf317cf74.output.ibm_cloud_private_cluster_CA_domain_name||templates.ibmcloud78ba87ba.output.ibm_cloud_private_cluster_CA_domain_name}:8500/kube-system/icp-management-ingress",
+                  "router-image-tag": "2.2.3",
+                  "pullSecret-token": "",
                   "nodeSelector-enabled": false,
                   "nodeSelector-arch": "",
                   "nodeSelector-os": "",
                   "nodeSelector-customLabelSelector": "",
                   "nodeSelector-customLabelValue": "",
-                  "pullSecret-token": "",
-                  "klusterlet-repository": "${templates.ibmcloudf317cf74.output.ibm_cloud_private_cluster_CA_domain_name||templates.ibmcloud78ba87ba.output.ibm_cloud_private_cluster_CA_domain_name}:8500/kube-system/mcm-klusterlet",
-                  "klusterlet-tag": "3.1.1",
-                  "klusterlet-pullPolicy": "Always",
-                  "klusterlet-apiserverConfig-server": "${input_parameters.k_apiserverConfig_server}",
-                  "klusterlet-apiserverConfig-token": "${input_parameters.k_apiserverConfig_token}",
-                  "klusterlet-apiserverConfig-enableBootstrap": true,
-                  "klusterlet-deployedOnHub": true
+                  "logLevel": 5
                 },
                 "outputs": [],
                 "template_repo": "local-charts"
@@ -697,7 +698,7 @@
           "sequence": {
             "0": "decisionae7e1b8c",
             "1": "ibmmultif52a5609",
-            "2": "localcha847c5386"
+            "2": "mgmtchar9ea33a13"
           },
           "error_sequence": {}
         },
