@@ -628,7 +628,8 @@
                   "ibm_cloud_private_admin_password",
                   "ibm_cloud_private_ssh_user",
                   "ibm_cloud_private_ssh_key",
-                  "connection_name"
+                  "connection_name",
+                  "icp_klusterlet_dns"
                 ]
               }
             },
@@ -690,7 +691,8 @@
                   "ibm_cloud_private_ssh_user",
                   "ibm_cloud_private_ssh_key",
                   "connection_name",
-                  "ibm_cloud_private_registry_server"
+                  "ibm_cloud_private_registry_server",
+                  "icp_klusterlet_dns"
                 ]
               }
             },
@@ -763,9 +765,9 @@
                   "klusterlet-datacenter": "toronto",
                   "klusterlet-owner": "marketing",
                   "klusterlet-httpsProxy": "",
-                  "klusterlet-ingressEnabled": true,
-                  "klusterlet-ingressHost": "",
-                  "klusterlet-ingressPort": "",
+                  "klusterlet-ingressEnabled": false,
+                  "klusterlet-ingressHost": "${templates.ibmcloudb3c9917e.output.icp_klusterlet_dns||templates.ibmcloudbdafb05b.output.icp_klusterlet_dns}",
+                  "klusterlet-ingressPort": "443",
                   "klusterlet-serviceType": "ClusterIP",
                   "topology-enabled": true,
                   "topology-updateInterval": 15,

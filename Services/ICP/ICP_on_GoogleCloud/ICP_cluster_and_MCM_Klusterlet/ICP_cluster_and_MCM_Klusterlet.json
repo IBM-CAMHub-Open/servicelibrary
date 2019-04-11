@@ -666,7 +666,7 @@
 						"klusterlet-datacenter": "toronto",
 						"klusterlet-owner": "marketing",
 						"klusterlet-httpsProxy": "",
-						"klusterlet-ingressEnabled": true,
+						"klusterlet-ingressEnabled": false,
 						"klusterlet-ingressHost": "${templates.ibmcloudf317cf74.output.icp_klusterlet_dns||templates.ibmcloud78ba87ba.output.icp_klusterlet_dns}",
 						"klusterlet-ingressPort": "443",
 						"klusterlet-serviceType": "ClusterIP",
