@@ -179,7 +179,7 @@
               "IBM Cloud Kubernetes Service": {
                 "title": "IBM Cloud Kubernetes Service_0d7094",
                 "template_name": "IBM Cloud Kubernetes Service",
-                "version": "2.2",
+                "version": "2.3",
                 "id": "ibmcloud773459b0",
                 "template_type": "Terraform",
                 "template_content_type": "IBM",
@@ -215,7 +215,7 @@
               "MCM Klusterlet within IBM Cloud Kubernetes Service": {
                 "title": "MCM Klusterlet within IBM Cloud Kubernetes Service_acaa87",
                 "template_name": "MCM Klusterlet within IBM Cloud Kubernetes Service",
-                "version": "2.0",
+                "version": "3.1.1",
                 "id": "mcmklustd7b8212b",
                 "template_type": "Terraform",
                 "template_content_type": "Other",

@@ -645,7 +645,7 @@
                   "namespace": "kube-system",
                   "klusterlet-enabled": true,
                   "klusterlet-clusterName": "${templates.ibmcloudf317cf74.output.connection_name||templates.ibmcloud78ba87ba.output.connection_name}",
-                  "klusterlet-clusterNamespace": "kube-system",
+                  "klusterlet-clusterNamespace": "mcm-${templates.ibmcloudf317cf74.output.connection_name||templates.ibmcloud78ba87ba.output.connection_name}",
                   "klusterlet-tillersecret": "",
                   "klusterlet-autoGenTillerSecret": true,
                   "klusterlet-tillerUser": "admin",

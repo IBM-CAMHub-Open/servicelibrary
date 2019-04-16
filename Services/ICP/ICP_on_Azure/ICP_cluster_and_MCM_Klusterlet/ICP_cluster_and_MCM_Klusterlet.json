@@ -747,7 +747,7 @@
                   "klusterlet-pullPolicy": "Always",
                   "klusterlet-enabled": true,
                   "klusterlet-clusterName": "${templates.ibmcloudb3c9917e.output.connection_name||templates.ibmcloudbdafb05b.output.connection_name}",
-                  "klusterlet-clusterNamespace": "kube-system",
+                  "klusterlet-clusterNamespace": "mcm-${templates.ibmcloudb3c9917e.output.connection_name||templates.ibmcloudbdafb05b.output.connection_name}",
                   "klusterlet-tillersecret": "",
                   "klusterlet-autoGenTillerSecret": true,
                   "klusterlet-tillerUser": "admin",
