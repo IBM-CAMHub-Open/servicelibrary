@@ -2,7 +2,7 @@
     "service": {
       "specVersion": "v3",
       "catalog_metadata": {
-        "name": "IBM Cloud App Management Integration Service on zVM guest",
+        "name": "IBM Cloud App Management Integration Service on Linux guest deployed in an OpenStack cloud",
         "description": "",
         "image": "serviceicon_1.svg",
         "category": "Integration Services",
@@ -301,7 +301,7 @@
               "required": true,
               "secured": false,
               "description": "",
-              "default": "icam-on-zvm"
+              "default": ""
             },
             {
               "name": "openstack_instance_private_key",
