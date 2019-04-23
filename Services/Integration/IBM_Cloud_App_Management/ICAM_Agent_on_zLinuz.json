@@ -164,7 +164,7 @@
               {
                 "OpenStack Single Virtual Machine": {
                   "title": "OpenStack Single Virtual Machine_9b9236",
-                  "template_name": "OpenStack Single Virtual Machine 8e13a5",
+                  "template_name": "OpenStack Single Virtual Machine",
                   "version": "2.3",
                   "id": "openstac852901d5",
                   "template_type": "Terraform",
