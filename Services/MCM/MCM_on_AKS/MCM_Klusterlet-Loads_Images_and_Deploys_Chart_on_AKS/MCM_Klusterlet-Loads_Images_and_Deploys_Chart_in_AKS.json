@@ -6,11 +6,24 @@
       "description": "IBM Multicloud Manager Klusterlet on a Microsoft Azure Kubernetes Service (AKS) environment",
       "image": "serviceicon_1.svg",
       "category": "MCM on AKS",
-      "bullets": [],
-      "providerDisplayName": "IBM",
+      "bullets": [
+        {
+          "title": "Cloud Provider",
+          "description": "Microsoft Azure Platform"
+        },
+        {
+          "title": "Kubernetes Service",
+          "description": "Microsoft Azure Kubernetes Service (AKS) cluster"
+        },
+        {
+          "title": "MCM Klusterlet",
+          "description": "IBM Multicloud Manager Klusterlet"
+        }
+      ],
+      "providerDisplayName": "Microsoft Azure",
       "longDescription": "Installs the IBM Multicloud Manager Klusterlet into an existing AKS kubernetes cluster.",
-      "documentationUrl": "",
-      "supportUrl": "",
+      "documentationUrl": "https://www.ibm.com/support/knowledgecenter/SS2L37_3.1.2.0/content/cam_content_overview_summary.html",
+      "supportUrl": "https://www.ibm.com/support/knowledgecenter/SS2L37_3.1.2.0/cam_ordering_services.html",
       "bindable": false,
       "updatable": "",
       "systemTags": true,
