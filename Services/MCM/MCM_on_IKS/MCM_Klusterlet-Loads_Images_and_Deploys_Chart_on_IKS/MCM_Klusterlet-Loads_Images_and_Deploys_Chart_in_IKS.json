@@ -22,8 +22,8 @@
       ],
       "providerDisplayName": "IBM",
       "longDescription": "Installs the IBM Multicloud Manager Klusterlet into an existing IKS kubernetes cluster.",
-      "documentationUrl": "https://www.ibm.com/support/knowledgecenter/SS2L37_3.1.2.0/content/cam_content_overview_summary.html",
-      "supportUrl": "https://www.ibm.com/support/knowledgecenter/SS2L37_3.1.2.0/cam_ordering_services.html",
+      "documentationUrl": "https://www.ibm.com/support/knowledgecenter/SS2L37_3.1.1.0/content/cam_content_overview_summary.html",
+      "supportUrl": "https://www.ibm.com/support/knowledgecenter/SS2L37_3.1.1.0/cam_ordering_services.html",
       "bindable": false,
       "updatable": "",
       "systemTags": false,
@@ -63,43 +63,15 @@
             "action": "Provision"
           },
           {
-            "name": "docker_host",
-            "label": "Docker host IP",
+            "name": "cluster_name",
+            "label": "Cluster name",
             "customtype": "string",
             "type": "string",
             "immutable": false,
             "hidden": false,
             "required": true,
             "secured": false,
-            "description": "IP address of VM where docker commands will be run to deploy the MCM klusterlet",
-            "permission": "Read-Write",
-            "action": "Provision"
-          },
-          {
-            "name": "docker_host_username",
-            "label": "Docker host username",
-            "customtype": "string",
-            "type": "string",
-            "immutable": false,
-            "hidden": false,
-            "required": true,
-            "secured": false,
-            "description": "Login name for docker host",
-            "permission": "Read-Write",
-            "action": "Provision"
-          },
-          {
-            "name": "docker_host_privatekey",
-            "label": "Docker host private key (Base64 encoded)",
-            "customtype": "string",
-            "type": "string",
-            "immutable": false,
-            "hidden": false,
-            "required": true,
-            "secured": false,
-            "description": "SSH private key for authenticating with the docker host",
-            "permission": "Read-Write",
-            "action": "Provision"
+            "description": "Name of the cluster in which MCM Klusterlet will be deployed"
           }
         ],
         "flow": {
@@ -109,7 +81,7 @@
               "MCM Klusterlet within IBM Cloud Kubernetes Service": {
                 "title": "MCM Klusterlet within IBM Cloud Kubernetes Service_481ee8",
                 "template_name": "MCM Klusterlet within IBM Cloud Kubernetes Service",
-                "version": "2.0",
+                "version": "3.1.1",
                 "id": "mcmklustc3355d6d",
                 "template_type": "Terraform",
                 "template_content_type": "Other",
@@ -117,15 +89,17 @@
                 "instance_name": "",
                 "cloud_connection_name": "Other",
                 "template_data_objects": {
+                  "bastionhost": "DefaultNoBastionHostRequired",
+                  "dockerhost": "mcm-dockerhost",
                   "kubeconfig": "iks-cluster"
                 },
                 "template_params": {
-                  "docker_host": "${input_parameters.docker_host}",
-                  "user_name": "${input_parameters.docker_host_username}",
-                  "private_key": "${input_parameters.docker_host_privatekey}",
+                  "docker_host": "${dockerhost.docker_host}",
+                  "user_name": "${dockerhost.login_name}",
+                  "private_key": "${dockerhost.private_key}",
                   "mcm_hub_endpoint": "${input_parameters.mcm_hub_endpoint}",
                   "mcm_hub_token": "${input_parameters.mcm_hub_token}",
-                  "cluster_name": "${kubeconfig.cluster_name}",
+                  "cluster_name": "${input_parameters.cluster_name}",
                   "cluster_config": "${kubeconfig.cluster_config}",
                   "cluster_certificate_authority": "${kubeconfig.cluster_certificate_authority}"
                 },

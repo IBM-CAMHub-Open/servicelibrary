@@ -22,8 +22,8 @@
       ],
       "providerDisplayName": "IBM",
       "longDescription": "Deploys an IBM Cloud Kubernetes Service cluster and installs the IBM Multicloud Manager Klusterlet into the newly created kubernetes cluster.  The klusterlet will be registered with the MCM controller.",
-      "documentationUrl": "https://www.ibm.com/support/knowledgecenter/SS2L37_3.1.2.0/content/cam_content_overview_summary.html",
-      "supportUrl": "https://www.ibm.com/support/knowledgecenter/SS2L37_3.1.2.0/cam_ordering_services.html",
+      "documentationUrl": "https://www.ibm.com/support/knowledgecenter/SS2L37_3.1.1.0/content/cam_content_overview_summary.html",
+      "supportUrl": "https://www.ibm.com/support/knowledgecenter/SS2L37_3.1.1.0/cam_ordering_services.html",
       "bindable": false,
       "updatable": "",
       "systemTags": true,
@@ -116,39 +116,6 @@
             "description": "Authentication token for the Kubernetes API endpoint of the IBM Multicloud Manager hub-cluster"
           },
           {
-            "name": "docker_host",
-            "label": "Docker host IP",
-            "customtype": "string",
-            "type": "string",
-            "immutable": false,
-            "hidden": false,
-            "required": true,
-            "secured": false,
-            "description": "IP address of VM where docker commands will be run to deploy the MCM klusterlet"
-          },
-          {
-            "name": "docker_host_username",
-            "label": "Docker host username",
-            "customtype": "string",
-            "type": "string",
-            "immutable": false,
-            "hidden": false,
-            "required": true,
-            "secured": false,
-            "description": "Login name for docker host"
-          },
-          {
-            "name": "docker_host_privatekey",
-            "label": "Docker host private key (Base64 encoded)",
-            "customtype": "string",
-            "type": "string",
-            "immutable": false,
-            "hidden": false,
-            "required": true,
-            "secured": false,
-            "description": "SSH private key for authenticating with the docker host"
-          },
-          {
             "name": "cluster_name",
             "label": "Cluster name",
             "customtype": "string",
@@ -169,7 +136,7 @@
             "required": true,
             "secured": false,
             "description": "Kubernetes version in IKS cluster",
-            "default": "1.11.7"
+            "default": "1.11.9"
           }
         ],
         "flow": {
@@ -179,7 +146,7 @@
               "IBM Cloud Kubernetes Service": {
                 "title": "IBM Cloud Kubernetes Service_0d7094",
                 "template_name": "IBM Cloud Kubernetes Service",
-                "version": "2.3",
+                "version": "1.11",
                 "id": "ibmcloud773459b0",
                 "template_type": "Terraform",
                 "template_content_type": "IBM",
@@ -222,10 +189,14 @@
                 "template_provider": "Other",
                 "instance_name": "",
                 "cloud_connection_name": "Other",
+                "template_data_objects": {
+                  "bastionhost": "DefaultNoBastionHostRequired",
+                  "dockerhost": "mcm-dockerhost"
+                },
                 "template_params": {
-                  "docker_host": "${input_parameters.docker_host}",
-                  "user_name": "${input_parameters.docker_host_username}",
-                  "private_key": "${input_parameters.docker_host_privatekey}",
+                  "docker_host": "${dockerhost.docker_host}",
+                  "user_name": "${dockerhost.login_name}",
+                  "private_key": "${dockerhost.private_key}",
                   "mcm_hub_endpoint": "${input_parameters.mcm_hub_endpoint}",
                   "mcm_hub_token": "${input_parameters.mcm_hub_token}",
                   "cluster_name": "${templates.ibmcloud773459b0.output.cluster_name}",
