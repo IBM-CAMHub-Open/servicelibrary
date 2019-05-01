@@ -644,8 +644,8 @@
                 "template_params": {
                   "namespace": "kube-system",
                   "klusterlet-enabled": true,
-                  "klusterlet-clusterName": "${templates.ibmcloudf317cf74.output.connection_name||templates.ibmcloud78ba87ba.output.connection_name}",
-                  "klusterlet-clusterNamespace": "mcm-${templates.ibmcloudf317cf74.output.connection_name||templates.ibmcloud78ba87ba.output.connection_name}",
+                  "klusterlet-clusterName": "${templates.ibmcloudf317cf74.output.connection_name||templates.ibmcloud78ba87ba.output.connection_name}hub",
+                  "klusterlet-clusterNamespace": "mcm-${templates.ibmcloudf317cf74.output.connection_name||templates.ibmcloud78ba87ba.output.connection_name}hub",
                   "klusterlet-tillersecret": "",
                   "klusterlet-autoGenTillerSecret": true,
                   "klusterlet-tillerUser": "admin",
@@ -685,7 +685,7 @@
                   "klusterlet-apiserverConfig-server": "${input_parameters.k_apiserverConfig_server}",
                   "klusterlet-apiserverConfig-token": "${input_parameters.k_apiserverConfig_token}",
                   "klusterlet-apiserverConfig-enableBootstrap": true,
-                  "klusterlet-deployedOnHub": true
+                  "klusterlet-deployedOnHub": false
                 },
                 "outputs": [],
                 "template_repo": "local-charts"
