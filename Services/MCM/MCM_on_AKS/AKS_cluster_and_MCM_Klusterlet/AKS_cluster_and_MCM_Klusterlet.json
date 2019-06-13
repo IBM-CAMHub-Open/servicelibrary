@@ -169,6 +169,18 @@
             "required": true,
             "secured": false,
             "description": "SSH public key for the user, Base64 encoded"
+          },
+          {
+            "name": "kube_version",
+            "label": "Kubernetes version",
+            "customtype": "string",
+            "type": "string",
+            "immutable": false,
+            "hidden": false,
+            "required": true,
+            "secured": false,
+            "description": "Kubernetes version for the cluster; 'latest' for the latest supported version, or version number in X.Y[.Z] format",
+            "default": "latest"
           }
         ],
         "flow": {
@@ -176,7 +188,7 @@
           "templates": [
             {
               "Azure Kubernetes Service": {
-                "title": "Azure Kubernetes Service_006ca6",
+                "title": "Microsoft Azure Kubernetes Service",
                 "template_name": "Microsoft Azure Kubernetes Service",
                 "version": "1.11",
                 "id": "azurekuba89fc02e",
@@ -191,7 +203,7 @@
                   "azure_region": "East US",
                   "resource_group_name": "${input_parameters.resource_group_name}",
                   "dns_prefix": "${input_parameters.cluster_name}",
-                  "kube_version": "1.11.8",
+                  "kube_version": "${input_parameters.kube_version}",
                   "principal_id": "${input_parameters.principal_id}",
                   "principal_password": "${input_parameters.principal_password}",
                   "username": "ubuntu",
@@ -210,7 +222,7 @@
             },
             {
               "MCM Klusterlet within Microsoft Azure Kubernetes Service": {
-                "title": "MCM Klusterlet within Microsoft Azure Kubernetes Service_dd2df1",
+                "title": "MCM Klusterlet within Microsoft Azure Kubernetes Service",
                 "template_name": "MCM Klusterlet within Microsoft Azure Kubernetes Service",
                 "version": "3.1.2",
                 "id": "mcmklust4c37e0af",

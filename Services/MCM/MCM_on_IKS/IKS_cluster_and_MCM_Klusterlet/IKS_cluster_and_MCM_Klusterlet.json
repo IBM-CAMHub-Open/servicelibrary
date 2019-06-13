@@ -135,8 +135,8 @@
             "hidden": false,
             "required": true,
             "secured": false,
-            "description": "Kubernetes version in IKS cluster",
-            "default": "1.11.9"
+            "description": "Kubernetes version for the cluster; 'latest' for the latest supported version, or version number in X.Y[.Z] format",
+            "default": "latest"
           }
         ],
         "flow": {
@@ -144,7 +144,7 @@
           "templates": [
             {
               "IBM Cloud Kubernetes Service": {
-                "title": "IBM Cloud Kubernetes Service_0d7094",
+                "title": "IBM Cloud Kubernetes Service",
                 "template_name": "IBM Cloud Kubernetes Service",
                 "version": "1.11",
                 "id": "ibmcloud773459b0",
@@ -180,7 +180,7 @@
             },
             {
               "MCM Klusterlet within IBM Cloud Kubernetes Service": {
-                "title": "MCM Klusterlet within IBM Cloud Kubernetes Service_acaa87",
+                "title": "MCM Klusterlet within IBM Cloud Kubernetes Service",
                 "template_name": "MCM Klusterlet within IBM Cloud Kubernetes Service",
                 "version": "3.1.2",
                 "id": "mcmklustd7b8212b",

@@ -148,8 +148,8 @@
             "hidden": false,
             "required": true,
             "secured": false,
-            "description": "Kubernetes version in EKS cluster",
-            "default": "1.11"
+            "description": "Kubernetes version for the cluster; 'latest' for the latest supported version, or version number in X.Y[.Z] format",
+            "default": "latest"
           },
           {
             "name": "access_key_id",
@@ -180,7 +180,7 @@
           "templates": [
             {
               "Amazon Web Services EKS": {
-                "title": "Amazon Web Services EKS_7da362",
+                "title": "Amazon Web Services EKS",
                 "template_name": "Amazon Web Services EKS",
                 "version": "1.11",
                 "id": "amazonwe18aff25b",
@@ -217,7 +217,7 @@
             },
             {
               "MCM Klusterlet within Amazon EC2 Kubernetes Service": {
-                "title": "MCM Klusterlet within Amazon EC2 Kubernetes Service_fead27",
+                "title": "MCM Klusterlet within Amazon EC2 Kubernetes Service",
                 "template_name": "MCM Klusterlet within Amazon EC2 Kubernetes Service",
                 "version": "3.1.2",
                 "id": "mcmklustd49b01a3",

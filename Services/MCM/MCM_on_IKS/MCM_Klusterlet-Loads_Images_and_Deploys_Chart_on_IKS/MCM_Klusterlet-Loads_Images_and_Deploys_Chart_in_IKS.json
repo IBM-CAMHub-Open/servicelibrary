@@ -79,7 +79,7 @@
           "templates": [
             {
               "MCM Klusterlet within IBM Cloud Kubernetes Service": {
-                "title": "MCM Klusterlet within IBM Cloud Kubernetes Service_481ee8",
+                "title": "MCM Klusterlet within IBM Cloud Kubernetes Service",
                 "template_name": "MCM Klusterlet within IBM Cloud Kubernetes Service",
                 "version": "3.1.2",
                 "id": "mcmklustc3355d6d",

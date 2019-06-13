@@ -115,7 +115,7 @@
           "templates": [
             {
               "MCM Klusterlet within Amazon EC2 Kubernetes Service": {
-                "title": "MCM Klusterlet within Amazon EC2 Kubernetes Service_fead27",
+                "title": "MCM Klusterlet within Amazon EC2 Kubernetes Service",
                 "template_name": "MCM Klusterlet within Amazon EC2 Kubernetes Service",
                 "version": "3.1.2",
                 "id": "mcmklustd49b01a3",

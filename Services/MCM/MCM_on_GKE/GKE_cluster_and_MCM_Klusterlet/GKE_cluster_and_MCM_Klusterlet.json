@@ -147,6 +147,18 @@
             "required": true,
             "secured": false,
             "description": "Google Cloud project ID"
+          },
+          {
+            "name": "kube_version",
+            "label": "Kubernetes version",
+            "customtype": "string",
+            "type": "string",
+            "immutable": false,
+            "hidden": false,
+            "required": true,
+            "secured": false,
+            "description": "Kubernetes version for the cluster; 'latest' for the latest supported version, or version number in X.Y[.Z] format",
+            "default": "latest"
           }
         ],
         "flow": {
@@ -154,7 +166,7 @@
           "templates": [
             {
               "Google Kubernetes Engine": {
-                "title": "Google Kubernetes Engine_add01d",
+                "title": "Google Kubernetes Engine",
                 "template_name": "Google Kubernetes Engine",
                 "version": "1.11",
                 "id": "googleku11564f44",
@@ -167,7 +179,7 @@
                 "template_params": {
                   "cluster_name": "${input_parameters.cluster_name}",
                   "zone": "us-central1-a",
-                  "kube_version": "1.11.8",
+                  "kube_version": "${input_parameters.kube_version}",
                   "machine_type": "n1-standard-1",
                   "disk_size_gb": "100",
                   "disk_type": "pd-standard",
@@ -186,7 +198,7 @@
             },
             {
               "MCM Klusterlet within Google Kubernetes Engine": {
-                "title": "MCM Klusterlet within Google Kubernetes Engine_3fab0e",
+                "title": "MCM Klusterlet within Google Kubernetes Engine",
                 "template_name": "MCM Klusterlet within Google Kubernetes Engine",
                 "version": "3.1.2",
                 "id": "mcmklust3a7830e3",

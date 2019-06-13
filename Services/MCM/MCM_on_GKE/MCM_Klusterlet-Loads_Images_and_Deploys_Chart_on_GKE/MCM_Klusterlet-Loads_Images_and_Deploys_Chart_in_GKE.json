@@ -164,7 +164,7 @@
           "templates": [
             {
               "MCM Klusterlet within Google Kubernetes Engine": {
-                "title": "MCM Klusterlet within Google Kubernetes Engine_3ba787",
+                "title": "MCM Klusterlet within Google Kubernetes Engine",
                 "template_name": "MCM Klusterlet within Google Kubernetes Engine",
                 "version": "3.1.2",
                 "id": "mcmklust7306ca40",
