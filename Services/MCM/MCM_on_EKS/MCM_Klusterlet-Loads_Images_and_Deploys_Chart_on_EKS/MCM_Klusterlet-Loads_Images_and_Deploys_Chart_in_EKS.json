@@ -1,0 +1,166 @@
+{
+  "service": {
+    "specVersion": "v3",
+    "catalog_metadata": {
+      "name": "MCM Klusterlet in EKS",
+      "description": "IBM Multicloud Manager Klusterlet on an Amazon Elastic Cloud Kubernetes Service environment",
+      "image": "serviceicon_1.svg",
+      "category": "MCM on EKS",
+      "bullets": [
+        {
+          "title": "Cloud Provider",
+          "description": "Amazon EC2"
+        },
+        {
+          "title": "Kubernetes Service",
+          "description": "Amazon Elastic Cloud Kubernetes Service (EKS) cluster"
+        },
+        {
+          "title": "MCM Klusterlet",
+          "description": "IBM Multicloud Manager Klusterlet"
+        }
+      ],
+      "providerDisplayName": "Amazon EC2",
+      "longDescription": "Installs the IBM Multicloud Manager Klusterlet into an existing EKS kubernetes cluster.",
+      "documentationUrl": "https://www.ibm.com/support/knowledgecenter/SS2L37_3.1.1.0/content/cam_content_overview_summary.html",
+      "supportUrl": "https://www.ibm.com/support/knowledgecenter/SS2L37_3.1.1.0/cam_ordering_services.html",
+      "bindable": false,
+      "updatable": "",
+      "systemTags": false,
+      "author": "admin"
+    },
+    "tags": [],
+    "actions": [
+      {
+        "type": "provision",
+        "name": "Provision",
+        "description": "Default action for deployment of service",
+        "input_parameters": [
+          {
+            "name": "mcm_hub_endpoint",
+            "label": "MCM hub cluster endpoint",
+            "customtype": "string",
+            "type": "string",
+            "immutable": false,
+            "hidden": false,
+            "required": true,
+            "secured": false,
+            "description": "Kubernetes API endpoint of the IBM Multicloud Manager hub-cluster",
+            "permission": "Read-Write"
+          },
+          {
+            "name": "mcm_hub_token",
+            "label": "MCM hub cluster token",
+            "customtype": "string",
+            "type": "string",
+            "immutable": false,
+            "hidden": false,
+            "required": true,
+            "secured": false,
+            "description": "Authentication token for the Kubernetes API endpoint of the IBM Multicloud Manager hub-cluster",
+            "permission": "Read-Write"
+          },
+          {
+            "name": "cluster_name",
+            "label": "Cluster name",
+            "customtype": "string",
+            "type": "string",
+            "immutable": false,
+            "hidden": false,
+            "required": true,
+            "secured": false,
+            "description": "Name of the cluster in which MCM Klusterlet will be deployed",
+            "permission": "Read-Write"
+          },
+          {
+            "name": "aws_region",
+            "label": "AWS Region name",
+            "customtype": "string",
+            "type": "string",
+            "immutable": false,
+            "hidden": false,
+            "required": true,
+            "secured": false,
+            "default": "us-east-1",
+            "description": "AWS Region Name",
+            "permission": "Read-Write"
+          },
+          {
+            "name": "access_key_id",
+            "label": "Access Key ID",
+            "customtype": "string",
+            "type": "string",
+            "immutable": false,
+            "hidden": false,
+            "required": true,
+            "secured": false,
+            "description": "Access key ID for Amazon EC2 cloud",
+            "permission": "Read-Write"
+          },
+          {
+            "name": "secret_access_key",
+            "label": "Secret Access Key",
+            "customtype": "password",
+            "type": "password",
+            "immutable": false,
+            "hidden": false,
+            "required": true,
+            "secured": true,
+            "description": "Secret access key for Amazon EC2 cloud",
+            "permission": "Read-Write"
+          }
+        ],
+        "flow": {
+          "conditions": [],
+          "templates": [
+            {
+              "MCM Klusterlet within Amazon EC2 Kubernetes Service": {
+                "title": "MCM Klusterlet within Amazon EC2 Kubernetes Service_fead27",
+                "template_name": "MCM Klusterlet within Amazon EC2 Kubernetes Service",
+                "version": "3.1.1",
+                "id": "mcmklustd49b01a3",
+                "template_type": "Terraform",
+                "template_content_type": "Other",
+                "template_provider": "Other",
+                "instance_name": "",
+                "cloud_connection_name": "Other",
+                "template_data_objects": {
+                  "bastionhost": "DefaultNoBastionHostRequired",
+                  "dockerhost": "mcm-dockerhost"
+                },
+                "template_params": {
+                  "docker_host": "${dockerhost.docker_host}",
+                  "user_name": "${dockerhost.login_name}",
+                  "private_key": "${dockerhost.private_key}",
+                  "mcm_hub_endpoint": "${input_parameters.mcm_hub_endpoint}",
+                  "mcm_hub_token": "${input_parameters.mcm_hub_token}",
+                  "cluster_name": "${input_parameters.cluster_name}",
+                  "aws_region": "${input_parameters.aws_region}",
+                  "access_key_id": "${input_parameters.access_key_id}",
+                  "secret_access_key": "${input_parameters.secret_access_key}"
+                },
+                "outputs": []
+              }
+            }
+          ],
+          "resthooks": [],
+          "notifications": [],
+          "sequence": {
+            "0": "mcmklustd49b01a3"
+          },
+          "error_sequence": {}
+        },
+        "output_parameters": []
+      }
+    ],
+    "plans": [
+      {
+        "name": "Standard",
+        "description": "To deploy a Standard plan",
+        "actions": [],
+        "plan_parameters": [],
+        "expanded": false
+      }
+    ]
+  }
+}

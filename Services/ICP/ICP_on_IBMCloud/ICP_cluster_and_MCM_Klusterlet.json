@@ -490,8 +490,8 @@
           ],
           "templates": [
             {
-              "IBM Cloud Private CE minimal installation": {
-                "title": "IBM Cloud Private CE minimal installation_dcde15",
+              "IBM Cloud Private minimal installation": {
+                "title": "IBM Cloud Private minimal installation_dcde15",
                 "template_name": "IBM Cloud Private minimal installation",
                 "version": "3.1.1",
                 "id": "ibmcloudae8a61bf",
@@ -532,8 +532,8 @@
               }
             },
             {
-              "IBM Cloud Private CE minimal installation with load balancers": {
-                "title": "IBM Cloud Private CE minimal installation with load balancers_9c0cc0",
+              "IBM Cloud Private minimal with load balancers": {
+                "title": "IBM Cloud Private minimal with load balancers_9c0cc0",
                 "template_name": "IBM Cloud Private minimal with load balancers",
                 "version": "3.1.1",
                 "id": "ibmcloud941a9504",
@@ -574,8 +574,8 @@
               }
             },
             {
-              "IBM Cloud Private EE HA": {
-                "title": "IBM Cloud Private EE HA_375801",
+              "IBM Cloud Private HA": {
+                "title": "IBM Cloud Private HA_375801",
                 "template_name": "IBM Cloud Private HA",
                 "version": "3.1.1",
                 "id": "ibmcloude347f135",
