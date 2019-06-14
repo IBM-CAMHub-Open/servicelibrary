@@ -7,15 +7,15 @@
       "image": "serviceicon_1.svg",
       "category": "ICP on IBM Cloud",
       "bullets": [
-				{
-					"title": "Cloud Provider",
-					"description": "IBM Cloud"
-				}
-			],
+        {
+          "title": "Cloud Provider",
+          "description": "IBM Cloud"
+        }
+      ],
       "providerDisplayName": "IBM",
       "longDescription": "Deploys ICP 3.1.2 cluster on IBM Cloud, loads the MCM docker images and deploys the MCM Klusterlet to make this a managed cluster.",
       "documentationUrl": "https://www.ibm.com/support/knowledgecenter/SS2L37_3.1.2.0/content/cam_content_overview_summary.html",
-			"supportUrl": "https://www.ibm.com/support/knowledgecenter/SS2L37_3.1.2.0/cam_ordering_services.html",
+      "supportUrl": "https://www.ibm.com/support/knowledgecenter/SS2L37_3.1.2.0/cam_ordering_services.html",
       "bindable": false,
       "updatable": "",
       "systemTags": true,
@@ -527,7 +527,8 @@
                   "ibm_cloud_private_kubernetes_api_url",
                   "ibm_cloud_private_ca_domain_name",
                   "connection_name"
-                ]
+                ],
+                "current_action_key": 0
               }
             },
             {
@@ -569,7 +570,8 @@
                   "ibm_cloud_private_kubernetes_api_url",
                   "ibm_cloud_private_ca_domain_name",
                   "connection_name"
-                ]
+                ],
+                "current_action_key": 0
               }
             },
             {
@@ -614,7 +616,8 @@
                   "ibm_cloud_private_kubernetes_api_url",
                   "ibm_cloud_private_registry_server",
                   "connection_name"
-                ]
+                ],
+                "current_action_key": 0
               }
             },
             {
@@ -648,7 +651,8 @@
                 },
                 "outputs": [
                   "ibm_cloud_private_boot_ip"
-                ]
+                ],
+                "current_action_key": 0
               }
             },
             {
@@ -707,10 +711,16 @@
                   "klusterlet-apiserverConfig-server": "${input_parameters.klusterlet-apiserverConfig-server}",
                   "klusterlet-apiserverConfig-token": "${input_parameters.klusterlet-apiserverConfig-token}",
                   "klusterlet-apiserverConfig-enableBootstrap": true,
-                  "klusterlet-deployedOnHub": true
+                  "klusterlet-deployedOnHub": true,
+                  "klusterlet-ingressEnabled": true,
+                  "klusterlet-ingressHost": "${templates.ibmcloudae8a61bf.output.ibm_cloud_private_boot_ip||templates.ibmcloud941a9504.output.ibm_cloud_private_boot_ip||templates.ibmcloude347f135.output.ibm_cloud_private_boot_ip}",
+                  "klusterlet-ingressPort": "443",
+                  "klusterlet-serviceType": "ClusterIP",
+                  "compliance-cemIntegration-enabled": false
                 },
                 "outputs": [],
-                "template_repo": "local-charts"
+                "template_repo": "local-charts",
+                "current_action_key": 0
               }
             }
           ],
@@ -723,7 +733,8 @@
           },
           "error_sequence": {}
         },
-        "output_parameters": []
+        "output_parameters": [],
+        "save": true
       }
     ],
     "plans": [
