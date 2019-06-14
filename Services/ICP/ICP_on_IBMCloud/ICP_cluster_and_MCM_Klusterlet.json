@@ -521,6 +521,7 @@
                 },
                 "outputs": [
                   "ibm_cloud_private_boot_ip",
+                  "ibm_cloud_private_proxy_ip",
                   "ibm_cloud_private_master_ip",
                   "ibm_cloud_private_admin_password",
                   "ibm_cloud_private_console_url",
@@ -564,6 +565,7 @@
                 },
                 "outputs": [
                   "ibm_cloud_private_boot_ip",
+                  "ibm_cloud_private_proxy_vip",
                   "ibm_cloud_private_master_ip",
                   "ibm_cloud_private_admin_password",
                   "ibm_cloud_private_console_url",
@@ -609,6 +611,7 @@
                 },
                 "outputs": [
                   "ibm_cloud_private_boot_ip",
+                  "ibm_cloud_private_proxy_vip",
                   "ibm_cloud_private_master_ip",
                   "ibm_cloud_private_admin_password",
                   "ibm_cloud_private_ca_domain_name",
@@ -713,7 +716,7 @@
                   "klusterlet-apiserverConfig-enableBootstrap": true,
                   "klusterlet-deployedOnHub": true,
                   "klusterlet-ingressEnabled": true,
-                  "klusterlet-ingressHost": "${templates.ibmcloudae8a61bf.output.ibm_cloud_private_boot_ip||templates.ibmcloud941a9504.output.ibm_cloud_private_boot_ip||templates.ibmcloude347f135.output.ibm_cloud_private_boot_ip}",
+                  "klusterlet-ingressHost": "${templates.ibmcloudae8a61bf.output.ibm_cloud_private_proxy_ip||templates.ibmcloud941a9504.output.ibm_cloud_private_proxy_vip||templates.ibmcloude347f135.output.ibm_cloud_private_proxy_vip}",
                   "klusterlet-ingressPort": "443",
                   "klusterlet-serviceType": "ClusterIP",
                   "compliance-cemIntegration-enabled": false
