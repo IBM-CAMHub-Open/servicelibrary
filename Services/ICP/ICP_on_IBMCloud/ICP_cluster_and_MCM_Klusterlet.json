@@ -118,6 +118,7 @@
             "hidden": false,
             "required": true,
             "secured": false,
+            "description": "Name of an the existing public key to be injected in the authorized_keys file on all cluster nodes",
             "default": [
               ""
             ]
@@ -131,7 +132,7 @@
             "hidden": false,
             "required": true,
             "secured": false,
-            "description": "",
+            "description": "IBM Cloud datacenter where the cluster nodes will be deployed into",
             "options": [
               {
                 "value": "ams01",
@@ -277,7 +278,7 @@
             "hidden": false,
             "required": true,
             "secured": false,
-            "description": ""
+            "description": "Name of the IBM Cloud Private cluster to be deployed"
           },
           {
             "name": "private_key",
@@ -300,7 +301,7 @@
             "hidden": false,
             "required": true,
             "secured": false,
-            "default": ""
+            "default": "Name of the IBM Cloud Private cluster to be deployed"
           },
           {
             "name": "klusterlet-apiserverConfig-server",
@@ -322,7 +323,7 @@
             "hidden": false,
             "required": true,
             "secured": true,
-            "description": ""
+            "description": "Security token used to connect to the MCM controller."
           },
           {
             "name": "image_location",
@@ -333,7 +334,7 @@
             "hidden": false,
             "required": false,
             "secured": false,
-            "description": "",
+            "description": "URL of the IBM Cloud Private local binary .tgz file",
             "default": ""
           },
           {
@@ -765,6 +766,7 @@
             "hidden": false,
             "required": true,
             "secured": false,
+            "description": "Name of an the existing public key to be injected in the authorized_keys file on all cluster nodes",
             "default": [
               ""
             ]
@@ -778,7 +780,7 @@
             "hidden": false,
             "required": true,
             "secured": false,
-            "description": "",
+            "description": "IBM Cloud datacenter where the cluster nodes will be deployed into",
             "options": [
               {
                 "value": "ams01",
@@ -924,7 +926,7 @@
             "hidden": false,
             "required": true,
             "secured": false,
-            "description": ""
+            "description": "Name of the IBM Cloud Private cluster to be deployed"
           },
           {
             "name": "private_key",
@@ -935,7 +937,7 @@
             "hidden": false,
             "required": true,
             "secured": true,
-            "description": "",
+            "description": "Base64 encoded private key used to connect to the cluster boot node for MCM charts loading. Will need to match the public_key provided",
             "default": ""
           },
           {
@@ -947,7 +949,7 @@
             "hidden": false,
             "required": true,
             "secured": false,
-            "default": ""
+            "default": "URL of the MCM binary file"
           },
           {
             "name": "klusterlet-apiserverConfig-server",
@@ -969,7 +971,7 @@
             "hidden": false,
             "required": true,
             "secured": true,
-            "description": ""
+            "description": "Security token used to connect to the MCM controller."
           },
           {
             "name": "image_location",
@@ -980,7 +982,7 @@
             "hidden": true,
             "required": false,
             "secured": false,
-            "description": "",
+            "description": "URL of the IBM Cloud Private local binary .tgz file",
             "default": "not_in_use"
           },
           {
@@ -1129,6 +1131,7 @@
             "hidden": false,
             "required": true,
             "secured": false,
+            "description": "Name of an the existing public key to be injected in the authorized_keys file on all cluster nodes",
             "default": [
               ""
             ]
@@ -1142,7 +1145,7 @@
             "hidden": false,
             "required": true,
             "secured": false,
-            "description": "",
+            "description": "IBM Cloud datacenter where the cluster nodes will be deployed into",
             "options": [
               {
                 "value": "ams01",
@@ -1288,7 +1291,7 @@
             "hidden": false,
             "required": true,
             "secured": false,
-            "description": ""
+            "description": "Name of the IBM Cloud Private cluster to be deployed"
           },
           {
             "name": "private_key",
@@ -1299,7 +1302,7 @@
             "hidden": false,
             "required": true,
             "secured": true,
-            "description": "",
+            "description": "Base64 encoded private key used to connect to the cluster boot node for MCM charts loading. Will need to match the public_key provided",
             "default": ""
           },
           {
@@ -1311,7 +1314,7 @@
             "hidden": false,
             "required": true,
             "secured": false,
-            "default": ""
+            "default": "URL of the MCM binary file"
           },
           {
             "name": "klusterlet-apiserverConfig-server",
@@ -1333,7 +1336,7 @@
             "hidden": false,
             "required": true,
             "secured": true,
-            "description": ""
+            "description": "Security token used to connect to the MCM controller."
           },
           {
             "name": "image_location",
@@ -1344,7 +1347,7 @@
             "hidden": true,
             "required": false,
             "secured": false,
-            "description": "",
+            "description": "URL of the IBM Cloud Private local binary .tgz file",
             "default": "not_in_use"
           },
           {
@@ -1493,6 +1496,7 @@
             "hidden": false,
             "required": true,
             "secured": false,
+            "description": "Name of an the existing public key to be injected in the authorized_keys file on all cluster nodes",
             "default": [
               ""
             ]
@@ -1506,7 +1510,7 @@
             "hidden": false,
             "required": true,
             "secured": false,
-            "description": "",
+            "description": "IBM Cloud datacenter where the cluster nodes will be deployed into",
             "options": [
               {
                 "value": "ams01",
@@ -1652,7 +1656,7 @@
             "hidden": false,
             "required": true,
             "secured": false,
-            "description": ""
+            "description": "Name of the IBM Cloud Private cluster to be deployed"
           },
           {
             "name": "private_key",
@@ -1663,7 +1667,7 @@
             "hidden": false,
             "required": true,
             "secured": true,
-            "description": "",
+            "description": "Base64 encoded private key used to connect to the cluster boot node for MCM charts loading. Will need to match the public_key provided",
             "default": ""
           },
           {
@@ -1675,7 +1679,7 @@
             "hidden": false,
             "required": true,
             "secured": false,
-            "default": ""
+            "default": "URL of the MCM binary file"
           },
           {
             "name": "klusterlet-apiserverConfig-server",
@@ -1697,7 +1701,7 @@
             "hidden": false,
             "required": true,
             "secured": true,
-            "description": ""
+            "description": "Security token used to connect to the MCM controller."
           },
           {
             "name": "image_location",
@@ -1708,7 +1712,7 @@
             "hidden": false,
             "required": false,
             "secured": false,
-            "description": "",
+            "description": "URL of the IBM Cloud Private local binary .tgz file",
             "default": ""
           },
           {
