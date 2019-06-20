@@ -187,7 +187,7 @@
           "conditions": [],
           "templates": [
             {
-              "Azure Kubernetes Service": {
+              "Microsoft Azure Kubernetes Service": {
                 "title": "Microsoft Azure Kubernetes Service",
                 "template_name": "Microsoft Azure Kubernetes Service",
                 "version": "1.11",
