@@ -501,9 +501,9 @@
 					"conditions": [],
 					"templates": [
 						{
-							"IBM Cloud Private highly-available cluster in AWS": {
-								"title": "IBM Cloud Private highly-available cluster in AWS_49c475",
-								"template_name": "IBM Cloud Private highly-available cluster on Amazon",
+							"IBM Cloud Private highly-available cluster": {
+								"title": "IBM Cloud Private highly-available cluster_49c475",
+								"template_name": "IBM Cloud Private highly-available cluster",
 								"version": "3.1.2",
 								"id": "ibmcloud069f4701",
 								"template_type": "Terraform",
