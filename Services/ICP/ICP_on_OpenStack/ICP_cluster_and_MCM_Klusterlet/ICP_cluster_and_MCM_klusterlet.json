@@ -760,12 +760,12 @@
             "label": "NFS server folder",
             "customtype": "string",
             "type": "string",
-            "immutable": false,
+            "immutable": true,
             "hidden": false,
             "required": false,
             "secured": false,
             "description": "NFS server shared folder",
-            "default": "/export"
+            "default": "/var/nfs"
           },
           {
             "name": "cluster_vip",
@@ -872,9 +872,21 @@
             "hidden": false,
             "required": true,
             "secured": false,
-            "description": "Kube namespace for MCM klusterlet to deploy",
+            "description": "Kubernetes namespace for MCM klusterlet to deploy",
             "default": "default"
           },
+          {
+            "name": "klusterlet-clusterNamespace",
+            "label": "Klusterlet cluster namespace",
+            "customtype": "string",
+            "type": "string",
+            "immutable": false,
+            "hidden": false,
+            "required": false,
+            "secured": false,
+            "description": "Klusterlet hub cluster namespace",
+            "default": "default"
+          },          
           {
             "name": "klusterlet-tag",
             "label": "MCM Klusterlet tag",
@@ -1047,7 +1059,7 @@
               "Single Node Deployment of IBM Cloud Private Single on OpenStack": {
                 "title": "Single Node Deployment of IBM Cloud Private Single on OpenStack_8c8339",
                 "template_name": "IBM Cloud Private Single Node Installation on OpenStack",
-                "version": "2.3",
+                "version": "3.1.2",
                 "id": "singleno6cf266e2",
                 "template_type": "Terraform",
                 "template_content_type": "OpenStack",
@@ -1086,7 +1098,8 @@
                   "ibm_cloud_private_master_ip",
                   "ibm_cloud_private_admin_url",
                   "ibm_cloud_private_admin_user",
-                  "ibm_cloud_private_admin_password"
+                  "ibm_cloud_private_admin_password",
+                  "ibm_cloud_private_proxy_hostname"
                 ]
               }
             },
@@ -1094,7 +1107,7 @@
               "Medium Node Deployment of IBM Cloud Private on OpenStack": {
                 "title": "Medium Node Deployment of IBM Cloud Private on OpenStack_6961db",
                 "template_name": "IBM Cloud Private Medium Setup Installation on OpenStack",
-                "version": "2.3",
+                "version": "3.1.2",
                 "id": "mediumno02ec735b",
                 "template_type": "Terraform",
                 "template_content_type": "OpenStack",
@@ -1163,7 +1176,8 @@
                 "outputs": [
                   "ibm_cloud_private_admin_url",
                   "ibm_cloud_private_admin_user",
-                  "ibm_cloud_private_admin_password"
+                  "ibm_cloud_private_admin_password",
+                  "ibm_cloud_private_proxy_hostname"
                 ]
               }
             },
@@ -1171,7 +1185,7 @@
               "HA Node Deployment of IBM Cloud Private on OpenStack": {
                 "title": "HA Node Deployment of IBM Cloud Private on OpenStack_74fff0",
                 "template_name": "IBM Cloud Private HA Node Installation on OpenStack",
-                "version": "2.3",
+                "version": "3.1.2",
                 "id": "hanodede075368b8",
                 "template_type": "Terraform",
                 "template_content_type": "OpenStack",
@@ -1244,7 +1258,8 @@
                 "outputs": [
                   "ibm_cloud_private_admin_url",
                   "ibm_cloud_private_admin_user",
-                  "ibm_cloud_private_admin_password"
+                  "ibm_cloud_private_admin_password",
+                  "ibm_cloud_private_proxy_hostname"
                 ]
               }
             },
@@ -1299,7 +1314,7 @@
                   "klusterlet-enabled": true,
                   "klusterlet-repository": "${input_parameters.icp_cluster_name}.${input_parameters.vm_domain}:8500/kube-system/mcm-klusterlet",
                   "klusterlet-tag": "${input_parameters.klusterlet-tag}",
-                  "klusterlet-pullPolicy": "Always",
+                  "klusterlet-pullPolicy": "IfNotPresent",
                   "klusterlet-deployedOnHub": false,
                   "klusterlet-apiserverConfig-server": "${input_parameters.klusterlet-apiserverConfig-server}",
                   "klusterlet-apiserverConfig-token": "${input_parameters.klusterlet-apiserverConfig-token}",
@@ -1308,7 +1323,7 @@
                   "klusterlet-tillersecret": "",
                   "klusterlet-tillerUser": "admin",
                   "klusterlet-clusterName": "${input_parameters.icp_cluster_name}",
-                  "klusterlet-clusterNamespace": "default",
+                  "klusterlet-clusterNamespace": "${input_parameters.klusterlet-clusterNamespace}",
                   "klusterlet-cloud": "Openstack",
                   "klusterlet-vendor": "ICP",
                   "klusterlet-environment": "${input_parameters.klusterlet-environment}",
@@ -1317,21 +1332,21 @@
                   "klusterlet-owner": "${input_parameters.klusterlet-owner}",
                   "klusterlet-httpsProxy": "",
                   "klusterlet-ingressEnabled": true,
-                  "klusterlet-ingressHost": "",
-                  "klusterlet-ingressPort": "",
+                  "klusterlet-ingressHost": "${templates.singleno6cf266e2.output.ibm_cloud_private_proxy_hostname||templates.mediumno02ec735b.output.ibm_cloud_private_proxy_hostname||templates.hanodede075368b8.output.ibm_cloud_private_proxy_hostname}",
+                  "klusterlet-ingressPort": "443",
                   "klusterlet-serviceType": "ClusterIP",
                   "topology-enabled": true,
                   "topology-updateInterval": 15,
                   "topology-weave-image-repository": "${input_parameters.icp_cluster_name}.${input_parameters.vm_domain}:8500/kube-system/mcm-weave-scope",
                   "topology-weave-image-tag": "3.1.2",
-                  "topology-weave-image-pullPolicy": "Always",
+                  "topology-weave-image-pullPolicy": "IfNotPresent",
                   "compliance-enabled": true,
-                  "compliance-repository": "mycluster.icp:8500/kube-system/mcm-compliance",
+                  "compliance-repository": "${input_parameters.icp_cluster_name}.${input_parameters.vm_domain}:8500/kube-system/mcm-compliance",
                   "compliance-tag": "3.1.2",
-                  "compliance-pullPolicy": "Always",
+                  "compliance-pullPolicy": "IfNotPresent",
                   "compliance-cemIntegration-enabled": false,
                   "router-image-repository": "${input_parameters.icp_cluster_name}.${input_parameters.vm_domain}:8500/kube-system/icp-management-ingress",
-                  "router-image-tag": "2.2.0",
+                  "router-image-tag": "2.2.3",
                   "pullSecret-token": "",
                   "nodeSelector-enabled": false,
                   "nodeSelector-arch": "",
@@ -1720,7 +1735,7 @@
             "required": false,
             "secured": false,
             "description": "NFS server shared folder",
-            "default": "/export"
+            "default": "/var/nfs"
           },
           {
             "name": "cluster_vip",
@@ -2103,6 +2118,18 @@
             "description": "Kube namespace for MCM klusterlet to deploy",
             "default": "default"
           },
+          {
+            "name": "klusterlet-clusterNamespace",
+            "label": "Klusterlet cluster namespace",
+            "customtype": "string",
+            "type": "string",
+            "immutable": false,
+            "hidden": false,
+            "required": false,
+            "secured": false,
+            "description": "Klusterlet hub cluster namespace",
+            "default": "default"
+          },          
           {
             "name": "klusterlet-tag",
             "label": "MCM Klusterlet tag",
@@ -2961,12 +2988,12 @@
             "label": "NFS server folder",
             "customtype": "string",
             "type": "string",
-            "immutable": false,
+            "immutable": true,
             "hidden": false,
             "required": false,
             "secured": false,
             "description": "NFS server shared folder",
-            "default": "/export"
+            "default": "/var/nfs"
           },
           {
             "name": "cloud_connection",
@@ -3028,6 +3055,18 @@
             "description": "Kube namespace for MCM klusterlet to deploy",
             "default": "default"
           },
+          {
+            "name": "klusterlet-clusterNamespace",
+            "label": "Klusterlet cluster namespace",
+            "customtype": "string",
+            "type": "string",
+            "immutable": false,
+            "hidden": false,
+            "required": false,
+            "secured": false,
+            "description": "Klusterlet hub cluster namespace",
+            "default": "default"
+          },          
           {
             "name": "klusterlet-tag",
             "label": "MCM Klusterlet tag",
@@ -3837,12 +3876,12 @@
             "label": "NFS server folder",
             "customtype": "string",
             "type": "string",
-            "immutable": false,
+            "immutable": true,
             "hidden": false,
             "required": false,
             "secured": false,
             "description": "NFS server shared folder",
-            "default": "/export"
+            "default": "/var/nfs"
           },
           {
             "name": "cluster_vip",
@@ -3952,6 +3991,18 @@
             "description": "Kube namespace for MCM klusterlet to deploy",
             "default": "default"
           },
+          {
+            "name": "klusterlet-clusterNamespace",
+            "label": "Klusterlet cluster namespace",
+            "customtype": "string",
+            "type": "string",
+            "immutable": false,
+            "hidden": false,
+            "required": false,
+            "secured": false,
+            "description": "Klusterlet hub cluster namespace",
+            "default": "default"
+          },          
           {
             "name": "klusterlet-tag",
             "label": "MCM Klusterlet tag",

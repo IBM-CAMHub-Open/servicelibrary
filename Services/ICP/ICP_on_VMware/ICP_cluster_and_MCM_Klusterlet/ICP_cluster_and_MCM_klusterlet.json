@@ -993,12 +993,12 @@
             "label": "NFS server folder",
             "customtype": "string",
             "type": "string",
-            "immutable": false,
+            "immutable": true,
             "hidden": false,
             "required": true,
             "secured": false,
             "description": "NFS shared folder",
-            "default": "/export"
+            "default": "/var/nfs"
           },
           {
             "name": "cluster_vip",
@@ -1226,30 +1226,6 @@
             "default": "marketing"
           },
           {
-            "name": "topology-username",
-            "label": "MCM topology username",
-            "customtype": "string",
-            "type": "string",
-            "immutable": false,
-            "hidden": false,
-            "required": false,
-            "secured": false,
-            "description": "MCM topology username",
-            "default": "admin"
-          },
-          {
-            "name": "topology-password",
-            "label": "MCM topology password",
-            "customtype": "password",
-            "type": "password",
-            "immutable": false,
-            "hidden": false,
-            "required": false,
-            "secured": true,
-            "description": "MCM topology password",
-            "default": "^(YWRtaW4=)"
-          },
-          {
             "name": "topology-weave-image-tag",
             "label": "Topology weave image tag",
             "customtype": "string",
@@ -1333,7 +1309,7 @@
               "Single Node Deployment of IBM Cloud Private": {
                 "title": "Single Node Deployment of IBM Cloud Private_060660",
                 "template_name": "IBM Cloud Private Single Node Installation",
-                "version": "2.3",
+                "version": "3.1.2",
                 "id": "singleno708a819a",
                 "template_type": "Terraform",
                 "template_content_type": "VMware vSphere",
@@ -1380,7 +1356,8 @@
                   "ibm_cloud_private_master_ip",
                   "ibm_cloud_private_admin_url",
                   "ibm_cloud_private_admin_user",
-                  "ibm_cloud_private_admin_password"
+                  "ibm_cloud_private_admin_password",
+                  "ibm_cloud_private_proxy_hostname"
                 ]
               }
             },
@@ -1388,7 +1365,7 @@
               "Medium Node Deployment of IBM Cloud Private": {
                 "title": "Medium Node Deployment of IBM Cloud Private_4fab25",
                 "template_name": "IBM Cloud Private Medium Setup Installation",
-                "version": "2.3",
+                "version": "3.1.2",
                 "id": "mediumnoa2ce1940",
                 "template_type": "Terraform",
                 "template_content_type": "VMware vSphere",
@@ -1486,7 +1463,9 @@
                   "ibm_cloud_private_master_ip",
                   "ibm_cloud_private_admin_url",
                   "ibm_cloud_private_admin_user",
-                  "ibm_cloud_private_admin_password"
+                  "ibm_cloud_private_admin_password",
+                  "ibm_cloud_private_proxy_hostname",
+                  "ibm_cloud_private_boot_ip"
                 ]
               }
             },
@@ -1494,7 +1473,7 @@
               "HA Node Deployment of IBM Cloud Private": {
                 "title": "HA Node Deployment of IBM Cloud Private_07ee25",
                 "template_name": "IBM Cloud Private HA Node Installation",
-                "version": "2.3",
+                "version": "3.1.2",
                 "id": "hanodedee28a0f0c",
                 "template_type": "Terraform",
                 "template_content_type": "VMware vSphere",
@@ -1596,7 +1575,9 @@
                   "ibm_cloud_private_master_ip",
                   "ibm_cloud_private_admin_url",
                   "ibm_cloud_private_admin_user",
-                  "ibm_cloud_private_admin_password"
+                  "ibm_cloud_private_admin_password",
+                  "ibm_cloud_private_proxy_hostname",
+                  "ibm_cloud_private_boot_ip"
                 ]
               }
             },
@@ -1615,7 +1596,7 @@
                   "bastionhost": "DefaultNoBastionHostRequired"
                 },
                 "template_params": {
-                  "boot_node_ip": "${templates.singleno708a819a.output.ibm_cloud_private_boot_ip||templates.mediumnoa2ce1940.output.ibm_cloud_private_boot_ip||templates.hanodedee28a0f0c.output.ibm_cloud_private_boot_ip}",
+                  "boot_node_ip": "${templates.singleno708a819a.output.ibm_cloud_private_master_ip||templates.mediumnoa2ce1940.output.ibm_cloud_private_master_ip||templates.hanodedee28a0f0c.output.ibm_cloud_private_master_ip}",
                   "vm_os_user": "${input_parameters.vm_os_user}",
                   "vm_os_private_key": "",
                   "vm_os_password": "${input_parameters.vm_os_password}",
@@ -1630,9 +1611,7 @@
                   "download_user_password": "",
                   "secret_name": "mcm-secret"
                 },
-                "outputs": [
-                  "ibm_cloud_private_boot_ip"
-                ]
+                "outputs": []
               }
             },
             {
@@ -1649,49 +1628,49 @@
                 "template_dataobjects": {},
                 "template_params": {
                   "namespace": "${input_parameters.namespace}",
+                  "klusterlet-enabled": true,
                   "klusterlet-repository": "${input_parameters.icp_cluster_name}.${input_parameters.vm_domain}:8500/kube-system/mcm-klusterlet",
                   "klusterlet-tag": "${input_parameters.icp_version}",
-                  "klusterlet-pullPolicy": "Always",
-                  "klusterlet-enabled": true,
-                  "klusterlet-clusterName": "${input_parameters.icp_cluster_name}",
-                  "klusterlet-clusterNamespace": "${input_parameters.klusterlet-clusterNamespace}",
-                  "klusterlet-tillersecret": "",
-                  "klusterlet-autoGenTillerSecret": true,
-                  "klusterlet-tillerUser": "${input_parameters.klusterlet-tillerUser}",
+                  "klusterlet-pullPolicy": "IfNotPresent",
+                  "klusterlet-deployedOnHub": false,
                   "klusterlet-apiserverConfig-server": "${input_parameters.klusterlet-apiserverConfig-server}",
                   "klusterlet-apiserverConfig-token": "${input_parameters.klusterlet-apiserverConfig-token}",
                   "klusterlet-apiserverConfig-enableBootstrap": true,
-                  "klusterlet-deployedOnHub": false,
+                  "klusterlet-autoGenTillerSecret": true,
+                  "klusterlet-tillersecret": "",
+                  "klusterlet-tillerUser": "${input_parameters.klusterlet-tillerUser}",
+                  "klusterlet-clusterName": "${input_parameters.icp_cluster_name}",
+                  "klusterlet-clusterNamespace": "${input_parameters.klusterlet-clusterNamespace}",
                   "klusterlet-cloud": "VMware",
                   "klusterlet-vendor": "ICP",
                   "klusterlet-environment": "${input_parameters.klusterlet-environment}",
                   "klusterlet-region": "${input_parameters.klusterlet-region}",
                   "klusterlet-datacenter": "${input_parameters.klusterlet-datacenter}",
                   "klusterlet-owner": "${input_parameters.klusterlet-owner}",
-                  "klusterlet-prometheusAddress": "",
-                  "klusterlet-prometheusPort": "",
                   "klusterlet-httpsProxy": "",
+                  "klusterlet-ingressEnabled": true,
+                  "klusterlet-ingressHost": "${templates.singleno708a819a.output.ibm_cloud_private_proxy_hostname||templates.mediumnoa2ce1940.output.ibm_cloud_private_proxy_hostname||templates.hanodedee28a0f0c.output.ibm_cloud_private_proxy_hostname}",
+                  "klusterlet-ingressPort": "443",
+                  "klusterlet-serviceType": "ClusterIP",
                   "topology-enabled": true,
-                  "topology-enableAuth": true,
                   "topology-updateInterval": 15,
-                  "topology-username": "${input_parameters.topology-username}",
-                  "topology-password": "${input_parameters.topology-password}",
                   "topology-weave-image-repository": "${input_parameters.icp_cluster_name}.${input_parameters.vm_domain}:8500/kube-system/mcm-weave-scope",
                   "topology-weave-image-tag": "${input_parameters.topology-weave-image-tag}",
-                  "topology-weave-image-pullPolicy": "Always",
-                  "router-image-repository": "${input_parameters.icp_cluster_name}.${input_parameters.vm_domain}:8500/kube-system/icp-router",
-                  "router-image-tag": "2.2.0",
+                  "topology-weave-image-pullPolicy": "IfNotPresent",
+                  "compliance-enabled": true,
                   "compliance-repository": "${input_parameters.icp_cluster_name}.${input_parameters.vm_domain}:8500/kube-system/mcm-compliance",
                   "compliance-tag": "3.1.2",
-                  "compliance-pullPolicy": "Always",
-                  "compliance-enabled": true,
-                  "logLevel": 5,
+                  "compliance-pullPolicy": "IfNotPresent",
+                  "compliance-cemIntegration-enabled": false,
+                  "router-image-repository": "${input_parameters.icp_cluster_name}.${input_parameters.vm_domain}:8500/kube-system/icp-management-ingress",
+                  "router-image-tag": "2.2.3",
+                  "pullSecret-token": "",
                   "nodeSelector-enabled": false,
                   "nodeSelector-arch": "",
                   "nodeSelector-os": "",
                   "nodeSelector-customLabelSelector": "",
                   "nodeSelector-customLabelValue": "",
-                  "pullSecret-token": ""
+                  "logLevel": 5
                 },
                 "outputs": [],
                 "template_repo": "local-charts",
@@ -1799,7 +1778,7 @@
             "required": true,
             "secured": false,
             "description": "NFS shared folder",
-            "default": "/export"
+            "default": "/var/nfs"
           },
           {
             "name": "worker_vm_disk2_size",
@@ -2762,30 +2741,6 @@
             "default": "marketing"
           },
           {
-            "name": "topology-username",
-            "label": "MCM topology username",
-            "customtype": "string",
-            "type": "string",
-            "immutable": false,
-            "hidden": false,
-            "required": false,
-            "secured": false,
-            "description": "MCM topology username",
-            "default": "admin"
-          },
-          {
-            "name": "topology-password",
-            "label": "MCM topology password",
-            "customtype": "password",
-            "type": "password",
-            "immutable": false,
-            "hidden": false,
-            "required": false,
-            "secured": true,
-            "description": "MCM topology password",
-            "default": "^(YWRtaW4=)"
-          },
-          {
             "name": "cloud_connection",
             "label": "Cloud Connection",
             "customtype": "string",
@@ -3648,12 +3603,12 @@
             "label": "NFS server folder",
             "customtype": "string",
             "type": "string",
-            "immutable": false,
+            "immutable": true,
             "hidden": false,
             "required": true,
             "secured": false,
             "description": "NFS shared folder",
-            "default": "/export"
+            "default": "/var/nfs"
           },
           {
             "name": "cluster_vip",
@@ -3879,30 +3834,6 @@
             "secured": false,
             "description": "Klusterlet owner",
             "default": "marketing"
-          },
-          {
-            "name": "topology-username",
-            "label": "MCM topology username",
-            "customtype": "string",
-            "type": "string",
-            "immutable": false,
-            "hidden": false,
-            "required": false,
-            "secured": false,
-            "description": "MCM topology username",
-            "default": "admin"
-          },
-          {
-            "name": "topology-password",
-            "label": "MCM topology password",
-            "customtype": "password",
-            "type": "password",
-            "immutable": false,
-            "hidden": false,
-            "required": false,
-            "secured": true,
-            "description": "MCM topology password",
-            "default": "^(YWRtaW4=)"
           },
           {
             "name": "worker_vm_disk2_size",
@@ -4837,12 +4768,12 @@
             "label": "NFS server folder",
             "customtype": "string",
             "type": "string",
-            "immutable": false,
+            "immutable": true,
             "hidden": false,
             "required": true,
             "secured": false,
             "description": "NFS shared folder",
-            "default": "/export"
+            "default": "/var/nfs"
           },
           {
             "name": "mcm_binary_url",
@@ -5020,30 +4951,6 @@
             "secured": false,
             "description": "Klusterlet owner",
             "default": "marketing"
-          },
-          {
-            "name": "topology-username",
-            "label": "MCM topology username",
-            "customtype": "string",
-            "type": "string",
-            "immutable": false,
-            "hidden": false,
-            "required": false,
-            "secured": false,
-            "description": "MCM topology username",
-            "default": "admin"
-          },
-          {
-            "name": "topology-password",
-            "label": "MCM topology password",
-            "customtype": "password",
-            "type": "password",
-            "immutable": false,
-            "hidden": false,
-            "required": false,
-            "secured": true,
-            "description": "MCM topology password",
-            "default": "^(YWRtaW4=)"
           },
           {
             "name": "worker_vm_disk2_size",

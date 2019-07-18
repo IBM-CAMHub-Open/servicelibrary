@@ -3,7 +3,7 @@ Copyright IBM Corp. 2018, 2018
 This code is released under the Apache 2.0 License.
 --->
 
-# Integrate ServiceNow and Infoblox with Cloud Automation Manager using Service Composer
+# Integrate ServiceNow with Cloud Automation Manager using Service Composer
 
 The concepts of Integration templates and Helm charts are introduced in IBM Cloud Automation Manager 2.1.0.2. You can use them in the Service Composer to create services that provide end-to-end utilities.
 
@@ -19,7 +19,6 @@ This sample demonstrates how to build a service that deploys WebSphere Applicati
     - Configure Chef server and content runtime. For configuration steps.
     - Configure an Email server. For configuration steps.
     - Configure repositories with ELK and APM agent.
-    - Configure Infoblox server to get free/available IP address
     - Ensure that ServiceNow is up and running.
 
 
