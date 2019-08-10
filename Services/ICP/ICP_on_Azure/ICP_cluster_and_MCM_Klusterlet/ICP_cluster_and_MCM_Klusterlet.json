@@ -546,7 +546,6 @@
               "custom-metrics-adapter",
               "image-security-enforcement",
               "metering",
-              "monitoring",
               "logging",
               "audit-logging"
             ]

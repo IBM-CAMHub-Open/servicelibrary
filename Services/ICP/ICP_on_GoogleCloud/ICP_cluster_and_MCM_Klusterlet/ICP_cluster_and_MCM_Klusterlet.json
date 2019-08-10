@@ -462,8 +462,7 @@
               "image-security-enforcement",
               "metering",
               "logging",
-              "audit-logging",
-              "monitoring"
+              "audit-logging"
             ],
             "description": "List of disabled management services"
           }
@@ -621,7 +620,7 @@
                   "icp_version": "3.1.2",
                   "cluster_name": "${templates.ibmcloudf317cf74.output.ibm_cloud_private_cluster_name||templates.ibmcloud78ba87ba.output.ibm_cloud_private_cluster_name}",
                   "cluster_ca_name": "${templates.ibmcloudf317cf74.output.ibm_cloud_private_cluster_CA_domain_name||templates.ibmcloud78ba87ba.output.ibm_cloud_private_cluster_CA_domain_name}",
-                  "cluster_docker_registry_server_name": "${templates.ibmcloudf317cf74.output.ibm_cloud_private_cluster_CA_domain_name||templates.ibmcloud78ba87ba.output.ibm_cloud_private_registry_server}",
+                  "cluster_docker_registry_server_name": "${templates.ibmcloudf317cf74.output.ibm_cloud_private_cluster_CA_domain_name||templates.ibmcloud78ba87ba.output.ibm_cloud_private_cluster_CA_domain_name}",
                   "mcm_binary_url": "${input_parameters.mcm_binary_url}",
                   "download_user": "",
                   "download_user_password": "",
