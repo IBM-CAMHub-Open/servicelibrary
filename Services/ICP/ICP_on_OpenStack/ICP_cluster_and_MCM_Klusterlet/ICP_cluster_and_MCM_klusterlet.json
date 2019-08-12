@@ -245,8 +245,8 @@
             "description": "ICP version",
             "options": [
               {
-                "label": "3.1.1",
-                "value": "3.1.1",
+                "label": "3.1.2",
+                "value": "3.1.2",
                 "default": false
               },
               {
@@ -885,7 +885,7 @@
             "required": true,
             "secured": false,
             "description": "klusterlet-tag",
-            "default": "3.1.1"
+            "default": "3.1.2"
           },
           {
             "name": "klusterlet-apiserverConfig-server",
@@ -1252,7 +1252,7 @@
               "IBM Multicloud Manager": {
                 "title": "IBM Multicloud Manager_5d3717",
                 "template_name": "IBM Multicloud Manager",
-                "version": "3.1.1",
+                "version": "3.1.2",
                 "id": "ibmmultica55cc6d",
                 "template_type": "Terraform",
                 "template_content_type": "Other",
@@ -1286,7 +1286,7 @@
               "local-charts/ibm-mcmk-prod": {
                 "title": "local-charts/ibm-mcmk-prod_2ab5f4",
                 "template_name": "ibm-mcmk-prod",
-                "version": "3.1.1",
+                "version": "3.1.2",
                 "id": "localcha3b45f64b",
                 "template_type": "Helm",
                 "template_content_type": "IBM Cloud Private",
@@ -1323,11 +1323,11 @@
                   "topology-enabled": true,
                   "topology-updateInterval": 15,
                   "topology-weave-image-repository": "${input_parameters.icp_cluster_name}.${input_parameters.vm_domain}:8500/kube-system/mcm-weave-scope",
-                  "topology-weave-image-tag": "3.1.1",
+                  "topology-weave-image-tag": "3.1.2",
                   "topology-weave-image-pullPolicy": "Always",
                   "compliance-enabled": true,
                   "compliance-repository": "mycluster.icp:8500/kube-system/mcm-compliance",
-                  "compliance-tag": "3.1.1",
+                  "compliance-tag": "3.1.2",
                   "compliance-pullPolicy": "Always",
                   "compliance-cemIntegration-enabled": false,
                   "router-image-repository": "${input_parameters.icp_cluster_name}.${input_parameters.vm_domain}:8500/kube-system/icp-management-ingress",
@@ -1911,8 +1911,8 @@
             "description": "ICP version",
             "options": [
               {
-                "label": "3.1.1",
-                "value": "3.1.1",
+                "label": "3.1.2",
+                "value": "3.1.2",
                 "default": false
               },
               {
@@ -2113,7 +2113,7 @@
             "required": true,
             "secured": false,
             "description": "klusterlet-tag",
-            "default": "3.1.1"
+            "default": "3.1.2"
           },
           {
             "name": "klusterlet-apiserverConfig-server",
@@ -2484,8 +2484,8 @@
             "description": "ICP version",
             "options": [
               {
-                "label": "3.1.1",
-                "value": "3.1.1",
+                "label": "3.1.2",
+                "value": "3.1.2",
                 "default": false
               },
               {
@@ -3038,7 +3038,7 @@
             "required": true,
             "secured": false,
             "description": "klusterlet-tag",
-            "default": "3.1.1"
+            "default": "3.1.2"
           },
           {
             "name": "klusterlet-apiserverConfig-server",
@@ -3360,8 +3360,8 @@
             "description": "ICP version",
             "options": [
               {
-                "label": "3.1.1",
-                "value": "3.1.1",
+                "label": "3.1.2",
+                "value": "3.1.2",
                 "default": false
               },
               {
@@ -3962,7 +3962,7 @@
             "required": true,
             "secured": false,
             "description": "klusterlet-tag",
-            "default": "3.1.1"
+            "default": "3.1.2"
           },
           {
             "name": "klusterlet-apiserverConfig-server",

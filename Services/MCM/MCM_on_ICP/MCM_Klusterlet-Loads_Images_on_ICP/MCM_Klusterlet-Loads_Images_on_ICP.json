@@ -189,7 +189,7 @@
               "IBM Multicloud Manager": {
                 "title": "IBM Multicloud Manager_e1a091",
                 "template_name": "IBM Multicloud Manager",
-                "version": "3.1.1",
+                "version": "3.1.2",
                 "id": "ibmmulti48a790ea",
                 "template_type": "Terraform",
                 "template_content_type": "Other",
