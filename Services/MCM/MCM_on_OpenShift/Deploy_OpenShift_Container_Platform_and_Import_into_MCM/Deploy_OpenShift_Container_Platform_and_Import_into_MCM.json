@@ -5,7 +5,7 @@
       "name": "OpenShift Container Patform v311 on VMware",
       "description": "Deploys OpenShift 3.11 cluster on VMware and imports MCM Klusterlet",
       "image": "serviceicon_1.svg",
-      "category": "MCM on OpenShift",
+      "category": "Cluster Lifecycle Services",
       "bullets": [
         {
           "title": "Cloud Provider",
@@ -141,6 +141,19 @@
             "secured": true,
             "description": "Password for the OpenShift cluster admin user that will be created",
             "default": ""
+          },
+          {
+            "name": "redhat_subscription",
+            "label": "RedHat Subscription",
+            "customtype": "sharedparameter",
+            "type": "sharedparameter",
+            "immutable": false,
+            "hidden": false,
+            "required": true,
+            "secured": false,
+            "description": "RedHat Subscription",
+            "default": "",
+            "datatype": "redhat_subscription"
           },
           {
             "name": "vsphere_managed_inventory_definition",
@@ -352,19 +365,6 @@
                 "default": false
               }
             ]
-          },
-          {
-            "name": "redhat_subscription",
-            "label": "RedHat Subscription",
-            "customtype": "sharedparameter",
-            "type": "sharedparameter",
-            "immutable": false,
-            "hidden": false,
-            "required": true,
-            "secured": false,
-            "description": "RedHat Subscription",
-            "default": "",
-            "datatype": "redhat_subscription"
           }
         ],
         "flow": {
@@ -411,7 +411,7 @@
                   "bastionhost": "DefaultNoBastionHostRequired",
                   "openshift_single_node_on_vmware": "${input_parameters.openshift_single_node_on_vmware}",
                   "vsphere_managed_inventory_definition": "${input_parameters.vsphere_managed_inventory_definition}",
-                  "redhat_subscription": "radumateescuibm"
+                  "redhat_subscription": "${input_parameters.redhat_subscription}"
                 },
                 "template_params": {
                   "datacenter": "${vsphere_managed_inventory_definition.datacenter}",
@@ -435,8 +435,8 @@
                   "single_node_disk1_size": "${openshift_single_node_on_vmware.disk1_size}",
                   "openshift_user": "${input_parameters.openshift_admin_username}",
                   "openshift_password": "${input_parameters.openshift_admin_password}",
-                  "rh_user": "${datatypes.redhat_subscription.rh_user}",
-                  "rh_password": "${datatypes.redhat_subscription.rh_password}"
+                  "rh_user": "${redhat_subscription.username}",
+                  "rh_password": "${redhat_subscription.password}"
                 },
                 "outputs": [
                   "openshift_url",
@@ -467,7 +467,7 @@
                   "openshift_compute_node_on_vmware": "${input_parameters.openshift_compute_node_on_vmware}",
                   "openshift_lb_node_on_vmware": "${input_parameters.openshift_lb_node_on_vmware}",
                   "vsphere_managed_inventory_definition": "${input_parameters.vsphere_managed_inventory_definition}",
-                  "redhat_subscription": "radumateescuibm"
+                  "redhat_subscription": "${input_parameters.redhat_subscription}"
                 },
                 "template_params": {
                   "datacenter": "${vsphere_managed_inventory_definition.datacenter}",
@@ -510,8 +510,8 @@
                   "master_node_disk1_size": "${openshift_master_node_on_vmware.disk1_size}",
                   "openshift_user": "${input_parameters.openshift_admin_username}",
                   "openshift_password": "${input_parameters.openshift_admin_password}",
-                  "rh_user": "${datatypes.redhat_subscription.rh_user}",
-                  "rh_password": "${datatypes.redhat_subscription.rh_password}"
+                  "rh_user": "${redhat_subscription.username}",
+                  "rh_password": "${redhat_subscription.password}"
                 },
                 "outputs": [
                   "openshift_url",
@@ -535,7 +535,8 @@
                 "cloud_connection_name": "Other",
                 "template_data_objects": {
                   "bastionhost": "DefaultNoBastionHostRequired",
-                  "mcm_controller": "${input_parameters.mcm_controller}"
+                  "mcm_controller": "${input_parameters.mcm_controller}",
+                  "redhat_subscription": "${input_parameters.redhat_subscription}"
                 },
                 "template_params": {
                   "import_launch_node_ip": "${templates.openshif205d0c86.output.openshift_single_node_ip||templates.openshife9ddafcd.output.openshift_master_ip}",
@@ -546,8 +547,8 @@
                   "admin_user": "${input_parameters.openshift_admin_username}",
                   "admin_pass": "${input_parameters.openshift_admin_password}",
                   "man_cluster_on_hub": "${templates.openshif205d0c86.output.cluster_name||templates.openshife9ddafcd.output.cluster_name}",
-                  "rhsm_user": "${input_parameters.redhat_subscription_username}",
-                  "rhsm_password": "${input_parameters.redhat_subscription_password}"
+                  "rhsm_user": "${redhat_subscription.username}",
+                  "rhsm_password": "${redhat_subscription.password}"
                 },
                 "outputs": [],
                 "error": false,
