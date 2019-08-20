@@ -143,28 +143,6 @@
             "default": ""
           },
           {
-            "name": "redhat_subscription_username",
-            "label": "RedHat Subscription User Name",
-            "customtype": "string",
-            "type": "string",
-            "immutable": false,
-            "hidden": false,
-            "required": true,
-            "secured": false,
-            "description": "RedHat Subscription Username"
-          },
-          {
-            "name": "redhat_subscription_password",
-            "label": "RedHat Subscription User Password",
-            "customtype": "string",
-            "type": "string",
-            "immutable": false,
-            "hidden": false,
-            "required": true,
-            "secured": true,
-            "description": "RedHat Subscription User Password"
-          },
-          {
             "name": "vsphere_managed_inventory_definition",
             "label": "vSphere Managed Inventory Definition Data Object",
             "customtype": "sharedparameter",
@@ -374,6 +352,19 @@
                 "default": false
               }
             ]
+          },
+          {
+            "name": "redhat_subscription",
+            "label": "RedHat Subscription",
+            "customtype": "sharedparameter",
+            "type": "sharedparameter",
+            "immutable": false,
+            "hidden": false,
+            "required": true,
+            "secured": false,
+            "description": "RedHat Subscription",
+            "default": "",
+            "datatype": "redhat_subscription"
           }
         ],
         "flow": {
@@ -419,7 +410,8 @@
                 "template_data_objects": {
                   "bastionhost": "DefaultNoBastionHostRequired",
                   "openshift_single_node_on_vmware": "${input_parameters.openshift_single_node_on_vmware}",
-                  "vsphere_managed_inventory_definition": "${input_parameters.vsphere_managed_inventory_definition}"
+                  "vsphere_managed_inventory_definition": "${input_parameters.vsphere_managed_inventory_definition}",
+                  "redhat_subscription": "radumateescuibm"
                 },
                 "template_params": {
                   "datacenter": "${vsphere_managed_inventory_definition.datacenter}",
@@ -443,8 +435,8 @@
                   "single_node_disk1_size": "${openshift_single_node_on_vmware.disk1_size}",
                   "openshift_user": "${input_parameters.openshift_admin_username}",
                   "openshift_password": "${input_parameters.openshift_admin_password}",
-                  "rh_user": "${input_parameters.redhat_subscription_username}",
-                  "rh_password": "${input_parameters.redhat_subscription_password}"
+                  "rh_user": "${datatypes.redhat_subscription.rh_user}",
+                  "rh_password": "${datatypes.redhat_subscription.rh_password}"
                 },
                 "outputs": [
                   "openshift_url",
@@ -474,7 +466,8 @@
                   "openshift_etcd_node_on_vmware": "${input_parameters.openshift_etcd_node_on_vmware}",
                   "openshift_compute_node_on_vmware": "${input_parameters.openshift_compute_node_on_vmware}",
                   "openshift_lb_node_on_vmware": "${input_parameters.openshift_lb_node_on_vmware}",
-                  "vsphere_managed_inventory_definition": "${input_parameters.vsphere_managed_inventory_definition}"
+                  "vsphere_managed_inventory_definition": "${input_parameters.vsphere_managed_inventory_definition}",
+                  "redhat_subscription": "radumateescuibm"
                 },
                 "template_params": {
                   "datacenter": "${vsphere_managed_inventory_definition.datacenter}",
@@ -517,8 +510,8 @@
                   "master_node_disk1_size": "${openshift_master_node_on_vmware.disk1_size}",
                   "openshift_user": "${input_parameters.openshift_admin_username}",
                   "openshift_password": "${input_parameters.openshift_admin_password}",
-                  "rh_user": "${input_parameters.redhat_subscription_username}",
-                  "rh_password": "${input_parameters.redhat_subscription_password}"
+                  "rh_user": "${datatypes.redhat_subscription.rh_user}",
+                  "rh_password": "${datatypes.redhat_subscription.rh_password}"
                 },
                 "outputs": [
                   "openshift_url",
