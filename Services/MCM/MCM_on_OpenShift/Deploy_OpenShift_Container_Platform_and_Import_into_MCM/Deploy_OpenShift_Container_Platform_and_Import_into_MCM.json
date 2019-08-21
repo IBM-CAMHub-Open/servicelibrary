@@ -406,7 +406,7 @@
                 "template_content_type": "VMware vSphere",
                 "template_provider": "VMware vSphere",
                 "instance_name": "",
-                "cloud_connection_name": "VMware",
+                "cloud_connection_name": "${input_parameters.cloud_connection}",
                 "template_data_objects": {
                   "bastionhost": "DefaultNoBastionHostRequired",
                   "openshift_single_node_on_vmware": "${input_parameters.openshift_single_node_on_vmware}",
