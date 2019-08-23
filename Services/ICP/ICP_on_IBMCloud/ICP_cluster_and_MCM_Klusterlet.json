@@ -643,7 +643,7 @@
                   "vm_os_user": "root",
                   "vm_os_password": "",
                   "vm_os_private_key": "${input_parameters.private_key}",
-                  "cluster_server_host": "",
+                  "cluster_server_host": "${templates.ibmcloudae8a61bf.output.ibm_cloud_private_console_url||templates.ibmcloud941a9504.output.ibm_cloud_private_console_url||templates.ibmcloude347f135.output.ibm_cloud_private_console_url}",
                   "cluster_name": "${input_parameters.cluster_name}",
                   "admin_user": "admin",
                   "admin_user_password": "${templates.ibmcloudae8a61bf.output.ibm_cloud_private_admin_password||templates.ibmcloud941a9504.output.ibm_cloud_private_admin_password||templates.ibmcloude347f135.output.ibm_cloud_private_admin_password}",
