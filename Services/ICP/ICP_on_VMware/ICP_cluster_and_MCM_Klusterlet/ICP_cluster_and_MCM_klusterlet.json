@@ -145,7 +145,8 @@
 						"secured": false,
 						"description": "ICP cluster name.",
 						"default": "mycluster",
-						"regex": "^[a-z0-9.-]{1,80}$"
+			            "regex": "^([a-z0-9](([-a-z0-9]{1,70})[a-z0-9])?)$",
+            			"regexdesc": "Name must 72 characters in length. Must consist of lower case alphanumeric characters or '-', and must start and end with an alphanumeric character."
 					}, {
 						"name": "icp_admin_user",
 						"label": "ICP admin user",
@@ -635,7 +636,7 @@
 									"icp_private_ssh_key": "",
 									"icp_public_ssh_key": ""
 								},
-								"outputs": ["ibm_cloud_private_master_ip", "ibm_cloud_private_admin_url", "ibm_cloud_private_admin_user", "ibm_cloud_private_admin_password", "ibm_cloud_private_proxy_hostname", "registry_config_do_name", "kube_config_do_name", "icp_install_dir"]
+								"outputs": ["ibm_cloud_private_master_ip", "ibm_cloud_private_admin_url", "ibm_cloud_private_admin_user", "ibm_cloud_private_admin_password", "ibm_cloud_private_proxy_hostname", "registry_config_do_name", "icp_install_dir"]
 							}
 						}, {
 							"Medium Node Deployment of IBM Cloud Private": {
@@ -731,7 +732,7 @@
 									"nfs_server_vm_ipv4_gateway": "${datatypes.vsphere_managed_inventory_definition.vm_ipv4_gateway}",
 									"nfs_server_vm_ipv4_prefix_length": "${datatypes.vsphere_managed_inventory_definition.vm_ipv4_netmask}"
 								},
-								"outputs": ["ibm_cloud_private_master_ip", "ibm_cloud_private_admin_url", "ibm_cloud_private_admin_user", "ibm_cloud_private_admin_password", "ibm_cloud_private_proxy_hostname", "ibm_cloud_private_boot_ip", "registry_config_do_name", "kube_config_do_name", "icp_install_dir"]
+								"outputs": ["ibm_cloud_private_master_ip", "ibm_cloud_private_admin_url", "ibm_cloud_private_admin_user", "ibm_cloud_private_admin_password", "ibm_cloud_private_proxy_hostname", "ibm_cloud_private_boot_ip", "registry_config_do_name", "icp_install_dir"]
 							}
 						}, {
 							"HA Node Deployment of IBM Cloud Private": {
@@ -831,7 +832,7 @@
 									"nfs_server_vcpu": "${datatypes.icp_nfs_node_on_vmware.vcpu}",
 									"nfs_server_vm_disk1_size": "${datatypes.icp_nfs_node_on_vmware.disk_size}"
 								},
-								"outputs": ["ibm_cloud_private_master_ip", "ibm_cloud_private_admin_url", "ibm_cloud_private_admin_user", "ibm_cloud_private_admin_password", "ibm_cloud_private_proxy_hostname", "ibm_cloud_private_boot_ip", "registry_config_do_name", "kube_config_do_name", "icp_install_dir"]
+								"outputs": ["ibm_cloud_private_master_ip", "ibm_cloud_private_admin_url", "ibm_cloud_private_admin_user", "ibm_cloud_private_admin_password", "ibm_cloud_private_proxy_hostname", "ibm_cloud_private_boot_ip", "registry_config_do_name", "icp_install_dir"]
 							}
 						}, {
 							"IBM Multicloud Manager Klusterlet on IBM Cloud Private": {
@@ -858,7 +859,6 @@
 									"cluster_name": "${input_parameters.icp_cluster_name}",
 									"admin_user": "${input_parameters.icp_admin_user}",
 									"admin_user_password": "${input_parameters.icp_admin_password}",
-									"icp_management_port": "8443",
 									"icp_inception_image": "ibmcom/icp-inception-amd64:3.2.0-ee",
 									"icp_dir": "${templates.singleno708a819a.output.icp_install_dir||templates.mediumnoa2ce1940.output.icp_install_dir||templates.hanodedee28a0f0c.output.icp_install_dir}",
 									"man_cluster_on_hub": "managed-${input_parameters.icp_cluster_name}"

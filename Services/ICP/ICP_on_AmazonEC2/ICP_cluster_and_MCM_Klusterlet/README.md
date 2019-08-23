@@ -1,12 +1,12 @@
 # Highly Available ICP Deployment with klusterlet on Amazon EC2
 
-This [IBM Cloud Automation Manager](https://www.ibm.com/support/knowledgecenter/en/SS2L37/product_welcome_cloud_automation_manager.html) service configuration first uses the [AWS provider](https://www.terraform.io/docs/providers/aws/index.html) to provision virtual machines on AWS to prepare VMs and deploy [IBM Cloud Private](https://www.ibm.com/cloud-computing/products/ibm-cloud-private/) 3.1.2 on them.  This configuration then installs the necessary [IBM Multicloud Manager](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.2/mcm/getting_started/introduction.html) 3.1.2 assets to the deployed ICP and deploys the [IBM MCM klusterlet provider](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.2/mcm/installing/klusterlet.html) (ibm-mcmk-prod helm chart) 3.1.2 to make this ICP deployment a managed cluster. More details on IBM Cloud Automation Manager Service can be found [here](https://www.ibm.com/support/knowledgecenter/en/SS2L37_3.1.0.0/cam_managing_services.html).
+This [IBM Cloud Automation Manager](https://www.ibm.com/support/knowledgecenter/en/SS2L37/product_welcome_cloud_automation_manager.html) service configuration first uses the [AWS provider](https://www.terraform.io/docs/providers/aws/index.html) to provision virtual machines on AWS to prepare VMs and deploy [IBM Cloud Private](https://www.ibm.com/cloud-computing/products/ibm-cloud-private/) 3.2.0 on them.  This configuration then installs the necessary [IBM Multicloud Manager](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.2.0/mcm/getting_started/introduction.html) 3.2.0 assets to the deployed ICP and deploys the [IBM MCM klusterlet provider](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.2.0/mcm/installing/klusterlet.html) (ibm-mcmk-prod helm chart) 3.2.0 to make this ICP deployment a managed cluster. More details on IBM Cloud Automation Manager Service can be found [here](https://www.ibm.com/support/knowledgecenter/en/SS2L37_3.2.1.0/cam_managing_services.html).
 
-This service is composed of following terraform templates and helm charts
+This service is composed of following terraform templates
 
-- [IBM Cloud Private 3.1.2 highly-available cluster in AWS](https://github.com/IBM-CAMHub-Open/template_icp_aws) terraform template.
-- [IBM Multicloud Manager 3.1.2](https://github.com/IBM-CAMHub-Open/template_mcm_install/tree/master/ICP/terraform) terraform template and 
-- IBM Multicloud klusterlet provider (ibm-mcmk-prod) 3.1.2 helm chart.
+- [IBM Cloud Private 3.2.0 highly-available cluster in AWS](https://github.com/IBM-CAMHub-Open/template_icp_aws) terraform template.
+- [IBM Multicloud Manager 3.2.0](https://github.com/IBM-CAMHub-Open/template_mcm_install/tree/3.2.0/ICP/terraform) terraform template and 
+
 
 This service can be either deployed from IBM Cloud Automation Manager or from IBM Cloud Private Catalog.
 
@@ -37,15 +37,12 @@ Note: Bastion Node, Master Node, Proxy Node, Management Node, Worker Node and Vu
 | ICP Password |  | ICP user password |
 | Docker Package Location |  | Docker package location is required when installing ICP EE on RedHat. Package is expected in AWS s3 bucket. Prefix the location string with protocol s3://.  |
 | ICP EE Image Location |  | Image location of ICP EE. Package is expected in AWS s3 bucket. Prefix the location string with s3://. |
-| ICP Inception Image | ibmcom/icp-inception-amd64:3.1.2-ee | Name of the bootstrap installation image. |
+| ICP Inception Image | ibmcom/icp-inception-amd64:3.2.0-ee | Name of the bootstrap installation image. |
 | VPC CIDR block | 10.10.0.0/16 | AWS VPC CIDR block. This is the primary CIDR block for your ICP node VPC. |
 | Subnet Name | icp-subnet | Subnet name prefix for public and private subnets used by ICP nodes. |
 | Private Subnet CIDRs | ["10.10.10.0/24","10.10.11.0/24","10.10.12.0/24"] | List of subnet CIDRs. Total number of CIDR entry must match the number of availability zone provided above. A CIDR value is used in the creation of a private subnet in an availability zone for the worker nodes. |
 | Public Subnet CIDRs | ["10.10.20.0/24","10.10.21.0/24","10.10.22.0/24"] | List of subnet CIDRs. Total number of CIDR entry must match the number of availability zone provided above. A CIDR value is used in the creation of a public subnet in an availability zone for the proxy and management nodes. |
 | Private Domain | icp-cluster.icp | Private domain name that is used to create route53 name. |
-| MCM Download Location |  | Location of the MCM Binaries used by IBM Cloud Private. |
-| Hub Cluster Kubernetes API Server |  | Kubernetes API Server URL for the Hub-Cluster from kubectl config. |
-| Hub Cluster Kubernetes API server token |  | Kubernetes API Server token for the Hub-Cluster from kubectl config. |
 
 ## Deploying the service from IBM Cloud Private Catalog
 
@@ -65,19 +62,16 @@ Note: Bastion Node, Master Node, Proxy Node, Management Node, Worker Node and Vu
 | icp_password |  | ICP user password |
 | icp_docker_package_location |  | Docker package location is required when installing ICP EE on RedHat. Package is expected in AWS s3 bucket. Prefix the location string with protocol s3://.  |
 | icp_image_location |  | Image location of ICP EE. Package is expected in AWS s3 bucket. Prefix the location string with s3://. |
-| icp_inception_image | ibmcom/icp-inception-amd64:3.1.2-ee | Name of the bootstrap installation image. |
+| icp_inception_image | ibmcom/icp-inception-amd64:3.2.0-ee | Name of the bootstrap installation image. |
 | aws_cidr | 10.10.0.0/16 | AWS VPC CIDR block. This is the primary CIDR block for your ICP node VPC. |
 | aws_subnetname | icp-subnet | Subnet name prefix for public and private subnets used by ICP nodes. |
 | aws_subnet_cidrs | | List of subnet CIDRs. Total number of CIDR entry must match the number of availability zone provided above. A CIDR value is used in the creation of a private subnet in an availability zone for the worker nodes. If you are installing this service from ICP Catalog, your input should look like ["10.10.10.0/24", "10.10.11.0/24"].|
 | aws_pub_subnet_cidrs | | List of subnet CIDRs. Total number of CIDR entry must match the number of availability zone provided above. A CIDR value is used in the creation of a public subnet in an availability zone for the proxy and management nodes. If you are installing this service from ICP Catalog, your input should look like ["10.10.20.0/24", "10.10.21.0/24"].|
 | Paws_private_domain | icp-cluster.icp | Private domain name that is used to create route53 name. |
-| mcm_binary_url |  | Location of the MCM Binaries used by IBM Cloud Private. |
-| mcm_klusterlet-apiserverConfig-server |  | Kubernetes API Server URL for the Hub-Cluster from kubectl config. |
-| mcm_klusterlet-apiserverConfig-token |  | Kubernetes API Server token for the Hub-Cluster from kubectl config. |
 
 ### License and Maintainer
 
 Copyright IBM Corp. 2019
 
-Service Version - 3.1.2  
+Service Version - 3.2.0  
  

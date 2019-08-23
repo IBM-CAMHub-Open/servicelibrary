@@ -207,7 +207,9 @@
             "required": true,
             "secured": false,
             "description": "Name of ICP cluster to deploy",
-            "default": "mycluster.icp"
+            "default": "mycluster",
+            "regex": "^([a-z0-9](([-a-z0-9]{1,70})[a-z0-9])?)$",
+            "regexdesc": "Name must 72 characters in length. Must consist of lower case alphanumeric characters or '-', and must start and end with an alphanumeric character."
           },
           {
             "name": "icp_admin_user",
@@ -231,7 +233,8 @@
             "required": false,
             "secured": false,
             "description": "Admin password for ICP console",
-            "default": "^(YWRtaW4=)"
+		    "regex": "^([a-zA-Z0-9\\-]{32,})$",
+            "regexdesc": "Allow alphanumeric characters or - symbol. Must have at least 32 characters"
           },
           {
             "name": "icp_version",
@@ -239,32 +242,11 @@
             "customtype": "string",
             "type": "string",
             "immutable": false,
-            "hidden": false,
+            "hidden": true,
             "required": true,
             "secured": false,
             "description": "ICP version",
-            "options": [
-              {
-                "label": "3.1.2",
-                "value": "3.1.2",
-                "default": false
-              },
-              {
-                "label": "3.1.0",
-                "value": "3.1.0",
-                "default": false
-              },
-              {
-                "label": "2.1.0.3",
-                "value": "2.1.0.3",
-                "default": false
-              },
-              {
-                "label": "2.1.0.2",
-                "value": "2.1.0.2",
-                "default": false
-              }
-            ]
+            "default": "3.2.0"
           },
           {
             "name": "singlenode_hostname_ip",
@@ -815,202 +797,31 @@
             "description": "Network interface for proxy vIP",
             "default": "ens192"
           },
-          {
-            "name": "cloud_connection",
-            "label": "Cloud connection",
-            "customtype": "string",
-            "type": "string",
-            "immutable": false,
-            "hidden": false,
-            "required": false,
-            "secured": false,
-            "description": "Cloud connect to connect to OpenStack",
-            "default": "OpenStack"
-          },
-          {
-            "name": "master_node_ip",
-            "label": "Master node IP",
-            "customtype": "string",
-            "type": "string",
-            "immutable": false,
-            "hidden": false,
-            "required": true,
-            "secured": false,
-            "description": "Master node IP to ssh",
-            "default": "0.0.0.0"
-          },
-          {
-            "name": "mcm_binary_url",
-            "label": "MCM binary url",
-            "customtype": "string",
-            "type": "string",
-            "immutable": false,
-            "hidden": false,
-            "required": true,
-            "secured": false,
-            "description": "HTTP or HTTPS location to download the MCM binary",
-            "default": ""
-          },
-          {
-            "name": "secret_name",
-            "label": "MCM secret name",
-            "customtype": "string",
-            "type": "string",
-            "immutable": false,
-            "hidden": false,
-            "required": true,
-            "secured": false,
-            "description": "Kube secret for MCM",
-            "default": "mcm-secret"
-          },
-          {
-            "name": "namespace",
-            "label": "Namespace",
-            "customtype": "string",
-            "type": "string",
-            "immutable": false,
-            "hidden": false,
-            "required": true,
-            "secured": false,
-            "description": "Kube namespace for MCM klusterlet to deploy",
-            "default": "default"
-          },
-          {
-            "name": "klusterlet-tag",
-            "label": "MCM Klusterlet tag",
-            "customtype": "string",
-            "type": "string",
-            "immutable": false,
-            "hidden": false,
-            "required": true,
-            "secured": false,
-            "description": "klusterlet-tag",
-            "default": "3.1.2"
-          },
-          {
-            "name": "klusterlet-apiserverConfig-server",
-            "label": "MCM controller IP",
-            "customtype": "string",
-            "type": "string",
-            "immutable": false,
-            "hidden": false,
-            "required": true,
-            "secured": false,
-            "description": "MCM controller IPv4 address / klusterlet api Config server",
-            "default": ""
-          },
-          {
-            "name": "klusterlet-apiserverConfig-token",
-            "label": "MCM controller token",
-            "customtype": "string",
-            "type": "string",
-            "immutable": false,
-            "hidden": false,
-            "required": false,
-            "secured": true,
-            "description": "MCM controller token",
-            "default": ""
-          },
-          {
-            "name": "klusterlet-environment",
-            "label": "Klusterlet environment",
-            "customtype": "string",
-            "type": "string",
-            "immutable": false,
-            "hidden": false,
-            "required": false,
-            "secured": false,
-            "description": "Klusterlet environment",
-            "options": [
-              {
-                "label": "Dev",
-                "value": "Dev",
-                "default": true
-              },
-              {
-                "label": "QA",
-                "value": "QA",
-                "default": false
-              },
-              {
-                "label": "Staging",
-                "value": "Staging",
-                "default": false
-              },
-              {
-                "label": "Prod",
-                "value": "Prod",
-                "default": false
-              },
-              {
-                "label": "Other",
-                "value": "Other",
-                "default": false
-              }
-            ]
-          },
-          {
-            "name": "klusterlet-region",
-            "label": "Klusterlet region",
-            "customtype": "string",
-            "type": "string",
-            "immutable": false,
-            "hidden": false,
-            "required": false,
-            "secured": false,
-            "description": "Klusterlet region",
-            "options": [
-              {
-                "label": "US",
-                "value": "US",
-                "default": false
-              },
-              {
-                "label": "EU",
-                "value": "EU",
-                "default": false
-              },
-              {
-                "label": "CAN",
-                "value": "CAN",
-                "default": false
-              },
-              {
-                "label": "AP",
-                "value": "AP",
-                "default": false
-              },
-              {
-                "label": "LA",
-                "value": "LA",
-                "default": false
-              }
-            ]
-          },
-          {
-            "name": "klusterlet-datacenter",
-            "label": "Klusterlet datacenter",
-            "customtype": "string",
-            "type": "string",
-            "immutable": false,
-            "hidden": false,
-            "required": true,
-            "secured": false,
-            "description": "Klusterlet datacenter",
-            "default": "California"
-          },
-          {
-            "name": "klusterlet-owner",
-            "label": "Klusterlet owner",
-            "customtype": "string",
-            "type": "string",
-            "immutable": false,
-            "hidden": false,
-            "required": false,
-            "secured": false,
-            "description": "Who owns the ICP/Klusterlet",
-            "default": "marketing"
-          }
+		  {
+			"name": "cloud_connection",
+			"label": "Cloud Connection",
+			"customtype": "string",
+			"type": "connection",
+			"provider": "OpenStack",
+			"immutable": false,
+			"hidden": false,
+			"required": false,
+			"secured": false,
+			"description": "Name of cloud connection to use"
+		  },          
+		 {
+		    "name": "mcm_controller",
+		    "label": "IBM MCM Controller Definition",
+		  	"customtype": "sharedparameter",
+		  	"type": "sharedparameter",
+		  	"immutable": false,
+		  	"hidden": false,
+		  	"required": true,
+		  	"secured": false,
+		  	"description": "IBM MCM Controller (hub cluster) details will be used to import a managed cluster to the controller.",
+		  	"default": "",
+		  	"datatype": "mcm_controller"
+		}          
         ],
         "flow": {
           "conditions": [
@@ -1047,7 +858,7 @@
               "Single Node Deployment of IBM Cloud Private Single on OpenStack": {
                 "title": "Single Node Deployment of IBM Cloud Private Single on OpenStack_8c8339",
                 "template_name": "IBM Cloud Private Single Node Installation on OpenStack",
-                "version": "2.3",
+                "version": "3.2.0",
                 "id": "singleno6cf266e2",
                 "template_type": "Terraform",
                 "template_content_type": "OpenStack",
@@ -1086,7 +897,9 @@
                   "ibm_cloud_private_master_ip",
                   "ibm_cloud_private_admin_url",
                   "ibm_cloud_private_admin_user",
-                  "ibm_cloud_private_admin_password"
+                  "ibm_cloud_private_admin_password",
+                  "registry_config_do_name", 
+                  "icp_install_dir"
                 ]
               }
             },
@@ -1094,7 +907,7 @@
               "Medium Node Deployment of IBM Cloud Private on OpenStack": {
                 "title": "Medium Node Deployment of IBM Cloud Private on OpenStack_6961db",
                 "template_name": "IBM Cloud Private Medium Setup Installation on OpenStack",
-                "version": "2.3",
+                "version": "3.2.0",
                 "id": "mediumno02ec735b",
                 "template_type": "Terraform",
                 "template_content_type": "OpenStack",
@@ -1163,7 +976,10 @@
                 "outputs": [
                   "ibm_cloud_private_admin_url",
                   "ibm_cloud_private_admin_user",
-                  "ibm_cloud_private_admin_password"
+                  "ibm_cloud_private_admin_password",
+                  "registry_config_do_name", 
+                  "icp_install_dir",
+                  "ibm_cloud_private_boot_ip"
                 ]
               }
             },
@@ -1171,7 +987,7 @@
               "HA Node Deployment of IBM Cloud Private on OpenStack": {
                 "title": "HA Node Deployment of IBM Cloud Private on OpenStack_74fff0",
                 "template_name": "IBM Cloud Private HA Node Installation on OpenStack",
-                "version": "2.3",
+                "version": "3.2.0",
                 "id": "hanodede075368b8",
                 "template_type": "Terraform",
                 "template_content_type": "OpenStack",
@@ -1244,113 +1060,51 @@
                 "outputs": [
                   "ibm_cloud_private_admin_url",
                   "ibm_cloud_private_admin_user",
-                  "ibm_cloud_private_admin_password"
-                ]
-              }
-            },
-            {
-              "IBM Multicloud Manager": {
-                "title": "IBM Multicloud Manager_5d3717",
-                "template_name": "IBM Multicloud Manager",
-                "version": "3.1.2",
-                "id": "ibmmultica55cc6d",
-                "template_type": "Terraform",
-                "template_content_type": "Other",
-                "template_provider": "Other",
-                "instance_name": "",
-                "cloud_connection_name": "Other",
-                "template_data_objects": {
-                  "bastionhost": "DefaultNoBastionHostRequired"
-                },
-                "template_params": {
-                  "boot_node_ip": "${input_parameters.master_node_ip}",
-                  "vm_os_user": "${input_parameters.vm_os_user}",
-                  "vm_os_private_key": "",
-                  "vm_os_password": "${input_parameters.vm_os_password}",
-                  "icp_admin_user": "${input_parameters.icp_admin_user}",
-                  "icp_admin_user_password": "${input_parameters.icp_admin_password}",
-                  "cluster_name": "${input_parameters.icp_cluster_name}",
-                  "cluster_ca_name": "${input_parameters.icp_cluster_name}.${input_parameters.vm_domain}",
-                  "cluster_docker_registry_server_name": "${input_parameters.icp_cluster_name}.${input_parameters.vm_domain}",
-                  "mcm_binary_url": "${input_parameters.mcm_binary_url}",
-                  "download_user": "",
-                  "download_user_password": "",
-                  "secret_name": "${input_parameters.secret_name}"
-                },
-                "outputs": [
+                  "ibm_cloud_private_admin_password",
+                  "registry_config_do_name", 
+                  "icp_install_dir",
                   "ibm_cloud_private_boot_ip"
                 ]
               }
             },
-            {
-              "local-charts/ibm-mcmk-prod": {
-                "title": "local-charts/ibm-mcmk-prod_2ab5f4",
-                "template_name": "ibm-mcmk-prod",
-                "version": "3.1.2",
-                "id": "localcha3b45f64b",
-                "template_type": "Helm",
-                "template_content_type": "IBM Cloud Private",
-                "template_provider": "IBM Cloud Private",
-                "instance_name": "",
-                "cloud_connection_name": "${input_parameters.icp_cluster_name}",
-                "template_dataobjects": {},
-                "template_params": {
-                  "namespace": "${input_parameters.namespace}",
-                  "klusterlet-enabled": true,
-                  "klusterlet-repository": "${input_parameters.icp_cluster_name}.${input_parameters.vm_domain}:8500/kube-system/mcm-klusterlet",
-                  "klusterlet-tag": "${input_parameters.klusterlet-tag}",
-                  "klusterlet-pullPolicy": "Always",
-                  "klusterlet-deployedOnHub": false,
-                  "klusterlet-apiserverConfig-server": "${input_parameters.klusterlet-apiserverConfig-server}",
-                  "klusterlet-apiserverConfig-token": "${input_parameters.klusterlet-apiserverConfig-token}",
-                  "klusterlet-apiserverConfig-enableBootstrap": true,
-                  "klusterlet-autoGenTillerSecret": true,
-                  "klusterlet-tillersecret": "",
-                  "klusterlet-tillerUser": "admin",
-                  "klusterlet-clusterName": "${input_parameters.icp_cluster_name}",
-                  "klusterlet-clusterNamespace": "default",
-                  "klusterlet-cloud": "Openstack",
-                  "klusterlet-vendor": "ICP",
-                  "klusterlet-environment": "${input_parameters.klusterlet-environment}",
-                  "klusterlet-region": "${input_parameters.klusterlet-region}",
-                  "klusterlet-datacenter": "${input_parameters.klusterlet-datacenter}",
-                  "klusterlet-owner": "${input_parameters.klusterlet-owner}",
-                  "klusterlet-httpsProxy": "",
-                  "klusterlet-ingressEnabled": true,
-                  "klusterlet-ingressHost": "",
-                  "klusterlet-ingressPort": "",
-                  "klusterlet-serviceType": "ClusterIP",
-                  "topology-enabled": true,
-                  "topology-updateInterval": 15,
-                  "topology-weave-image-repository": "${input_parameters.icp_cluster_name}.${input_parameters.vm_domain}:8500/kube-system/mcm-weave-scope",
-                  "topology-weave-image-tag": "3.1.2",
-                  "topology-weave-image-pullPolicy": "Always",
-                  "compliance-enabled": true,
-                  "compliance-repository": "mycluster.icp:8500/kube-system/mcm-compliance",
-                  "compliance-tag": "3.1.2",
-                  "compliance-pullPolicy": "Always",
-                  "compliance-cemIntegration-enabled": false,
-                  "router-image-repository": "${input_parameters.icp_cluster_name}.${input_parameters.vm_domain}:8500/kube-system/icp-management-ingress",
-                  "router-image-tag": "2.2.0",
-                  "pullSecret-token": "",
-                  "nodeSelector-enabled": false,
-                  "nodeSelector-arch": "",
-                  "nodeSelector-os": "",
-                  "nodeSelector-customLabelSelector": "",
-                  "nodeSelector-customLabelValue": "",
-                  "logLevel": 5
-                },
-                "outputs": [],
-                "template_repo": "local-charts"
-              }
-            }
+			{
+				"IBM Multicloud Manager Klusterlet on IBM Cloud Private": {
+					"title": "IBM Multicloud Manager Klusterlet on IBM Cloud Private_a7f79d",
+					"template_name": "IBM Multicloud Manager Klusterlet on IBM Cloud Private",
+					"version": "3.2.0",
+					"id": "ibmmultif7668f0f",
+					"template_type": "Terraform",
+					"template_content_type": "Other",
+					"template_provider": "Other",
+					"instance_name": "",
+					"cloud_connection_name": "Other",
+					"template_data_objects": {
+						"bastionhost": "DefaultNoBastionHostRequired",
+						"private_docker_registry": "${templates.singleno6cf266e2.output.registry_config_do_name||templates.mediumno02ec735b.output.registry_config_do_name||templates.hanodede075368b8.output.registry_config_do_name}",
+						"mcm_controller": "${input_parameters.mcm_controller}"
+					},
+					"template_params": {
+						"import_launch_node_ip": "${templates.singleno6cf266e2.output.ibm_cloud_private_master_ip||templates.mediumno02ec735b.output.ibm_cloud_private_boot_ip||templates.hanodede075368b8.output.ibm_cloud_private_boot_ip}",
+						"vm_os_user": "${input_parameters.vm_os_user}",
+						"vm_os_password": "${input_parameters.vm_os_password}",
+						"vm_os_private_key": "",
+						"cluster_server_host": "${templates.singleno6cf266e2.output.ibm_cloud_private_admin_url||templates.mediumno02ec735b.output.ibm_cloud_private_admin_url||templates.hanodede075368b8.output.ibm_cloud_private_admin_url}",
+						"cluster_name": "${input_parameters.icp_cluster_name}",
+						"admin_user": "${input_parameters.icp_admin_user}",
+						"admin_user_password": "${input_parameters.icp_admin_password}",
+						"icp_inception_image": "ibmcom/icp-inception-ppc64le:3.2.0-ee",
+						"icp_dir": "${templates.singleno6cf266e2.output.icp_install_dir||templates.mediumno02ec735b.output.icp_install_dir||templates.hanodede075368b8.output.icp_install_dir}",
+						"man_cluster_on_hub": "managed-${input_parameters.icp_cluster_name}"
+					},
+					"outputs": ["cluster_import_yaml"]
+				}
+			}            
           ],
           "resthooks": [],
           "notifications": [],
           "sequence": {
             "0": "decision153ea71a",
-            "1": "ibmmultica55cc6d",
-            "2": "localcha3b45f64b"
+            "1": "ibmmultif7668f0f"
           },
           "error_sequence": {}
         },
@@ -1873,7 +1627,9 @@
             "required": true,
             "secured": false,
             "description": "Name of ICP cluster to deploy",
-            "default": "mycluster.icp"
+            "default": "mycluster",
+            "regex": "^([a-z0-9](([-a-z0-9]{1,70})[a-z0-9])?)$",
+            "regexdesc": "Name must 72 characters in length. Must consist of lower case alphanumeric characters or '-', and must start and end with an alphanumeric character."
           },
           {
             "name": "icp_admin_user",
@@ -1897,7 +1653,8 @@
             "required": false,
             "secured": false,
             "description": "Admin password for ICP console",
-            "default": "^(YWRtaW4=)"
+            "regex": "^([a-zA-Z0-9\\-]{32,})$",
+	        "regexdesc": "Allow alphanumeric characters or - symbol. Must have at least 32 characters"
           },
           {
             "name": "icp_version",
@@ -1905,32 +1662,11 @@
             "customtype": "string",
             "type": "string",
             "immutable": false,
-            "hidden": false,
+            "hidden": true,
             "required": true,
             "secured": false,
             "description": "ICP version",
-            "options": [
-              {
-                "label": "3.1.2",
-                "value": "3.1.2",
-                "default": false
-              },
-              {
-                "label": "3.1.0",
-                "value": "3.1.0",
-                "default": false
-              },
-              {
-                "label": "2.1.0.3",
-                "value": "2.1.0.3",
-                "default": false
-              },
-              {
-                "label": "2.1.0.2",
-                "value": "2.1.0.2",
-                "default": false
-              }
-            ]
+            "default": "3.2.0"
           },
           {
             "name": "singlenode_hostname_ip",
@@ -2042,204 +1778,8 @@
             "default": [
               ""
             ]
-          },
-          {
-            "name": "cloud_connection",
-            "label": "Cloud connection",
-            "customtype": "string",
-            "type": "string",
-            "immutable": false,
-            "hidden": false,
-            "required": false,
-            "secured": false,
-            "description": "Cloud connect to connect to Openastack",
-            "default": "OpenStack"
-          },
-          {
-            "name": "master_node_ip",
-            "label": "Master node IP",
-            "customtype": "string",
-            "type": "string",
-            "immutable": false,
-            "hidden": false,
-            "required": true,
-            "secured": false,
-            "description": "Master node IP to ssh",
-            "default": "0.0.0.0"
-          },
-          {
-            "name": "mcm_binary_url",
-            "label": "MCM binary url",
-            "customtype": "string",
-            "type": "string",
-            "immutable": false,
-            "hidden": false,
-            "required": true,
-            "secured": false,
-            "description": "HTTP or HTTPS location to download the MCM binary",
-            "default": ""
-          },
-          {
-            "name": "secret_name",
-            "label": "MCM secret name",
-            "customtype": "string",
-            "type": "string",
-            "immutable": false,
-            "hidden": false,
-            "required": true,
-            "secured": false,
-            "description": "Kube secret for MCM",
-            "default": "mcm-secret"
-          },
-          {
-            "name": "namespace",
-            "label": "Namespace",
-            "customtype": "string",
-            "type": "string",
-            "immutable": false,
-            "hidden": false,
-            "required": true,
-            "secured": false,
-            "description": "Kube namespace for MCM klusterlet to deploy",
-            "default": "default"
-          },
-          {
-            "name": "klusterlet-tag",
-            "label": "MCM Klusterlet tag",
-            "customtype": "string",
-            "type": "string",
-            "immutable": false,
-            "hidden": false,
-            "required": true,
-            "secured": false,
-            "description": "klusterlet-tag",
-            "default": "3.1.2"
-          },
-          {
-            "name": "klusterlet-apiserverConfig-server",
-            "label": "MCM controller IP",
-            "customtype": "string",
-            "type": "string",
-            "immutable": false,
-            "hidden": false,
-            "required": true,
-            "secured": false,
-            "description": "MCM controller IPv4 address / klusterlet api Config server",
-            "default": ""
-          },
-          {
-            "name": "klusterlet-apiserverConfig-token",
-            "label": "MCM controller token",
-            "customtype": "string",
-            "type": "string",
-            "immutable": false,
-            "hidden": false,
-            "required": false,
-            "secured": true,
-            "description": "MCM controller token",
-            "default": ""
-          },
-          {
-            "name": "klusterlet-environment",
-            "label": "Klusterlet environment",
-            "customtype": "string",
-            "type": "string",
-            "immutable": false,
-            "hidden": false,
-            "required": false,
-            "secured": false,
-            "description": "Klusterlet environment",
-            "options": [
-              {
-                "label": "Dev",
-                "value": "Dev",
-                "default": true
-              },
-              {
-                "label": "QA",
-                "value": "QA",
-                "default": false
-              },
-              {
-                "label": "Staging",
-                "value": "Staging",
-                "default": false
-              },
-              {
-                "label": "Prod",
-                "value": "Prod",
-                "default": false
-              },
-              {
-                "label": "Other",
-                "value": "Other",
-                "default": false
-              }
-            ]
-          },
-          {
-            "name": "klusterlet-region",
-            "label": "Klusterlet region",
-            "customtype": "string",
-            "type": "string",
-            "immutable": false,
-            "hidden": false,
-            "required": false,
-            "secured": false,
-            "description": "Klusterlet region",
-            "options": [
-              {
-                "label": "US",
-                "value": "US",
-                "default": false
-              },
-              {
-                "label": "EU",
-                "value": "EU",
-                "default": false
-              },
-              {
-                "label": "CAN",
-                "value": "CAN",
-                "default": false
-              },
-              {
-                "label": "AP",
-                "value": "AP",
-                "default": false
-              },
-              {
-                "label": "LA",
-                "value": "LA",
-                "default": false
-              }
-            ]
-          },
-          {
-            "name": "klusterlet-datacenter",
-            "label": "Klusterlet datacenter",
-            "customtype": "string",
-            "type": "string",
-            "immutable": false,
-            "hidden": false,
-            "required": true,
-            "secured": false,
-            "description": "Klusterlet datacenter",
-            "default": "California"
-          },
-          {
-            "name": "klusterlet-owner",
-            "label": "Klusterlet owner",
-            "customtype": "string",
-            "type": "string",
-            "immutable": false,
-            "hidden": false,
-            "required": false,
-            "secured": false,
-            "description": "Who owns the ICP/Klusterlet",
-            "default": "marketing"
           }
-        ],
+      ],
         "expanded": false
       },
       {
@@ -2446,7 +1986,9 @@
             "required": true,
             "secured": false,
             "description": "Name of ICP cluster to deploy",
-            "default": "mycluster.icp"
+            "default": "mycluster",
+            "regex": "^([a-z0-9](([-a-z0-9]{1,70})[a-z0-9])?)$",
+            "regexdesc": "Name must 72 characters in length. Must consist of lower case alphanumeric characters or '-', and must start and end with an alphanumeric character."
           },
           {
             "name": "icp_admin_user",
@@ -2470,7 +2012,8 @@
             "required": false,
             "secured": false,
             "description": "Admin password for ICP console",
-            "default": "^(YWRtaW4=)"
+            "regex": "^([a-zA-Z0-9\\-]{32,})$",
+	        "regexdesc": "Allow alphanumeric characters or - symbol. Must have at least 32 characters"
           },
           {
             "name": "icp_version",
@@ -2478,32 +2021,11 @@
             "customtype": "string",
             "type": "string",
             "immutable": false,
-            "hidden": false,
+            "hidden": true,
             "required": true,
             "secured": false,
             "description": "ICP version",
-            "options": [
-              {
-                "label": "3.1.2",
-                "value": "3.1.2",
-                "default": false
-              },
-              {
-                "label": "3.1.0",
-                "value": "3.1.0",
-                "default": false
-              },
-              {
-                "label": "2.1.0.3",
-                "value": "2.1.0.3",
-                "default": false
-              },
-              {
-                "label": "2.1.0.2",
-                "value": "2.1.0.2",
-                "default": false
-              }
-            ]
+            "default": "3.2.0"
           },
           {
             "name": "vm_public_ip_pool",
@@ -2967,202 +2489,6 @@
             "secured": false,
             "description": "NFS server shared folder",
             "default": "/export"
-          },
-          {
-            "name": "cloud_connection",
-            "label": "Cloud connection",
-            "customtype": "string",
-            "type": "string",
-            "immutable": false,
-            "hidden": false,
-            "required": false,
-            "secured": false,
-            "description": "Cloud connect to connect to Openastack",
-            "default": "Openstack"
-          },
-          {
-            "name": "master_node_ip",
-            "label": "Master node IP",
-            "customtype": "string",
-            "type": "string",
-            "immutable": false,
-            "hidden": false,
-            "required": true,
-            "secured": false,
-            "description": "Master node IP to ssh",
-            "default": "0.0.0.0"
-          },
-          {
-            "name": "mcm_binary_url",
-            "label": "MCM binary url",
-            "customtype": "string",
-            "type": "string",
-            "immutable": false,
-            "hidden": false,
-            "required": true,
-            "secured": false,
-            "description": "HTTP or HTTPS location to download the MCM binary",
-            "default": ""
-          },
-          {
-            "name": "secret_name",
-            "label": "MCM secret name",
-            "customtype": "string",
-            "type": "string",
-            "immutable": false,
-            "hidden": false,
-            "required": true,
-            "secured": false,
-            "description": "Kube secret for MCM",
-            "default": "mcm-secret"
-          },
-          {
-            "name": "namespace",
-            "label": "Namespace",
-            "customtype": "string",
-            "type": "string",
-            "immutable": false,
-            "hidden": false,
-            "required": true,
-            "secured": false,
-            "description": "Kube namespace for MCM klusterlet to deploy",
-            "default": "default"
-          },
-          {
-            "name": "klusterlet-tag",
-            "label": "MCM Klusterlet tag",
-            "customtype": "string",
-            "type": "string",
-            "immutable": false,
-            "hidden": false,
-            "required": true,
-            "secured": false,
-            "description": "klusterlet-tag",
-            "default": "3.1.2"
-          },
-          {
-            "name": "klusterlet-apiserverConfig-server",
-            "label": "MCM controller IP",
-            "customtype": "string",
-            "type": "string",
-            "immutable": false,
-            "hidden": false,
-            "required": true,
-            "secured": false,
-            "description": "MCM controller IPv4 address / klusterlet api Config server",
-            "default": ""
-          },
-          {
-            "name": "klusterlet-apiserverConfig-token",
-            "label": "MCM controller token",
-            "customtype": "string",
-            "type": "string",
-            "immutable": false,
-            "hidden": false,
-            "required": false,
-            "secured": true,
-            "description": "MCM controller token",
-            "default": ""
-          },
-          {
-            "name": "klusterlet-environment",
-            "label": "Klusterlet environment",
-            "customtype": "string",
-            "type": "string",
-            "immutable": false,
-            "hidden": false,
-            "required": false,
-            "secured": false,
-            "description": "Klusterlet environment",
-            "options": [
-              {
-                "label": "Dev",
-                "value": "Dev",
-                "default": true
-              },
-              {
-                "label": "QA",
-                "value": "QA",
-                "default": false
-              },
-              {
-                "label": "Staging",
-                "value": "Staging",
-                "default": false
-              },
-              {
-                "label": "Prod",
-                "value": "Prod",
-                "default": false
-              },
-              {
-                "label": "Other",
-                "value": "Other",
-                "default": false
-              }
-            ]
-          },
-          {
-            "name": "klusterlet-region",
-            "label": "Klusterlet region",
-            "customtype": "string",
-            "type": "string",
-            "immutable": false,
-            "hidden": false,
-            "required": false,
-            "secured": false,
-            "description": "Klusterlet region",
-            "options": [
-              {
-                "label": "US",
-                "value": "US",
-                "default": false
-              },
-              {
-                "label": "EU",
-                "value": "EU",
-                "default": false
-              },
-              {
-                "label": "CAN",
-                "value": "CAN",
-                "default": false
-              },
-              {
-                "label": "AP",
-                "value": "AP",
-                "default": false
-              },
-              {
-                "label": "LA",
-                "value": "LA",
-                "default": false
-              }
-            ]
-          },
-          {
-            "name": "klusterlet-datacenter",
-            "label": "Klusterlet datacenter",
-            "customtype": "string",
-            "type": "string",
-            "immutable": false,
-            "hidden": false,
-            "required": true,
-            "secured": false,
-            "description": "Klusterlet datacenter",
-            "default": "California"
-          },
-          {
-            "name": "klusterlet-owner",
-            "label": "Klusterlet owner",
-            "customtype": "string",
-            "type": "string",
-            "immutable": false,
-            "hidden": false,
-            "required": false,
-            "secured": false,
-            "description": "Who owns the ICP/Klusterlet",
-            "default": "marketing"
           }
         ]
       },
@@ -3322,7 +2648,9 @@
             "required": true,
             "secured": false,
             "description": "Name of ICP cluster to deploy",
-            "default": "mycluster.icp"
+            "default": "mycluster",
+            "regex": "^([a-z0-9](([-a-z0-9]{1,70})[a-z0-9])?)$",
+            "regexdesc": "Name must 72 characters in length. Must consist of lower case alphanumeric characters or '-', and must start and end with an alphanumeric character."
           },
           {
             "name": "icp_admin_user",
@@ -3346,7 +2674,8 @@
             "required": false,
             "secured": false,
             "description": "Admin password for ICP console",
-            "default": "^(YWRtaW4=)"
+            "regex": "^([a-zA-Z0-9\\-]{32,})$",
+	        "regexdesc": "Allow alphanumeric characters or - symbol. Must have at least 32 characters"
           },
           {
             "name": "icp_version",
@@ -3354,32 +2683,11 @@
             "customtype": "string",
             "type": "string",
             "immutable": false,
-            "hidden": false,
+            "hidden": true,
             "required": true,
             "secured": false,
             "description": "ICP version",
-            "options": [
-              {
-                "label": "3.1.2",
-                "value": "3.1.2",
-                "default": false
-              },
-              {
-                "label": "3.1.0",
-                "value": "3.1.0",
-                "default": false
-              },
-              {
-                "label": "2.1.0.3",
-                "value": "2.1.0.3",
-                "default": false
-              },
-              {
-                "label": "2.1.0.2",
-                "value": "2.1.0.2",
-                "default": false
-              }
-            ]
+            "default": "3.2.0"
           },
           {
             "name": "vm_public_ip_pool",
@@ -3891,202 +3199,6 @@
             "secured": false,
             "description": "Network interface for proxy vIP",
             "default": "ens192"
-          },
-          {
-            "name": "cloud_connection",
-            "label": "Cloud connection",
-            "customtype": "string",
-            "type": "string",
-            "immutable": false,
-            "hidden": false,
-            "required": false,
-            "secured": false,
-            "description": "Cloud connect to connect to Openastack",
-            "default": "Openstack"
-          },
-          {
-            "name": "boot_node_ip",
-            "label": "Master node IP",
-            "customtype": "string",
-            "type": "string",
-            "immutable": false,
-            "hidden": false,
-            "required": true,
-            "secured": false,
-            "description": "Master node IP to ssh",
-            "default": "0.0.0.0"
-          },
-          {
-            "name": "mcm_binary_url",
-            "label": "MCM binary url",
-            "customtype": "string",
-            "type": "string",
-            "immutable": false,
-            "hidden": false,
-            "required": true,
-            "secured": false,
-            "description": "HTTP or HTTPS location to download the MCM binary",
-            "default": ""
-          },
-          {
-            "name": "secret_name",
-            "label": "MCM secret name",
-            "customtype": "string",
-            "type": "string",
-            "immutable": false,
-            "hidden": false,
-            "required": true,
-            "secured": false,
-            "description": "Kube secret for MCM",
-            "default": "mcm-secret"
-          },
-          {
-            "name": "namespace",
-            "label": "Namespace",
-            "customtype": "string",
-            "type": "string",
-            "immutable": false,
-            "hidden": false,
-            "required": true,
-            "secured": false,
-            "description": "Kube namespace for MCM klusterlet to deploy",
-            "default": "default"
-          },
-          {
-            "name": "klusterlet-tag",
-            "label": "MCM Klusterlet tag",
-            "customtype": "string",
-            "type": "string",
-            "immutable": false,
-            "hidden": false,
-            "required": true,
-            "secured": false,
-            "description": "klusterlet-tag",
-            "default": "3.1.2"
-          },
-          {
-            "name": "klusterlet-apiserverConfig-server",
-            "label": "MCM controller IP",
-            "customtype": "string",
-            "type": "string",
-            "immutable": false,
-            "hidden": false,
-            "required": true,
-            "secured": false,
-            "description": "MCM controller IPv4 address / klusterlet api Config server",
-            "default": ""
-          },
-          {
-            "name": "klusterlet-apiserverConfig-token",
-            "label": "MCM controller token",
-            "customtype": "string",
-            "type": "string",
-            "immutable": false,
-            "hidden": false,
-            "required": false,
-            "secured": true,
-            "description": "MCM controller token",
-            "default": ""
-          },
-          {
-            "name": "klusterlet-environment",
-            "label": "Klusterlet environment",
-            "customtype": "string",
-            "type": "string",
-            "immutable": false,
-            "hidden": false,
-            "required": false,
-            "secured": false,
-            "description": "Klusterlet environment",
-            "options": [
-              {
-                "label": "Dev",
-                "value": "Dev",
-                "default": true
-              },
-              {
-                "label": "QA",
-                "value": "QA",
-                "default": false
-              },
-              {
-                "label": "Staging",
-                "value": "Staging",
-                "default": false
-              },
-              {
-                "label": "Prod",
-                "value": "Prod",
-                "default": false
-              },
-              {
-                "label": "Other",
-                "value": "Other",
-                "default": false
-              }
-            ]
-          },
-          {
-            "name": "klusterlet-region",
-            "label": "Klusterlet region",
-            "customtype": "string",
-            "type": "string",
-            "immutable": false,
-            "hidden": false,
-            "required": false,
-            "secured": false,
-            "description": "Klusterlet region",
-            "options": [
-              {
-                "label": "US",
-                "value": "US",
-                "default": false
-              },
-              {
-                "label": "EU",
-                "value": "EU",
-                "default": false
-              },
-              {
-                "label": "CAN",
-                "value": "CAN",
-                "default": false
-              },
-              {
-                "label": "AP",
-                "value": "AP",
-                "default": false
-              },
-              {
-                "label": "LA",
-                "value": "LA",
-                "default": false
-              }
-            ]
-          },
-          {
-            "name": "klusterlet-datacenter",
-            "label": "Klusterlet datacenter",
-            "customtype": "string",
-            "type": "string",
-            "immutable": false,
-            "hidden": false,
-            "required": true,
-            "secured": false,
-            "description": "Klusterlet datacenter",
-            "default": "California"
-          },
-          {
-            "name": "klusterlet-owner",
-            "label": "Klusterlet owner",
-            "customtype": "string",
-            "type": "string",
-            "immutable": false,
-            "hidden": false,
-            "required": false,
-            "secured": false,
-            "description": "Who owns the ICP/Klusterlet",
-            "default": "marketing"
           }
         ]
       }
