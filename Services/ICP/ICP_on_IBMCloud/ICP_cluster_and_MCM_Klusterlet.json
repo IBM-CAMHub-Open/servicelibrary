@@ -647,7 +647,7 @@
                   "cluster_name": "${input_parameters.cluster_name}",
                   "admin_user": "admin",
                   "admin_user_password": "${templates.ibmcloudae8a61bf.output.ibm_cloud_private_admin_password||templates.ibmcloud941a9504.output.ibm_cloud_private_admin_password||templates.ibmcloude347f135.output.ibm_cloud_private_admin_password}",
-                  "icp_inception_image": "ibmcom/icp-inception-amd64:3.2.0-ee",
+                  "icp_inception_image": "${templates.ibmcloudae8a61bf.icp_inception_image||templates.ibmcloud941a9504.icp_inception_image||templates.ibmcloude347f135.icp_inception_image}",
                   "icp_dir": "${templates.ibmcloudae8a61bf.output.icp_install_dir||templates.ibmcloud941a9504.output.icp_install_dir||templates.ibmcloude347f135.output.icp_install_dir}",
                   "man_cluster_on_hub": "${input_parameters.cluster_name}"
                 },
