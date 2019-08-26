@@ -5,7 +5,7 @@
         "name": "ICP cluster add node",
         "description": "This service will add worker, proxy, and management nodes to your IBM Cloud Private cluster.\n\n",
         "image": "serviceicon_8.svg",
-        "category": "ICP on VMware",
+        "category": "Cluster Lifecycle Services",
         "bullets": [],
         "providerDisplayName": "IBM",
         "longDescription": "",

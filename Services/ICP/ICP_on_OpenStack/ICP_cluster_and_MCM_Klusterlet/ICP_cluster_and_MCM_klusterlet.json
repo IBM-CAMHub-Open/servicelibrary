@@ -5,7 +5,7 @@
       "name": "ICP cluster on OpenStack",
       "description": "Deploy ICP on OpenStack and MCM Klusterlet",
       "image": "serviceicon_1.svg",
-      "category": "ICP on OpenStack",
+      "category": "Cluster Lifecycle Services",
       "bullets": [],
       "providerDisplayName": "IBM",
       "longDescription": "Deploy ICP on chosen topology [Single node, Medium with multi worker node and Full HA]\nDeploy MCM template on new ICP\nDeploy helm chart to connect MCM Klusterlet to MCM controller",

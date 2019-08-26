@@ -5,7 +5,7 @@
       "name": "Import existing IKS cluster",
       "description": "Imports an existing IKS cluster into an IBM Multicloud Manager hub-cluster.",
       "image": "serviceicon_1.svg",
-      "category": "MCM on IKS",
+      "category": "Cluster Lifecycle Services",
       "bullets": [
         {
           "title": "Cloud Provider",

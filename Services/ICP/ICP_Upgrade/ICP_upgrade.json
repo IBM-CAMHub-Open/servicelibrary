@@ -5,7 +5,7 @@
         "name": "ICP cluster upgrade",
         "description": "Upgrades the version of the ICP cluster",
         "image": "serviceicon_1.svg",
-        "category": "ICP Upgrade",
+        "category": "Cluster Lifecycle Services",
         "bullets": [],
         "providerDisplayName": "IBM",
         "longDescription": "",

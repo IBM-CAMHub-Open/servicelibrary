@@ -5,7 +5,7 @@
       "name": "Import existing GKE cluster",
       "description": "Imports an existing GKE cluster into an IBM Multicloud Manager hub-cluster.",
       "image": "serviceicon_1.svg",
-      "category": "MCM on GKE",
+      "category": "Cluster Lifecycle Services",
       "bullets": [
         {
           "title": "Cloud Provider",

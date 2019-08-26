@@ -5,7 +5,7 @@
       "name": "MCM charts on ICP",
       "description": "Loads the MCM docker images and Helm charts into an existing IBM Cloud Private (ICP) cluster",
       "image": "serviceicon_1.svg",
-      "category": "MCM on ICP",
+      "category": "Cluster Lifecycle Services",
       "bullets": [],
       "providerDisplayName": "IBM",
       "longDescription": "Loads the MCM docker images and helm charts into an existing IBM Cloud Private cluster",
