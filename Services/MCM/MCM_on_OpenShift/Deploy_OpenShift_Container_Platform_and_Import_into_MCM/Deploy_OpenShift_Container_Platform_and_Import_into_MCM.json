@@ -23,8 +23,8 @@
     },
     "tags": [
       {
-        "name": "Request_Group",
-        "label": "Request_Group",
+        "name": "request_group",
+        "label": "request_group",
         "type": "string",
         "immutable": true,
         "hidden": false,
@@ -37,8 +37,8 @@
         "permission": "Read-Only"
       },
       {
-        "name": "Request_User",
-        "label": "Request_User",
+        "name": "request_user",
+        "label": "request_user",
         "type": "string",
         "immutable": true,
         "hidden": false,
@@ -51,8 +51,8 @@
         "permission": "Read-Only"
       },
       {
-        "name": "Service_Name",
-        "label": "Service_Name",
+        "name": "service_name",
+        "label": "service_name",
         "type": "string",
         "immutable": true,
         "hidden": false,
@@ -65,8 +65,8 @@
         "permission": "Read-Only"
       },
       {
-        "name": "Service_Identifier",
-        "label": "Service_Identifier",
+        "name": "service_identifier",
+        "label": "service_identifier",
         "type": "string",
         "immutable": true,
         "hidden": false,
@@ -594,8 +594,8 @@
             "required": true,
             "secured": false,
             "description": "OpenShift Container Platform Master Node on VMware Data Object",
-            "default": "DefaultNoBastionHostRequired",
-            "datatype": "bastionhost"
+            "default": "",
+            "datatype": "openshift_master_node_on_vmware"
           },
           {
             "name": "openshift_lb_node_on_vmware",
@@ -607,8 +607,8 @@
             "required": true,
             "secured": false,
             "description": "OpenShift Container Platform LB Node on VMware",
-            "default": "DefaultNoBastionHostRequired",
-            "datatype": "bastionhost"
+            "default": "",
+            "datatype": "openshift_lb_node_on_vmware"
           },
           {
             "name": "openshift_infra_node_on_vmware",
@@ -620,8 +620,8 @@
             "required": true,
             "secured": false,
             "description": "OpenShift Container Platform Infrastructure Node on VMware Data Object",
-            "default": "DefaultNoBastionHostRequired",
-            "datatype": "bastionhost"
+            "default": "",
+            "datatype": "openshift_infra_node_on_vmware"
           },
           {
             "name": "openshift_etcd_node_on_vmware",
@@ -634,7 +634,7 @@
             "secured": false,
             "description": "OpenShift Container Platform ETCD Node on VMware Data Object",
             "default": "",
-            "datatype": "bastionhost"
+            "datatype": "openshift_etcd_node_on_vmware"
           },
           {
             "name": "openshift_compute_node_on_vmware",
@@ -646,8 +646,8 @@
             "required": true,
             "secured": false,
             "description": "OpenShift Container Platform Compute Node on VMware Data Object",
-            "default": "DefaultNoBastionHostRequired",
-            "datatype": "bastionhost"
+            "default": "",
+            "datatype": "openshift_compute_node_on_vmware"
           },
           {
             "name": "master_node_hostname_ip",
@@ -756,8 +756,8 @@
             "required": true,
             "secured": false,
             "description": "",
-            "default": "DefaultNoBastionHostRequired",
-            "datatype": "bastionhost"
+            "default": "openshift_single_node_on_vmware",
+            "datatype": ""
           },
           {
             "name": "single_node_hostname_ip",
