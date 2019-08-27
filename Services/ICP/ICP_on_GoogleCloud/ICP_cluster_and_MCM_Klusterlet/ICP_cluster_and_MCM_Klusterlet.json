@@ -5,7 +5,7 @@
       "name": "ICP cluster on Google Cloud",
       "description": "Deploys ICP cluster onto Google Cloud, loads the MCM 3.2.0 docker images and deploys the MCM Klusterlet v3.2.0",
       "image": "serviceicon_5.svg",
-      "category": "Cluster lifecycle services",
+      "category": "Cluster Lifecycle Services",
       "bullets": [
         {
           "title": "Cloud Provider",
