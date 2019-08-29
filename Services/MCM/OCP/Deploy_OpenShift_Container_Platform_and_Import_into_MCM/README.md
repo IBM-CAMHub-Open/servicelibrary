@@ -59,3 +59,9 @@ The following service plans are defined:
 |LB Node Hostname and IP|map|LB Node Hostname and IP. Optional|
 |Compute Node Hostname and IP|map|Compute Node Hostname and IP address. One or more. For GlusterFS, at least 3 compute nodes are required|
 |Enable Load Balancer|string|Indicates wether a load balancer will be deployed with the cluster. Defaults to true.|
+
+### License and Maintainer
+
+Copyright IBM Corp. 2019
+
+Service Version - 3.2.0  
