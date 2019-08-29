@@ -3,7 +3,7 @@
     "specVersion": "v3",
     "catalog_metadata": {
       "name": "OCP cluster v3_11 on VMware",
-      "description": "Deploys OpenShift 3.11 cluster on VMware and imports MCM Klusterlet. For more information refere to the service documentation in <a href=\"https://github.com/IBM-CAMHub-Open/servicelibrary/tree/3.2.0/Services/MCM/OCP/Deploy_OpenShift_Container_Platform_and_Import_into_MCM\">https://github.com/IBM-CAMHub-Open/servicelibrary </a>",
+      "description": "Deploys OpenShift 3.11 cluster on VMware and imports MCM Klusterlet.",
       "image": "serviceicon_1.svg",
       "category": "Cluster Lifecycle Services",
       "bullets": [
