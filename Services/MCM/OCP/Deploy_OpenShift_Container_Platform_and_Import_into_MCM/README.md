@@ -20,7 +20,7 @@ In this topology, each one of the following services can have its own dedicated 
  - compute (one or more. At least 3 nodes if glusterFS is enabled)
  Refer to the template documentation for more details.
 
-The second activity of the service is the terraform template that performs an MCM import which will register the newly deployed MCM cluster with an existing MCM controller(hub)
+The second activity of the service is [IBM Multicloud Manager Klusterlet on OpenShift](https://github.com/IBM-CAMHub-Open/template_mcm_install/tree/3.2.0/OCP/terraform) It performs a MCM import which will register the newly deployed MCM cluster with an existing MCM controller(hub) 
 
 ## Service input
 The following service plans are defined:

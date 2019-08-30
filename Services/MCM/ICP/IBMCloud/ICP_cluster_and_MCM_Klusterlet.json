@@ -111,7 +111,8 @@
           },
           {
             "name": "public_key_name",
-            "label": "Public Key Name",
+            "label": "Array of SSH keys for created resources",
+            "description": "Array of SSH keys to add to root user for all created VSI instances",
             "customtype": "list",
             "type": "list",
             "immutable": false,
@@ -125,13 +126,13 @@
           {
             "name": "datacenter",
             "label": "Datacenter",
+            "description": "IBM Cloud datacenter to create the cluster in.",
             "customtype": "string",
             "type": "string",
             "immutable": false,
             "hidden": false,
             "required": true,
             "secured": false,
-            "description": "",
             "options": [
               {
                 "value": "ams01",
@@ -146,24 +147,12 @@
                 "label": "Chennai, India"
               },
               {
-                "value": "dal01",
-                "label": "Dallas 01, USA"
-              },
-              {
-                "value": "dal02",
-                "label": "Dallas 02, USA"
-              },
-              {
                 "value": "dal05",
                 "label": "Dallas 05, USA"
               },
               {
                 "value": "dal06",
                 "label": "Dallas 06, USA"
-              },
-              {
-                "value": "dal07",
-                "label": "Dallas 07, USA"
               },
               {
                 "value": "dal09",
@@ -220,7 +209,7 @@
               },
               {
                 "value": "mex01",
-                "label": "Querétaro, Mexico"
+                "label": "Quer\u00e9taro, Mexico"
               },
               {
                 "value": "sjc01",
@@ -229,6 +218,10 @@
               {
                 "value": "sjc03",
                 "label": "San Jose 03, USA"
+              },
+              {
+                "value": "sjc04",
+                "label": "San Jose 04, USA"
               },
               {
                 "value": "sao01",
@@ -265,6 +258,14 @@
               {
                 "value": "wdc04",
                 "label": "Washington, D.C. 04, USA"
+              },
+              {
+                "value": "wdc06",
+                "label": "Washington, D.C. 06, USA"
+              },
+              {
+                "value": "wdc07",
+                "label": "Washington, D.C. 07, USA"
               }
             ]
           },
@@ -277,7 +278,7 @@
             "hidden": false,
             "required": true,
             "secured": false,
-            "description": ""
+            "description": "Cluster name. The name must be 1-52 alphanumeric characters and dash"
           },
           {
             "name": "private_key",
@@ -293,19 +294,20 @@
           },
           {
             "name": "image_location",
-            "label": "ICp EE Image Location",
+            "label": "ICP EE Image Location",
             "customtype": "string",
             "type": "string",
             "immutable": false,
             "hidden": false,
             "required": false,
             "secured": false,
-            "description": "",
+            "description": "URI for the ICP image package location",
             "default": ""
           },
           {
             "name": "boot",
-            "label": "boot",
+            "label": "Boot Node Configuration",
+            "description": "Boot Node Configuration",
             "customtype": "map",
             "type": "map",
             "immutable": false,
@@ -325,7 +327,8 @@
           },
           {
             "name": "master",
-            "label": "master",
+            "label": "Master Node Configuration",
+            "description": "Master Node Configuration",
             "customtype": "map",
             "type": "map",
             "immutable": false,
@@ -345,7 +348,8 @@
           },
           {
             "name": "mgmt",
-            "label": "mgmt",
+            "label": "Management Node Configuration",
+            "description": "Management Node Configuration",
             "customtype": "map",
             "type": "map",
             "immutable": false,
@@ -365,7 +369,8 @@
           },
           {
             "name": "proxy",
-            "label": "proxy",
+            "label": "Proxy Node Configuration",
+            "description": "Proxy Node Configuration",
             "customtype": "map",
             "type": "map",
             "immutable": false,
@@ -385,7 +390,8 @@
           },
           {
             "name": "va",
-            "label": "va",
+            "label": "VA Node Configuration",
+            "description": "Vulnerability Advisor (VA) Node Configuration",
             "customtype": "map",
             "type": "map",
             "immutable": false,
@@ -405,7 +411,8 @@
           },
           {
             "name": "worker",
-            "label": "worker",
+            "label": "Worker Node Configuration",
+            "description": "Worker Node Configuration",
             "customtype": "map",
             "type": "map",
             "immutable": false,
@@ -724,24 +731,12 @@
                 "label": "Chennai, India"
               },
               {
-                "value": "dal01",
-                "label": "Dallas 01, USA"
-              },
-              {
-                "value": "dal02",
-                "label": "Dallas 02, USA"
-              },
-              {
                 "value": "dal05",
                 "label": "Dallas 05, USA"
               },
               {
                 "value": "dal06",
                 "label": "Dallas 06, USA"
-              },
-              {
-                "value": "dal07",
-                "label": "Dallas 07, USA"
               },
               {
                 "value": "dal09",
@@ -798,7 +793,7 @@
               },
               {
                 "value": "mex01",
-                "label": "Querétaro, Mexico"
+                "label": "Quer\u00e9taro, Mexico"
               },
               {
                 "value": "sjc01",
@@ -807,6 +802,10 @@
               {
                 "value": "sjc03",
                 "label": "San Jose 03, USA"
+              },
+              {
+                "value": "sjc04",
+                "label": "San Jose 04, USA"
               },
               {
                 "value": "sao01",
@@ -843,6 +842,14 @@
               {
                 "value": "wdc04",
                 "label": "Washington, D.C. 04, USA"
+              },
+              {
+                "value": "wdc06",
+                "label": "Washington, D.C. 06, USA"
+              },
+              {
+                "value": "wdc07",
+                "label": "Washington, D.C. 07, USA"
               }
             ]
           },
@@ -888,9 +895,10 @@
             "type": "map",
             "immutable": true,
             "hidden": true,
-            "required": true,
+            "required": false,
             "secured": false,
             "default": {
+              "nodes": "0",
               "cpu_cores": "4",
               "memory": "4096",
               "disk_size": "100",
@@ -908,10 +916,10 @@
             "type": "map",
             "immutable": true,
             "hidden": true,
-            "required": true,
+            "required": false,
             "secured": false,
             "default": {
-              "nodes": "3",
+              "nodes": "1",
               "cpu_cores": "8",
               "memory": "16384",
               "disk_size": "100",
@@ -928,7 +936,7 @@
             "type": "map",
             "immutable": true,
             "hidden": true,
-            "required": true,
+            "required": false,
             "secured": false,
             "default": {
               "nodes": "1",
@@ -948,10 +956,10 @@
             "type": "map",
             "immutable": true,
             "hidden": true,
-            "required": true,
+            "required": false,
             "secured": false,
             "default": {
-              "nodes": "3",
+              "nodes": "1",
               "cpu_cores": "2",
               "memory": "4096",
               "disk_size": "100",
@@ -968,7 +976,7 @@
             "type": "map",
             "immutable": true,
             "hidden": true,
-            "required": true,
+            "required": false,
             "secured": false,
             "default": {
               "nodes": "0",
@@ -988,10 +996,10 @@
             "type": "map",
             "immutable": true,
             "hidden": true,
-            "required": true,
+            "required": false,
             "secured": false,
             "default": {
-              "nodes": "3",
+              "nodes": "1",
               "cpu_cores": "4",
               "memory": "16384",
               "disk_size": "100",
@@ -1081,24 +1089,12 @@
                 "label": "Chennai, India"
               },
               {
-                "value": "dal01",
-                "label": "Dallas 01, USA"
-              },
-              {
-                "value": "dal02",
-                "label": "Dallas 02, USA"
-              },
-              {
                 "value": "dal05",
                 "label": "Dallas 05, USA"
               },
               {
                 "value": "dal06",
                 "label": "Dallas 06, USA"
-              },
-              {
-                "value": "dal07",
-                "label": "Dallas 07, USA"
               },
               {
                 "value": "dal09",
@@ -1155,7 +1151,7 @@
               },
               {
                 "value": "mex01",
-                "label": "Querétaro, Mexico"
+                "label": "Quer\u00e9taro, Mexico"
               },
               {
                 "value": "sjc01",
@@ -1164,6 +1160,10 @@
               {
                 "value": "sjc03",
                 "label": "San Jose 03, USA"
+              },
+              {
+                "value": "sjc04",
+                "label": "San Jose 04, USA"
               },
               {
                 "value": "sao01",
@@ -1200,6 +1200,14 @@
               {
                 "value": "wdc04",
                 "label": "Washington, D.C. 04, USA"
+              },
+              {
+                "value": "wdc06",
+                "label": "Washington, D.C. 06, USA"
+              },
+              {
+                "value": "wdc07",
+                "label": "Washington, D.C. 07, USA"
               }
             ]
           },
@@ -1245,9 +1253,10 @@
             "type": "map",
             "immutable": true,
             "hidden": true,
-            "required": true,
+            "required": false,
             "secured": false,
             "default": {
+              "nodes": "0",
               "cpu_cores": "4",
               "memory": "4096",
               "disk_size": "100",
@@ -1265,10 +1274,10 @@
             "type": "map",
             "immutable": true,
             "hidden": true,
-            "required": true,
+            "required": false,
             "secured": false,
             "default": {
-              "nodes": "3",
+              "nodes": "1",
               "cpu_cores": "8",
               "memory": "16384",
               "disk_size": "100",
@@ -1285,7 +1294,7 @@
             "type": "map",
             "immutable": true,
             "hidden": true,
-            "required": true,
+            "required": false,
             "secured": false,
             "default": {
               "nodes": "1",
@@ -1305,10 +1314,10 @@
             "type": "map",
             "immutable": true,
             "hidden": true,
-            "required": true,
+            "required": false,
             "secured": false,
             "default": {
-              "nodes": "3",
+              "nodes": "1",
               "cpu_cores": "2",
               "memory": "4096",
               "disk_size": "100",
@@ -1325,7 +1334,7 @@
             "type": "map",
             "immutable": true,
             "hidden": true,
-            "required": true,
+            "required": false,
             "secured": false,
             "default": {
               "nodes": "0",
@@ -1345,7 +1354,7 @@
             "type": "map",
             "immutable": true,
             "hidden": true,
-            "required": true,
+            "required": false,
             "secured": false,
             "default": {
               "nodes": "3",
@@ -1438,24 +1447,12 @@
                 "label": "Chennai, India"
               },
               {
-                "value": "dal01",
-                "label": "Dallas 01, USA"
-              },
-              {
-                "value": "dal02",
-                "label": "Dallas 02, USA"
-              },
-              {
                 "value": "dal05",
                 "label": "Dallas 05, USA"
               },
               {
                 "value": "dal06",
                 "label": "Dallas 06, USA"
-              },
-              {
-                "value": "dal07",
-                "label": "Dallas 07, USA"
               },
               {
                 "value": "dal09",
@@ -1512,7 +1509,7 @@
               },
               {
                 "value": "mex01",
-                "label": "Querétaro, Mexico"
+                "label": "Quer\u00e9taro, Mexico"
               },
               {
                 "value": "sjc01",
@@ -1521,6 +1518,10 @@
               {
                 "value": "sjc03",
                 "label": "San Jose 03, USA"
+              },
+              {
+                "value": "sjc04",
+                "label": "San Jose 04, USA"
               },
               {
                 "value": "sao01",
@@ -1557,6 +1558,14 @@
               {
                 "value": "wdc04",
                 "label": "Washington, D.C. 04, USA"
+              },
+              {
+                "value": "wdc06",
+                "label": "Washington, D.C. 06, USA"
+              },
+              {
+                "value": "wdc07",
+                "label": "Washington, D.C. 07, USA"
               }
             ]
           },
@@ -1601,10 +1610,11 @@
             "customtype": "map",
             "type": "map",
             "immutable": true,
-            "hidden": true,
+            "hidden": false,
             "required": true,
             "secured": false,
             "default": {
+              "nodes": "1",
               "cpu_cores": "4",
               "memory": "4096",
               "disk_size": "100",
@@ -1621,7 +1631,7 @@
             "customtype": "map",
             "type": "map",
             "immutable": true,
-            "hidden": true,
+            "hidden": false,
             "required": true,
             "secured": false,
             "default": {
@@ -1641,7 +1651,7 @@
             "customtype": "map",
             "type": "map",
             "immutable": true,
-            "hidden": true,
+            "hidden": false,
             "required": true,
             "secured": false,
             "default": {
@@ -1662,7 +1672,7 @@
             "type": "map",
             "immutable": true,
             "hidden": true,
-            "required": true,
+            "required": false,
             "secured": false,
             "default": {
               "nodes": "3",
@@ -1681,7 +1691,7 @@
             "customtype": "map",
             "type": "map",
             "immutable": true,
-            "hidden": true,
+            "hidden": false,
             "required": true,
             "secured": false,
             "default": {
@@ -1701,7 +1711,7 @@
             "customtype": "map",
             "type": "map",
             "immutable": true,
-            "hidden": true,
+            "hidden": false,
             "required": true,
             "secured": false,
             "default": {
