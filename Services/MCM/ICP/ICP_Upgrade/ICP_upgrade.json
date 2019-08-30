@@ -2,15 +2,15 @@
     "service": {
       "specVersion": "v3",
       "catalog_metadata": {
-        "name": "ICP cluster upgrade",
+        "name": "ICP v3_2_0 cluster upgrade",
         "description": "Upgrades the version of the ICP cluster",
         "image": "serviceicon_1.svg",
         "category": "Cluster Lifecycle Services",
         "bullets": [],
         "providerDisplayName": "IBM",
         "longDescription": "",
-        "documentationUrl": "https://www.ibm.com/support/knowledgecenter/SS2L37_3.1.2.0/content/cam_content_overview_summary.html",
-        "supportUrl": "https://www.ibm.com/support/knowledgecenter/SS2L37_3.1.2.0/cam_ordering_services.html",
+        "documentationUrl": "https://www.ibm.com/support/knowledgecenter/SS2L37_3.2.0.0/content/cam_content_overview_summary.html",
+        "supportUrl": "https://www.ibm.com/support/knowledgecenter/SS2L37_3.2.0.0/cam_ordering_services.html",
         "bindable": false,
         "updatable": "",
         "systemTags": true,
@@ -146,32 +146,11 @@
               "customtype": "string",
               "type": "string",
               "immutable": false,
-              "hidden": false,
+              "hidden": true,
               "required": false,
               "secured": false,
-              "description": "New ICP version to upgrade",
-              "options": [
-                {
-                  "label": "ICP 2.1.0.3",
-                  "value": "2.1.0.3",
-                  "default": false
-                },
-                {
-                  "label": "ICP 2.1.0.3 Fix Pack 1",
-                  "value": "2.1.0.3 Fix Pack 1",
-                  "default": true
-                },
-                {
-                  "label": "ICP 3.1.0",
-                  "value": "3.1.0",
-                  "default": false
-                },
-                {
-                  "label": "ICP 3.1.2",
-                  "value": "3.1.2",
-                  "default": false
-                }
-              ]
+              "default": "3.2.0",
+              "description": "New ICP version to upgrade"
             },
             {
               "name": "new_icp_binary_url",
@@ -209,17 +188,18 @@
               "description": "Kube apiserver secure port",
               "default": "8001"
             },
-            {
-              "name": "cloud_connection",
-              "label": "Cloud connection",
-              "customtype": "string",
-              "type": "string",
-              "immutable": false,
-              "hidden": false,
-              "required": true,
-              "secured": false,
-              "description": "Cloud connection to connect to ICP cluster"
-            }
+			{
+				"name": "cloud_connection",
+				"label": "Cloud Connection",
+				"customtype": "string",
+				"type": "connection",
+				"provider": "IBM Cloud Private",
+				"immutable": false,
+				"hidden": false,
+				"required": false,
+				"secured": false,
+				"description": "Cloud connection to connect to ICP cluster."
+			}
           ],
           "flow": {
             "conditions": [],
@@ -228,7 +208,7 @@
                 "IBM Cloud Private Upgrade": {
                   "title": "IBM Cloud Private Upgrade_8d0fdb",
                   "template_name": "IBM Cloud Private Upgrade",
-                  "version": "2.0",
+                  "version": "3.2.0",
                   "id": "ibmcloud305e7b07",
                   "template_type": "Terraform",
                   "template_content_type": "IBM Cloud Private",

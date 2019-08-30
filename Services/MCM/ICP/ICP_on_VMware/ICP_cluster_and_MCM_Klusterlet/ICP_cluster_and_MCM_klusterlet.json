@@ -109,6 +109,17 @@
 						"permission": "Read-Write",
 						"action": "Provision"
 					}, {
+						"name": "kub_version",
+						"label": "Kubernetes version",
+						"customtype": "string",
+						"type": "string",
+						"immutable": false,
+						"hidden": true,
+						"required": true,
+						"secured": false,
+						"description": "kubernetes version to install",
+						"default": "1.11.0"
+					},{
 						"name": "docker_binary_url",
 						"label": "Docker binary download URL",
 						"customtype": "string",
@@ -179,7 +190,7 @@
 						"hidden": false,
 						"required": true,
 						"secured": false,
-						"description": "To enable kibana on ICP cluster, select true",
+						"description": "Select true to enable kibana on ICP cluster, false otherwise.",
 						"options": [
 							{
 								"label": "True",
@@ -200,7 +211,7 @@
 						"hidden": false,
 						"required": true,
 						"secured": false,
-						"description": "To enable monitoring on ICP cluster",
+						"description": "Select true to enable monitoring on ICP cluster, false otherwise.",
 						"options": [
 							{
 								"label": "True",
@@ -280,7 +291,7 @@
 						"hidden": false,
 						"required": true,
 						"secured": false,
-						"description": "To enable metering on ICP cluster",
+						"description": "Select true to enable metering on ICP cluster, false otherwise.",
 						"options": [
 							{
 								"label": "True",
@@ -301,7 +312,7 @@
 						"hidden": false,
 						"required": true,
 						"secured": false,
-						"description": "Enable management node",
+						"description": "Select true to create management node, false otherwise.",
 						"options": [
 							{
 								"label": "True",
@@ -374,7 +385,7 @@
 						"hidden": false,
 						"required": true,
 						"secured": false,
-						"description": "Enable VA",
+						"description": "Select true to create VA node, false otherwise.",
 						"options": [
 							{
 								"label": "True",
@@ -430,7 +441,7 @@
 						"hidden": false,
 						"required": true,
 						"secured": false,
-						"description": "Enable NFS for PV",
+						"description": "Select true to create NFS node for PV, false otherwise.",
 						"options": [
 							{
 								"label": "True",
@@ -615,6 +626,7 @@
 									"icp_admin_user": "${input_parameters.icp_admin_user}",
 									"icp_admin_password": "${input_parameters.icp_admin_password}",
 									"icp_version": "${input_parameters.icp_version}",
+									"kub_version": "${input_parameters.kub_version}",
 									"singlenode_hostname_ip": "${input_parameters.singlenode_hostname_ip}",
 									"singlenode_memory": "${datatypes.icp_single_node_on_vmware.memory}",
 									"singlenode_vcpu": "${datatypes.icp_single_node_on_vmware.vcpu}",
@@ -671,6 +683,7 @@
 									"proxy_lb_address": "none",
 									"icp_binary_url": "${input_parameters.icp_binary_url}",
 									"icp_version": "${input_parameters.icp_version}",
+									"kub_version": "${input_parameters.kub_version}",
 									"enable_vm_management": "${input_parameters.enable_vm_management}",
 									"manage_hostname_ip": "${input_parameters.manage_hostname_ip}",
 									"manage_memory": "${datatypes.icp_mgmt_node_on_vmware.memory}",
@@ -768,6 +781,7 @@
 									"icp_admin_password": "${input_parameters.icp_admin_password}",
 									"icp_binary_url": "${input_parameters.icp_binary_url}",
 									"icp_version": "${input_parameters.icp_version}",
+									"kub_version": "${input_parameters.kub_version}",
 									"enable_vm_management": "${input_parameters.enable_vm_management}",
 									"manage_hostname_ip": "${input_parameters.manage_hostname_ip}",
 									"master_hostname_ip": "${input_parameters.master_hostname_ip}",
@@ -975,8 +989,8 @@
 						"hidden": false,
 						"required": true,
 						"secured": false,
-						"description": "Domain name",
-						"default": "rtp.raleigh.ibm.com"
+						"description": "Virtual Machine Domain name",
+						"default": ""
 					}, {
 						"name": "vm_clone_timeout",
 						"label": "VM clone timeout period",
@@ -1047,7 +1061,7 @@
 						"secured": true,
 						"description": "ICP admin user password",
 						"regex": "^([a-zA-Z0-9\\-]{32,})$",
-						"regexdesc": "Allow alphanumeric characters or - symbol. Must have at least 32 characters"
+						"regexdesc": "Allow alphanumeric characters or - symbol. Must have at least 32 characters."
 					}, {
 						"name": "enable_kibana",
 						"label": "Enable Kibana",
@@ -1057,7 +1071,7 @@
 						"hidden": false,
 						"required": true,
 						"secured": false,
-						"description": "To enable kibana on ICP cluster, select true",
+						"description": "Select true to enable kibana on ICP cluster, false otherwise.",
 						"options": [
 							{
 								"label": "True",
@@ -1078,7 +1092,7 @@
 						"hidden": false,
 						"required": true,
 						"secured": false,
-						"description": "To enable monitoring on ICP cluster",
+						"description": "Select true to enable monitoring on ICP cluster, false otherwise.",
 						"options": [
 							{
 								"label": "True",
@@ -1099,7 +1113,7 @@
 						"hidden": false,
 						"required": true,
 						"secured": false,
-						"description": "To enable metering on ICP cluster",
+						"description": "Select true to enable metering on ICP cluster, false otherwise.",
 						"options": [
 							{
 								"label": "True",
@@ -1175,7 +1189,7 @@
 						"hidden": true,
 						"required": false,
 						"secured": false,
-						"description": "Enable management node",
+						"description": "Select true to create management node, false otherwise.",
 						"default": "false"
 					}, {
 						"name": "va_hostname_ip",
@@ -1197,7 +1211,7 @@
 						"hidden": true,
 						"required": false,
 						"secured": false,
-						"description": "Enable NFS for PV",
+						"description": "Select true to create NFS node for PV, false otherwise.",
 						"default": "false"
 					}, {
 						"name": "nfs_server_hostname_ip",
@@ -1278,7 +1292,7 @@
 						"hidden": true,
 						"required": true,
 						"secured": false,
-						"description": "Enable VA",
+						"description": "Select true to enable VA node, false otherwise.",
 						"options": [
 							{
 								"label": "True",
@@ -1444,7 +1458,7 @@
 						"hidden": false,
 						"required": true,
 						"secured": false,
-						"description": "Enable management node",
+						"description": "Select true to enable management node, false otherwise.",
 						"options": [
 							{
 								"label": "True",
@@ -1490,7 +1504,7 @@
 						"hidden": false,
 						"required": true,
 						"secured": false,
-						"description": "Enable VA",
+						"description": "Select true to enable VA node, false otherwise.",
 						"options": [
 							{
 								"label": "True",
@@ -1536,7 +1550,7 @@
 						"hidden": false,
 						"required": true,
 						"secured": false,
-						"description": "Enable NFS for PV",
+						"description": "Select true to enable NFS node for PV, false otherwise.",
 						"options": [
 							{
 								"label": "True",
@@ -1709,7 +1723,7 @@
 						"hidden": false,
 						"required": true,
 						"secured": false,
-						"description": "To enable kibana on ICP cluster, select true",
+						"description": "Select true to enable kibana on ICP cluster, false otherwise.",
 						"options": [
 							{
 								"label": "True",
@@ -1730,7 +1744,7 @@
 						"hidden": false,
 						"required": true,
 						"secured": false,
-						"description": "To enable monitoring on ICP cluster",
+						"description": "Select true to enable monitoring on ICP cluster, false otherwise.",
 						"options": [
 							{
 								"label": "True",
@@ -1751,7 +1765,7 @@
 						"hidden": false,
 						"required": true,
 						"secured": false,
-						"description": "To enable metering on ICP cluster",
+						"description": "Select true to enable metering on ICP cluster, false otherwise.",
 						"options": [
 							{
 								"label": "True",
@@ -1957,7 +1971,7 @@
 						"hidden": false,
 						"required": true,
 						"secured": false,
-						"description": "Enable management node",
+						"description": "Select true to create management node, false otherwise.",
 						"options": [
 							{
 								"label": "True",
@@ -2003,7 +2017,7 @@
 						"hidden": false,
 						"required": true,
 						"secured": false,
-						"description": "Enable VA",
+						"description": "Select true to create VA node, false otherwise.",
 						"options": [
 							{
 								"label": "True",
@@ -2049,7 +2063,7 @@
 						"hidden": false,
 						"required": true,
 						"secured": false,
-						"description": "Enable NFS for PV",
+						"description": "Select true to create NFS node for PV, false otherwise.",
 						"options": [
 							{
 								"label": "True",
@@ -2220,7 +2234,7 @@
 						"hidden": false,
 						"required": true,
 						"secured": false,
-						"description": "To enable kibana on ICP cluster, select true",
+						"description": "Select true to enable kibana on ICP cluster, false otherwise.",
 						"options": [
 							{
 								"label": "True",
@@ -2241,7 +2255,7 @@
 						"hidden": false,
 						"required": true,
 						"secured": false,
-						"description": "To enable monitoring on ICP cluster",
+						"description": "Select true to enable monitoring on ICP cluster, false otherwise.",
 						"options": [
 							{
 								"label": "True",
@@ -2262,7 +2276,7 @@
 						"hidden": false,
 						"required": true,
 						"secured": false,
-						"description": "To enable metering on ICP cluster",
+						"description": "Select true to enable metering on ICP cluster, false otherwise.",
 						"options": [
 							{
 								"label": "True",

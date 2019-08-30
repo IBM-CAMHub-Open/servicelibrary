@@ -1,11 +1,13 @@
 # Highly Available ICP Deployment with klusterlet on Amazon EC2
 
-This [IBM Cloud Automation Manager](https://www.ibm.com/support/knowledgecenter/en/SS2L37/product_welcome_cloud_automation_manager.html) service configuration first uses the [AWS provider](https://www.terraform.io/docs/providers/aws/index.html) to provision virtual machines on AWS to prepare VMs and deploy [IBM Cloud Private](https://www.ibm.com/cloud-computing/products/ibm-cloud-private/) 3.2.0 on them.  This configuration then installs the necessary [IBM Multicloud Manager](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.2.0/mcm/getting_started/introduction.html) 3.2.0 assets to the deployed ICP and deploys the [IBM MCM klusterlet provider](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.2.0/mcm/installing/klusterlet.html) (ibm-mcmk-prod helm chart) 3.2.0 to make this ICP deployment a managed cluster. More details on IBM Cloud Automation Manager Service can be found [here](https://www.ibm.com/support/knowledgecenter/en/SS2L37_3.2.1.0/cam_managing_services.html).
+This [IBM Cloud Automation Manager](https://www.ibm.com/support/knowledgecenter/en/SS2L37/product_welcome_cloud_automation_manager.html) service configuration first uses the [AWS provider](https://www.terraform.io/docs/providers/aws/index.html) to provision virtual machines on AWS and deploys [IBM Cloud Private](https://www.ibm.com/cloud-computing/products/ibm-cloud-private/) 3.2.0 on them. This configuration then imports the deployed ICP to [IBM Multicloud Manager](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.2.0/mcm/getting_started/introduction.html) Controller to be managed by the controller.
+
+More details on IBM Cloud Automation Manager Service can be found [here](https://www.ibm.com/support/knowledgecenter/en/SS2L37_3.2.1.0/cam_managing_services.html).
 
 This service is composed of following terraform templates
 
 - [IBM Cloud Private 3.2.0 highly-available cluster in AWS](https://github.com/IBM-CAMHub-Open/template_icp_aws) terraform template.
-- [IBM Multicloud Manager 3.2.0](https://github.com/IBM-CAMHub-Open/template_mcm_install/tree/3.2.0/ICP/terraform) terraform template and 
+- [IBM Multicloud Manager 3.2.0](https://github.com/IBM-CAMHub-Open/template_mcm_install/tree/3.2.0/ICP/terraform) terraform template. 
 
 
 This service can be either deployed from IBM Cloud Automation Manager or from IBM Cloud Private Catalog.
@@ -15,7 +17,7 @@ This service can be either deployed from IBM Cloud Automation Manager or from IB
 
 ## Deploying the service from IBM Cloud Automation Manager
 
-To deploy this service from IBM Cloud Automation Manager navigate to Library > Services > ICP on Amazon EC2 > ICP cluster with klusterlet on Amazon EC2. Fill the following input parameters and deploy the service.
+To deploy this service from IBM Cloud Automation Manager navigate to Library > Services > Cluster Lifecycle Services > ICP cluster v3_2_0 on Amazon EC2. Fill the following input parameters and deploy the service.
 
 Note: Bastion Node, Master Node, Proxy Node, Management Node, Worker Node and Vulnerability Advisor Node are hidden parameters. If you need to change them then make a copy of this service configuration and create a new sevice in IBM Cloud Automation Manager with the new configuration. 
 

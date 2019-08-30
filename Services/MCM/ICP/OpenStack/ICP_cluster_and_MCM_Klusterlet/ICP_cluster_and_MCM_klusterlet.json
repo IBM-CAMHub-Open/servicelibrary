@@ -743,11 +743,11 @@
             "customtype": "string",
             "type": "string",
             "immutable": false,
-            "hidden": false,
+            "hidden": true,
             "required": false,
             "secured": false,
             "description": "NFS server shared folder",
-            "default": "/export"
+            "default": "/var/nfs"
           },
           {
             "name": "cluster_vip",
@@ -1474,7 +1474,7 @@
             "required": false,
             "secured": false,
             "description": "NFS server shared folder",
-            "default": "/export"
+            "default": "/var/nfs"
           },
           {
             "name": "cluster_vip",
@@ -1865,7 +1865,7 @@
             "customtype": "string",
             "type": "string",
             "immutable": false,
-            "hidden": false,
+            "hidden": true,
             "required": false,
             "secured": false,
             "description": "Proxy node vIP",
@@ -2484,11 +2484,11 @@
             "customtype": "string",
             "type": "string",
             "immutable": false,
-            "hidden": false,
+            "hidden": true,
             "required": false,
             "secured": false,
             "description": "NFS server shared folder",
-            "default": "/export"
+            "default": "/var/nfs"
           }
         ]
       },
@@ -3146,11 +3146,11 @@
             "customtype": "string",
             "type": "string",
             "immutable": false,
-            "hidden": false,
+            "hidden": true,
             "required": false,
             "secured": false,
             "description": "NFS server shared folder",
-            "default": "/export"
+            "default": "/var/nfs"
           },
           {
             "name": "cluster_vip",

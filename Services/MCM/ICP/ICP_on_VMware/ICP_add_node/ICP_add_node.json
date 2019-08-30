@@ -2,15 +2,15 @@
     "service": {
       "specVersion": "v3",
       "catalog_metadata": {
-        "name": "ICP cluster add node",
+        "name": "ICP cluster v3_2_0 add node",
         "description": "This service will add worker, proxy, and management nodes to your IBM Cloud Private cluster.\n\n",
         "image": "serviceicon_8.svg",
         "category": "Cluster Lifecycle Services",
         "bullets": [],
         "providerDisplayName": "IBM",
         "longDescription": "",
-        "documentationUrl": "https://www.ibm.com/support/knowledgecenter/SS2L37_3.1.2.0/content/cam_content_overview_summary.html",
-        "supportUrl": "https://www.ibm.com/support/knowledgecenter/SS2L37_3.1.2.0/cam_ordering_services.html",
+        "documentationUrl": "https://www.ibm.com/support/knowledgecenter/SS2L37_3.2.0.0/content/cam_content_overview_summary.html",
+        "supportUrl": "https://www.ibm.com/support/knowledgecenter/SS2L37_3.2.0.0/cam_ordering_services.html",
         "bindable": false,
         "updatable": "",
         "systemTags": true,
@@ -100,6 +100,18 @@
                 }
               ]
             },
+			{
+				"name": "cloud_connection",
+				"label": "Cloud Connection",
+				"customtype": "string",
+				"type": "connection",
+				"provider": "VMware vSphere",
+				"immutable": false,
+				"hidden": true,
+				"required": false,
+				"secured": false,
+				"description": "Name of cloud connection to use"
+			},            
             {
               "name": "boot_vm_ipv4_address",
               "label": "Boot node IPv4 address",
@@ -130,32 +142,11 @@
               "customtype": "string",
               "type": "string",
               "immutable": false,
-              "hidden": false,
+              "hidden": true,
               "required": true,
               "secured": false,
-              "description": "icp_version",
-              "options": [
-                {
-                  "label": "2.1.0.2",
-                  "value": "2.1.0.2",
-                  "default": false
-                },
-                {
-                  "label": "2.1.0.3",
-                  "value": "2.1.0.3",
-                  "default": false
-                },
-                {
-                  "label": "3.1.0",
-                  "value": "3.1.0",
-                  "default": false
-                },
-                {
-                  "label": "3.1.2",
-                  "value": "3.1.2",
-                  "default": true
-                }
-              ]
+              "description": "ICP version",
+              "default": "3.2.0"
             },
             {
               "name": "cluster_location",
@@ -167,7 +158,7 @@
               "required": false,
               "secured": false,
               "description": "ICP cluster folder location",
-              "default": "/root/ibm-cloud-private-x86_64-3.1.2/cluster"
+              "default": "/root/ibm-cloud-private-x86_64-3.2.0/cluster"
             },
             {
               "name": "node_type",
@@ -203,34 +194,6 @@
               ]
             },
             {
-              "name": "vm_dns_servers",
-              "label": "DNS servers",
-              "customtype": "list",
-              "type": "list",
-              "immutable": false,
-              "hidden": false,
-              "required": false,
-              "secured": false,
-              "description": "DNS servers",
-              "default": [
-                ""
-              ]
-            },
-            {
-              "name": "vm_dns_suffixes",
-              "label": "DNS suffixes",
-              "customtype": "list",
-              "type": "list",
-              "immutable": false,
-              "hidden": false,
-              "required": false,
-              "secured": false,
-              "description": "DNS suffixes",
-              "default": [
-                ""
-              ]
-            },
-            {
               "name": "vm_domain",
               "label": "Domain",
               "customtype": "string",
@@ -241,31 +204,7 @@
               "secured": false,
               "description": "network domain",
               "default": ""
-            },
-            {
-              "name": "vm_disk1_datastore",
-              "label": "Datastore",
-              "customtype": "string",
-              "type": "string",
-              "immutable": false,
-              "hidden": false,
-              "required": false,
-              "secured": false,
-              "description": "VMware Datastore",
-              "default": ""
-            },
-            {
-              "name": "vm_template",
-              "label": "VM template",
-              "customtype": "string",
-              "type": "string",
-              "immutable": false,
-              "hidden": false,
-              "required": true,
-              "secured": false,
-              "description": "Vmware VM template",
-              "default": ""
-            },
+            },            
             {
               "name": "vm_os_user",
               "label": "Root user",
@@ -288,54 +227,6 @@
               "required": false,
               "secured": false,
               "description": "Root OS password",
-              "default": ""
-            },
-            {
-              "name": "vsphere_datacenter",
-              "label": "vSphere datacenter",
-              "customtype": "string",
-              "type": "string",
-              "immutable": false,
-              "hidden": false,
-              "required": true,
-              "secured": false,
-              "description": "vSphere datacenter",
-              "default": ""
-            },
-            {
-              "name": "vsphere_resource_pool",
-              "label": "vSphere resource pool",
-              "customtype": "string",
-              "type": "string",
-              "immutable": false,
-              "hidden": false,
-              "required": true,
-              "secured": false,
-              "description": "Vmware vSphere resource pool",
-              "default": ""
-            },
-            {
-              "name": "vm_network_interface_label",
-              "label": "vSphere network portgroup",
-              "customtype": "string",
-              "type": "string",
-              "immutable": false,
-              "hidden": false,
-              "required": false,
-              "secured": false,
-              "description": "VMware vSphere network portgroup, interface label",
-              "default": "VM Network"
-            },
-            {
-              "name": "vm_folder",
-              "label": "vSphere folder",
-              "customtype": "string",
-              "type": "string",
-              "immutable": false,
-              "hidden": false,
-              "required": true,
-              "secured": false,
-              "description": "Vmware vSphere folder to place vm",
               "default": ""
             },
             {
@@ -424,30 +315,6 @@
               "default": ""
             },
             {
-              "name": "worker_vm_ipv4_gateway",
-              "label": "IPv4 network gateway",
-              "customtype": "string",
-              "type": "string",
-              "immutable": false,
-              "hidden": false,
-              "required": true,
-              "secured": false,
-              "description": "IPv4 network gateway",
-              "default": ""
-            },
-            {
-              "name": "worker_vm_ipv4_prefix_length",
-              "label": "Node IPv4 prefix length",
-              "customtype": "string",
-              "type": "string",
-              "immutable": false,
-              "hidden": false,
-              "required": true,
-              "secured": false,
-              "description": "New node IPv4 prefix length / subnetmask",
-              "default": "24"
-            },
-            {
               "name": "vm_security_groups",
               "label": "Security groups",
               "customtype": "list",
@@ -496,17 +363,6 @@
               "secured": false,
               "description": "VM flavour id",
               "default": ""
-            },
-            {
-              "name": "cloud_connection",
-              "label": "Cloud connection",
-              "customtype": "string",
-              "type": "string",
-              "immutable": false,
-              "hidden": false,
-              "required": false,
-              "secured": false,
-              "description": "Cloud connection to connect to backend cloud for deployment"
             }
           ],
           "flow": {
@@ -538,7 +394,7 @@
                 "IBM Cloud Private Node": {
                   "title": "IBM Cloud Private Node_0216f1",
                   "template_name": "IBM Cloud Private Node",
-                  "version": "2.0",
+                  "version": "3.2.0",
                   "id": "ibmcloud15d1eb15",
                   "template_type": "Terraform",
                   "template_content_type": "VMware vSphere",
@@ -554,27 +410,27 @@
                     "icp_version": "${input_parameters.icp_version}",
                     "cluster_location": "${input_parameters.cluster_location}",
                     "node_type": "${input_parameters.node_type}",
-                    "vm_dns_servers": "${input_parameters.vm_dns_servers}",
-                    "vm_dns_suffixes": "${input_parameters.vm_dns_suffixes}",
+					"vm_dns_servers": "${datatypes.vsphere_managed_inventory_definition.dns_servers}",
+					"vm_dns_suffixes": "${datatypes.vsphere_managed_inventory_definition.dns_suffixes}",
+					"vsphere_datacenter": "${datatypes.vsphere_managed_inventory_definition.datacenter}",
+					"vsphere_resource_pool": "${datatypes.vsphere_managed_inventory_definition.resource_pool}",
+					"vm_network_interface_label": "${datatypes.vsphere_managed_inventory_definition.network}",
+					"vm_folder": "${datatypes.vsphere_managed_inventory_definition.vm_folder}",                    
                     "vm_domain": "${input_parameters.vm_domain}",
-                    "vm_disk1_datastore": "${input_parameters.vm_disk1_datastore}",
-                    "vm_disk2_datastore": "${input_parameters.vm_disk1_datastore}",
-                    "vm_template": "${input_parameters.vm_template}",
+                    "vm_disk1_datastore": "${datatypes.vsphere_managed_inventory_definition.datastore}",
+                    "vm_disk2_datastore": "${datatypes.vsphere_managed_inventory_definition.datastore}",
+                    "vm_template": "${datatypes.vsphere_managed_inventory_definition.vm_image_template}",
                     "vm_os_user": "${input_parameters.vm_os_user}",
                     "vm_os_password": "${input_parameters.vm_os_password}",
                     "vm_clone_timeout": "30",
-                    "vsphere_datacenter": "${input_parameters.vsphere_datacenter}",
-                    "vsphere_resource_pool": "${input_parameters.vsphere_resource_pool}",
-                    "vm_network_interface_label": "${input_parameters.vm_network_interface_label}",
-                    "vm_folder": "${input_parameters.vm_folder}",
                     "worker_hostname_ip": "${input_parameters.worker_hostname_ip}",
                     "worker_memory": "${input_parameters.worker_memory}",
                     "worker_vcpu": "${input_parameters.worker_vcpu}",
                     "worker_vm_disk1_size": "${input_parameters.worker_vm_disk1_size}",
                     "worker_enable_glusterFS": "${input_parameters.worker_enable_glusterFS}",
                     "worker_vm_disk2_size": "${input_parameters.worker_vm_disk2_size}",
-                    "worker_vm_ipv4_gateway": "${input_parameters.worker_vm_ipv4_gateway}",
-                    "worker_vm_ipv4_prefix_length": "${input_parameters.worker_vm_ipv4_prefix_length}"
+                    "worker_vm_ipv4_gateway": "${datatypes.vsphere_managed_inventory_definition.vm_ipv4_gateway}",
+                    "worker_vm_ipv4_prefix_length": "${datatypes.vsphere_managed_inventory_definition.vm_ipv4_netmask}"
                   },
                   "outputs": [
                     "ibm_cloud_private_master_ip"
@@ -585,7 +441,7 @@
                 "IBM Cloud Private Node on OpenStack": {
                   "title": "IBM Cloud Private Node on OpenStack_6d5189",
                   "template_name": "IBM Cloud Private Node on OpenStack",
-                  "version": "2.0",
+                  "version": "3.2.0",
                   "id": "ibmcloud77d1fdd2",
                   "template_type": "Terraform",
                   "template_content_type": "OpenStack",
@@ -646,6 +502,31 @@
               "secured": false,
               "default": "vmware"
             },
+			{
+				"name": "cloud_connection",
+				"label": "Cloud Connection",
+				"customtype": "string",
+				"type": "connection",
+				"provider": "VMware vSphere",
+				"immutable": false,
+				"hidden": false,
+				"required": false,
+				"secured": false,
+				"description": "Name of cloud connection to use"
+			},            
+			{
+				"name": "vsphere_managed_inventory_definition",
+				"label": "vSphere Managed Inventory Definition",
+				"customtype": "sharedparameter",
+				"type": "sharedparameter",
+				"immutable": false,
+				"hidden": false,
+				"required": true,
+				"secured": false,
+				"description": "vSphere Managed Inventory Objects that are used in virtual machine creation.",
+				"default": "",
+				"datatype": "vsphere_managed_inventory_definition"
+			},            
             {
               "name": "vm_security_groups",
               "label": "Security groups",
@@ -695,18 +576,6 @@
               "secured": false,
               "description": "VM flavour id",
               "default": "flavour"
-            },
-            {
-              "name": "cloud_connection",
-              "label": "Cloud connection",
-              "customtype": "string",
-              "type": "connection",
-              "provider": "VMware vSphere",
-              "immutable": false,
-              "hidden": false,
-              "required": true,
-              "secured": false,
-              "description": "Cloud connection to connect to backend cloud for deployment"
             }
           ],
           "expanded": false
@@ -726,66 +595,18 @@
               "secured": false,
               "default": "openstack"
             },
-            {
-              "name": "vm_template",
-              "label": "VM template",
-              "customtype": "string",
-              "type": "string",
-              "immutable": true,
-              "hidden": true,
-              "required": true,
-              "secured": false,
-              "description": "Vmware VM template",
-              "default": "temp"
-            },
-            {
-              "name": "vsphere_datacenter",
-              "label": "vSphere datacenter",
-              "customtype": "string",
-              "type": "string",
-              "immutable": true,
-              "hidden": true,
-              "required": true,
-              "secured": false,
-              "description": "vSphere datacenter",
-              "default": "datacenter"
-            },
-            {
-              "name": "vsphere_resource_pool",
-              "label": "vSphere resource pool",
-              "customtype": "string",
-              "type": "string",
-              "immutable": true,
-              "hidden": true,
-              "required": true,
-              "secured": false,
-              "description": "Vmware vSphere resource pool",
-              "default": "rp"
-            },
-            {
-              "name": "vm_network_interface_label",
-              "label": "vSphere network portgroup",
-              "customtype": "string",
-              "type": "string",
-              "immutable": true,
-              "hidden": true,
-              "required": false,
-              "secured": false,
-              "description": "VMware vSphere network portgroup, interface label",
-              "default": "VM Network"
-            },
-            {
-              "name": "vm_folder",
-              "label": "vSphere folder",
-              "customtype": "string",
-              "type": "string",
-              "immutable": true,
-              "hidden": true,
-              "required": true,
-              "secured": false,
-              "description": "Vmware vSphere folder to place vm",
-              "default": "folder"
-            },
+			{
+				"name": "cloud_connection",
+				"label": "Cloud Connection",
+				"customtype": "string",
+				"type": "connection",
+				"provider": "OpenStack",
+				"immutable": false,
+				"hidden": false,
+				"required": false,
+				"secured": false,
+				"description": "Name of cloud connection to use"
+			},            
             {
               "name": "worker_memory",
               "label": "Node memory",
@@ -809,18 +630,6 @@
               "secured": false,
               "description": "New node vCPU",
               "default": "16"
-            },
-            {
-              "name": "cloud_connection",
-              "label": "Cloud connection",
-              "customtype": "string",
-              "type": "connection",
-              "provider": "OpenStack",
-              "immutable": false,
-              "hidden": false,
-              "required": true,
-              "secured": false,
-              "description": "Cloud connection to connect to backend cloud for deployment"
             }
           ]
         }
