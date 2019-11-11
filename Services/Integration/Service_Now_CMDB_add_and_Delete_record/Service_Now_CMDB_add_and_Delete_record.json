@@ -1,0 +1,675 @@
+{
+  "service": {
+    "specVersion": "v3",
+    "version": "2.1",
+    "catalog_metadata": {
+      "name": "Service Now CMDB add and Delete record",
+      "description": "This service is used to deploy a VM on a cloud with middleware software installed.It will also perform an update in CMDB.",
+      "image": "serviceicon_1.svg",
+      "category": "Application Services",
+      "bullets": [
+        {
+          "title": "IPAM Server",
+          "description": "Gat an available ip from IPAM server"
+        },
+        {
+          "title": "IBM WebSphere Network Deployment",
+          "description": "IBM WebSphere Network Deployment V9 on a single virtual machine using IPAM server output"
+        }
+      ],
+      "providerDisplayName": "IBM",
+      "longDescription": "This service is used to deploy a VM on a cloud with middleware software installed.As per user selection application will get deployed and CMDB will get updated with server records.",
+      "documentationUrl": "",
+      "supportUrl": "",
+      "bindable": false,
+      "updatable": "",
+      "author": "admin"
+    },
+    "tags": [],
+    "actions": [
+      {
+        "type": "provision",
+        "name": "Provision",
+        "description": "Default action for deployment of service",
+        "input_parameters": [
+          {
+            "name": "Environment",
+            "label": "Environment",
+            "customtype": "string",
+            "type": "string",
+            "immutable": false,
+            "hidden": false,
+            "required": true,
+            "secured": false,
+            "options": [
+              {
+                "value": "Development",
+                "label": "Development"
+              },
+              {
+                "value": "Test",
+                "label": "Test"
+              },
+              {
+                "value": "Production",
+                "label": "Production"
+              }
+            ]
+          },
+          {
+            "name": "WASNode01-image",
+            "label": "WASNode01-image",
+            "customtype": "string",
+            "type": "string",
+            "immutable": false,
+            "hidden": false,
+            "required": true,
+            "secured": false,
+            "description": "WASNode01-image",
+            "default": "terraform/template/UbantuDockerCE"
+          },
+          {
+            "name": "WASNode01-os_admin_user",
+            "label": "WASNode01-os_admin_user",
+            "customtype": "string",
+            "type": "string",
+            "immutable": false,
+            "hidden": false,
+            "required": true,
+            "secured": false,
+            "description": "WASNode01-os_admin_user",
+            "default": "root"
+          },
+          {
+            "name": "WASNode01-os_password",
+            "label": "WASNode01-os_password",
+            "customtype": "password",
+            "type": "password",
+            "immutable": false,
+            "hidden": false,
+            "required": true,
+            "secured": false,
+            "description": "WASNode01-os_password",
+            "default": "^(cGFzc3cwcmQ=)"
+          },
+          {
+            "name": "user_public_ssh_key",
+            "label": "user_public_ssh_key",
+            "customtype": "string",
+            "type": "string",
+            "immutable": false,
+            "hidden": false,
+            "required": true,
+            "secured": false,
+            "description": "user_public_ssh_key",
+            "default": ""
+          },
+          {
+            "name": "WASNode01_root_disk_size",
+            "label": "WASNode01_root_disk_size",
+            "customtype": "string",
+            "type": "string",
+            "immutable": false,
+            "hidden": false,
+            "required": true,
+            "secured": false,
+            "description": "WASNode01_root_disk_size",
+            "default": ""
+          },
+          {
+            "name": "WASNode01-name",
+            "label": "WASNode01-name",
+            "customtype": "string",
+            "type": "string",
+            "immutable": false,
+            "hidden": false,
+            "required": false,
+            "secured": false,
+            "description": "WASNode01-name",
+            "default": ""
+          },
+          {
+            "name": "WASNode01_root_disk_datastore",
+            "label": "WASNode01_root_disk_datastore",
+            "customtype": "string",
+            "type": "string",
+            "immutable": false,
+            "hidden": false,
+            "required": true,
+            "secured": false,
+            "description": "WASNode01_root_disk_datastore",
+            "default": ""
+          },
+          {
+            "name": "WASNode01_memory",
+            "label": "WASNode01_memory",
+            "customtype": "string",
+            "type": "string",
+            "immutable": false,
+            "hidden": false,
+            "required": true,
+            "secured": false,
+            "description": "WASNode01_memory",
+            "default": ""
+          },
+          {
+            "name": "WASNode01_ipv4_prefix_length",
+            "label": "WASNode01_ipv4_prefix_length",
+            "customtype": "string",
+            "type": "string",
+            "immutable": false,
+            "hidden": false,
+            "required": true,
+            "secured": false,
+            "description": "WASNode01_ipv4_prefix_length",
+            "default": ""
+          },
+          {
+            "name": "WASNode01_network_interface_label",
+            "label": "WASNode01_network_interface_label",
+            "customtype": "string",
+            "type": "string",
+            "immutable": false,
+            "hidden": false,
+            "required": true,
+            "secured": false,
+            "description": "WASNode01_network_interface_label",
+            "default": ""
+          },
+          {
+            "name": "WASNode01_was_security_admin_user_pwd",
+            "label": "WASNode01_was_security_admin_user_pwd",
+            "customtype": "password",
+            "type": "password",
+            "immutable": false,
+            "hidden": false,
+            "required": true,
+            "secured": false,
+            "description": "WASNode01_was_security_admin_user_pwd",
+            "default": ""
+          },
+          {
+            "name": "WASNode01_cluster",
+            "label": "WASNode01_cluster",
+            "customtype": "string",
+            "type": "string",
+            "immutable": false,
+            "hidden": false,
+            "required": true,
+            "secured": false,
+            "description": "WASNode01_cluster",
+            "default": ""
+          },
+          {
+            "name": "WASNode01_datacenter",
+            "label": "WASNode01_datacenter",
+            "customtype": "string",
+            "type": "string",
+            "immutable": false,
+            "hidden": false,
+            "required": true,
+            "secured": false,
+            "description": "WASNode01_datacenter",
+            "default": ""
+          },
+          {
+            "name": "WASNode01_folder",
+            "label": "WASNode01_folder",
+            "customtype": "string",
+            "type": "string",
+            "immutable": false,
+            "hidden": false,
+            "required": true,
+            "secured": false,
+            "description": "WASNode01_folder",
+            "default": ""
+          },
+          {
+            "name": "subject",
+            "label": "Email subject",
+            "customtype": "string",
+            "type": "string",
+            "immutable": false,
+            "hidden": false,
+            "required": true,
+            "secured": false,
+            "description": "Email subject"
+          },
+          {
+            "name": "to",
+            "label": "Email to",
+            "customtype": "string",
+            "type": "string",
+            "immutable": false,
+            "hidden": false,
+            "required": true,
+            "secured": false,
+            "description": "Email to"
+          },
+          {
+            "name": "content",
+            "label": "Email Content",
+            "customtype": "string",
+            "type": "string",
+            "immutable": false,
+            "hidden": false,
+            "required": true,
+            "secured": false,
+            "description": "Email Content"
+          },
+          {
+            "name": "ipv4_address",
+            "label": "ELK ipv4 address",
+            "customtype": "string",
+            "type": "string",
+            "immutable": false,
+            "hidden": false,
+            "required": true,
+            "secured": false,
+            "description": "ELK ipv4 address",
+            "default": ""
+          },
+          {
+            "name": "elk_os_admin_user",
+            "label": "ELK OS admin user",
+            "customtype": "string",
+            "type": "string",
+            "immutable": false,
+            "hidden": false,
+            "required": true,
+            "secured": false,
+            "description": "ELK OS admin user",
+            "default": ""
+          },
+          {
+            "name": "elk_os_admin_password",
+            "label": "elk_os_admin_password",
+            "customtype": "password",
+            "type": "password",
+            "immutable": false,
+            "hidden": false,
+            "required": true,
+            "secured": false,
+            "description": "elk_os_admin_password",
+            "default": ""
+          },
+          {
+            "name": "elk_os_private_ssh_key",
+            "label": "elk_os_private_ssh_key",
+            "customtype": "string",
+            "type": "string",
+            "immutable": false,
+            "hidden": false,
+            "required": true,
+            "secured": false,
+            "description": "elk_os_private_ssh_key",
+            "default": ""
+          },
+          {
+            "name": "elk_logstash_server_ip",
+            "label": "elk_logstash_server_ip",
+            "customtype": "string",
+            "type": "string",
+            "immutable": false,
+            "hidden": false,
+            "required": true,
+            "secured": false,
+            "description": "elk_logstash_server_ip",
+            "default": ""
+          },
+          {
+            "name": "logstash_server_port",
+            "label": "logstash_server_port",
+            "customtype": "string",
+            "type": "string",
+            "immutable": false,
+            "hidden": false,
+            "required": false,
+            "secured": false,
+            "description": "logstash_server_port",
+            "default": ""
+          },
+          {
+            "name": "filebeat_source_url",
+            "label": "filebeat_source_url",
+            "customtype": "string",
+            "type": "string",
+            "immutable": false,
+            "hidden": false,
+            "required": true,
+            "secured": false,
+            "description": "filebeat_source_url",
+            "default": ""
+          },
+          {
+            "name": "monitored_paths",
+            "label": "monitored_paths",
+            "customtype": "list",
+            "type": "list",
+            "immutable": false,
+            "hidden": false,
+            "required": true,
+            "secured": false,
+            "description": "monitored_paths",
+            "default": [
+              ""
+            ]
+          },
+          {
+            "name": "filebeat_config_url",
+            "label": "filebeat_config_url",
+            "customtype": "string",
+            "type": "string",
+            "immutable": false,
+            "hidden": false,
+            "required": true,
+            "secured": false,
+            "description": "filebeat_config_url",
+            "default": ""
+          },
+          {
+            "name": "apm_ip_address",
+            "label": "apm_ip_address",
+            "customtype": "string",
+            "type": "string",
+            "immutable": false,
+            "hidden": false,
+            "required": true,
+            "secured": false,
+            "default": ""
+          },
+          {
+            "name": "apm_user",
+            "label": "apm_user",
+            "customtype": "string",
+            "type": "string",
+            "immutable": false,
+            "hidden": false,
+            "required": true,
+            "secured": false,
+            "description": "apm_user",
+            "default": ""
+          },
+          {
+            "name": "apm_password",
+            "label": "apm_password",
+            "customtype": "password",
+            "type": "password",
+            "immutable": false,
+            "hidden": false,
+            "required": true,
+            "secured": false,
+            "description": "apm_password",
+            "default": ""
+          },
+          {
+            "name": "apm_private_key",
+            "label": "apm_private_key",
+            "customtype": "string",
+            "type": "string",
+            "immutable": false,
+            "hidden": false,
+            "required": false,
+            "secured": false,
+            "description": "apm_private_key",
+            "default": ""
+          },
+          {
+            "name": "apm_location",
+            "label": "apm_location",
+            "customtype": "string",
+            "type": "string",
+            "immutable": false,
+            "hidden": false,
+            "required": true,
+            "secured": false,
+            "description": "apm_location",
+            "default": ""
+          }
+        ],
+        "flow": {
+          "conditions": [
+            {
+              "decision": {
+                "title": "Environment",
+                "options": [
+                  {
+                    "case": "Development",
+                    "sequence": {}
+                  },
+                  {
+                    "case": "Test",
+                    "sequence": {
+                      "0": "elkagent0b3d18c6"
+                    }
+                  },
+                  {
+                    "case": "Production",
+                    "sequence": {
+                      "0": "elkagent165c4d3f",
+                      "1": "apmagente04de514"
+                    }
+                  }
+                ],
+                "id": "decision5d392e66",
+                "description": "Environment",
+                "mapped_parameter": "${input_parameters.Environment}"
+              }
+            }
+          ],
+          "templates": [
+            {
+              "Infoblox Integration Template": {
+                "title": "Infoblox Integration Template_b22b74",
+                "template_name": "Infoblox Integration Template",
+                "version": "2.1",
+                "id": "infoblox02585faa",
+                "template_type": "Terraform",
+                "template_content_type": "Integration",
+                "template_provider": "Other",
+                "instance_name": "",
+                "cloud_connection_name": "Other",
+                "template_data_objects": {
+                  "bastionhost": "DefaultNoBastionHostRequired",
+                  "ipam\\uff0einfoblox": ""
+                },
+                "template_params": {
+                  "hostname": "",
+                  "domain": "${ipam.infoblox.domain}",
+                  "configure_for_dns": "${ipam.infoblox.configure_for_dns}",
+                  "infoblox_ip_address": "${ipam.infoblox.infoblox_ip_address}",
+                  "infoblox_user": "${ipam.infoblox.infoblox_user}",
+                  "infoblox_user_password": "${ipam.infoblox.infoblox_user_password}",
+                  "network": "${ipam.infoblox.network}"
+                },
+                "outputs": [
+                  "assigned_ip_address",
+                  "associated_domain",
+                  "associated_hostname"
+                ]
+              }
+            },
+            {
+              "IBM WebSphere Network Deployment V9 on a single virtual machine": {
+                "title": "IBM WebSphere Network Deployment V9 on a single virtual machine_44425c",
+                "template_name": "IBM WebSphere Network Deployment V9 on a single virtual machine - VMware vSphere",
+                "version": "2.1",
+                "id": "ibmwebspcb078873",
+                "template_type": "Terraform",
+                "template_content_type": "VMware vSphere",
+                "template_provider": "VMware vSphere",
+                "instance_name": "",
+                "cloud_connection_name": "VMware",
+                "template_data_objects": {
+                  "bastionhost": "DefaultNoBastionHostRequired",
+                  "httpproxy": "DefaultNoProxyRequired",
+                  "advanced_content_runtime_chef": "VMware"
+                },
+                "template_params": {
+                  "WASNode01_dns_servers": [
+                    ""
+                  ],
+                  "WASNode01_dns_suffixes": [
+                    ""
+                  ],
+                  "WASNode01_domain": "",
+                  "WASNode01-image": "${input_parameters.WASNode01-image}",
+                  "WASNode01-os_admin_user": "${input_parameters.WASNode01-os_admin_user}",
+                  "WASNode01-os_password": "${input_parameters.WASNode01-os_password}",
+                  "user_public_ssh_key": "${input_parameters.user_public_ssh_key}",
+                  "WASNode01_root_disk_size": "${input_parameters.WASNode01_root_disk_size}",
+                  "WASNode01-name": "${input_parameters.WASNode01-name}",
+                  "WASNode01_root_disk_datastore": "${input_parameters.WASNode01_root_disk_datastore}",
+                  "WASNode01_ipv4_gateway": "${input_parameters.WASNode01_root_disk_datastore}",
+                  "WASNode01_ipv4_address": "${templates.infoblox02585faa.output.assigned_ip_address}",
+                  "WASNode01_memory": "${input_parameters.WASNode01_memory}",
+                  "WASNode01_ipv4_prefix_length": "${input_parameters.WASNode01_ipv4_prefix_length}",
+                  "WASNode01_number_of_vcpu": "${input_parameters.WASNode01_ipv4_prefix_length}",
+                  "WASNode01_network_interface_label": "${input_parameters.WASNode01_network_interface_label}",
+                  "WASNode01_was_version": "9.0.0.8",
+                  "WASNode01_was_profiles_standalone_profiles_standalone1_cell": "cell01",
+                  "WASNode01_was_wsadmin_standalone_jvmproperty_property_value_maximum": "512",
+                  "WASNode01_was_wsadmin_standalone_jvmproperty_property_value_initial": "256",
+                  "WASNode01_was_profiles_standalone_profiles_standalone1_profile": "AppSrv01",
+                  "WASNode01_was_java_version": "8.0.5.17",
+                  "WASNode01_was_security_admin_user": "wasadmin",
+                  "WASNode01_was_security_admin_user_pwd": "${input_parameters.WASNode01_was_security_admin_user_pwd}",
+                  "WASNode01_was_profiles_standalone_profiles_standalone1_keystorepassword": "${input_parameters.WASNode01_was_security_admin_user_pwd}",
+                  "WASNode01_was_os_users_was_name": "wasadmin",
+                  "WASNode01_was_install_dir": "/opt/IBM/WebSphere/AppServer",
+                  "WASNode01_was_profile_dir": "/opt/IBM/WebSphere/AppServer/profiles",
+                  "WASNode01_was_os_users_was_gid": "wasgrp",
+                  "WASNode01_cluster": "${input_parameters.WASNode01_cluster}",
+                  "WASNode01_datacenter": "${input_parameters.WASNode01_datacenter}",
+                  "WASNode01_folder": "${input_parameters.WASNode01_folder}",
+                  "WASNode01_adapter_type": "vmxnet3",
+                  "WASNode01_resource_pool": "${input_parameters.WASNode01_folder}"
+                },
+                "outputs": [
+                  "WASNode01_ip",
+                  "WASNode01_name",
+                  "WASNode01_roles",
+                  "stack_id"
+                ]
+              }
+            },
+            {
+              "ELK Agent Installation Template": {
+                "title": "Test_ELK Agent Installation Template_81de3d",
+                "template_name": "ELK Agent Installation Template",
+                "version": "2.1",
+                "id": "elkagent0b3d18c6",
+                "template_type": "Terraform",
+                "template_content_type": "Integration",
+                "template_provider": "Other",
+                "instance_name": "",
+                "cloud_connection_name": "Other",
+                "template_data_objects": {
+                  "bastionhost": "DefaultNoBastionHostRequired"
+                },
+                "template_params": {
+                  "ipv4_address": "${input_parameters.ipv4_address}",
+                  "os_admin_user": "${input_parameters.os_admin_user}",
+                  "os_admin_password": "${input_parameters.elk_os_admin_password}",
+                  "os_private_ssh_key": "${input_parameters.elk_os_private_ssh_key}",
+                  "logstash_server_ip": "${input_parameters.elk_logstash_server_ip}",
+                  "logstash_server_port": "${input_parameters.logstash_server_port}",
+                  "filebeat_source_url": "${input_parameters.filebeat_source_url}",
+                  "filebeat_config_url": "${input_parameters.filebeat_config_url}",
+                  "monitored_paths": "${input_parameters.monitored_paths}"
+                },
+                "outputs": []
+              }
+            },
+            {
+              "ELK Agent Installation Template": {
+                "title": "Prod_ELK Agent Installation Template_81de3d",
+                "template_name": "ELK Agent Installation Template",
+                "version": "2.1",
+                "id": "elkagent165c4d3f",
+                "template_type": "Terraform",
+                "template_content_type": "Integration",
+                "template_provider": "Other",
+                "instance_name": "",
+                "cloud_connection_name": "Other",
+                "template_data_objects": {
+                  "bastionhost": "DefaultNoBastionHostRequired"
+                },
+                "template_params": {
+                  "ipv4_address": "${input_parameters.ipv4_address}",
+                  "os_admin_user": "${input_parameters.os_admin_user}",
+                  "os_admin_password": "${input_parameters.elk_os_admin_password}",
+                  "os_private_ssh_key": "${input_parameters.elk_os_private_ssh_key}",
+                  "logstash_server_ip": "${input_parameters.elk_logstash_server_ip}",
+                  "logstash_server_port": "${input_parameters.logstash_server_port}",
+                  "filebeat_source_url": "${input_parameters.filebeat_source_url}",
+                  "filebeat_config_url": "${input_parameters.filebeat_config_url}",
+                  "monitored_paths": "${input_parameters.monitored_paths}"
+                },
+                "outputs": []
+              }
+            },
+            {
+              "APM Agent Installation Template": {
+                "title": "APM Agent Installation Template_0dca44",
+                "template_name": "APM Agent Installation Template",
+                "version": "2.1",
+                "id": "apmagente04de514",
+                "template_type": "Terraform",
+                "template_content_type": "Integration",
+                "template_provider": "Other",
+                "instance_name": "",
+                "cloud_connection_name": "Other",
+                "template_data_objects": {
+                  "bastionhost": "DefaultNoBastionHostRequired"
+                },
+                "template_params": {
+                  "ip_address": "${input_parameters.apm_ip_address}",
+                  "user": "${input_parameters.apm_user}",
+                  "password": "${input_parameters.apm_password}",
+                  "private_key": "${input_parameters.apm_private_key}",
+                  "apm_location": "${input_parameters.apm_location}",
+                  "apm_method": "http",
+                  "apm_source_subdir": "APMADV_Agent_Install_8.1.4.0.1",
+                  "apm_dir": "/opt/ibm/apm/agent",
+                  "apm_agents": "os"
+                },
+                "outputs": []
+              }
+            }
+          ],
+          "resthooks": [],
+          "notifications": [
+            {
+              "emailnotification": {
+                "title": "emailnotification_484bdc",
+                "type": "email",
+                "receiverList": "${parameters.to}",
+                "id": "emailnot3124a5e9",
+                "sender": "CAMadmin",
+                "copyToList": "",
+                "subject": "${parameters.subject}",
+                "body": "${parameters.content}"
+              }
+            }
+          ],
+          "sequence": {
+            "0": "infoblox02585faa",
+            "1": "ibmwebspcb078873",
+            "2": "decision5d392e66",
+            "3": "emailnot3124a5e9"
+          }
+        },
+        "output_parameters": []
+      }
+    ],
+    "plans": [
+      {
+        "name": "Standard",
+        "description": "To deploy a Standard plan",
+        "actions": [],
+        "plan_parameters": []
+      }
+    ]
+  }
+}
