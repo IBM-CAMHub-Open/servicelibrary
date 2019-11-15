@@ -734,18 +734,48 @@
             "label": "ICP Deployment type",
             "customtype": "string",
             "type": "string",
-            "immutable": false,
-            "hidden": false,
+            "immutable": true,
+            "hidden": true,
             "required": true,
             "secured": false,
             "description": "ICP Deployment type",
-            "options": [
-              {
-                "label": "minimal",
-                "value": "ce",
-                "default": true
-              }
-            ]
+            "default": "ce"
+          },
+          {
+            "name": "image_location",
+            "label": "Location of ICP image tarball on Azure Blob Container",
+            "customtype": "string",
+            "type": "string",
+            "immutable": true,
+            "hidden": true,
+            "required": false,
+            "secured": false,
+            "description": "Location of ICP image tarball on Azure Blob Container",
+            "default": ""
+          },
+          {
+            "name": "image_location_key",
+            "label": "Access key for Azure Blob Container",
+            "customtype": "string",
+            "type": "string",
+            "immutable": true,
+            "hidden": true,
+            "required": false,
+            "secured": false,
+            "description": "Access key for Azure Blob Container",
+            "default": ""
+          },
+          {
+            "name": "docker_image_location",
+            "label": "Location of Docker image tarball on Azure Blob Container",
+            "customtype": "string",
+            "type": "string",
+            "immutable": true,
+            "hidden": true,
+            "required": false,
+            "secured": false,
+            "description": "Location of Docker image tarball on Azure Blob Container",
+            "default": ""
           }
         ],
         "expanded": false
@@ -759,18 +789,12 @@
             "label": "ICP Deployment type",
             "customtype": "string",
             "type": "string",
-            "immutable": false,
-            "hidden": false,
+            "immutable": true,
+            "hidden": true,
             "required": true,
             "secured": false,
             "description": "ICP Deployment type",
-            "options": [
-              {
-                "label": "ha",
-                "value": "ha",
-                "default": true
-              }
-            ]
+            "default": "ha"
           }
         ]
       }
