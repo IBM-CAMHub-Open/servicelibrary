@@ -1,7 +1,6 @@
 {
   "service": {
     "specVersion": "v3",
-    "version": "3.2.1_1.11",
     "catalog_metadata": {
       "name": "EKS cluster",
       "description": "Deploys and imports EKS cluster into an IBM Multicloud Manager hub-cluster.",
@@ -32,8 +31,8 @@
     },
     "tags": [
       {
-        "name": "Request_Group",
-        "label": "Request_Group",
+        "name": "request_group",
+        "label": "request_group",
         "type": "string",
         "immutable": true,
         "hidden": false,
@@ -46,8 +45,8 @@
         "permission": "Read-Only"
       },
       {
-        "name": "Request_User",
-        "label": "Request_User",
+        "name": "request_user",
+        "label": "request_user",
         "type": "string",
         "immutable": true,
         "hidden": false,
@@ -60,8 +59,8 @@
         "permission": "Read-Only"
       },
       {
-        "name": "Service_Name",
-        "label": "Service_Name",
+        "name": "service_name",
+        "label": "service_name",
         "type": "string",
         "immutable": true,
         "hidden": false,
@@ -74,8 +73,8 @@
         "permission": "Read-Only"
       },
       {
-        "name": "Service_Identifier",
-        "label": "Service_Identifier",
+        "name": "service_identifier",
+        "label": "service_identifier",
         "type": "string",
         "immutable": true,
         "hidden": false,
@@ -509,7 +508,8 @@
                   "cluster_region"
                 ],
                 "warning": false,
-                "isErrorFlow": false
+                "isErrorFlow": false,
+                "error": false
               }
             },
             {
@@ -525,7 +525,7 @@
                 "cloud_connection_name": "Other",
                 "template_data_objects": {
                   "bastionhost": "DefaultNoBastionHostRequired",
-                  "kubeconfig": "",
+                  "kubeconfig": "${input_parameters.cluster_name}",
                   "mcm_controller": "${input_parameters.mcm_controller}"
                 },
                 "template_params": {
@@ -546,7 +546,9 @@
                 },
                 "outputs": [],
                 "error": false,
-                "immutable": false
+                "immutable": false,
+                "warning": false,
+                "isErrorFlow": false
               }
             }
           ],

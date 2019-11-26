@@ -651,7 +651,7 @@
                   "icp_admin_user": "admin",
                   "icp_admin_password": "${templates.ibmcloudae8a61bf.output.ibm_cloud_private_admin_password||templates.ibmcloud941a9504.output.ibm_cloud_private_admin_password||templates.ibmcloude347f135.output.ibm_cloud_private_admin_password}",
                   "icp_url": "${templates.ibmcloudae8a61bf.output.ibm_cloud_private_console_url||templates.ibmcloud941a9504.output.ibm_cloud_private_console_url||templates.ibmcloude347f135.output.ibm_cloud_private_console_url}",
-                  "image_registry": "${\"\"||\"\"||templates.ibmcloude347f135.output.ibm_cloud_private_registry_server}:8500/ibmcom",
+                  "image_registry": "${\"\"||\"\"||templates.ibmcloude347f135.output.ibm_cloud_private_registry_server:8500/ibmcom}",
                   "image_suffix": "-amd64",
                   "image_version": "3.2.1",
                   "docker_user": "admin",

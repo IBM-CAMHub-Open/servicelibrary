@@ -1,6 +1,6 @@
 # ICP Deployment with klusterlet on OpenStack
 
-This [IBM Cloud Automation Manager](https://www.ibm.com/support/knowledgecenter/en/SS2L37/product_welcome_cloud_automation_manager.html) service configuration first uses the [OpenStack provider](https://www.terraform.io/docs/providers/openstack/index.html) to provision virtual machines on OpenStack and deploys [IBM Cloud Private](https://www.ibm.com/cloud-computing/products/ibm-cloud-private/) 3.2.0 on them. This configuration then imports the deployed ICP to [IBM Multicloud Manager](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.2.0/mcm/getting_started/introduction.html) Controller to be managed by the controller. 
+This [IBM Cloud Automation Manager](https://www.ibm.com/support/knowledgecenter/en/SS2L37/product_welcome_cloud_automation_manager.html) service configuration first uses the [OpenStack provider](https://www.terraform.io/docs/providers/openstack/index.html) to provision virtual machines on OpenStack and deploys [IBM Cloud Private](https://www.ibm.com/cloud-computing/products/ibm-cloud-private/) 3.2.1 on them. This configuration then imports the deployed ICP to [IBM Multicloud Manager](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.2.1/mcm/getting_started/introduction.html) Controller to be managed by the controller. 
 
 More details on IBM Cloud Automation Manager Service can be found [here](https://www.ibm.com/support/knowledgecenter/en/SS2L37_3.2.1.0/cam_managing_services.html).
 
@@ -15,7 +15,7 @@ This service is composed of following terraform templates
 	* [IBM Cloud Private Medium Setup Installation](https://github.com/IBM-CAMHub-Open/template_icp_installer_medium) terraform template.
 	* [IBM Cloud Private Single Node Installation](https://github.com/IBM-CAMHub-Open/template_icp_installer_single) terraform template.
 	
-* [IBM Multicloud Manager 3.2.0](https://github.com/IBM-CAMHub-Open/template_mcm_install/tree/3.2.0/ICP/terraform) terraform template.
+* [IBM Multicloud Manager 3.2.1](https://github.com/IBM-CAMHub-Open/template_mcm_install/tree/3.2.1/ICP/terraform) terraform template.
 
 ## Deploying the service from IBM Cloud Automation Manager
 
@@ -145,5 +145,5 @@ To deploy this service from IBM Cloud Automation Manager navigate to Library > S
 
 Copyright IBM Corp. 2019
 
-Service Version - 3.2.0  
+Service Version - 3.2.1
  
