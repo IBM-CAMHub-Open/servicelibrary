@@ -1074,23 +1074,23 @@
                   "instance_name": "",
                   "cloud_connection_name": "Other",
                   "template_data_objects": {
-                  "bastionhost": "DefaultNoBastionHostRequired",
-                  "mcm_controller": "${input_parameters.mcm_controller}"
+                    "bastionhost": "DefaultNoBastionHostRequired",
+                    "mcm_controller": "${input_parameters.mcm_controller}"
                   },
                   "template_params": {
-                  "mcm_url": "${mcm_controller.icp_url}",
-                  "mcm_admin_user": "${mcm_controller.icp_admin_user}",
-                  "mcm_admin_password": "${mcm_controller.icp_admin_password}",
-                  "cluster_name": "managed-${input_parameters.icp_cluster_name}",
-                  "cluster_namespace": "managed-${input_parameters.icp_cluster_name}-ns",
-                  "icp_url": "${templates.singleno708a819a.output.ibm_cloud_private_admin_url||templates.mediumnoa2ce1940.output.ibm_cloud_private_admin_url||templates.hanodedee28a0f0c.output.ibm_cloud_private_admin_url}",
-                  "icp_admin_user": "${input_parameters.icp_admin_user}",
-                  "icp_admin_password": "${input_parameters.icp_admin_password}",
-                  "image_registry": "${input_parameters.icp_cluster_name}.${input_parameters.vm_domain}:8500/ibmcom",
-                  "image_suffix": "-amd64",
-                  "image_version": "3.2.1",
-                  "docker_user": "${input_parameters.icp_admin_user}",
-                  "docker_password": "${input_parameters.icp_admin_password}"
+                    "mcm_url": "${mcm_controller.icp_url}",
+                    "mcm_admin_user": "${mcm_controller.icp_admin_user}",
+                    "mcm_admin_password": "${mcm_controller.icp_admin_password}",
+                    "cluster_name": "managed-${input_parameters.icp_cluster_name}",
+                    "cluster_namespace": "managed-${input_parameters.icp_cluster_name}-ns",
+                    "icp_url": "${templates.singleno708a819a.output.ibm_cloud_private_admin_url||templates.mediumnoa2ce1940.output.ibm_cloud_private_admin_url||templates.hanodedee28a0f0c.output.ibm_cloud_private_admin_url}",
+                    "icp_admin_user": "${input_parameters.icp_admin_user}",
+                    "icp_admin_password": "${input_parameters.icp_admin_password}",
+                    "image_registry": "${input_parameters.icp_cluster_name}.${input_parameters.vm_domain}:8500/ibmcom",
+                    "image_suffix": "-amd64",
+                    "image_version": "3.2.1",
+                    "docker_user": "${input_parameters.icp_admin_user}",
+                    "docker_password": "${input_parameters.icp_admin_password}"
                   },
                   "error": false
                 }

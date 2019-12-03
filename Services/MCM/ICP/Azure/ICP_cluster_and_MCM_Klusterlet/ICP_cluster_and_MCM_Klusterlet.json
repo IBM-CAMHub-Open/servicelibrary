@@ -130,7 +130,7 @@
             "immutable": false,
             "hidden": false,
             "required": true,
-            "secured": false,
+            "secured": true,
             "default": ""
           },
           {
