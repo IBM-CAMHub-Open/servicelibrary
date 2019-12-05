@@ -1,7 +1,7 @@
 {
   "service": {
     "specVersion": "v3",
-    "version": "2.3",
+    "version": "2.3.0.0",
     "catalog_metadata": {
       "name": "IBM Cloud App Management Integration Service on OpenStack",
       "description": "IBM Cloud App Management Integration Service on Linux guest deployed in an OpenStack cloud",

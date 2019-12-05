@@ -1,7 +1,7 @@
 {
   "service": {
     "specVersion": "v3",
-	"version": "3.11",    
+	  "version": "3.11.0.0",    
     "catalog_metadata": {
       "name": "OCP cluster on VMware",
       "description": "Deploys OpenShift 3.11 cluster on VMware and imports MCM Klusterlet.",

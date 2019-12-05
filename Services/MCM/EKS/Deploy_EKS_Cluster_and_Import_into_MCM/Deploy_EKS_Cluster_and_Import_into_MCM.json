@@ -1,6 +1,7 @@
 {
   "service": {
     "specVersion": "v3",
+    "version": "1.11.0.0",
     "catalog_metadata": {
       "name": "EKS cluster",
       "description": "Deploys and imports EKS cluster into an IBM Multicloud Manager hub-cluster.",

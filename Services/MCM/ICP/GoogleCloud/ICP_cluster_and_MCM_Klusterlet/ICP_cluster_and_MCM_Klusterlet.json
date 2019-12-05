@@ -1,7 +1,7 @@
 {
   "service": {
     "specVersion": "v3",
-    "version": "3.2.1",
+    "version": "3.2.1.0",
     "catalog_metadata": {
       "name": "ICP cluster on Google Cloud",
       "description": "Deploys ICP cluster onto Google Cloud, loads the MCM 3.2.1 docker images and deploys the MCM Klusterlet v3.2.1",

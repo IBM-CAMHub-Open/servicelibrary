@@ -1,7 +1,7 @@
 {
   "service": {
     "specVersion": "v3",
-    "version": "2.1",
+    "version": "2.1.0.0",
     "catalog_metadata": {
       "name": "Service Now CMDB add and Delete record",
       "description": "This service is used to deploy a VM on a cloud with middleware software installed.It will also perform an update in CMDB.",

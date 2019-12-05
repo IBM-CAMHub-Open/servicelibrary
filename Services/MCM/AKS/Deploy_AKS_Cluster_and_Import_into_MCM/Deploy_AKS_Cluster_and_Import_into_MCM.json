@@ -1,7 +1,7 @@
 {
   "service": {
     "specVersion": "v3",
-    "version": "3.2.1_1.11",
+    "version": "1.11.0.0",
     "catalog_metadata": {
       "name": "AKS cluster",
       "description": "Deploys and imports AKS cluster v1.11 into an IBM Multicloud Manager hub-cluster.",
