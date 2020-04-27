@@ -196,9 +196,9 @@
           "conditions": [],
           "templates": [
             {
-              "Import Kubernetes cluster into MCM hub-cluster": {
-                "title": "Import Kubernetes cluster into MCM hub-cluster",
-                "template_name": "Import Kubernetes cluster into MCM hub-cluster",
+              "MCM Klusterlet within Kubernetes cluster": {
+                "title": "MCM Klusterlet within Kubernetes cluster",
+                "template_name": "MCM Klusterlet within Kubernetes cluster",
                 "version": "3.2.1",
                 "id": "importkucc2bc96e",
                 "template_type": "Terraform",
