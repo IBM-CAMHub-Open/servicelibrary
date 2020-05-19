@@ -196,9 +196,9 @@
           "conditions": [],
           "templates": [
             {
-              "MCM Klusterlet within Kubernetes cluster": {
-                "title": "MCM Klusterlet within Kubernetes cluster",
-                "template_name": "MCM Klusterlet within Kubernetes cluster",
+              "MCM Klusterlet within Kubernetes cluster for Terraform 0.12.x": {
+                "title": "MCM Klusterlet within Kubernetes cluster for Terraform 0.12.x",
+                "template_name": "MCM Klusterlet within Kubernetes cluster for Terraform 0.12.x",
                 "version": "5.0.0",
                 "id": "importkucc2bc96e",
                 "template_type": "Terraform",
