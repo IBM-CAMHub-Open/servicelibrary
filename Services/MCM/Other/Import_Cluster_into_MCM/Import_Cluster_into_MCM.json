@@ -1,7 +1,7 @@
 {
   "service": {
     "specVersion": "v3",
-    "version": "3.2.1.0",
+    "version": "2.0.0.0",
     "catalog_metadata": {
       "name": "Import kubernetes cluster",
       "description": "Import an existing kubernetes cluster into a MCM hub-cluster",
@@ -199,7 +199,7 @@
               "MCM Klusterlet within Kubernetes cluster": {
                 "title": "MCM Klusterlet within Kubernetes cluster",
                 "template_name": "MCM Klusterlet within Kubernetes cluster",
-                "version": "3.2.1",
+                "version": "5.0.0",
                 "id": "importkucc2bc96e",
                 "template_type": "Terraform",
                 "template_content_type": "Other",
@@ -227,7 +227,8 @@
                 },
                 "outputs": [],
                 "error": false,
-                "immutable": false
+                "immutable": false,
+                "provider_engine_version": "0.12.21"
               }
             }
           ],

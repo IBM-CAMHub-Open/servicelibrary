@@ -4,7 +4,7 @@
     "version": "1.11.0.0",
     "catalog_metadata": {
       "name": "EKS cluster",
-      "description": "Deploys and imports EKS cluster into an IBM Multicloud Manager hub-cluster.",
+      "description": "Deploys and imports EKS cluster into an IBM Cloud Pak For Multicloud Manager hub-cluster.",
       "image": "serviceicon_1.svg",
       "category": "Cluster Lifecycle Services",
       "bullets": [
@@ -17,14 +17,14 @@
           "description": "Amazon Elastic Cloud Kubernetes Service (EKS) cluster"
         },
         {
-          "title": "MCM Klusterlet",
-          "description": "IBM Multicloud Manager Klusterlet"
+          "title": "IBM Cloud Pak For Multicloud Manager",
+          "description": "IBM Cloud Pak For Multicloud Manager 2.0.0"
         }
       ],
-      "providerDisplayName": "IBM",
-      "longDescription": "Deploys an Amazon Elastic Cloud Kubernetes Service cluster and imports the cluster into an IBM Multicloud Manager hub-cluster.",
-      "documentationUrl": "https://www.ibm.com/support/knowledgecenter/SS2L37_3.1.2.0/content/cam_content_overview_summary.html",
-      "supportUrl": "https://www.ibm.com/support/knowledgecenter/SS2L37_3.1.2.0/cam_ordering_services.html",
+      "providerDisplayName": "Amazon",
+      "longDescription": "Deploys an Amazon Elastic Cloud Kubernetes Service cluster and imports the cluster into an IBM Cloud Pak For Multicloud Manager hub-cluster.",
+      "documentationUrl": "https://www.ibm.com/support/knowledgecenter/SS2L37_4.2.0.0/content/cam_content_overview_summary.html",
+      "supportUrl": "https://www.ibm.com/support/knowledgecenter/SS2L37_4.2.0.0/cam_ordering_services.html",
       "bindable": false,
       "updatable": "",
       "systemTags": true,
@@ -514,14 +514,15 @@
                 ],
                 "warning": false,
                 "isErrorFlow": false,
-                "error": false
+                "error": false,
+                "provider_engine_version": "0.11.11"
               }
             },
             {
-              "MCM Klusterlet within Amazon EC2 Kubernetes Service": {
-                "title": "MCM Klusterlet within Amazon EC2 Kubernetes Service",
-                "template_name": "MCM Klusterlet within Amazon EC2 Kubernetes Service",
-                "version": "3.2.1",
+              "MCM Klusterlet within Amazon EC2 Kubernetes Service for Terraform 0.12.x": {
+                "title": "MCM Klusterlet within Amazon EC2 Kubernetes Service for Terraform 0.12.x",
+                "template_name": "MCM Klusterlet within Amazon EC2 Kubernetes Service for Terraform 0.12.x",
+                "version": "5.0.0",
                 "id": "importam803e4a18",
                 "template_type": "Terraform",
                 "template_content_type": "Other",
@@ -553,7 +554,8 @@
                 "error": false,
                 "immutable": false,
                 "warning": false,
-                "isErrorFlow": false
+                "isErrorFlow": false,
+                "provider_engine_version": "0.12.21"
               }
             }
           ],

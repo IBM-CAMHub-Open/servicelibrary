@@ -1,11 +1,11 @@
-# OpenShift Container Platform 4.2 cluster on VMware 
+# OpenShift Container Platform 4.2 cluster on AWS 
 
 ## Overview
-This service deploys OpenShift Container Platform (OCP) cluster version 4.2 on Amazone EC2 and import it into an existing IBM Multi Cloud Manager (MCM) controller.
+This service deploys OpenShift Container Platform (OCP) cluster version 4.2 on Amazone EC2 and imports it into an existing 2.0.0 IBM CLoud Pak for Multi Cloud Manager (MCM).
 
-The first activity of the service is to deploy a new [OpenShift Container Platform Enterprise Installation](https://github.com/IBM-CAMHub-Open/template_openshift_installer/tree/4.2/vmware/terraform). Refer to the template documentation for more details. 
+The first activity of the service is to deploy a new [OpenShift Container Platform Enterprise Installation](https://github.com/IBM-CAMHub-Open/template_openshift_installer/tree/4.2/terraform12/aws/terraform). Refer to the template documentation for more details. 
 
-The second activity of the service is [Import OpenShift Container Platform Kubernetes cluster into MCM hub-cluster](https://github.com/IBM-CAMHub-Open/template_mcm_install/tree/3.2.1/OCP/terraform) It performs a MCM import which will register the newly deployed OCP cluster with an existing MCM controller(hub) 
+The second activity of the service is [Import OpenShift Container Platform Kubernetes cluster into MCM hub-cluster for Terraform 0.12.x](https://github.com/IBM-CAMHub-Open/template_mcm_install/tree/5.0.0/terraform12/OCP/terraform) It performs a MCM import which will register the newly deployed MCM cluster with an existing MCM controller(hub) 
 
 ## Service input Paramters
 
@@ -37,6 +37,6 @@ The second activity of the service is [Import OpenShift Container Platform Kuber
 
 ### License and Maintainer
 
-Copyright IBM Corp. 2019
+Copyright IBM Corp. 2020
 
-Service Version - 4.2.0  
+Service Version - 5.0.0  

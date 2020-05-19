@@ -1,7 +1,7 @@
 {
   "service": {
     "specVersion": "v3",
-    "version": "4.2.0.0",
+    "version": "4.2.0.1",
     "catalog_metadata": {
       "name": "OCP cluster on VMware",
       "description": "Deploys OpenShift 4.2 cluster on VMware and imports MCM Klusterlet.",
@@ -338,9 +338,9 @@
           "conditions": [],
           "templates": [
             {
-              "OpenShift Container Platform Enterprise Installation": {
-                "title": "OpenShift Container Platform Enterprise Installation_e9eb33",
-                "template_name": "OpenShift Container Platform Enterprise Installation",
+              "OpenShift Container Platform Enterprise Installation for Terrafrom 0.12.x": {
+                "title": "OpenShift Container Platform Enterprise Installation for Terrafrom 0.12.x_e9eb33",
+                "template_name": "OpenShift Container Platform Enterprise Installation for Terrafrom 0.12.x",
                 "version": "4.2",
                 "id": "openshif7ff4c224",
                 "template_type": "Terraform",
@@ -409,15 +409,15 @@
                   "cluster_prvt_key"
                 ],
                 "immutable": false,
-                "provider_engine_version": "0.11.11",
+                "provider_engine_version": "0.12.21",
                 "isErrorFlow": false
               }
             },
             {
-              "Import OpenShift Container Platform Kubernetes cluster into MCM hub-cluster": {
-                "title": "Import OpenShift Container Platform Kubernetes cluster into MCM hub-cluster_16704c",
-                "template_name": "Import OpenShift Container Platform Kubernetes cluster into MCM hub-cluster",
-                "version": "3.2.1",
+              "Import OpenShift Container Platform Kubernetes cluster into MCM hub-cluster for Terraform 0.12.x": {
+                "title": "Import OpenShift Container Platform Kubernetes cluster into MCM hub-cluster for Terraform 0.12.x_16704c",
+                "template_name": "Import OpenShift Container Platform Kubernetes cluster into MCM hub-cluster for Terraform 0.12.x",
+                "version": "5.0.0",
                 "id": "importop4755e321",
                 "template_type": "Terraform",
                 "template_content_type": "Other",
@@ -446,7 +446,7 @@
                 },
                 "outputs": [],
                 "immutable": false,
-                "provider_engine_version": "0.11.11",
+                "provider_engine_version": "0.12.21",
                 "isErrorFlow": false
               }
             }

@@ -699,7 +699,8 @@
                   "nodejs_vm_resource_pool": "${input_parameters.resource_pool}",
                   "user_public_ssh_key": "${input_parameters.user_public_ssh_key}"
                 },
-                "outputs": []
+                "outputs": [],                
+                "provider_engine_version": "0.11.11"
               }
             },
             {
@@ -729,7 +730,8 @@
                   "hostname-nodejs": "${input_parameters.hostname-nodejs}",
                   "softlayer_datacenter": "ams01"
                 },
-                "outputs": []
+                "outputs": [],
+                "provider_engine_version": "0.11.11"
               }
             },
             {
@@ -756,7 +758,8 @@
                   "hostname-db": "${input_parameters.hostname-db}",
                   "hostname-nodejs": "${input_parameters.hostname-nodejs}"
                 },
-                "outputs": []
+                "outputs": [],
+                "provider_engine_version": "0.11.11"
               }
             },
             {
@@ -780,7 +783,8 @@
                   "admin_user_password": "${input_parameters.admin_user_password}",
                   "user_public_key": "${input_parameters.public_ssh_key}"
                 },
-                "outputs": []
+                "outputs": [],
+                "provider_engine_version": "0.11.11"
               }
             },
             {
@@ -806,7 +810,8 @@
                     "hostname": "${templates.meanstac8be2854a.nodejs_vm_name||templates.meanstac79ffc96e.hostname-db||templates.meanstac8ca7eecd.hostname-nodejs}"
                   }
                 },
-                "outputs": []
+                "outputs": [],
+                "provider_engine_version": "0.11.11"
               }
             }
           ],

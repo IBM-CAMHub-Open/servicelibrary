@@ -1,22 +1,22 @@
-# Google Kubernetes Engine Cluster Imported into IBM Multicloud Manager
+# Google Kubernetes Engine Cluster Imported into IBM Cloud Pak for Multicloud Manager
 
 ## Overview
 ![alt text](./MCMonGKE.jpg)
 
-This [IBM Cloud Automation Manager](https://www.ibm.com/support/knowledgecenter/en/SS2L37/product_welcome_cloud_automation_manager.html) service configuration first uses the [Google Cloud provider](https://www.terraform.io/docs/providers/google/index.html) to provision a kubernetes cluster within the [Google Kubernetes Engine](https://cloud.google.com/kubernetes-engine).  Once provisioned, the kubernetes cluster will be imported into the [IBM Multicloud Manager](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.2.0/mcm/getting_started/introduction.html) 3.2.0 hub-cluster to make it a managed cluster.
+This [IBM Cloud Automation Manager](https://www.ibm.com/support/knowledgecenter/en/SS2L37/product_welcome_cloud_automation_manager.html) service configuration first uses the [Google Cloud provider](https://www.terraform.io/docs/providers/google/index.html) to provision a kubernetes cluster within the [Google Kubernetes Engine](https://cloud.google.com/kubernetes-engine).  Once provisioned, the kubernetes cluster will be imported into the [IBM Cloud Pak for Multicloud Manager](https://www.ibm.com/support/knowledgecenter/SSFC4F/product_welcome_cloud_pak.html) 2.0.0 hub-cluster to make it a managed cluster.
 
-More details on IBM Cloud Automation Manager Service can be found [here](https://www.ibm.com/support/knowledgecenter/en/SS2L37_3.2.1.0/cam_managing_services.html).
+More details on IBM Cloud Automation Manager Service can be found [here](https://www.ibm.com/support/knowledgecenter/en/SS2L37_4.2.0.0/cam_managing_services.html).
 
 This service is composed of following terraform templates
 
 - [Managed Kubernetes Service within Google Cloud](https://github.com/IBM-CAMHub-Open/template_kubernetes_gke/tree/1.11) terraform template.
-- [MCM Klusterlet 3.2.0 within Google Kubernetes Engine](https://github.com/IBM-CAMHub-Open/template_mcm_install/tree/3.2.0/GKE/mcm-klusterlet) terraform template 
+- [MCM Klusterlet within Google Kubernetes Engine for Terraform 0.12.x](https://github.com/IBM-CAMHub-Open/template_mcm_install/tree/5.0.0/terraform12/GKE/mcm-klusterlet) terraform template 
 
 
-This service can be either deployed from IBM Cloud Automation Manager or from IBM Cloud Private Catalog.
+This service can be either deployed from IBM Cloud Automation Manager or from IBM Cloud Pak for Multicloud Manager Catalog.
 
 * [Deploying the service from IBM Cloud Automation Manager](#deploying-the-service-from-ibm-cloud-automation-manager)
-* [Deploying the service from IBM Cloud Private Catalog](#deploying-the-service-from-ibm-cloud-private-catalog)
+* [Deploying the service from IBM Cloud Pak for Multicloud Manager Catalog](#deploying-the-service-from-ibm-cloud-private-catalog)
 
 ## Deploying the service from IBM Cloud Automation Manager
 
@@ -41,9 +41,9 @@ Note: The parameters indicated as _(hidden)_ have default values.  If you need t
 
 
 
-## Deploying the service from IBM Cloud Private Catalog
+## Deploying the service from IBM Cloud Pak for Multicloud Manager Catalog
 
-To deploy this service from IBM Cloud Private Catalog navigate to Catalog, search the Catalog for deploy-and-import-gke-cluster and fill the following input parameters and install the service.
+To deploy this service from IBM Cloud Pak for Multicloud Manager Catalog navigate to Catalog, search the Catalog for deploy-and-import-gke-cluster and fill the following input parameters and install the service.
 
 Note: The parameters indicated as _(hidden)_ have default values.  If you need to change them, make a copy of this service configuration and create a new service in IBM Cloud Automation Manager with the new configuration. 
 
@@ -65,7 +65,6 @@ Note: The parameters indicated as _(hidden)_ have default values.  If you need t
 
 ### License and Maintainer
 
-Copyright IBM Corp. 2019
+Copyright IBM Corp. 2020
 
-Service Version - 3.2.0  
- 
+Service Version - 5.0.0 

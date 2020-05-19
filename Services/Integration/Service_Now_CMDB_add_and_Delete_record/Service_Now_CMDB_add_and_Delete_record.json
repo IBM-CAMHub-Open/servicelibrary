@@ -486,7 +486,8 @@
                   "assigned_ip_address",
                   "associated_domain",
                   "associated_hostname"
-                ]
+                ],
+                "provider_engine_version": "0.11.11"
               }
             },
             {
@@ -550,7 +551,8 @@
                   "WASNode01_name",
                   "WASNode01_roles",
                   "stack_id"
-                ]
+                ],
+                "provider_engine_version": "0.11.11"
               }
             },
             {
@@ -578,7 +580,8 @@
                   "filebeat_config_url": "${input_parameters.filebeat_config_url}",
                   "monitored_paths": "${input_parameters.monitored_paths}"
                 },
-                "outputs": []
+                "outputs": [],
+                "provider_engine_version": "0.11.11"
               }
             },
             {
@@ -606,7 +609,8 @@
                   "filebeat_config_url": "${input_parameters.filebeat_config_url}",
                   "monitored_paths": "${input_parameters.monitored_paths}"
                 },
-                "outputs": []
+                "outputs": [],
+                "provider_engine_version": "0.11.11"
               }
             },
             {
@@ -634,7 +638,8 @@
                   "apm_dir": "/opt/ibm/apm/agent",
                   "apm_agents": "os"
                 },
-                "outputs": []
+                "outputs": [],
+                "provider_engine_version": "0.11.11"
               }
             }
           ],

@@ -213,7 +213,8 @@
                 },
                 "outputs": [
                   "icam_server_url"
-                ]
+                ],
+                "provider_engine_version": "0.11.11"
               }
             }
           ],

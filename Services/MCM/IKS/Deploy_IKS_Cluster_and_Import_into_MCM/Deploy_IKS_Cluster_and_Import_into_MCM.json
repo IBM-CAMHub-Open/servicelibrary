@@ -4,7 +4,7 @@
     "version": "1.11.0.0",
     "catalog_metadata": {
       "name": "IKS cluster",
-      "description": "Deploys and imports IKS cluster into an IBM Multicloud Manager hub-cluster.",
+      "description": "Deploys and imports IKS cluster into an IBM Cloud Pak For Multicloud Manager hub-cluster.",
       "image": "serviceicon_1.svg",
       "category": "Cluster Lifecycle Services",
       "bullets": [
@@ -22,9 +22,9 @@
         }
       ],
       "providerDisplayName": "IBM",
-      "longDescription": "Deploys an IBM Cloud Kubernetes Service cluster and imports the cluster into an IBM Multicloud Manager hub-cluster.",
-      "documentationUrl": "https://www.ibm.com/support/knowledgecenter/SS2L37_3.1.2.0/content/cam_content_overview_summary.html",
-      "supportUrl": "https://www.ibm.com/support/knowledgecenter/SS2L37_3.1.2.0/cam_ordering_services.html",
+      "longDescription": "Deploys an IBM Cloud Kubernetes Service cluster and imports the cluster into an IBM Cloud Pak For Multicloud Manager hub-cluster.",
+      "documentationUrl": "https://www.ibm.com/support/knowledgecenter/SS2L37_4.2.0.0/content/cam_content_overview_summary.html",
+      "supportUrl": "https://www.ibm.com/support/knowledgecenter/SS2L37_4.2.0.0/cam_ordering_services.html",
       "bindable": false,
       "updatable": "",
       "systemTags": true,
@@ -679,14 +679,15 @@
                   "cluster_certificate_authority"
                 ],
                 "warning": false,
-                "error": false
+                "error": false,
+                "provider_engine_version": "0.11.11"
               }
             },
             {
-              "MCM Klusterlet within IBM Cloud Kubernetes Service": {
-                "title": "MCM Klusterlet within IBM Cloud Kubernetes Service",
-                "template_name": "MCM Klusterlet within IBM Cloud Kubernetes Service",
-                "version": "3.2.1",
+              "MCM Klusterlet within IBM Cloud Kubernetes Service for Terraform 0.12.x": {
+                "title": "MCM Klusterlet within IBM Cloud Kubernetes Service for Terraform 0.12.x",
+                "template_name": "MCM Klusterlet within IBM Cloud Kubernetes Service for Terraform 0.12.x",
+                "version": "5.0.0",
                 "id": "importibe9990ade",
                 "template_type": "Terraform",
                 "template_content_type": "Other",
@@ -714,7 +715,8 @@
                 },
                 "outputs": [],
                 "error": false,
-                "immutable": false
+                "immutable": false,
+                "provider_engine_version": "0.12.21"
               }
             }
           ],
