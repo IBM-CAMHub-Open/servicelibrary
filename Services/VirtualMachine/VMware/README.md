@@ -14,8 +14,8 @@ This service is composed of following terraform template
 ## Deploying the service from IBM Cloud Automation Manager
 
 ### Prerequisites
-
-Navigate to Manage -> Shared Parameters -> Create Data Object -> Select Data Type "vsphere_managed_inventory_definition" -> Enter Data Object Name "vsphere_managed_inventory_definition". Fill the following paramaters.
+- Navigate to Manage -> Shared Parameters -> In Search Data Type, Enter "vSphere Managed Inventory Definition" -> Verify Data Type is present
+- Go to Create Data Object -> Select Data Type "vsphere_managed_inventory_definition" -> Enter Data Object Name for e.g. "vsphere_config". Fill the following paramaters.
 
 | Parameter name                  | Type            | Parameter description      | Allowed values |
 | :---                            | :---            | :---                       | :---           |
@@ -46,6 +46,10 @@ Note: The parameters indicated as _(hidden)_ have default values.  If you need t
 | Connection                 | connection      | VMware Vsphere connection                                                                                    | |
 | vm_name                    | string          | Hostname of virtual machine                  | |
 | vm_ipv4_address            | string          | IPv4 address for vNIC configuration          | |
+| vSphere Managed Inventory Definition                 | sharedparameter      | Data object of type "vsphere_managed_inventory_definition" | |
+| VM Memory Allocation (MB)                 | string      |  | |
+| VM vCPU Allocation                | string      |  | |
+| vm_disk_size                 | string      |  | |
 
 Service offers two plans standard and advance. The standard plan offers quick deployment through a few pre-configured parameters, Hence you only need to provide values of remaining parameters. The advance plan gives you full control over configuration. In the advance plan, you are required to provide values of all the parameters.
 

@@ -7,7 +7,12 @@
         "description": "Deploys Virtual Machine on IBM Cloud",
         "image": "serviceicon_1.svg",
         "category": "Virtual Machine",
-        "bullets": [],
+        "bullets": [
+          {
+            "title": "Github link",
+            "description": "https://github.com/IBM-CAMHub-Open/servicelibrary/tree/5.0.0/Services/VirtualMachine/IBMCloud"
+          }
+        ],
         "providerDisplayName": "IBM",
         "longDescription": "Deploys Virtual Machine on IBM Cloud",
         "documentationUrl": "",

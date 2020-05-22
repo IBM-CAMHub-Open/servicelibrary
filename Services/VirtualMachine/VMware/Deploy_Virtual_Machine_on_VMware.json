@@ -7,7 +7,16 @@
       "description": "Deploys virtual machine on VMware",
       "image": "serviceicon_1.svg",
       "category": "Virtual Machine",
-      "bullets": [],
+      "bullets": [
+        {
+          "title": "Github link",
+          "description": "https://github.com/IBM-CAMHub-Open/servicelibrary/tree/5.0.0/Services/VirtualMachine/VMware"
+        },
+        {
+          "title": "Prerequisites",
+          "description": "https://github.com/IBM-CAMHub-Open/servicelibrary/tree/5.0.0/Services/VirtualMachine/VMware#prerequisites"
+        }
+      ],
       "providerDisplayName": "IBM",
       "longDescription": "Deploys virtual machine on VMware",
       "documentationUrl": "",
@@ -127,6 +136,63 @@
             "view": "create new",
             "editable": true,
             "default": "10.4.10.1"
+          },
+          {
+            "name": "vSphere_Managed_Inventory_Definition",
+            "label": "vSphere Managed Inventory Definition",
+            "customtype": "sharedparameter",
+            "type": "sharedparameter",
+            "immutable": false,
+            "hidden": false,
+            "required": true,
+            "secured": false,
+            "description": "",
+            "view": "create new",
+            "editable": true,
+            "default": "",
+            "datatype": "vsphere_managed_inventory_definition"
+          },
+          {
+            "name": "vm_memory",
+            "label": "VM Memory Allocation (MB)",
+            "customtype": "string",
+            "type": "string",
+            "immutable": false,
+            "hidden": false,
+            "required": true,
+            "secured": false,
+            "description": "VM Memory Allocation (MB).",
+            "view": "create new",
+            "editable": true,
+            "default": "1024"
+          },
+          {
+            "name": "vm_vcpu",
+            "label": "VM vCPU Allocation",
+            "customtype": "string",
+            "type": "string",
+            "immutable": false,
+            "hidden": false,
+            "required": true,
+            "secured": false,
+            "description": "VM vCPU Allocation.",
+            "view": "create new",
+            "editable": true,
+            "default": "1"
+          },
+          {
+            "name": "vm_disk_size",
+            "label": "Disk Size (GB)",
+            "customtype": "string",
+            "type": "string",
+            "immutable": false,
+            "hidden": false,
+            "required": true,
+            "secured": false,
+            "description": "Disk Size (GB).",
+            "view": "create new",
+            "editable": true,
+            "default": "60"
           }
         ],
         "flow": {
@@ -142,16 +208,15 @@
                 "template_content_type": "VMware vSphere",
                 "template_provider": "VMware vSphere",
                 "instance_name": "",
-                "cloud_connection_name": "${input_parameters.Connection}",
                 "template_data_objects": {
-                  "vsphere_managed_inventory_definition": "vsphere_managed_inventory_definition"
+                  "vsphere_managed_inventory_definition": "${input_parameters.vSphere_Managed_Inventory_Definition}"
                 },
                 "template_params": {
                   "vm_name": "${input_parameters.vm_name}",
                   "vm_ipv4_address": "${input_parameters.vm_ipv4_address}",
-                  "vm_memory": "1024",
-                  "vm_vcpu": "1",
-                  "vm_disk_size": "60",
+                  "vm_memory": "${input_parameters.vm_memory}",
+                  "vm_vcpu": "${input_parameters.vm_vcpu}",
+                  "vm_disk_size": "${input_parameters.vm_disk_size}",
                   "datacenter": "${vsphere_managed_inventory_definition.datacenter}",
                   "resource_pool": "${vsphere_managed_inventory_definition.resource_pool}",
                   "vm_folder": "${vsphere_managed_inventory_definition.vm_folder}",
@@ -174,7 +239,8 @@
                 ],
                 "editable": true,
                 "provider_engine_version": "0.12.21",
-                "isErrorFlow": false
+                "isErrorFlow": false,
+                "cloud_connection_name": "${input_parameters.Connection}"
               }
             }
           ],
@@ -266,6 +332,60 @@
             "passbyname": false,
             "dynamicDetails": {},
             "isDynamic": false
+          },
+          {
+            "name": "vSphere_Managed_Inventory_Definition",
+            "label": "vSphere Managed Inventory Definition",
+            "customtype": "sharedparameter",
+            "type": "sharedparameter",
+            "immutable": false,
+            "hidden": false,
+            "required": true,
+            "secured": false,
+            "description": "",
+            "view": "create new",
+            "editable": true,
+            "default": "",
+            "datatype": "vsphere_managed_inventory_definition"
+          },
+          {
+            "name": "vm_memory",
+            "label": "VM Memory Allocation (MB)",
+            "customtype": "string",
+            "type": "string",
+            "immutable": false,
+            "hidden": false,
+            "required": true,
+            "secured": false,
+            "description": "VM Memory Allocation (MB).",
+            "editable": true,
+            "default": ""
+          },
+          {
+            "name": "vm_vcpu",
+            "label": "VM vCPU Allocation",
+            "customtype": "string",
+            "type": "string",
+            "immutable": false,
+            "hidden": false,
+            "required": true,
+            "secured": false,
+            "description": "VM vCPU Allocation.",
+            "editable": true,
+            "default": ""
+          },
+          {
+            "name": "vm_disk_size",
+            "label": "Disk Size (GB)",
+            "customtype": "string",
+            "type": "string",
+            "immutable": false,
+            "hidden": false,
+            "required": true,
+            "secured": false,
+            "description": "Disk Size (GB).",
+            "editable": true,
+            "default": ""
           }
         ]
       }

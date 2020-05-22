@@ -7,7 +7,12 @@
         "description": "Deploys Virtual Machine with SSH key on Microsoft Azure",
         "image": "serviceicon_1.svg",
         "category": "Virtual Machine",
-        "bullets": [],
+        "bullets": [
+          {
+            "title": "Github link",
+            "description": "https://github.com/IBM-CAMHub-Open/servicelibrary/tree/5.0.0/Services/VirtualMachine/Azure"
+          }
+        ],
         "providerDisplayName": "IBM",
         "longDescription": "Deploys Virtual Machine with SSH key on Microsoft Azure",
         "documentationUrl": "",
@@ -206,7 +211,7 @@
                     "azure_vm_private_ip"
                   ],
                   "editable": true,
-                  "provider_engine_version": "0.11.11",
+                  "provider_engine_version": "0.12.21",
                   "isErrorFlow": false
                 }
               }
