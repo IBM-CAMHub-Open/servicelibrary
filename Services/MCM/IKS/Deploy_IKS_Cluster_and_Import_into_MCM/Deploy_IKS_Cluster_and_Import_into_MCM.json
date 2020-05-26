@@ -1,7 +1,7 @@
 {
   "service": {
     "specVersion": "v3",
-    "version": "1.11.0.0",
+    "version": "1.12.0.0",
     "catalog_metadata": {
       "name": "IKS cluster",
       "description": "Deploys and imports IKS cluster into an IBM Cloud Pak For Multicloud Manager hub-cluster.",
@@ -648,7 +648,7 @@
               "IBM Cloud Kubernetes Service": {
                 "title": "IBM Cloud Kubernetes Service",
                 "template_name": "IBM Cloud Kubernetes Service",
-                "version": "1.11",
+                "version": "1.12",
                 "id": "ibmcloud773459b0",
                 "template_type": "Terraform",
                 "template_content_type": "IBM",
