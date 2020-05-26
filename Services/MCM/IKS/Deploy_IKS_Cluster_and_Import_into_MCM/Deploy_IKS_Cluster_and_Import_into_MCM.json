@@ -181,28 +181,6 @@
             "description": "IBM Cloud region"
           },
           {
-            "name": "org",
-            "label": "Organization",
-            "customtype": "string",
-            "type": "string",
-            "immutable": false,
-            "hidden": false,
-            "required": true,
-            "secured": false,
-            "description": "Organization to place service under."
-          },
-          {
-            "name": "space",
-            "label": "Space",
-            "customtype": "string",
-            "type": "string",
-            "immutable": false,
-            "hidden": false,
-            "required": true,
-            "secured": false,
-            "description": "Organization space to create the service."
-          },
-          {
             "name": "resource_group_name",
             "label": "IBM Cloud Resource Group Name",
             "customtype": "string",
@@ -551,41 +529,6 @@
             "description": "Kubernetes version for the cluster; 'latest' for the latest supported version, or version number in X.Y[.Z] format"
           },        
           {
-            "name": "deploy_tiller",
-            "label": "Deploy tiller",
-            "customtype": "string",
-            "type": "string",
-            "immutable": false,
-            "hidden": false,
-            "required": true,
-            "secured": false,
-            "options": [
-                {
-                    "value": "true",
-                    "label": "true",
-                    "default": "true"
-                },
-                {
-                    "value": "false",
-                    "label": "false"
-                }
-            ],
-            "default": "true",
-            "description": "Indicates whether tiller should be deployed into Kubernetes cluster"
-          },
-          {
-            "name": "helm_version",
-            "label": "Helm version",
-            "customtype": "string",
-            "type": "string",
-            "immutable": false,
-            "hidden": false,
-            "required": true,
-            "secured": false,
-            "description": "Helm version to be used to deploy the tiller into the Kubernetes cluster",
-            "default": "2.14.1"
-          },
-          {
             "name": "image_registry",
             "label": "Image Registry",
             "customtype": "string",
@@ -658,8 +601,6 @@
                 "template_data_objects": {},
                 "template_params": {
                   "region": "${input_parameters.region}",
-                  "org": "${input_parameters.org}",
-                  "space": "${input_parameters.space}",
                   "cluster_name": "${input_parameters.cluster_name}",
                   "resource_group_name": "${input_parameters.resource_group_name}",
                   "private_vlan_id": "${input_parameters.private_vlan_id}",
@@ -669,9 +610,7 @@
                   "datacenter": "${input_parameters.datacenter}",
                   "machine_type": "${input_parameters.machine_type}",
                   "isolation": "${input_parameters.isolation}",
-                  "kube_version": "${input_parameters.kube_version}",
-                  "helm_version": "${input_parameters.helm_version}",
-                  "deploy_tiller": "${input_parameters.deploy_tiller}"
+                  "kube_version": "${input_parameters.kube_version}"
                 },
                 "outputs": [
                   "cluster_name",

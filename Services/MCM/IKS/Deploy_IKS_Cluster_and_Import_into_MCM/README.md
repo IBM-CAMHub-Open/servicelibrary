@@ -31,8 +31,6 @@ Note: The parameters indicated as _(hidden)_ have default values.  If you need t
 | kube_version                    | string          | Kubernetes version for the cluster. Specify 'latest' for the most recent kubernetes version supported by the Kubernetes Service, or a version number in the X.Y[.Z] format (e.g. 1.13 or 1.13.5).  The most recent maintenance release for the specified version will be selected. |
 | MCM Controller Data Object      | sharedparameter |Details of the MCM controller this newly created cluster will be registered with. Pointing to a data object created from the [mcm_controller](https://github.com/IBM-CAMHub-Open/template_cam_common/blob/3.2.1/common/datatypes/mcm_controller.json) data type|
 | region                          | string          | _(hidden)_ Region in which to create the cluster |
-| org                             | string          | _(hidden)_ IBM Cloud org name |
-| space                           | string          | _(hidden)_ IBM Cloud space name |
 | resource\_group\_name           | string          | _(hidden)_ Name of the resource group in which the cluster will be created |
 | private\_vlan\_id               | string          | _(hidden)_ ID for the cluster's private VLAN |
 | public\_vlan\_id                | string          | _(hidden)_ ID for the cluster's public VLAN |
@@ -55,8 +53,6 @@ Note: The parameters indicated as _(hidden)_ have default values.  If you need t
 | kube_version                    | string          | Kubernetes version for the cluster. Specify 'latest' for the most recent kubernetes version supported by the Kubernetes Service, or a version number in the X.Y[.Z] format (e.g. 1.13 or 1.13.5).  The most recent maintenance release for the specified version will be selected. |
 | MCM Controller Data Object      | sharedparameter |Details of the MCM controller this newly created cluster will be registered with. Pointing to a data object created from the [mcm_controller](https://github.com/IBM-CAMHub-Open/template_cam_common/blob/3.2.1/common/datatypes/mcm_controller.json) data type|
 | region                          | string          | _(hidden)_ Region in which to create the cluster |
-| org                             | string          | _(hidden)_ IBM Cloud org name |
-| space                           | string          | _(hidden)_ IBM Cloud space name |
 | resource\_group\_name           | string          | _(hidden)_ Name of the resource group in which the cluster will be created |
 | private\_vlan\_id               | string          | _(hidden)_ ID for the cluster's private VLAN |
 | public\_vlan\_id                | string          | _(hidden)_ ID for the cluster's public VLAN |
