@@ -257,7 +257,7 @@
                   "cloud_connection_name": "${input_parameters.Connection}",
                   "template_data_objects": {},
                   "template_params": {
-                    "aws_region": "us-east-1",
+                    "aws_region": "${input_parameters.region}",
                     "aws_image": "${input_parameters.aws_image}",
                     "aws_image_size": "${input_parameters.aws_image_size}",
                     "aws_ami_owner_id": "${input_parameters.aws_ami_owner_id}",
