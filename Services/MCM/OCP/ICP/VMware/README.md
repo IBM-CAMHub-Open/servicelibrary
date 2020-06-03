@@ -18,7 +18,7 @@ In this topology, each one of the following services can have its own dedicated 
 
 The second activity of the service is [IBM Cloud Private on OpenShift Container Platform](https://github.com/IBM-CAMHub-Open/template_icp_on_ocp/tree/3.2.1/vmware/terraform)
 
-The third activity of the service is [IBM Multicloud Manager Klusterlet on OpenShift](https://github.com/IBM-CAMHub-Open/template_mcm_install/tree/3.2.1/ICP/terraform) It performs a MCM import which will register the newly deployed MCM cluster with an existing MCM controller(hub) 
+The third activity of the service is [IBM Multicloud Manager Klusterlet on IBM Cloud Private](https://github.com/IBM-CAMHub-Open/template_mcm_install/tree/3.2.1/ICP/terraform) It performs a MCM import which will register the newly deployed MCM cluster with an existing MCM controller(hub) 
 
 ## Service input
 The following service plans are defined:

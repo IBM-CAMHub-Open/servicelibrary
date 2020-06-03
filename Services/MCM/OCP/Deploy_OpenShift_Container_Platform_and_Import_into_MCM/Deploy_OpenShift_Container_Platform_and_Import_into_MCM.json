@@ -366,7 +366,62 @@
                 "default": false
               }
             ]
-          }
+          },
+          {
+            "name": "image_registry",
+            "label": "Image Registry",
+            "customtype": "string",
+            "type": "string",
+            "immutable": false,
+            "hidden": false,
+            "required": false,
+            "secured": false,
+            "description": "URL for private docker registry from which klusterlet images will be pulled"
+          },
+          {
+            "name": "image_suffix",
+            "label": "Image Suffix",
+            "customtype": "string",
+            "type": "string",
+            "immutable": false,
+            "hidden": false,
+            "required": false,
+            "secured": false,
+            "description": "Suffix (e.g. platform type) to be appended to image name"
+          },
+          {
+            "name": "image_version",
+            "label": "Image Version",
+            "customtype": "string",
+            "type": "string",
+            "immutable": false,
+            "hidden": false,
+            "required": false,
+            "secured": false,
+            "description": "Version (tag) of the MCM image to be pulled"
+          },
+          {
+            "name": "docker_user",
+            "label": "Docker User",
+            "customtype": "string",
+            "type": "string",
+            "immutable": false,
+            "hidden": false,
+            "required": false,
+            "secured": false,
+            "description": "Username for authenticating with the private docker registry"
+          },
+          {
+            "name": "docker_password",
+            "label": "Docker Password",
+            "customtype": "string",
+            "type": "string",
+            "immutable": false,
+            "hidden": false,
+            "required": false,
+            "secured": true,
+            "description": "Password for authenticating with the private docker registry"
+          }          
         ],
         "flow": {
           "conditions": [
@@ -446,7 +501,8 @@
                   "openshift_node_ip",
                   "cluster_name",
                   "openshift_single_node_ip"
-                ]
+                ],
+                "provider_engine_version": "0.11.11"
               }
             },
             {
@@ -520,13 +576,14 @@
                   "openshift_password",
                   "openshift_master_ip",
                   "cluster_name"
-                ]
+                ],
+                "provider_engine_version": "0.11.11"
               }
             },
             {
-              "IBM Multicloud Manager Klusterlet on OpenShift": {
-                "title": "IBM Multicloud Manager Klusterlet on OpenShift_f3653c",
-                "template_name": "IBM Multicloud Manager Klusterlet on OpenShift",
+              "Import OpenShift Container Platform Kubernetes cluster into MCM hub-cluster": {
+                "title": "Import OpenShift Container Platform Kubernetes cluster into MCM hub-cluster_f3653c",
+                "template_name": "Import OpenShift Container Platform Kubernetes cluster into MCM hub-cluster",
                 "version": "3.2.1",
                 "id": "ibmmulti57aa870e",
                 "template_type": "Terraform",
@@ -536,25 +593,29 @@
                 "cloud_connection_name": "Other",
                 "template_data_objects": {
                   "bastionhost": "DefaultNoBastionHostRequired",
-                  "mcm_controller": "${input_parameters.mcm_controller}",
-                  "redhat_subscription": "${input_parameters.redhat_subscription}"
+                  "mcm_controller": "${input_parameters.mcm_controller}"
                 },
                 "template_params": {
-                  "import_launch_node_ip": "${templates.openshif205d0c86.output.openshift_single_node_ip||templates.openshife9ddafcd.output.openshift_master_ip}",
-                  "vm_os_user": "${datatypes.vsphere_managed_inventory_definition.vm_os_user}",
-                  "vm_os_password": "${datatypes.vsphere_managed_inventory_definition.vm_os_password}",
-                  "vm_os_private_key": "${datatypes.vsphere_managed_inventory_definition.vm_os_private_ssh_key}",
-                  "ocp_server_url": "${templates.openshif205d0c86.output.openshift_url||templates.openshife9ddafcd.output.openshift_url}",
-                  "admin_user": "${input_parameters.openshift_admin_username}",
-                  "admin_pass": "${input_parameters.openshift_admin_password}",
-                  "man_cluster_on_hub": "${templates.openshif205d0c86.output.cluster_name||templates.openshife9ddafcd.output.cluster_name}",
-                  "rhsm_user": "${redhat_subscription.username}",
-                  "rhsm_password": "${redhat_subscription.password}"
+                  "mcm_url": "${mcm_controller.icp_url}",
+                  "mcm_admin_user": "${mcm_controller.icp_admin_user}",
+                  "mcm_admin_password": "${mcm_controller.icp_admin_password}",
+                  "cluster_name": "managed-${templates.openshif205d0c86.output.cluster_name||templates.openshife9ddafcd.output.cluster_name}",
+                  "cluster_namespace": "managed-${templates.openshif205d0c86.output.cluster_name||templates.openshife9ddafcd.output.cluster_name}-ns",    
+                  "ocp_url": "${templates.openshif205d0c86.output.openshift_url||templates.openshife9ddafcd.output.openshift_url}",
+                  "ocp_oauth_url": "${templates.openshif205d0c86.output.openshift_url||templates.openshife9ddafcd.output.openshift_url}",                              
+                  "ocp_admin_user": "${input_parameters.openshift_admin_username}",
+                  "ocp_admin_password": "${input_parameters.openshift_admin_password}",
+                  "image_registry": "${input_parameters.image_registry}",
+                  "image_suffix": "${input_parameters.image_suffix}",
+                  "image_version": "${input_parameters.image_version}",
+                  "docker_user": "${input_parameters.docker_user}",
+                  "docker_password": "${input_parameters.docker_password}"                
                 },
                 "outputs": [],
                 "error": false,
                 "warning": false,
-                "isErrorFlow": false
+                "isErrorFlow": false,
+                "provider_engine_version": "0.11.11"
               }
             }
           ],
