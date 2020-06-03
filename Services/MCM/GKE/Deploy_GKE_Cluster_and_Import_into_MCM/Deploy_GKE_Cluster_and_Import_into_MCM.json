@@ -1,7 +1,7 @@
 {
   "service": {
     "specVersion": "v3",
-    "version": "1.11.0.0",
+    "version": "1.11.0.1",
     "catalog_metadata": {
       "name": "GKE cluster",
       "description": "Deploys and imports GKE cluster into an IBM Cloud Pak For Multicloud Manager hub-cluster.",

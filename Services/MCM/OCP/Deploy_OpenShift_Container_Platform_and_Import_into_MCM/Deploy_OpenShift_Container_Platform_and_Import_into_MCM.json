@@ -1,7 +1,7 @@
 {
   "service": {
     "specVersion": "v3",
-	  "version": "3.11.0.0",    
+	  "version": "3.11.0.1",    
     "catalog_metadata": {
       "name": "OCP cluster on VMware",
       "description": "Deploys OpenShift 3.11 cluster on VMware and imports OCP cluster to IBM Cloud Pak for MCM 2.0.0 hub cluster.",
@@ -599,8 +599,8 @@
                   "mcm_url": "${mcm_controller.icp_url}",
                   "mcm_admin_user": "${mcm_controller.icp_admin_user}",
                   "mcm_admin_password": "${mcm_controller.icp_admin_password}",
-                  "cluster_name": "managed-${input_parameters.clustername}",
-                  "cluster_namespace": "managed-${input_parameters.clustername}-ns",    
+                  "cluster_name": "managed-${templates.openshif205d0c86.output.cluster_name||templates.openshife9ddafcd.output.cluster_name}",
+                  "cluster_namespace": "managed-${templates.openshif205d0c86.output.cluster_name||templates.openshife9ddafcd.output.cluster_name}-ns",    
                   "ocp_url": "${templates.openshif205d0c86.output.openshift_url||templates.openshife9ddafcd.output.openshift_url}",
                   "ocp_oauth_url": "${templates.openshif205d0c86.output.openshift_url||templates.openshife9ddafcd.output.openshift_url}",                              
                   "ocp_admin_user": "${input_parameters.openshift_admin_username}",
