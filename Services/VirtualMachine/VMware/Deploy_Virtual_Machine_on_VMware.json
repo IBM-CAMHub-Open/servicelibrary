@@ -27,6 +27,41 @@
     },
     "tags": [
       {
+        "name": "environment",
+        "label": "environment",
+        "type": "string",
+        "immutable": false,
+        "hidden": false,
+        "required": true,
+        "secured": false,
+        "description": "Unique identifer added to the provisioned VMs.",
+        "isSystemTag": true,
+        "customtype": "string",
+        "permission": "Read-Write",
+        "options": [
+          {
+            "label": "Development",
+            "value": "dev",
+            "default": true
+          },
+          {
+            "label": "Quality Assurance",
+            "value": "qa",
+            "default": false
+          },
+          {
+            "label": "Production",
+            "value": "prod",
+            "default": false
+          },
+          {
+            "label": "Test",
+            "value": "test",
+            "default": false
+          }
+        ]
+      },
+      {
         "name": "request_group",
         "label": "request_group",
         "type": "string",
@@ -261,7 +296,7 @@
             "hidden": false,
             "required": false,
             "secured": false,
-            "default": "${templates.singlevi4cf68d93.public_ssh_key}"
+            "default": "${templates.singlevi4cf68d93.output.public_ssh_key}"
           },
           {
             "name": "private_ssh_key",
@@ -273,7 +308,7 @@
             "required": false,
             "secured": false,
             "description": "",
-            "default": "${templates.singlevi4cf68d93.private_ssh_key}"
+            "default": "${templates.singlevi4cf68d93.output.private_ssh_key}"
           }
         ]
       }

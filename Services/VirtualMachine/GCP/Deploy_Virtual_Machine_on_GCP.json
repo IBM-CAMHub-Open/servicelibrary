@@ -23,6 +23,41 @@
       },
       "tags": [
         {
+          "name": "environment",
+          "label": "environment",
+          "type": "string",
+          "immutable": false,
+          "hidden": false,
+          "required": true,
+          "secured": false,
+          "description": "Unique identifer added to the provisioned VMs.",
+          "isSystemTag": true,
+          "customtype": "string",
+          "permission": "Read-Write",
+          "options": [
+            {
+              "label": "Development",
+              "value": "dev",
+              "default": true
+            },
+            {
+              "label": "Quality Assurance",
+              "value": "qa",
+              "default": false
+            },
+            {
+              "label": "Production",
+              "value": "prod",
+              "default": false
+            },
+            {
+              "label": "Test",
+              "value": "test",
+              "default": false
+            }
+          ]
+        },
+        {
           "name": "request_group",
           "label": "request_group",
           "type": "string",
@@ -211,7 +246,7 @@
               "required": false,
               "secured": false,
               "description": "",
-              "default": "${templates.googlecl1bcd5dbb.External_IP}"
+              "default": "${templates.googlecl1bcd5dbb.output.External_IP}"
             },
             {
               "name": "internal_ip",
@@ -223,7 +258,7 @@
               "required": false,
               "secured": false,
               "description": "",
-              "default": "${templates.googlecl1bcd5dbb.Internal_IP}"
+              "default": "${templates.googlecl1bcd5dbb.output.Internal_IP}"
             }
           ]
         }
