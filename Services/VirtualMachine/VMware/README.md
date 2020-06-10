@@ -51,7 +51,7 @@ Note: The parameters indicated as _(hidden)_ have default values.  If you need t
 | VM vCPU Allocation                | string      |  | |
 | vm_disk_size                 | string      |  | |
 
-Service offers two plans standard and advance. The standard plan offers quick deployment through a few pre-configured parameters, Hence you only need to provide values of remaining parameters. The advance plan gives you full control over configuration. In the advance plan, you are required to provide values of all the parameters.
+Service offers one standard plan. The standard plan offers quick deployment through a few pre-configured parameters, Hence you only need to provide values of remaining parameters.
 
 ### License and Maintainer
 

@@ -227,38 +227,6 @@
           "description": "To deploy a Standard plan",
           "actions": [],
           "plan_parameters": []
-        },
-        {
-          "name": "Advance",
-          "description": "To deploy a Advance plan",
-          "plan_parameters": [
-            {
-              "name": "hostname",
-              "label": "Hostname",
-              "customtype": "string",
-              "type": "string",
-              "immutable": false,
-              "hidden": false,
-              "required": true,
-              "secured": false,
-              "description": "Hostname of the virtual instance (small flavor) to be deployed",
-              "editable": true,
-              "default": ""
-            },
-            {
-              "name": "domain",
-              "label": "VM Domain",
-              "customtype": "string",
-              "type": "string",
-              "immutable": false,
-              "hidden": false,
-              "required": true,
-              "secured": false,
-              "description": "Domain of the virtual instance to be deployed",
-              "editable": true,
-              "default": ""
-            }
-          ]
         }
       ]
     }

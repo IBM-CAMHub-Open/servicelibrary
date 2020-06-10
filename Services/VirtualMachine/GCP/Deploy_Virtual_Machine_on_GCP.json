@@ -269,40 +269,6 @@
           "description": "To deploy a Standard plan",
           "actions": [],
           "plan_parameters": []
-        },
-        {
-          "name": "Advance",
-          "description": "To deploy a Advance plan",
-          "plan_parameters": [
-            {
-              "name": "gce_ssh_user",
-              "label": "SSH User Name",
-              "customtype": "string",
-              "type": "string",
-              "immutable": false,
-              "hidden": false,
-              "required": true,
-              "secured": false,
-              "description": "User name to connect to the deployed VMs",
-              "editable": true,
-              "default": ""
-            },
-            {
-              "name": "unique_resource_name",
-              "label": "VM Name",
-              "customtype": "string",
-              "type": "string",
-              "immutable": false,
-              "hidden": false,
-              "required": true,
-              "secured": false,
-              "description": "A unique name for the resource, required by GCE.",
-              "isDynamic": false,
-              "editable": true,
-              "default": "",
-              "regex": "(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?)"
-            }
-          ]
         }
       ]
     }

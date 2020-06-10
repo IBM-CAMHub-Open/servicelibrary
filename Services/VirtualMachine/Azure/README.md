@@ -26,7 +26,7 @@ Note: The parameters indicated as _(hidden)_ have default values.  If you need t
 | admin_user_password             | password        | Password of the newly created administrative usert                                                                                          | |
 | user_public_key                 | string          | Public SSH key used to connect to the virtual machine                                                                                        | |
 
-Service offers two plans standard and advance. The standard plan offers quick deployment through a few pre-configured parameters, Hence you only need to provide values of remaining parameters. The advance plan gives you full control over configuration. In the advance plan, you are required to provide values of all the parameters.
+Service offers one standard plan. The standard plan offers quick deployment through a few pre-configured parameters, Hence you only need to provide values of remaining parameters.
 
 ### License and Maintainer
 
