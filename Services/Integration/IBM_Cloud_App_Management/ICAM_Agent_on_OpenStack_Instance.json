@@ -1,7 +1,7 @@
 {
   "service": {
     "specVersion": "v3",
-    "version": "2.3.0.0",
+    "version": "2.3.0.1",
     "catalog_metadata": {
       "name": "IBM Cloud App Management Integration Service on OpenStack",
       "description": "IBM Cloud App Management Integration Service on Linux guest deployed in an OpenStack cloud",
@@ -117,6 +117,19 @@
         "description": "Default action for deployment of service",
         "input_parameters": [
           {
+            "name": "cloud_connection",
+            "label": "OpenStack Cloud Connection Name",
+            "customtype": "connection",
+            "type": "connection",
+            "immutable": false,
+            "hidden": false,
+            "required": true,
+            "secured": false,
+            "description": "Name of the OpenStack cloud connection.",
+            "provider": "OpenStack",
+            "default": ""
+          },        
+          {
             "name": "openstack_image_id",
             "label": "OpenStack Image ID",
             "customtype": "string",
@@ -202,20 +215,18 @@
               "OpenStack Single Virtual Machine": {
                 "title": "OpenStack Single Virtual Machine_9b9236",
                 "template_name": "OpenStack Single Virtual Machine",
-                "version": "2.3",
+                "version": "2.4",
                 "id": "openstac852901d5",
                 "template_type": "Terraform",
                 "template_content_type": "OpenStack",
                 "template_provider": "OpenStack",
                 "instance_name": "",
-                "cloud_connection_name": "OpenStack",
+                "cloud_connection_name": "${input_parameters.cloud_connection}",
                 "template_data_objects": {},
                 "template_params": {
                   "openstack_image_id": "${input_parameters.openstack_image_id}",
                   "openstack_flavor_id": "${input_parameters.openstack_flavor_id}",
                   "openstack_network_name": "${input_parameters.openstack_network_name}",
-                  "image_id_username": "${input_parameters.openstack_image_id_username}",
-                  "image_id_password": "",
                   "instance_name": "${input_parameters.openstack_instance_name}",
                   "key_pair_name": "${input_parameters.openstack_key_pair_name}"
                 },
@@ -314,17 +325,6 @@
             "required": true,
             "secured": false,
             "description": "The name of the network to be used for deploy operations."
-          },
-          {
-            "name": "openstack_image_id_username",
-            "label": "OpenStack Image Username",
-            "customtype": "string",
-            "type": "string",
-            "immutable": false,
-            "hidden": false,
-            "required": true,
-            "secured": false,
-            "description": "The username to SSH into image ID"
           },
           {
             "name": "openstack_key_pair_name",
