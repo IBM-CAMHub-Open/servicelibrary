@@ -1,7 +1,7 @@
 {
   "service": {
     "specVersion": "v3",
-    "version": "2.3.0.0",
+    "version": "2.3.0.1",
     "catalog_metadata": {
       "name": "Multi Cloud - MEAN Stack deployment",
       "description": "This service deploy MEAN stock on your choice of cloud.",
@@ -169,26 +169,16 @@
           {
             "name": "CloudConnection",
             "label": "Cloud Connection",
-            "customtype": "string",
-            "type": "string",
+            "customtype": "connection",
+            "type": "connection",
             "immutable": false,
             "hidden": false,
             "required": true,
             "secured": false,
-            "description": "Cloud Connection",
-            "default": "VMware"
-          },
-          {
-            "name": "hostname",
-            "label": "Host Name",
-            "customtype": "string",
-            "type": "string",
-            "immutable": false,
-            "hidden": false,
-            "required": false,
-            "secured": false,
-            "description": "VM Host Name",
-            "default": "demovm1"
+            "description": "",
+            "view": "create new",
+            "default": "",
+            "provider": "Amazon EC2"
           },
           {
             "name": "vm_dns_servers",
@@ -268,10 +258,10 @@
           },
           {
             "name": "mongodb_vm_root_disk_size",
-            "label": "Mongo root disk side",
+            "label": "Mongo root disk size",
             "customtype": "string",
             "type": "string",
-            "immutable": true,
+            "immutable": false,
             "hidden": false,
             "required": false,
             "secured": false,
@@ -280,7 +270,7 @@
           },
           {
             "name": "mongodb_vm_name",
-            "label": "VM display name",
+            "label": "Mongo VM display name",
             "customtype": "string",
             "type": "string",
             "immutable": false,
@@ -388,14 +378,14 @@
           },
           {
             "name": "vm_folder",
-            "label": "VC Folder",
+            "label": "vSphere Folder for VM",
             "customtype": "string",
             "type": "string",
             "immutable": false,
             "hidden": false,
             "required": false,
             "secured": false,
-            "description": "VC Folder to keep the VMs",
+            "description": "vSphere Folder to keep the VMs",
             "default": ""
           },
           {
@@ -410,10 +400,10 @@
           },
           {
             "name": "nodejs_vm_root_disk_size",
-            "label": "nodejs root disk size",
+            "label": "Nodejs root disk size",
             "customtype": "string",
             "type": "string",
-            "immutable": true,
+            "immutable": false,
             "hidden": false,
             "required": false,
             "secured": false,
@@ -482,7 +472,7 @@
           },
           {
             "name": "network_name_prefix",
-            "label": "AWS Network prefix",
+            "label": "Network prefix",
             "customtype": "string",
             "type": "string",
             "immutable": false,
@@ -494,7 +484,7 @@
           },
           {
             "name": "public_ssh_key_name",
-            "label": "AWS Public key name",
+            "label": "Public key name",
             "customtype": "string",
             "type": "string",
             "immutable": false,
@@ -506,14 +496,14 @@
           },
           {
             "name": "public_ssh_key",
-            "label": "AWS Public SSH Key",
+            "label": "Public SSH Key",
             "customtype": "string",
             "type": "string",
             "immutable": false,
             "hidden": false,
             "required": false,
             "secured": false,
-            "description": "AWS Public SSH Key",
+            "description": "Public SSH Key for the VM",
             "default": ""
           },
           {
@@ -602,7 +592,7 @@
           },
           {
             "name": "nodejs_vm_ipv4_address",
-            "label": "nodejs_vm_ipv4_address",
+            "label": "Nodejs VM IP address",
             "customtype": "string",
             "type": "string",
             "immutable": false,
@@ -881,18 +871,6 @@
         "description": "Amazon EC2 Cloud",
         "plan_parameters": [
           {
-            "name": "hostname",
-            "label": "Host Name",
-            "customtype": "string",
-            "type": "string",
-            "immutable": true,
-            "hidden": true,
-            "required": false,
-            "secured": false,
-            "description": "VM Host Name",
-            "default": "demovm1"
-          },
-          {
             "name": "vm_dns_servers",
             "label": "DNS Server IP",
             "customtype": "list",
@@ -921,14 +899,16 @@
           {
             "name": "CloudConnection",
             "label": "Cloud Connection",
-            "customtype": "string",
-            "type": "string",
+            "customtype": "connection",
+            "type": "connection",
             "immutable": false,
             "hidden": false,
             "required": true,
             "secured": false,
-            "description": "Cloud Connection",
-            "default": "AWS"
+            "description": "",
+            "view": "create new",
+            "default": "",
+            "provider": "Amazon EC2"
           },
           {
             "name": "vm_dns_suffixes",
@@ -994,10 +974,10 @@
           },
           {
             "name": "mongodb_vm_root_disk_size",
-            "label": "Mongo root disk side",
+            "label": "Mongo root disk size",
             "customtype": "string",
             "type": "string",
-            "immutable": true,
+            "immutable": false,
             "hidden": true,
             "required": false,
             "secured": false,
@@ -1006,7 +986,7 @@
           },
           {
             "name": "mongodb_vm_name",
-            "label": "VM display name",
+            "label": "Mongo VM display name",
             "customtype": "string",
             "type": "string",
             "immutable": true,
@@ -1078,22 +1058,22 @@
           },
           {
             "name": "vm_folder",
-            "label": "VC Folder",
+            "label": "vSphere Folder for VM",
             "customtype": "string",
             "type": "string",
             "immutable": true,
             "hidden": true,
             "required": false,
             "secured": false,
-            "description": "VC Folder to keep the VMs",
+            "description": "vSphere Folder to keep the VMs",
             "default": "notRequire"
           },
           {
             "name": "nodejs_vm_root_disk_size",
-            "label": "nodejs root disk size",
+            "label": "Nodejs root disk size",
             "customtype": "string",
             "type": "string",
-            "immutable": true,
+            "immutable": false,
             "hidden": true,
             "required": false,
             "secured": false,
@@ -1244,7 +1224,7 @@
           },
           {
             "name": "network_name_prefix",
-            "label": "AWS Network prefix",
+            "label": "Network prefix",
             "customtype": "string",
             "type": "string",
             "immutable": false,
@@ -1256,7 +1236,7 @@
           },
           {
             "name": "public_ssh_key_name",
-            "label": "AWS Public key name",
+            "label": "Public key name",
             "customtype": "string",
             "type": "string",
             "immutable": false,
@@ -1268,14 +1248,14 @@
           },
           {
             "name": "public_ssh_key",
-            "label": "AWS Public SSH Key",
+            "label": "Public SSH Key",
             "customtype": "string",
             "type": "string",
             "immutable": false,
             "hidden": false,
             "required": false,
             "secured": false,
-            "description": "AWS Public SSH Key",
+            "description": "Public SSH Key for the VM",
             "default": ""
           },
           {
@@ -1328,7 +1308,7 @@
           },
           {
             "name": "nodejs_vm_ipv4_address",
-            "label": "nodejs_vm_ipv4_address",
+            "label": "Nodejs VM IP address",
             "customtype": "string",
             "type": "string",
             "immutable": true,
@@ -1405,7 +1385,7 @@
           },
           {
             "name": "network_name_prefix",
-            "label": "AWS Network prefix",
+            "label": "Network prefix",
             "customtype": "string",
             "type": "string",
             "immutable": true,
@@ -1417,7 +1397,7 @@
           },
           {
             "name": "public_ssh_key_name",
-            "label": "AWS Public key name",
+            "label": "Public key name",
             "customtype": "string",
             "type": "string",
             "immutable": true,
@@ -1502,26 +1482,16 @@
           {
             "name": "CloudConnection",
             "label": "Cloud Connection",
-            "customtype": "string",
-            "type": "string",
+            "customtype": "connection",
+            "type": "connection",
             "immutable": false,
             "hidden": false,
             "required": true,
             "secured": false,
-            "description": "Cloud Connection",
-            "default": "VMware"
-          },
-          {
-            "name": "hostname",
-            "label": "Host Name",
-            "customtype": "string",
-            "type": "string",
-            "immutable": false,
-            "hidden": false,
-            "required": false,
-            "secured": false,
-            "description": "VM Host Name",
-            "default": "demovm1"
+            "description": "",
+            "view": "create new",
+            "default": "",
+            "provider": "VMware vSphere"
           },
           {
             "name": "vm_dns_servers",
@@ -1601,10 +1571,10 @@
           },
           {
             "name": "mongodb_vm_root_disk_size",
-            "label": "Mongo root disk side",
+            "label": "Mongo root disk size",
             "customtype": "string",
             "type": "string",
-            "immutable": true,
+            "immutable": false,
             "hidden": false,
             "required": false,
             "secured": false,
@@ -1613,7 +1583,7 @@
           },
           {
             "name": "mongodb_vm_name",
-            "label": "VM display name",
+            "label": "Mongo VM display name",
             "customtype": "string",
             "type": "string",
             "immutable": false,
@@ -1627,8 +1597,8 @@
             "name": "mongodb_vm_root_disk_datastore",
             "customtype": "string",
             "type": "string",
-            "immutable": true,
-            "hidden": true,
+            "immutable": false,
+            "hidden": false,
             "required": false,
             "secured": false,
             "default": "datastore1",
@@ -1697,44 +1667,46 @@
           },
           {
             "name": "vm_datacenter",
-            "label": "VC Datacenter",
-            "customtype": "string",
-            "type": "string",
-            "immutable": true,
-            "hidden": true,
-            "required": false,
-            "secured": false,
-            "description": "VC Data Center",
-            "default": "DC1"
-          },
-          {
-            "name": "vm_folder",
-            "label": "VC Folder",
+            "label": "vSphere Datacenter",
             "customtype": "string",
             "type": "string",
             "immutable": false,
             "hidden": false,
             "required": false,
             "secured": false,
-            "description": "VC Folder to keep the VMs",
+            "description": "vSphere Data Center",
+            "default": "DC1"
+          },
+          {
+            "name": "vm_folder",
+            "label": "vSphere Folder for VM",
+            "customtype": "string",
+            "type": "string",
+            "immutable": false,
+            "hidden": false,
+            "required": false,
+            "secured": false,
+            "description": "vSphere Folder to keep the VMs",
             "default": ""
           },
           {
             "name": "resource_pool",
+            "label": "vSphere Resource Pool",
             "customtype": "string",
             "type": "string",
-            "immutable": true,
-            "hidden": true,
+            "immutable": false,
+            "hidden": false,
             "required": false,
             "secured": false,
-            "default": "rp1"
+            "default": "rp1",
+            "description": "vSphere Resource Pool"
           },
           {
             "name": "nodejs_vm_root_disk_size",
-            "label": "nodejs root disk size",
+            "label": "Nodejs root disk size",
             "customtype": "string",
             "type": "string",
-            "immutable": true,
+            "immutable": false,
             "hidden": false,
             "required": false,
             "secured": false,
@@ -1779,14 +1751,14 @@
           },
           {
             "name": "public_ssh_key",
-            "label": "AWS Public SSH Key",
+            "label": "Public SSH Key",
             "customtype": "string",
             "type": "string",
             "immutable": false,
-            "hidden": false,
+            "hidden": true,
             "required": false,
             "secured": false,
-            "description": "AWS Public SSH Key",
+            "description": "Public SSH Key for the VM",
             "default": ""
           },
           {
@@ -1807,7 +1779,7 @@
             "customtype": "string",
             "type": "string",
             "immutable": false,
-            "hidden": false,
+            "hidden": true,
             "required": false,
             "secured": false,
             "description": "The hostname of server with nodejs; Allow 1 to 255 alphanumeric characters and special characters +=._:/@- as tag value that is not starting with aws",
@@ -1834,26 +1806,16 @@
           {
             "name": "CloudConnection",
             "label": "Cloud Connection",
-            "customtype": "string",
-            "type": "string",
+            "customtype": "connection",
+            "type": "connection",
             "immutable": false,
             "hidden": false,
             "required": true,
             "secured": false,
-            "description": "Cloud Connection",
-            "default": "IBM"
-          },
-          {
-            "name": "hostname",
-            "label": "Host Name",
-            "customtype": "string",
-            "type": "string",
-            "immutable": true,
-            "hidden": true,
-            "required": false,
-            "secured": false,
-            "description": "VM Host Name",
-            "default": "demovm1"
+            "description": "",
+            "view": "create new",
+            "default": "",
+            "provider": "IBM"
           },
           {
             "name": "vm_dns_servers",
@@ -1933,10 +1895,10 @@
           },
           {
             "name": "mongodb_vm_root_disk_size",
-            "label": "Mongo root disk side",
+            "label": "Mongo root disk size",
             "customtype": "string",
             "type": "string",
-            "immutable": true,
+            "immutable": false,
             "hidden": true,
             "required": false,
             "secured": false,
@@ -1945,7 +1907,7 @@
           },
           {
             "name": "mongodb_vm_name",
-            "label": "VM display name",
+            "label": "Mongo VM display name",
             "customtype": "string",
             "type": "string",
             "immutable": true,
@@ -2005,14 +1967,14 @@
           },
           {
             "name": "vm_folder",
-            "label": "VC Folder",
+            "label": "vSphere Folder for VM",
             "customtype": "string",
             "type": "string",
             "immutable": true,
             "hidden": true,
             "required": false,
             "secured": false,
-            "description": "VC Folder to keep the VMs",
+            "description": "vSphere Folder to keep the VMs",
             "default": "notRequire"
           },
           {
@@ -2041,10 +2003,10 @@
           },
           {
             "name": "nodejs_vm_root_disk_size",
-            "label": "nodejs root disk size",
+            "label": "Nodejs root disk size",
             "customtype": "string",
             "type": "string",
-            "immutable": true,
+            "immutable": false,
             "hidden": true,
             "required": false,
             "secured": false,
@@ -2183,7 +2145,7 @@
           },
           {
             "name": "network_name_prefix",
-            "label": "AWS Network prefix",
+            "label": "Network prefix",
             "customtype": "string",
             "type": "string",
             "immutable": false,
@@ -2195,7 +2157,7 @@
           },
           {
             "name": "public_ssh_key_name",
-            "label": "AWS Public key name",
+            "label": "Public key name",
             "customtype": "string",
             "type": "string",
             "immutable": false,
@@ -2207,14 +2169,14 @@
           },
           {
             "name": "public_ssh_key",
-            "label": "AWS Public SSH Key",
+            "label": "Public SSH Key",
             "customtype": "string",
             "type": "string",
             "immutable": false,
             "hidden": false,
             "required": false,
             "secured": false,
-            "description": "AWS Public SSH Key",
+            "description": "Public SSH Key for the VM",
             "default": ""
           },
           {
@@ -2267,7 +2229,7 @@
           },
           {
             "name": "nodejs_vm_ipv4_address",
-            "label": "nodejs_vm_ipv4_address",
+            "label": "Nodejs VM IP address",
             "customtype": "string",
             "type": "string",
             "immutable": true,
@@ -2321,26 +2283,16 @@
           {
             "name": "CloudConnection",
             "label": "Cloud Connection",
-            "customtype": "string",
-            "type": "string",
-            "immutable": true,
-            "hidden": true,
+            "customtype": "connection",
+            "type": "connection",
+            "immutable": false,
+            "hidden": false,
             "required": true,
             "secured": false,
-            "description": "Cloud Connection",
-            "default": "Azure"
-          },
-          {
-            "name": "hostname",
-            "label": "Host Name",
-            "customtype": "string",
-            "type": "string",
-            "immutable": true,
-            "hidden": true,
-            "required": false,
-            "secured": false,
-            "description": "VM Host Name",
-            "default": "demovm1"
+            "description": "",
+            "view": "create new",
+            "default": "",
+            "provider": "Microsoft Azure"
           },
           {
             "name": "vm_dns_servers",
@@ -2420,10 +2372,10 @@
           },
           {
             "name": "mongodb_vm_root_disk_size",
-            "label": "Mongo root disk side",
+            "label": "Mongo root disk size",
             "customtype": "string",
             "type": "string",
-            "immutable": true,
+            "immutable": false,
             "hidden": true,
             "required": false,
             "secured": false,
@@ -2432,7 +2384,7 @@
           },
           {
             "name": "mongodb_vm_name",
-            "label": "VM display name",
+            "label": "Mongo VM display name",
             "customtype": "string",
             "type": "string",
             "immutable": true,
@@ -2504,22 +2456,22 @@
           },
           {
             "name": "vm_folder",
-            "label": "VC Folder",
+            "label": "vSphere Folder for VM",
             "customtype": "string",
             "type": "string",
             "immutable": true,
             "hidden": true,
             "required": false,
             "secured": false,
-            "description": "VC Folder to keep the VMs",
+            "description": "vSphere Folder to keep the VMs",
             "default": "notRequire"
           },
           {
             "name": "nodejs_vm_root_disk_size",
-            "label": "nodejs root disk size",
+            "label": "Nodejs root disk size",
             "customtype": "string",
             "type": "string",
-            "immutable": true,
+            "immutable": false,
             "hidden": true,
             "required": false,
             "secured": false,
@@ -2588,7 +2540,7 @@
           },
           {
             "name": "network_name_prefix",
-            "label": "AWS Network prefix",
+            "label": "Network prefix",
             "customtype": "string",
             "type": "string",
             "immutable": true,
@@ -2600,7 +2552,7 @@
           },
           {
             "name": "public_ssh_key_name",
-            "label": "AWS Public key name",
+            "label": "Public key name",
             "customtype": "string",
             "type": "string",
             "immutable": true,
@@ -2706,14 +2658,14 @@
           },
           {
             "name": "public_ssh_key",
-            "label": "AWS Public SSH Key",
+            "label": "Public SSH Key",
             "customtype": "string",
             "type": "string",
             "immutable": false,
             "hidden": false,
             "required": false,
             "secured": false,
-            "description": "AWS Public SSH Key",
+            "description": "Public SSH Key for the VM",
             "default": ""
           },
           {
@@ -2754,7 +2706,7 @@
           },
           {
             "name": "nodejs_vm_ipv4_address",
-            "label": "nodejs_vm_ipv4_address",
+            "label": "Nodejs VM IP address",
             "customtype": "string",
             "type": "string",
             "immutable": true,
