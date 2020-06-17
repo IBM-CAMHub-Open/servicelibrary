@@ -4,7 +4,7 @@
     "version": "1.12.0.0",
     "catalog_metadata": {
       "name": "IKS cluster",
-      "description": "Deploys and imports IKS cluster into an IBM Cloud Pak For Multicloud Manager hub-cluster.",
+      "description": "Deploys and imports IKS cluster into an IBM Cloud Pak For Multicloud Management hub-cluster.",
       "image": "serviceicon_1.svg",
       "category": "Cluster Lifecycle Services",
       "bullets": [
@@ -18,13 +18,13 @@
         },
         {
           "title": "MCM Klusterlet",
-          "description": "IBM Multicloud Manager Klusterlet"
+          "description": "IBM Cloud Pak For Multicloud Management"
         }
       ],
       "providerDisplayName": "IBM",
-      "longDescription": "Deploys an IBM Cloud Kubernetes Service cluster and imports the cluster into an IBM Cloud Pak For Multicloud Manager hub-cluster.",
-      "documentationUrl": "https://www.ibm.com/support/knowledgecenter/SS2L37_4.2.0.0/content/cam_content_overview_summary.html",
-      "supportUrl": "https://www.ibm.com/support/knowledgecenter/SS2L37_4.2.0.0/cam_ordering_services.html",
+      "longDescription": "Deploys an IBM Cloud Kubernetes Service cluster and imports the cluster into an IBM Cloud Pak For Multicloud Management hub-cluster.",
+      "documentationUrl": "https://www.ibm.com/support/knowledgecenter/SSFC4F/product_welcome_cloud_pak.html",
+      "supportUrl": "https://www.ibm.com/support/knowledgecenter/SSFC4F/product_welcome_cloud_pak.html",
       "bindable": false,
       "updatable": "",
       "systemTags": true,

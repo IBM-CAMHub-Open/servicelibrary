@@ -3,9 +3,9 @@
 ## Overview
 ![alt text](./VMOnGCP.png)
 
-This [IBM Cloud Automation Manager](https://www.ibm.com/support/knowledgecenter/en/SS2L37/product_welcome_cloud_automation_manager.html) service configuration uses the [Google Cloud Platform provider](https://www.terraform.io/docs/providers/google/index.html) to provision a Virtual Machine on GCP.
+This [IBM Cloud Automation Manager](https://www.ibm.com/support/knowledgecenter/SSFC4F/product_welcome_cloud_pak.html) service configuration uses the [Google Cloud Platform provider](https://www.terraform.io/docs/providers/google/index.html) to provision a Virtual Machine on GCP.
 
-More details on IBM Cloud Automation Manager Service can be found [here](https://www.ibm.com/support/knowledgecenter/en/SS2L37_4.2.0.0/cam_managing_services.html).
+More details on IBM Cloud Automation Manager Service can be found [here](https://www.ibm.com/support/knowledgecenter/SSFC4F/product_welcome_cloud_pak.html).
 
 This service is composed of following terraform template
 
