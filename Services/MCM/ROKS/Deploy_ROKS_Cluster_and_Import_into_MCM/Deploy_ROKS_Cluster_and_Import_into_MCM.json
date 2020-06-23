@@ -3,8 +3,8 @@
     "specVersion": "v3",
     "version": "1.0.0.0",
     "catalog_metadata": {
-      "name": "ROKS cluster",
-      "description": "Deploys and imports ROKS cluster into an IBM Cloud Pak For Multicloud Management hub-cluster.",
+      "name": "RedHat OpenShift Kubernetes Service Cluster",
+      "description": "Deploys and imports RedHat OpenShift Kubernetes Service cluster into an IBM Cloud Pak For Multicloud Management hub-cluster.",
       "image": "serviceicon_1.svg",
       "category": "Cluster Lifecycle Services",
       "bullets": [

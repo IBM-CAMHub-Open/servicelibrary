@@ -3,7 +3,7 @@
     "version": "4.2.0.1",
     "specVersion": "v3",
     "catalog_metadata": {
-      "name": "OCP cluster on Amazon EC2",
+      "name": "OpenShift Container Platform Cluster on Amazon EC2",
       "description": "",
       "image": "serviceicon_1.svg",
       "category": "Cluster Lifecycle Services",

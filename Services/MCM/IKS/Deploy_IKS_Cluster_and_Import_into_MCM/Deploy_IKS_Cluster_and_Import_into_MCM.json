@@ -3,8 +3,8 @@
     "specVersion": "v3",
     "version": "1.12.0.0",
     "catalog_metadata": {
-      "name": "IKS cluster",
-      "description": "Deploys and imports IKS cluster into an IBM Cloud Pak For Multicloud Management hub-cluster.",
+      "name": "IBM Cloud Kubernetes Service Cluster",
+      "description": "Deploys and imports IBM Cloud Kubernetes Service cluster into an IBM Cloud Pak For Multicloud Management hub-cluster.",
       "image": "serviceicon_1.svg",
       "category": "Cluster Lifecycle Services",
       "bullets": [

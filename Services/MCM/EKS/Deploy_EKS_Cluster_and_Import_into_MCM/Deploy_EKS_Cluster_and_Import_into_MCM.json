@@ -3,8 +3,8 @@
     "specVersion": "v3",
     "version": "1.11.0.1",
     "catalog_metadata": {
-      "name": "EKS cluster",
-      "description": "Deploys and imports EKS cluster into an IBM Cloud Pak For Multicloud Management hub-cluster.",
+      "name": "Amazon Elastic Kubernetes Service Cluster",
+      "description": "Deploys and imports Amazon Elastic Kubernetes Service cluster into an IBM Cloud Pak For Multicloud Management hub-cluster.",
       "image": "serviceicon_1.svg",
       "category": "Cluster Lifecycle Services",
       "bullets": [

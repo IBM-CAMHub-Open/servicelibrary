@@ -3,8 +3,8 @@
     "specVersion": "v3",
     "version": "1.11.0.1",
     "catalog_metadata": {
-      "name": "AKS cluster",
-      "description": "Deploys and imports AKS cluster v1.11 or higher into an IBM Cloud Pak For Multicloud Management hub-cluster.",
+      "name": "Azure Kubernetes Service Cluster",
+      "description": "Deploys and imports Azure Kubernetes Service cluster v1.11 or higher into an IBM Cloud Pak For Multicloud Management hub-cluster.",
       "image": "serviceicon_1.svg",
       "category": "Cluster Lifecycle Services",
       "bullets": [

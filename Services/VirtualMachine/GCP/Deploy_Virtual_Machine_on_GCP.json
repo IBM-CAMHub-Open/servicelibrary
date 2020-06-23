@@ -3,8 +3,8 @@
       "version": "1.0.0.0",
       "specVersion": "v3",
       "catalog_metadata": {
-        "name": "Virtual Machine on GCP",
-        "description": "Deploys Virtual Machine on GCP",
+        "name": "Virtual Machine on Google Cloud Platform",
+        "description": "Deploys Virtual Machine on Google Cloud Platform",
         "image": "serviceicon_1.svg",
         "category": "Virtual Machine",
         "bullets": [
@@ -14,7 +14,7 @@
           }
         ],
         "providerDisplayName": "IBM",
-        "longDescription": "Deploys Virtual Machine on GCP",
+        "longDescription": "Deploys Virtual Machine on Google Cloud Platform",
         "documentationUrl": "",
         "supportUrl": "",
         "bindable": false,

@@ -3,8 +3,8 @@
     "specVersion": "v3",
     "version": "4.2.0.1",
     "catalog_metadata": {
-      "name": "OCP cluster on VMware",
-      "description": "Deploys OpenShift 4.2 cluster on VMware and imports MCM Klusterlet.",
+      "name": "OpenShift Container Platform Cluster on VMware",
+      "description": "Deploys OpenShift Container Platform 4.2 cluster on VMware and imports MCM Klusterlet.",
       "image": "serviceicon_1.svg",
       "category": "Cluster Lifecycle Services",
       "bullets": [

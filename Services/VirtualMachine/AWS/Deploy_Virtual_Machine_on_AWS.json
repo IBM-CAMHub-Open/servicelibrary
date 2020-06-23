@@ -3,8 +3,8 @@
       "version": "1.0.0.0",
       "specVersion": "v3",
       "catalog_metadata": {
-        "name": "Virtual Machine on AWS",
-        "description": "Deploys EC2 instance on AWS",
+        "name": "Virtual Machine on Amazon Web Services",
+        "description": "Deploys EC2 instance on Amazon Web Services",
         "image": "serviceicon_1.svg",
         "category": "Virtual Machine",
         "bullets": [
@@ -14,7 +14,7 @@
           }
         ],
         "providerDisplayName": "IBM",
-        "longDescription": "Deploys EC2 instance on AWS",
+        "longDescription": "Deploys EC2 instance on Amazon Web Services",
         "documentationUrl": "",
         "supportUrl": "",
         "bindable": false,

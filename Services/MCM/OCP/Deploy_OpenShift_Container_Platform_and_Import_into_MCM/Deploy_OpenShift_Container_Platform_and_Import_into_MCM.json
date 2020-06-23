@@ -3,8 +3,8 @@
     "specVersion": "v3",
 	  "version": "3.11.0.1",    
     "catalog_metadata": {
-      "name": "OCP cluster on VMware",
-      "description": "Deploys OpenShift 3.11 cluster on VMware and imports OCP cluster to IBM Cloud Pak for MCM 2.0.0 hub cluster.",
+      "name": "OpenShift Container Platform Cluster on VMware",
+      "description": "Deploys OpenShift 3.11 cluster on VMware and imports OpenShift Container Platform cluster to IBM Cloud Pak for MCM 2.0.0 hub cluster.",
       "image": "serviceicon_1.svg",
       "category": "Cluster Lifecycle Services",
       "bullets": [
