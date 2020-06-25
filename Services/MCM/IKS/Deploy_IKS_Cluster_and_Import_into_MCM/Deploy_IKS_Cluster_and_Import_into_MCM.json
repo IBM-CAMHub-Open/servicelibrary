@@ -564,6 +564,41 @@
             "description": "Kubernetes version for the cluster; 'latest' for the latest supported version, or version number in X.Y[.Z] format"
           },        
           {
+            "name": "deploy_tiller",
+            "label": "Deploy tiller",
+            "customtype": "string",
+            "type": "string",
+            "immutable": false,
+            "hidden": false,
+            "required": true,
+            "secured": false,
+            "options": [
+                {
+                    "value": "true",
+                    "label": "true",
+                    "default": "true"
+                },
+                {
+                    "value": "false",
+                    "label": "false"
+                }
+            ],
+            "default": "true",
+            "description": "Indicates whether tiller should be deployed into Kubernetes cluster"
+          },
+          {
+            "name": "helm_version",
+            "label": "Helm version",
+            "customtype": "string",
+            "type": "string",
+            "immutable": false,
+            "hidden": false,
+            "required": true,
+            "secured": false,
+            "description": "Helm version to be used to deploy the tiller into the Kubernetes cluster",
+            "default": "2.14.1"
+          },
+          {
             "name": "image_registry",
             "label": "Image Registry",
             "customtype": "string",
@@ -645,7 +680,9 @@
                   "datacenter": "${input_parameters.datacenter}",
                   "machine_type": "${input_parameters.machine_type}",
                   "isolation": "${input_parameters.isolation}",
-                  "kube_version": "${input_parameters.kube_version}"
+                  "kube_version": "${input_parameters.kube_version}",
+                  "helm_version": "${input_parameters.helm_version}",
+                  "deploy_tiller": "${input_parameters.deploy_tiller}"
                 },
                 "outputs": [
                   "cluster_name",
