@@ -53,6 +53,20 @@
         ]
       },    
       {
+        "name": "name",
+        "label": "name",
+        "type": "string",
+        "immutable": true,
+        "hidden": false,
+        "required": false,
+        "secured": false,
+        "description": "Name provided for the service instance by the end user at time of request",
+        "isSystemTag": true,
+        "customtype": "string",
+        "permission": "Read-Only",
+        "default": "${svc_instance.name}"
+      },      
+      {
         "name": "request_group",
         "label": "request_group",
         "type": "string",
