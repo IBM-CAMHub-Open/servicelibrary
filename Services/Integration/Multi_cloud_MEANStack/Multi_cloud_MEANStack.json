@@ -1,7 +1,7 @@
 {
   "service": {
     "specVersion": "v3",
-    "version": "2.3.0.1",
+    "version": "2.4.0.0",
     "catalog_metadata": {
       "name": "Multi Cloud - MEAN Stack deployment",
       "description": "This service deploy MEAN stock on your choice of cloud.",
@@ -71,8 +71,8 @@
         ]
       },   
       {
-        "name": "name",
-        "label": "name",
+        "name": "Name",
+        "label": "Name",
         "type": "string",
         "immutable": true,
         "hidden": false,
@@ -194,6 +194,37 @@
             "default": "",
             "provider": "Amazon EC2"
           },
+		  {
+		    "name": "cmdb_user",
+		    "type": "string",
+		    "description": "ServiceNow Administrative user.",
+		    "hidden": false,
+		    "label": "cmdb_user",
+		    "secured": false,
+		    "required": true,
+		    "immutable": false,
+		    "default": "admin"
+		  },
+		  {
+		    "name": "cmdb_pass",
+		    "type": "string",
+		    "description": "ServiceNow Administrative Password.",
+		    "hidden": false,
+		    "label": "cmdb_pass",
+		    "secured": true,
+		    "required": true,
+		    "immutable": false
+		  },
+		  {
+		    "name": "cmdb_instance",
+		    "type": "string",
+		    "description": "ServiceNow Instance name.",
+		    "hidden": false,
+		    "label": "cmdb_instance",
+		    "secured": false,
+		    "required": true,
+		    "immutable": false
+		  },          
           {
             "name": "vm_dns_servers",
             "label": "DNS Server IP",
@@ -681,7 +712,7 @@
               "MEAN stack deployment": {
                 "title": "MEAN stack VMW",
                 "template_name": "MEAN stack deployment on VMware",
-                "version": "2.3",
+                "version": "2.4",
                 "id": "meanstac8be2854a",
                 "template_type": "Terraform",
                 "template_content_type": "VMware vSphere",
@@ -739,14 +770,14 @@
                   "user_public_ssh_key": "${input_parameters.user_public_ssh_key}"
                 },
                 "outputs": [],                
-                "provider_engine_version": "0.11.11"
+                "provider_engine_version": "0.12.21"
               }
             },
             {
               "MEAN stack deployment (hybrid-cloud)": {
                 "title": "MEAN stack SL",
                 "template_name": "MEAN stack deployment (hybrid-cloud)",
-                "version": "2.3",
+                "version": "2.4",
                 "id": "meanstac79ffc96e",
                 "template_type": "Terraform",
                 "template_content_type": "IBM",
@@ -777,7 +808,7 @@
               "MEAN stack deployment": {
                 "title": "MEAN stack AWS",
                 "template_name": "MEAN stack deployment on AWS",
-                "version": "2.3",
+                "version": "2.4",
                 "id": "meanstac8ca7eecd",
                 "template_type": "Terraform",
                 "template_content_type": "Amazon EC2",
@@ -805,7 +836,7 @@
               "MEAN stack deployment on Microsoft Azure": {
                 "title": "MEAN stack Azure",
                 "template_name": "MEAN stack deployment on Microsoft Azure",
-                "version": "2.3",
+                "version": "2.4",
                 "id": "meanstac111cd421",
                 "template_type": "Terraform",
                 "template_content_type": "Microsoft Azure",
@@ -820,7 +851,9 @@
                   "name_prefix": "${input_parameters.Azure-name_prefix}",
                   "admin_user": "${input_parameters.admin_user}",
                   "admin_user_password": "${input_parameters.admin_user_password}",
-                  "user_public_key": "${input_parameters.public_ssh_key}"
+                  "user_public_key": "${input_parameters.public_ssh_key}",
+                  "hostname-db": "${input_parameters.hostname-db}",
+                  "hostname-nodejs": "${input_parameters.hostname-nodejs}"
                 },
                 "outputs": [],
                 "provider_engine_version": "0.11.11"
@@ -839,14 +872,14 @@
                 "cloud_connection_name": "Other",
                 "template_data_objects": {},
                 "template_params": {
-                  "cmdb_user": "admin",
-                  "cmdb_pass": "^(cm9vdA==)",
-                  "cmdb_instance": "dev58546",
-                  "cmdb_key": "${templates.meanstac8be2854a.nodejs_vm_name||templates.meanstac79ffc96e.hostname-db||templates.meanstac8ca7eecd.hostname-nodejs}",
+                  "cmdb_user": "${input_parameters.cmdb_user}",
+                  "cmdb_pass": "${input_parameters.cmdb_pass}",
+                  "cmdb_instance": "${input_parameters.cmdb_instance}",
+                  "cmdb_key": "${templates.meanstac8be2854a.nodejs_vm_name||templates.meanstac79ffc96e.hostname-db||templates.meanstac8ca7eecd.hostname-nodejs||templates.meanstac111cd421.hostname-nodejs}",
                   "cmdb_record": {
-                    "name": "${templates.meanstac8be2854a.nodejs_vm_name||templates.meanstac79ffc96e.hostname-db||templates.meanstac8ca7eecd.hostname-nodejs}",
-                    "description": "${templates.meanstac8be2854a.nodejs_vm_name||templates.meanstac79ffc96e.hostname-db||templates.meanstac8ca7eecd.hostname-nodejs}",
-                    "hostname": "${templates.meanstac8be2854a.nodejs_vm_name||templates.meanstac79ffc96e.hostname-db||templates.meanstac8ca7eecd.hostname-nodejs}"
+                    "name": "${templates.meanstac8be2854a.nodejs_vm_name||templates.meanstac79ffc96e.hostname-db||templates.meanstac8ca7eecd.hostname-nodejs||templates.meanstac111cd421.hostname-nodejs}",
+                    "description": "${templates.meanstac8be2854a.nodejs_vm_name||templates.meanstac79ffc96e.hostname-db||templates.meanstac8ca7eecd.hostname-nodejs||templates.meanstac111cd421.hostname-nodejs}",
+                    "hostname": "${templates.meanstac8be2854a.nodejs_vm_name||templates.meanstac79ffc96e.hostname-db||templates.meanstac8ca7eecd.hostname-nodejs||templates.meanstac111cd421.hostname-nodejs}"
                   }
                 },
                 "outputs": [],
@@ -1781,7 +1814,7 @@
             "customtype": "string",
             "type": "string",
             "immutable": false,
-            "hidden": false,
+            "hidden": true,
             "required": false,
             "secured": false,
             "description": "The hostname of server with mongo; Allow 1 to 200 alphanumeric characters and non-consecutive non-leading non-ending dashes",
@@ -2582,7 +2615,7 @@
             "customtype": "string",
             "type": "string",
             "immutable": true,
-            "hidden": true,
+            "hidden": false,
             "required": false,
             "secured": false,
             "description": "The hostname of server with mongo; Allow 1 to 200 alphanumeric characters and non-consecutive non-leading non-ending dashes",
@@ -2594,7 +2627,7 @@
             "customtype": "string",
             "type": "string",
             "immutable": true,
-            "hidden": true,
+            "hidden": false,
             "required": false,
             "secured": false,
             "description": "The hostname of server with nodejs; Allow 1 to 255 alphanumeric characters and special characters +=._:/@- as tag value that is not starting with aws",

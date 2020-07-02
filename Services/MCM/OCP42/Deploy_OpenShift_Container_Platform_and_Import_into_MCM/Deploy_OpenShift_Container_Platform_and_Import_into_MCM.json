@@ -59,8 +59,8 @@
         ]
       },
       {
-        "name": "name",
-        "label": "name",
+        "name": "Name",
+        "label": "Name",
         "type": "string",
         "immutable": true,
         "hidden": false,
