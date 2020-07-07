@@ -610,7 +610,7 @@
             "required": true,
             "secured": false,
             "description": "Helm version to be used to deploy the tiller into the Kubernetes cluster",
-            "default": "2.14.1"
+            "default": "2.16.1"
           },
           {
             "name": "image_registry",
