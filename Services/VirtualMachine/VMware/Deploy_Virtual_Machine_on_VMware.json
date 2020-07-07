@@ -258,7 +258,9 @@
                 "template_provider": "VMware vSphere",
                 "instance_name": "",
                 "template_data_objects": {
-                  "vsphere_managed_inventory_definition": "${input_parameters.vSphere_Managed_Inventory_Definition}"
+                  "vsphere_managed_inventory_definition": "${input_parameters.vSphere_Managed_Inventory_Definition}",
+                  "bastionhost": "DefaultNoBastionHostRequired",
+                  "httpproxy": "DefaultNoProxyRequired"
                 },
                 "template_params": {
                   "vm_name": "${input_parameters.vm_name}",
