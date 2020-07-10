@@ -25,7 +25,7 @@ To deploy this service from IBM Cloud Automation Manager navigate to Library > S
 | Parameter name                  | Type            | Parameter description |
 | :---                            | :---            | :---        |
 | cloud_connection                | cloudconnection | Name of the IBM cloud connection used to deploy the IKS cluster. |
-| cluster_name                    | string          | Name of the IKS cluster |
+| cluster_name                    | string          | Name of the IKS cluster. Cluster name can have lower case alphabets, numbers and dash. Must start with lower case alphabet and end with alpha-numeric character. Maximum length is 32 characters. |
 | kube_version                    | string          | Kubernetes version for the cluster. Specify 'latest' for the most recent kubernetes version supported by the Kubernetes Service, or a version number in the X.Y[.Z] format (e.g. 1.13 or 1.13.5).  The most recent maintenance release for the specified version will be selected. |
 | MCM Controller Data Object      | sharedparameter |Details of the MCM controller this newly created cluster will be registered with. Pointing to a data object created from the [mcm_controller](https://github.com/IBM-CAMHub-Open/template_cam_common/blob/3.2.1/common/datatypes/mcm_controller.json) data type|
 | region                          | string          | Region in which to create the cluster |

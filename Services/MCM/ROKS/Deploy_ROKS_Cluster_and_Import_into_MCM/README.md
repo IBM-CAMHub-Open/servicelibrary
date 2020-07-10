@@ -26,7 +26,7 @@ To deploy this service from IBM Cloud Automation Manager navigate to Library > S
 | Parameter name                  | Type            | Parameter description |
 | :---                            | :---            | :---        |
 | cloud_connection                | cloudconnection | Name of the IBM cloud connection used to deploy the ROKS cluster. |
-| cluster_name                    | string          | Name of the ROKS cluster |
+| cluster_name                    | string          | Name of the ROKS cluster. Cluster name can have lower case alphabets, numbers and dash. Must start with lower case alphabet and end with alpha-numeric character. Maximum length is 32 characters. |
 | roks_version                    | string          | OCP version for the cluster. You can specify version 3.11_openshift or 4.3.1_openshift
 | MCM Controller Data Object      | sharedparameter | Details of the MCM controller this newly created cluster will be registered with. Pointing to a data object created from the [mcm_controller](https://github.com/IBM-CAMHub-Open/template_cam_common/blob/5.0.0/common/datatypes/mcm_controller.json) data type|
 | region                          | string          | Region in which to create the cluster |

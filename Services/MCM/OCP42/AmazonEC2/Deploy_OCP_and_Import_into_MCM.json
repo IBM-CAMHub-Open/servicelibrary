@@ -331,7 +331,9 @@
           {
             "name": "cluster_name",
             "label": "Cluster Name",
-            "description": "Subnet name prefix for public and private subnets used by ICP nodes.",
+            "regex": "(?:[a-z](?:[-a-z0-9]{0,30}[a-z0-9])?)",
+            "regexdesc": "Cluster name can have lower case alphabets, numbers and dash. Must start with lower case alphabet and end with alpha-numeric character. Maximum length is 32 characters.",            
+            "description": "Name of the OCP cluster to be deployed.",
             "type": "string",
             "default": "ocp-cluster",
             "customtype": "string",

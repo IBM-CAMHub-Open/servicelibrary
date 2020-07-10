@@ -25,7 +25,7 @@ To deploy this service from IBM Cloud Automation Manager navigate to Library > S
 | Parameter name                  | Type            | Parameter description | Allowed values |
 | :---                            | :---            | :---                  | :---           |
 | cloud_connection                | connection      | Name of the Microsoft Azure cloud connection used to deploy the AKS cluster. |
-| cluster_name                    | string          | Name of the AKS cluster | |
+| cluster_name                    | string          | Name of the AKS cluster | Cluster name can have lower case alphabets, numbers and dash. Must start with lower case alphabet and end with alpha-numeric character. Maximum length is 32 characters. |
 | azure_region                    | string          | Region within the cloud in which to create the cluster | |
 | resource\_group\_name           | string          | Name of the resource group in which the cluster will be created | |
 | kube_version                    | string          | Kubernetes version for the cluster. Specify 'latest' for the most recent kubernetes version supported by the Kubernetes Service, or a version number in the X.Y[.Z] format (e.g. 1.13 or 1.13.5).  The most recent maintenance release for the specified version will be selected. | |
