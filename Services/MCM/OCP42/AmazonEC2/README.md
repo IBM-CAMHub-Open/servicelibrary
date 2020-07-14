@@ -19,7 +19,7 @@ The second activity of the service is [Import OpenShift Container Platform Kuber
 | Key Pair Private Key |  | Base64 encoded private key file contents of the EC2 key pair. |
 | S3 Bucket |  | The s3 bucket name that will store the ignition files required for OPENSHIFT cluster nodes.
 | Redhat Pull Secret | | Base64 encoded Redhat Pull Secret. Used to pull Openshift related install files.
-| Cluster Name | openshift-cluster | OPENSHIFT cluster prefix. Used to prefix a randon string used to name and tag VPC and other AWS resources created for OPENSHIFT nodes. Cluster name can have lower case alphabets, numbers and dash. Must start with lower case alphabet and end with alpha-numeric character. Maximum length is 32 characters. | 
+| Cluster Name | oc-cluster | OPENSHIFT cluster prefix. Used to prefix a randon string used to name and tag VPC and other AWS resources created for OPENSHIFT nodes. Cluster name can have lower case alphabets, numbers and dash. Must start with lower case alphabet and end with alpha-numeric character. Maximum length is 10 characters. | 
 | Public Domain Name |  | The domain entered must be in the Route53 public hosted zone. |
 | VPC CIDR | 10.0.0.0/16 | The CIDR block for the VPC | 
 | Public Subnet CIDRs | [10.0.10.0/24, 10.0.11.0/24, 10.0.12.0/24], | Used for the bastion, bootstrap nodes and the public facing load balancers. You must provide one for each availability zone. | 
