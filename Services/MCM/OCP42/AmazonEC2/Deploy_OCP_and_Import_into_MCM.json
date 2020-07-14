@@ -335,7 +335,7 @@
             "regexdesc": "Cluster name can have lower case alphabets, numbers and dash. Must start with lower case alphabet and end with alpha-numeric character. Maximum length is 10 characters.",            
             "description": "Name of the OCP cluster to be deployed.",
             "type": "string",
-            "default": "ocp-cluster",
+            "default": "oc-cluster",
             "customtype": "string",
             "immutable": false,
             "hidden": false,
