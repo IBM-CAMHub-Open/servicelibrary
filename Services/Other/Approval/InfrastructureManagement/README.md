@@ -15,6 +15,156 @@ This service is composed of following terraform template
 
 ### Prerequisites
 
+- To get approval from Infrastructure Management a `Dummy Service` is required to be created. Steps to create `Dummy Service` in Infrastructure Management is are as follows:
+
+**Step 1:** Create Empty Dialog
+![alt text](./step_1_1.png)
+![alt text](./step_1_2.png)
+
+**Step 2:** Create Dummy Catalog
+![alt text](./step_2_1.png)
+![alt text](./step_2_2.png)
+
+**Step 3:** Create Dummy Catalog Item
+![alt text](./step_2_3.png)
+
+**Step 4:** Retrieve Catalog Id & Catalog Item Id
+
+Sample Request:
+
+```
+curl --location --request GET 'https://<Infrastructure Management Host>/api/service_catalogs?expand=resources' \
+--header 'Authorization: Basic <uthentication details such as username and password to connect to Infrastructure Management>'
+```
+
+Sample Response:
+
+```
+{
+  "name": "service_catalogs",
+  "count": 1,
+  "subcount": 1,
+  "pages": 1,
+  "resources": [
+    {
+      "href": "https://<Infrastructure Management Host>/api/service_catalogs/1000000000005",
+      "id": "1000000000005",
+      "name": "Dummy Catalog",
+      "description": null,
+      "tenant_id": "1000000000001",
+      "service_templates": {
+        "count": 1,
+        "pages": 1,
+        "resources": [
+          {
+            "href": "https://<Infrastructure Management Host>/api/service_catalogs/1000000000005/service_templates/1000000000011"
+          }
+        ],
+        "actions": [
+          {
+            "name": "edit",
+            "method": "post",
+            "href": "https://<Infrastructure Management Host>/api/service_catalogs/1000000000005/service_templates"
+          },
+          {
+            "name": "delete",
+            "method": "post",
+            "href": "https://<Infrastructure Management Host>/api/service_catalogs/1000000000005/service_templates"
+          },
+          {
+            "name": "order",
+            "method": "post",
+            "href": "https://<Infrastructure Management Host>/api/service_catalogs/1000000000005/service_templates"
+          },
+          {
+            "name": "refresh_dialog_fields",
+            "method": "post",
+            "href": "https://<Infrastructure Management Host>/api/service_catalogs/1000000000005/service_templates"
+          },
+          {
+            "name": "assign",
+            "method": "post",
+            "href": "https://<Infrastructure Management Host>/api/service_catalogs/1000000000005/service_templates"
+          },
+          {
+            "name": "unassign",
+            "method": "post",
+            "href": "https://<Infrastructure Management Host>/api/service_catalogs/1000000000005/service_templates"
+          }
+        ],
+        "links": {
+          "self": "https://<Infrastructure Management Host>/api/service_catalogs?expand=resources&offset=0",
+          "first": "https://<Infrastructure Management Host>/api/service_catalogs?expand=resources&offset=0",
+          "last": "https://<Infrastructure Management Host>/api/service_catalogs?expand=resources&offset=0"
+        }
+      },
+      "actions": [
+        {
+          "name": "edit",
+          "method": "post",
+          "href": "https://<Infrastructure Management Host>/api/service_catalogs/1000000000005"
+        },
+        {
+          "name": "edit",
+          "method": "patch",
+          "href": "https://<Infrastructure Management Host>/api/service_catalogs/1000000000005"
+        },
+        {
+          "name": "edit",
+          "method": "put",
+          "href": "https://<Infrastructure Management Host>/api/service_catalogs/1000000000005"
+        },
+        {
+          "name": "delete",
+          "method": "post",
+          "href": "https://<Infrastructure Management Host>/api/service_catalogs/1000000000005"
+        },
+        {
+          "name": "delete",
+          "method": "delete",
+          "href": "https://<Infrastructure Management Host>/api/service_catalogs/1000000000005"
+        }
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "name": "query",
+      "method": "post",
+      "href": "https://<Infrastructure Management Host>/api/service_catalogs"
+    },
+    {
+      "name": "create",
+      "method": "post",
+      "href": "https://<Infrastructure Management Host>/api/service_catalogs"
+    },
+    {
+      "name": "add",
+      "method": "post",
+      "href": "https://<Infrastructure Management Host>/api/service_catalogs"
+    },
+    {
+      "name": "edit",
+      "method": "post",
+      "href": "https://<Infrastructure Management Host>/api/service_catalogs"
+    },
+    {
+      "name": "delete",
+      "method": "post",
+      "href": "https://<Infrastructure Management Host>/api/service_catalogs"
+    }
+  ],
+  "links": {
+    "self": "https://<Infrastructure Management Host>/api/service_catalogs?expand=resources&offset=0",
+    "first": "https://<Infrastructure Management Host>/api/service_catalogs?expand=resources&offset=0",
+    "last": "https://<Infrastructure Management Host>/api/service_catalogs?expand=resources&offset=0"
+  }
+}
+```
+
+From the above response `Catalog Id` is `1000000000005` and `Catalog Item Id` is `1000000000011`
+
+- Go to `Managed services`
 - Navigate to `Manage` -> `Shared parameters` -> `Create data type` -> Enter Name as `Infrastructure Management Authentication Details`, Data type as `im_auth` and Description as `Authentication details such as username and password to connect to Infrastructure Management` -> `Create` -> `Add Attributes`. Fill the following attributes:
 
 | Parameter name                  | End-user permission   | Parameter type             | Display name   |
@@ -40,10 +190,10 @@ Note: The parameters indicated as _(hidden)_ have default values.  If you need t
 | :---                            | :---            | :---                       | :---           |
 | Admin Email                    | string          | Email where approval status to be send                                            | |
 | Infrastructure Management Authentication Details                          | Shared Parameter          | Shared Parameter to connect to Infrastructure Management                 | im_auth|
-| CURL Option                     | string          | Options for curl command used to retrieve status from Infrastructure Management e.g. --insecure                | |
-| Wait Time              | string          | Wait time in seconds i.e. time after which poll should again happen to retrieve the approval status 
-| URL                    | string          | Infrastructure Management URL to submit approval request                                            | |
-| Payload                    | string          | Payload to submit approval request                                            | |
+| CURL Option                     | string          | Options for curl command used to retrieve status from Infrastructure Management e.g. `--insecure`                | |
+| Wait Time              | string          | Wait time in seconds i.e. time after which poll should again happen to retrieve the approval status. e.g. `5`
+| URL                    | string          | Infrastructure Management URL to submit approval request. e.g. `https://<Infrastructure Management Host>/api/service_catalogs/<Catalog Id>/service_templates`                                            | |
+| Payload                    | string          | Payload to submit approval request. e.g. `{"action":"order","resource":{"href":"https://<Infrastructure Management Host>/api/service_catalogs/<Catalog_Id>/service_templates/<Catalog Item Id>"}}`                                             | |
 
 Service offers one standard plan. The standard plan offers quick deployment through a few pre-configured parameters, Hence you only need to provide values of remaining parameters.
 
@@ -52,4 +202,3 @@ Service offers one standard plan. The standard plan offers quick deployment thro
 Copyright IBM Corp. 2020
 
 Service Version - 1.0.0.0
- 
