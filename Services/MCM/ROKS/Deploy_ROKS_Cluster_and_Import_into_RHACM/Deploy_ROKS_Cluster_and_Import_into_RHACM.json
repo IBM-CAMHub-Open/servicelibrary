@@ -559,61 +559,6 @@
             "required": true,
             "secured": false,
             "description": "ROKS OCP version for the cluster"
-          },        
-          {
-            "name": "image_registry",
-            "label": "Image Registry",
-            "customtype": "string",
-            "type": "string",
-            "immutable": false,
-            "hidden": false,
-            "required": false,
-            "secured": false,
-            "description": "URL for private docker registry from which klusterlet images will be pulled"
-          },
-          {
-            "name": "image_suffix",
-            "label": "Image Suffix",
-            "customtype": "string",
-            "type": "string",
-            "immutable": false,
-            "hidden": false,
-            "required": false,
-            "secured": false,
-            "description": "Suffix (e.g. platform type) to be appended to image name"
-          },
-          {
-            "name": "image_version",
-            "label": "Image Version",
-            "customtype": "string",
-            "type": "string",
-            "immutable": false,
-            "hidden": false,
-            "required": false,
-            "secured": false,
-            "description": "Version (tag) of the MCM image to be pulled"
-          },
-          {
-            "name": "docker_user",
-            "label": "Docker User",
-            "customtype": "string",
-            "type": "string",
-            "immutable": false,
-            "hidden": false,
-            "required": false,
-            "secured": false,
-            "description": "Username for authenticating with the private docker registry"
-          },
-          {
-            "name": "docker_password",
-            "label": "Docker Password",
-            "customtype": "string",
-            "type": "string",
-            "immutable": false,
-            "hidden": false,
-            "required": false,
-            "secured": true,
-            "description": "Password for authenticating with the private docker registry"
           }
         ],
         "flow": {
@@ -676,12 +621,7 @@
                   "ocp_token": "${oc_login_info.ocp_token}",                  
                   "ocp_ca_cert": "${oc_login_info.ocp_ca_cert}",      
                   "cluster_name": "${kubeconfig.cluster_name}",
-                  "cluster_config": "${kubeconfig.cluster_config}",
-                  "image_registry": "${input_parameters.image_registry}",
-                  "image_suffix": "${input_parameters.image_suffix}",
-                  "image_version": "${input_parameters.image_version}",
-                  "docker_user": "${input_parameters.docker_user}",
-                  "docker_password": "${input_parameters.docker_password}"
+                  "cluster_config": "${kubeconfig.cluster_config}"
                 },
                 "outputs": [],
                 "error": false,

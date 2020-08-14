@@ -457,61 +457,6 @@
             "secured": true,
             "description": "Secret access key for Amazon EC2 cloud",
             "default": ""
-          },
-          {
-            "name": "image_registry",
-            "label": "Image Registry",
-            "customtype": "string",
-            "type": "string",
-            "immutable": false,
-            "hidden": false,
-            "required": false,
-            "secured": false,
-            "description": "URL for private docker registry from which klusterlet images will be pulled"
-          },
-          {
-            "name": "image_suffix",
-            "label": "Image Suffix",
-            "customtype": "string",
-            "type": "string",
-            "immutable": false,
-            "hidden": false,
-            "required": false,
-            "secured": false,
-            "description": "Suffix (e.g. platform type) to be appended to image name"
-          },
-          {
-            "name": "image_version",
-            "label": "Image Version",
-            "customtype": "string",
-            "type": "string",
-            "immutable": false,
-            "hidden": false,
-            "required": false,
-            "secured": false,
-            "description": "Version (tag) of the MCM image to be pulled"
-          },
-          {
-            "name": "docker_user",
-            "label": "Docker User",
-            "customtype": "string",
-            "type": "string",
-            "immutable": false,
-            "hidden": false,
-            "required": false,
-            "secured": false,
-            "description": "Username for authenticating with the private docker registry"
-          },
-          {
-            "name": "docker_password",
-            "label": "Docker Password",
-            "customtype": "string",
-            "type": "string",
-            "immutable": false,
-            "hidden": false,
-            "required": false,
-            "secured": true,
-            "description": "Password for authenticating with the private docker registry"
           }
         ],
         "flow": {
@@ -580,12 +525,7 @@
                   "cluster_config": "${kubeconfig.cluster_config}",
                   "access_key_id": "${input_parameters.access_key_id}",
                   "secret_access_key": "${input_parameters.secret_access_key}",
-                  "aws_region": "${input_parameters.aws_region}",
-                  "image_registry": "${input_parameters.image_registry}",
-                  "image_suffix": "${input_parameters.image_suffix}",
-                  "image_version": "${input_parameters.image_version}",
-                  "docker_user": "${input_parameters.docker_user}",
-                  "docker_password": "${input_parameters.docker_password}"
+                  "aws_region": "${input_parameters.aws_region}"
                 },
                 "outputs": [],
                 "error": false,

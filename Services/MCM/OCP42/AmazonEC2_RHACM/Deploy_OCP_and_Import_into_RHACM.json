@@ -658,12 +658,7 @@
                   "ocp_url": "${templates.opencont75cd622b.output.ocp_api_url}",
                   "ocp_oauth_url": "${templates.opencont75cd622b.output.ocp_oauth_url}",
                   "ocp_admin_user": "${templates.opencont75cd622b.output.admin_user}",
-                  "ocp_admin_password": "${templates.opencont75cd622b.output.admin_password}",
-                  "image_registry": "",
-                  "image_suffix": "",
-                  "image_version": "",
-                  "docker_user": "",
-                  "docker_password": ""
+                  "ocp_admin_password": "${templates.opencont75cd622b.output.admin_password}"
                 },
                 "outputs": [],
                 "immutable": false,

@@ -30,11 +30,6 @@ To deploy this service from IBM Cloud Automation Manager navigate to Library > S
 | cluster_endpoint                | string | URL for the target Kubernetes cluster endpoint |
 | cluster_user                    | string | Username for accessing the target Kubernetes cluster |
 | cluster_token                   | string | Token for authenticating with the target Kubernetes cluster |
-| image_registry                  | URL for private docker registry from which klusterlet images will be pulled | |
-| image_suffix                    | Suffix (e.g. -amd64), corresponding to the platform type, to be appended to image name | |
-| image_version                   | Version/Tag (e.g 2.0.0 or latest) of the MCM image to be pulled | |
-| docker_user                     | Username for authenticating with the private docker registry | |
-| docker_password                 | Password for authenticating with the private docker registry | |
 
 ## Deploying the service from IBM Cloud Pak for Multicloud Management Service Library
 
@@ -48,12 +43,6 @@ To deploy this service from IBM Cloud Pak for Multicloud Management first you ne
 | cluster_endpoint                | string | URL for the target Kubernetes cluster endpoint |
 | cluster_user                    | string | Username for accessing the target Kubernetes cluster |
 | cluster_token                   | string | Token for authenticating with the target Kubernetes cluster |
-| image_registry                  | URL for private docker registry from which klusterlet images will be pulled | |
-| image_suffix                    | Suffix (e.g. -amd64), corresponding to the platform type, to be appended to image name | |
-| image_version                   | Version/Tag (e.g 2.0.0 or latest) of the MCM image to be pulled | |
-| docker_user                     | Username for authenticating with the private docker registry | |
-| docker_password                 | Password for authenticating with the private docker registry | |
-
 
 ### License and Maintainer
 

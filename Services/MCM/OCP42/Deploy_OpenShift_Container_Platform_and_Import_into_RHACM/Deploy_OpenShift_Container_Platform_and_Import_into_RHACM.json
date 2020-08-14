@@ -328,61 +328,6 @@
             "description": "Connection details for an OpenShift Container Platform on which IBM CP4MCM is installed.",
             "default": "",
             "datatype": "oc_login_info"
-          },
-          {
-            "name": "image_registry",
-            "label": "Image Registry",
-            "customtype": "string",
-            "type": "string",
-            "immutable": false,
-            "hidden": false,
-            "required": false,
-            "secured": false,
-            "description": "URL for private docker registry from which klusterlet images will be pulled"
-          },
-          {
-            "name": "image_suffix",
-            "label": "Image Suffix",
-            "customtype": "string",
-            "type": "string",
-            "immutable": false,
-            "hidden": false,
-            "required": false,
-            "secured": false,
-            "description": "Suffix (e.g. platform type) to be appended to image name"
-          },
-          {
-            "name": "image_version",
-            "label": "Image Version",
-            "customtype": "string",
-            "type": "string",
-            "immutable": false,
-            "hidden": false,
-            "required": false,
-            "secured": false,
-            "description": "Version (tag) of the MCM image to be pulled"
-          },
-          {
-            "name": "docker_user",
-            "label": "Docker User",
-            "customtype": "string",
-            "type": "string",
-            "immutable": false,
-            "hidden": false,
-            "required": false,
-            "secured": false,
-            "description": "Username for authenticating with the private docker registry"
-          },
-          {
-            "name": "docker_password",
-            "label": "Docker Password",
-            "customtype": "string",
-            "type": "string",
-            "immutable": false,
-            "hidden": false,
-            "required": false,
-            "secured": true,
-            "description": "Password for authenticating with the private docker registry"
           }
         ],
         "flow": {
@@ -489,12 +434,7 @@
                   "ocp_url": "${templates.openshif7ff4c224.output.api_url}",
                   "ocp_oauth_url": "${templates.openshif7ff4c224.output.oauth_url}",
                   "ocp_admin_user": "kubeadmin",
-                  "ocp_admin_password": "${templates.openshif7ff4c224.output.kubeadmin_password}",
-                  "image_registry": "${input_parameters.image_registry}",
-                  "image_suffix": "${input_parameters.image_suffix}",
-                  "image_version": "${input_parameters.image_version}",
-                  "docker_user": "${input_parameters.docker_user}",
-                  "docker_password": "${input_parameters.docker_password}"
+                  "ocp_admin_password": "${templates.openshif7ff4c224.output.kubeadmin_password}"
                 },
                 "outputs": [],
                 "immutable": false,

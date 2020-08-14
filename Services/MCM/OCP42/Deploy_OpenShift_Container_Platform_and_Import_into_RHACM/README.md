@@ -41,11 +41,7 @@ NOTE: To support the import of the OCP cluster, it is expected that the default 
 | ----- | ----------| ----- |
 | OpenShift Container Platform Login Information     | sharedparameter | Details of the OCP on which RHACM enabled IBM CP4MMCM is installed. This newly created cluster will be registered to this RHACM and IBM CP4MCM. Pointing to a data object created from the [oc_login_info](https://github.com/IBM-CAMHub-Open/template_import_rhacm/blob/5.1.0/terraform12/datatypes/ocp.json) data type| |
 | ocp\_oauth\_url | string | URL for OCP OAUTH Server, for retrieving access token to OCP cluster |
-| image_registry | string | URL for private docker registry from which klusterlet images will be pulled |
-| image_suffix | string | Suffix (e.g. platform type) to be appended to image name |
-| image_version | string | Version (tag) of the MCM image to be pulled |
-| docker_user | string | Username for authenticating with the private docker registry |
-| docker_password | string | Password for authenticating with the private docker registry |
+
 
 ### License and Maintainer
 
