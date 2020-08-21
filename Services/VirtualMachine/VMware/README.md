@@ -3,15 +3,17 @@
 ## Overview
 ![alt text](./VMOnVMware.png)
 
-This [IBM Cloud Automation Manager](https://www.ibm.com/support/knowledgecenter/SSFC4F/product_welcome_cloud_pak.html) service configuration uses the [VMware provider](https://www.terraform.io/docs/providers/vsphere/index.html) to provision a Virtual Machine on VMware.
-
-More details on IBM Cloud Automation Manager Service can be found [here](https://www.ibm.com/support/knowledgecenter/SSFC4F/product_welcome_cloud_pak.html).
+This [IBM Cloud Pak for Multicloud Management](https://www.ibm.com/support/knowledgecenter/SSFC4F/product_welcome_cloud_pak.html) service configuration uses the [VMware provider](https://www.terraform.io/docs/providers/vsphere/index.html) to provision a Virtual Machine on VMware.
 
 This service is composed of following terraform template
 
 - [SingleVirtualMachine](https://github.com/IBM-CAMHub-Open/starterlibrary/tree/2.4/VMware/terraform/hcl/singleVM) terraform template.
 
-## Deploying the service from IBM Cloud Automation Manager
+You can first test deploy the service and once satisfied, you can publish the service to the service library and then deploy the production ready service from the service library. 
+By default this service is in global namespace. So before you publish you need to duplicate this service (see IBM Cloud Pak for Multicloud Management documentation on how to duplicate a service) in the user assigned namespace and then publish it to service library.
+
+* [Test Deploy the Service](#test-deploy-the-service)
+* [Deploying the service from Service Library](#deploying-the-service-from-service-library)
 
 ### Prerequisites
 - Navigate to Manage -> Shared Parameters -> In Search Data Type, Enter "vSphere Managed Inventory Definition" -> Verify Data Type is present
@@ -37,9 +39,9 @@ This service is composed of following terraform template
 | vm_ipv4_netmask                 | string          | Integer value between 1 and 32 for the prefix length (CIDR) to use when statically assigning an IPv4 address                   | |
 | vm_clone_timeout                | string          | The timeout, in minutes, to wait for the virtual machine clone to complete.                                                                        | |
 
-To deploy this service from IBM Cloud Automation Manager navigate to Library > Services > Virtual Machine > Virtual Machine on VMware. Fill the following input parameters and deploy the service.
+## Test Deploy the Service
 
-Note: The parameters indicated as _(hidden)_ have default values.  If you need to change them, make a copy of this service configuration and create a new service in IBM Cloud Automation Manager with the new configuration.
+To deploy this service from IBM Cloud Automation Manager navigate to Automate Infrastructure > Manage Services  > Virtual Machine > Virtual Machine on VMware. Fill the following input parameters and deploy the service.
 
 | Parameter name             | Type            | Parameter description      | Allowed values |
 | :---                       | :---            | :---                       | :---           |
@@ -51,7 +53,20 @@ Note: The parameters indicated as _(hidden)_ have default values.  If you need t
 | VM vCPU Allocation                | string      |  | |
 | vm_disk_size                 | string      |  | |
 
-Service offers one standard plan. The standard plan offers quick deployment through a few pre-configured parameters, Hence you only need to provide values of remaining parameters.
+## Deploying the service from Service Library
+
+To deploy this service from Service Library navigate to Automate Infrastructure > Service Library, select the published service and fill the following input parameters and install the service.
+
+| Parameter name             | Type            | Parameter description      | Allowed values |
+| :---                       | :---            | :---                       | :---           |
+| Connection                 | connection      | VMware Vsphere connection                                                                                    | |
+| vm_name                    | string          | Hostname of virtual machine                  | |
+| vm_ipv4_address            | string          | IPv4 address for vNIC configuration          | |
+| vSphere Managed Inventory Definition                 | sharedparameter      | Data object of type "vsphere_managed_inventory_definition" | |
+| VM Memory Allocation (MB)                 | string      |  | |
+| VM vCPU Allocation                | string      |  | |
+| vm_disk_size                 | string      |  | |
+
 
 ### License and Maintainer
 

@@ -32,15 +32,9 @@ This service will install and configure MongoDB, Express, AngularJS and Node.js.
 
 ![Service - MEAN Stack](./multiCloud-mean-service.jpg)
 
-### Supported ICP and CAM Versions
-
-| ICP Version | CAM Version|
-|------|:-------------:|
-| 3.1.2| 3.1.2|
-
 ## Prerequisites
 
-- Configure IBM Cloud Automation manager 3.1.0 with a connection to a cloud provider. For configuration steps, refer to Knowledge Center
+- Configure the connections to a necessary cloud provider. For configuration steps, refer to Knowledge Center
 - Configure an Email server. For configuration steps.
 - Configure Infoblox server to get free/available IP address
 - Ensure that ServiceNow is up and running.

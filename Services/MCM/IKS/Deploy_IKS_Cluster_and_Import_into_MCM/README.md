@@ -3,24 +3,22 @@
 ## Overview
 ![alt text](./MCMonIKS.jpg)
 
-This [IBM Cloud Automation Manager](https://www.ibm.com/support/knowledgecenter/SSFC4F/product_welcome_cloud_pak.html) service configuration first uses the [IBM Cloud provider](https://ibm-cloud.github.io/tf-ibm-docs/v0.17.2/) to provision a kubernetes cluster within the [IBM Kubernetes Service](https://www.ibm.com/cloud/container-service).  Once provisioned, the kubernetes cluster will be imported into the [IBM Cloud Pak for Multicloud Management](https://www.ibm.com/support/knowledgecenter/SSFC4F/product_welcome_cloud_pak.html) 2.0.0 hub-cluster to make it a managed cluster.
-
-More details on IBM Cloud Automation Manager Service can be found [here](https://www.ibm.com/support/knowledgecenter/SSFC4F/product_welcome_cloud_pak.html).
+This [IBM Cloud Pak for Multicloud Management](https://www.ibm.com/support/knowledgecenter/SSFC4F/product_welcome_cloud_pak.html) service configuration first uses the [IBM Cloud provider](https://ibm-cloud.github.io/tf-ibm-docs/v0.17.2/) to provision a kubernetes cluster within the [IBM Kubernetes Service](https://www.ibm.com/cloud/container-service).  Once provisioned, the kubernetes cluster will be imported into the [IBM Cloud Pak for Multicloud Management](https://www.ibm.com/support/knowledgecenter/SSFC4F/product_welcome_cloud_pak.html) 2.0.0 hub-cluster to make it a managed cluster.
 
 This service is composed of following terraform templates
 
 - [Managed Kubernetes Service within IBM Cloud](https://github.com/IBM-CAMHub-Open/template_kubernetes_iks/tree/1.11) terraform template.
 - [MCM Klusterlet within IBM Cloud Kubernetes Service for Terraform 0.12.x](https://github.com/IBM-CAMHub-Open/template_mcm_install/tree/5.0.0/terraform12/IKS/mcm-klusterlet) terraform template 
 
+You can first test deploy the service and once satisfied, you can publish the service to the service library and then deploy the production ready service from the service library. 
+By default this service is in global namespace. So before you publish you need to duplicate this service (see IBM Cloud Pak for Multicloud Management documentation on how to duplicate a service) in the user assigned namespace and then publish it to service library.
 
-This service can be either deployed from IBM Cloud Automation Manager or from IBM Cloud Pak for Multicloud Management Catalog.
+* [Test Deploy the Service](#test-deploy-the-service)
+* [Deploying the service from Service Library](#deploying-the-service-from-service-library)
 
-* [Deploying the service from IBM Cloud Automation Manager](#deploying-the-service-from-ibm-cloud-automation-manager)
-* [Deploying the service from IBM Cloud Pak for Multicloud Management Catalog](#deploying-the-service-from-ibm-cloud-private-catalog)
+## Test Deploy the Service
 
-## Deploying the service from IBM Cloud Automation Manager
-
-To deploy this service from IBM Cloud Automation Manager navigate to Library > Services > IKS cluster. Fill the following input parameters and deploy the service.
+To test deploy this service navigate to Automate Infrastructure > Manage Services > IBM Kubernetes Service cluster. Fill the following input parameters and deploy the service.
 
 | Parameter name                  | Type            | Parameter description |
 | :---                            | :---            | :---        |
@@ -38,11 +36,11 @@ To deploy this service from IBM Cloud Automation Manager navigate to Library > S
 | machine_type                    | string          | Identifier for the VM type/configuration (CPU count, memory, network and speed) |
 
 
-## Deploying the service from IBM Cloud Pak for Multicloud Management Catalog
+## Deploying the service from Service Library
 
-To deploy this service from IBM Cloud Pak for Multicloud Management Catalog navigate to Catalog, search the Catalog for iks-cluster and fill the following input parameters and install the service.
+To deploy this service from Service Library navigate to Automate Infrastructure > Service Library, select the published service and fill the following input parameters and install the service.
 
-Note: Some parameters may have fixed default values.  If you need to change them, make a copy of this service configuration and create a new service in IBM Cloud Automation Manager with the new configuration.
+Note: Some parameters may have fixed default values. If you need to change them, duplicate the service configuration and create a new service with the new configuration. 
 
 | Parameter name                  | Type            | Parameter description |
 | :---                            | :---            | :---        |
@@ -64,5 +62,5 @@ Note: Some parameters may have fixed default values.  If you need to change them
 
 Copyright IBM Corp. 2020
 
-Service Version - 5.0.0
+Service Version - 1.12.0.1
  

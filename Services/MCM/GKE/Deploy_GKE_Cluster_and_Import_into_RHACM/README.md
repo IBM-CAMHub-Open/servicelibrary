@@ -3,9 +3,7 @@
 ## Overview
 ![alt text](./MCMonGKE.jpg)
 
-This [IBM Cloud Automation Manager](https://www.ibm.com/support/knowledgecenter/SSFC4F/product_welcome_cloud_pak.html) service configuration first uses the [Google Cloud provider](https://www.terraform.io/docs/providers/google/index.html) to provision a kubernetes cluster within the [Google Kubernetes Engine](https://cloud.google.com/kubernetes-engine).  Once provisioned, the kubernetes cluster will be imported into the [Red Hat Advanced Cluster Management enabled IBM Cloud Pak for Multicloud Management](https://www.ibm.com/support/knowledgecenter/SSFC4F/product_welcome_cloud_pak.html) 2.0.0 hub-cluster to make it a managed cluster.
-
-More details on IBM Cloud Automation Manager Service can be found [here](https://www.ibm.com/support/knowledgecenter/SSFC4F/product_welcome_cloud_pak.html).
+This [IBM Cloud Pak for Multicloud Management](https://www.ibm.com/support/knowledgecenter/SSFC4F/product_welcome_cloud_pak.html) service configuration first uses the [Google Cloud provider](https://www.terraform.io/docs/providers/google/index.html) to provision a kubernetes cluster within the [Google Kubernetes Engine](https://cloud.google.com/kubernetes-engine).  Once provisioned, the kubernetes cluster will be imported into the [Red Hat Advanced Cluster Management enabled IBM Cloud Pak for Multicloud Management](https://www.ibm.com/support/knowledgecenter/SSFC4F/product_welcome_cloud_pak.html) 2.x hub-cluster to make it a managed cluster.
 
 This service is composed of following terraform templates
 
@@ -13,14 +11,15 @@ This service is composed of following terraform templates
 - [Import Google Kubernetes Engine cluster into RHACM enabled IBM CP4MCM](https://github.com/IBM-CAMHub-Open/template_import_rhacm/tree/5.1.0/terraform12/GKE/mcm-klusterlet) terraform template 
 
 
-This service can be either deployed from IBM Cloud Automation Manager or from IBM Cloud Pak for Multicloud Management Catalog.
+You can first test deploy the service and once satisfied, you can publish the service to the service library and then deploy the production ready service from the service library. 
+By default this service is in global namespace. So before you publish you need to duplicate this service (see IBM Cloud Pak for Multicloud Management documentation on how to duplicate a service) in the user assigned namespace and then publish it to service library.
 
-* [Deploying the service from IBM Cloud Automation Manager](#deploying-the-service-from-ibm-cloud-automation-manager)
-* [Deploying the service from IBM Cloud Pak for Multicloud Management Service Library](#deploying-the-service-from-ibm-cloud-private-catalog)
+* [Test Deploy the Service](#test-deploy-the-service)
+* [Deploying the service from Service Library](#deploying-the-service-from-service-library)
 
-## Deploying the service from IBM Cloud Automation Manager
+## Test Deploy the Service
 
-To deploy this service from IBM Cloud Automation Manager navigate to Library > Services > Google Kubernetes Engine Cluster with RHACM import. Fill the following input parameters and deploy the service.
+To test deploy this service navigate to Automate Infrastructure > Manage Services > Google Kubernetes Engine Cluster with RHACM import. Fill the following input parameters and deploy the service.
 
 | Parameter name                  | Type            | Parameter description |
 | :---                            | :---            | :---                  |
@@ -39,11 +38,11 @@ To deploy this service from IBM Cloud Automation Manager navigate to Library > S
 
 
 
-## Deploying the service from IBM Cloud Pak for Multicloud Management Service Library
+## Deploying the service from Service Library
 
-To deploy this service from IBM Cloud Pak for Multicloud Management first you need to publish the service from IBM Cloud Automation Manager. Once published, navigate to Automate Infrastructure > Service Library and fill the following input parameters and install the service.
+To deploy this service from Service Library navigate to Automate Infrastructure > Service Library, select the published service and fill the following input parameters and install the service.
 
-Note: Some parameters may have fixed default values.  If you need to change them, make a copy of this service configuration and create a new service in IBM Cloud Automation Manager with the new configuration. 
+Note: Some parameters may have fixed default values. If you need to change them, duplicate the service configuration and create a new service with the new configuration. 
 
 | Parameter name                  | Type            | Parameter description |
 | :---                            | :---            | :---                  |

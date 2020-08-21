@@ -74,4 +74,4 @@ The following service plans are defined:
 
 Copyright IBM Corp. 2020
 
-Service Version - 5.0.0 
+Service Version - 3.11.0.1
