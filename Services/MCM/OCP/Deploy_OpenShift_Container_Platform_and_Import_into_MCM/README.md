@@ -1,7 +1,7 @@
 # OpenShift Container Platform 3.11 cluster on VMware 
 
 ## Overview
-This service deploys OpenShift Container Platform (OCP) cluster version 3.11 on VMware and imports it into an existing 2.0.0 IBM CLoud Pak for Multi Cloud Manager (MCM).
+This service deploys OpenShift Container Platform (OCP) cluster version 3.11 on VMware and imports it into an existing 2.0.0 IBM Cloud Pak for Multicloud Management  .
 
 
 ## Supported topologies

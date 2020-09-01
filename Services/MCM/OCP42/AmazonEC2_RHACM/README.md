@@ -1,7 +1,7 @@
 # OpenShift Container Platform Cluster on Amazon EC2 with RHACM import 
 
 ## Overview
-This service deploys OpenShift Container Platform (OCP) cluster version 4.2 on Amazone EC2 and imports it into an Red Hat Advanced Cluster Management enabled IBM CLoud Pak for Multi Cloud Manager 2.x.
+This service deploys OpenShift Container Platform (OCP) cluster version 4.2 on Amazone EC2 and imports it into an Red Hat Advanced Cluster Management enabled IBM Cloud Pak for Multicloud Management   2.x.
 
 The first activity of the service is to deploy a new [OpenShift Container Platform Enterprise Installation](https://github.com/IBM-CAMHub-Open/template_openshift_installer/tree/4.2/terraform12/aws/terraform). Refer to the template documentation for more details. 
 

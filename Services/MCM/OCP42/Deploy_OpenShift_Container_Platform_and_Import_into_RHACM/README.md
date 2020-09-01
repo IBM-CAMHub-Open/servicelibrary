@@ -1,7 +1,7 @@
 # OpenShift Container Platform Cluster on VMware with RHACM import 
 
 ## Overview
-This service deploys OpenShift Container Platform (OCP) cluster version 4.2 on VMware and imports it into an Red Hat Advanced Cluster Management enabled IBM CLoud Pak for Multi Cloud Manager 2.x.
+This service deploys OpenShift Container Platform (OCP) cluster version 4.2 on VMware and imports it into an Red Hat Advanced Cluster Management enabled IBM Cloud Pak for Multicloud Management.
 
 
 ## Supported topologies
