@@ -1,7 +1,7 @@
 # OpenShift Container Platform 4.2 cluster on AWS 
 
 ## Overview
-This service deploys OpenShift Container Platform (OCP) cluster version 4.2 on Amazone EC2 and imports it into an existing 2.0.0 IBM CLoud Pak for Multi Cloud Manager (MCM).
+This service deploys OpenShift Container Platform (OCP) cluster version 4.2 on Amazone EC2 and imports it into an existing 2.0.0 IBM Cloud Pak for Multicloud Management.
 
 The first activity of the service is to deploy a new [OpenShift Container Platform Enterprise Installation](https://github.com/IBM-CAMHub-Open/template_openshift_installer/tree/4.2/terraform12/aws/terraform). Refer to the template documentation for more details. 
 

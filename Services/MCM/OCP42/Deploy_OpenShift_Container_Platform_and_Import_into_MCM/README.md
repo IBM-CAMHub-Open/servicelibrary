@@ -1,7 +1,7 @@
 # OpenShift Container Platform 4.2 cluster on VMware 
 
 ## Overview
-This service deploys OpenShift Container Platform (OCP) cluster version 4.2 on VMware and imports it into an existing 2.0.0 IBM CLoud Pak for Multi Cloud Manager (MCM).
+This service deploys OpenShift Container Platform (OCP) cluster version 4.2 on VMware and imports it into an existing 2.0.0 IBM Cloud Pak for Multicloud Management (MCM).
 
 
 ## Supported topologies
