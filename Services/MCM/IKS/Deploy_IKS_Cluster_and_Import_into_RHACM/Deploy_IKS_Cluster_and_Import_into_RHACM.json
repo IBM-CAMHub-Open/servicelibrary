@@ -183,6 +183,17 @@
             "description": "Name of the IKS cluster to be deployed"
           },
           {
+            "name": "cluster_create_timeout",
+            "type": "string",
+            "description": "The timeout, in minutes, to wait for the IBM Cloud Kubernetes Cluster creation to complete. Default is 60 minutes. If your datacenter is slow and your deployment fails with timeout error, then deploy with an appropriate timeout value.",
+            "hidden": false,
+            "label": "Cluster creation timeout",
+            "secured": false,
+            "required": true,
+            "immutable": false,
+            "default": "60"
+          },           
+          {
             "name": "region",
             "label": "Region",
             "customtype": "string",
@@ -618,6 +629,7 @@
                 "template_params": {
                   "region": "${input_parameters.region}",
                   "cluster_name": "${input_parameters.cluster_name}",
+                  "cluster_create_timeout": "${input_parameters.cluster_create_timeout}",
                   "resource_group_name": "${input_parameters.resource_group_name}",
                   "private_vlan_id": "${input_parameters.private_vlan_id}",
                   "public_vlan_id": "${input_parameters.public_vlan_id}",
