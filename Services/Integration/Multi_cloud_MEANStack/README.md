@@ -40,7 +40,7 @@ This service will install and configure MongoDB, Express, AngularJS and Node.js.
 - Ensure that ServiceNow is up and running.
 - 'Data object' for Infoblox 'Data Type' "Infoblox IPAM Server" must be created before using or publishing the service.
     please refer link for more details: [<https://www.ibm.com/support/knowledgecenter/en/SS2L37_3.1.0.0/cam_create_dataobj.html]>
-- Ensure all the above tempates with given version available at CAM.
+- Ensure all the above tempates with given version is imported in IBM CP4MCM.
 
 ## Service Input parameters
 
