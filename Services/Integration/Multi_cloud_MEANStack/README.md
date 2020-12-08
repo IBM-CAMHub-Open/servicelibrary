@@ -38,8 +38,7 @@ This service will install and configure MongoDB, Express, AngularJS and Node.js.
 - Configure an Email server. For configuration steps.
 - Configure Infoblox server to get free/available IP address
 - Ensure that ServiceNow is up and running.
-- 'Data object' for Infoblox 'Data Type' "Infoblox IPAM Server" must be created before using or publishing the service.
-    please refer link for more details: [<https://www.ibm.com/support/knowledgecenter/en/SS2L37_3.1.0.0/cam_create_dataobj.html]>
+- 'Data object' for Infoblox 'Data Type' "Infoblox IPAM Server" must be created before using or publishing the service. Refer to [this link](https://www.ibm.com/support/knowledgecenter/en/SSFC4F_2.1.0/cam/cam_create_dataobj.html) for more details on data objects.
 - Ensure all the above tempates with given version is imported in IBM CP4MCM.
 
 ## Service Input parameters
