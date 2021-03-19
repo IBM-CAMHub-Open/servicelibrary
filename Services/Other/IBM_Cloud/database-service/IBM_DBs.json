@@ -261,7 +261,7 @@
           },
           {
             "name": "db_plan",
-            "label": "Serivce Plan",
+            "label": "Service plan",
             "customtype": "string",
             "type": "string",
             "immutable": false,
@@ -275,7 +275,7 @@
           },
           {
             "name": "db_version",
-            "label": "Serivce version",
+            "label": "Service version",
             "customtype": "string",
             "type": "string",
             "immutable": false,
@@ -319,7 +319,7 @@
             "view": "create new",
             "editable": true,
             "regex": "^((?!['\"/@])[\\x00-\\x7F]){10,32}$",
-            "regexdesc": "At least 32 ASCII characters and maximum of 32 characters. Can't contain any of the following: forward slash, single quote, double quote and @.",
+            "regexdesc": "At least 10 ASCII characters and maximum of 32 characters. Can't contain any of the following: forward slash, single quote, double quote and @.",
             "default": "",
             "passbyname": false,
             "dynamicDetails": {},
