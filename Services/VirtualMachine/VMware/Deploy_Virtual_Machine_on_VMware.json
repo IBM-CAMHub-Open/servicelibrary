@@ -27,8 +27,8 @@
     },
     "tags": [
       {
-        "name": "environment",
-        "label": "environment",
+        "name": "Environment",
+        "label": "Environment",
         "type": "string",
         "immutable": false,
         "hidden": false,
@@ -195,7 +195,7 @@
             "hidden": false,
             "required": true,
             "secured": false,
-            "description": "",
+            "description": "vSphere managed inventory definition data object",
             "view": "create new",
             "editable": true,
             "default": "",
