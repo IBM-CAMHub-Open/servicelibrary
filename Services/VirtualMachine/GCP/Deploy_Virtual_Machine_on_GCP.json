@@ -23,7 +23,7 @@
       },
       "tags": [
         {
-          "name": "Environment",
+          "name": "environment",
           "label": "Environment",
           "type": "string",
           "immutable": false,
