@@ -1,6 +1,6 @@
 {
   "service": {
-    "version": "1.0.0.0",
+    "version": "2.0.0.0",
     "specVersion": "v3",
     "catalog_metadata": {
       "name": "Virtual Machine on VMware",
@@ -28,7 +28,7 @@
     "tags": [
       {
         "name": "environment",
-        "label": "Environment",
+        "label": "environment",
         "type": "string",
         "immutable": false,
         "hidden": false,
@@ -195,7 +195,7 @@
             "hidden": false,
             "required": true,
             "secured": false,
-            "description": "vSphere managed inventory definition data object",
+            "description": "",
             "view": "create new",
             "editable": true,
             "default": "",
@@ -248,9 +248,9 @@
           "conditions": [],
           "templates": [
             {
-              "Single Virtual Machine with Private SSH Key": {
-                "title": "Single Virtual Machine with Private SSH Key_65290c",
-                "template_name": "Single Virtual Machine with Private SSH Key",
+              "Single Virtual Machine using predefined tags": {
+                "title": "Single Virtual Machine using predefined tags_65290c",
+                "template_name": "Single Virtual Machine using predefined tags",
                 "version": "2.4",
                 "id": "singlevi4cf68d93",
                 "template_type": "Terraform",
