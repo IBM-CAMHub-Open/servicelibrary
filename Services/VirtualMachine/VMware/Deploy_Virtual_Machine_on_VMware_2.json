@@ -4,7 +4,7 @@
     "specVersion": "v3",
     "catalog_metadata": {
       "name": "Virtual Machine on VMware",
-      "description": "Deploys virtual machine on VMware",
+      "description": "Deploys virtual machine on VMware. This service uses a template that requires predefined the tag category and tag names that match the tags in service.",
       "image": "serviceicon_1.svg",
       "category": "Virtual Machine",
       "bullets": [
@@ -18,7 +18,7 @@
         }
       ],
       "providerDisplayName": "IBM",
-      "longDescription": "Deploys virtual machine on VMware",
+      "longDescription": "Deploys virtual machine on VMware. You must predefine the tag category and tag names in VMware vSphere. The tag category must match the tag key and the tag name must match tag value used in the service. For more information see https://github.com/IBM-CAMHub-Open/servicelibrary/blob/5.3.0/Services/VirtualMachine/VMware/README.md",
       "documentationUrl": "",
       "supportUrl": "",
       "bindable": false,
