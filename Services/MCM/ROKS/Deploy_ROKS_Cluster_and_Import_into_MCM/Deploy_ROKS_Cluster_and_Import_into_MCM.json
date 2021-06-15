@@ -478,62 +478,8 @@
             "hidden": false,
             "required": true,
             "secured": false,
-            "options": [
-                {
-                    "value": "free",
-                    "label": "free"
-                },
-                {
-                    "value": "u2c.2x4",
-                    "label": "u2c.2x4"
-                },
-                {
-                    "value": "b2c.4x16",
-                    "label": "b2c.4x16",
-                    "default": "true"
-                },
-                {
-                    "value": "b2c.16x64",
-                    "label": "b2c.16x64"
-                },
-                {
-                    "value": "b2c.32x128",
-                    "label": "b2c.32x128"
-                },
-                {
-                    "value": "b2c.56x242",
-                    "label": "b2c.56x242"
-                },
-                {
-                    "value": "mr1c.28x512",
-                    "label": "mr1c.28x512"
-                },
-                {
-                    "value": "mg1c.16x128",
-                    "label": "mg1c.16x128"
-                },
-                {
-                    "value": "mg1c.28x256",
-                    "label": "mg1c.28x256"
-                },
-                {
-                    "value": "md1c.16x64.4x4tb",
-                    "label": "md1c.16x64.4x4tb"
-                },
-                {
-                    "value": "md1c.28x512.4x4tb",
-                    "label": "md1c.28x512.4x4tb"
-                },
-                {
-                    "value": "mb1c.4x32",
-                    "label": "mb1c.4x32"
-                },
-                {
-                    "value": "mb1c.16x64",
-                    "label": "mb1c.16x64"
-                }
-            ],
-            "description": "Machine type"
+            "default": "b3c.4x16",
+            "description": "Machine type. Use ibmcloud ks flavors --zone <zone-name> to get the list of available machine flavors."
           },
           {
             "name": "isolation",
