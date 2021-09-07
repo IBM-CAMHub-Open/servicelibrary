@@ -4,7 +4,7 @@
     "specVersion": "v3",
     "catalog_metadata": {
       "name": "Virtual Machine on VMware",
-      "description": "Deploys virtual machine on VMware. This service uses a template that requires predefined the tag category and tag names that match the tags in service.",
+      "description": "Deploys virtual machine on VMware. This service uses a template that requires predefined tag category and tag names that match the tags in service.",
       "image": "serviceicon_1.svg",
       "category": "Virtual Machine",
       "bullets": [
