@@ -213,7 +213,7 @@
                   "cloud_connection_name": "${input_parameters.Connection}",
                   "template_data_objects": {},
                   "template_params": {
-                    "boot_disk": "ubuntu-os-cloud/ubuntu-1604-lts",
+                    "boot_disk": "ubuntu-os-cloud/ubuntu-1804-lts",
                     "machine_type": "n1-standard-1",
                     "unique_resource_name": "${input_parameters.unique_resource_name}",
                     "zone": "us-east1-c",
