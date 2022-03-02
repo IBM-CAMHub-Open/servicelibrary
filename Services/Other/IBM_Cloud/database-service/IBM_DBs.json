@@ -393,7 +393,7 @@
                 "cloud_connection_names": [
                   {
                     "provider": "IBM",
-                    "connection_name": "IBM_Chin"
+                    "connection_name": "${input_parameters.Connection}"
                   }
                 ],
                 "provider_engine_version": "0.12.21"
