@@ -15,31 +15,90 @@ This service is composed of following terraform template
 
 ### Prerequisites
 
-- To get approval from Infrastructure Management a `Dummy Service` is required to be created. Steps to create `Dummy Service` in Infrastructure Management is are as follows:
+To get approval from Infrastructure Management a `Dummy Service` and a `Dummy Domain` is required to be created.
 
-**Step 1:** Create Empty Dialog
-![alt text](./step_1_1.png)
-![alt text](./step_1_2.png)
+- Steps to create `Dummy Domain` in Infrastructure Management is are as follows:
 
-**Step 2:** Create Dummy Catalog
-![alt text](./step_2_1.png)
-![alt text](./step_2_2.png)
+**Step 1:** Create a new Automate Domain
+![alt text](./step_1_im_approval.png)
+![alt text](./step_2_1_im_approval.png)
+![alt text](./step_2_2_im_approval.png)
 
-**Step 3:** Create Dummy Catalog Item
-![alt text](./step_2_3.png)
+**Step 2:** Copy a Automate class `ServiceProvisionRequestApproval` to a new Automate Domain created in the above step
+![alt text](./step_3_1_im_approval.png)
+![alt text](./step_3_2_im_approval.png)
 
-**Step 4:** Retrieve Catalog Id & Catalog Item Id
+**Step 3:** Add a new instance of Automate class `ServiceProvisionRequestApproval`
+![alt text](./step_4_1_im_approval.png)
+![alt text](./step_4_2_im_approval.png)
 
-Sample Request:
+- Steps to create `Dummy Service` in Infrastructure Management is are as follows:
 
+**Step 1:** Create a Dialog
+![alt text](./step_5_1_im_approval.png)
+![alt text](./step_5_2_im_approval.png)
+![alt text](./step_5_3_im_approval.png)
+
+**Step 2:** Create a Catalog
+![alt text](./step_6_1_im_approval.png)
+![alt text](./step_6_2_im_approval.png)
+![alt text](./step_6_3_im_approval.png)
+
+**Step 3:** Create a Catalog Item
+![alt text](./step_7_1_im_approval.png)
+![alt text](./step_7_2_im_approval.png)
+![alt text](./step_7_3_im_approval.png)
+![alt text](./step_7_4_im_approval.png)
+![alt text](./step_7_5_im_approval.png)
+
+- Retrieve Catalog Id & Catalog Item Id
+
+**Step 1:** Retrieve IAM Token
+
+Run the following command to get the IAM Token:
+
+```bash
+curl -k --location --request POST 'https://<BASE_URL>/idprovider/v1/auth/identitytoken' \
+--header 'Content-Type: application/x-www-form-urlencoded' \
+--data-urlencode 'grant_type=password' \
+--data-urlencode 'username=<LDAP_USERNAME>' \
+--data-urlencode 'password=<LDAP_PASSWORD>' \
+--data-urlencode 'scope=openid' --no-progress-meter | jq -r '.access_token'
 ```
+
+Where:
+
+1. `<BASE_URL>`: Hostname to connect to IBM Common Services, Use `$(kubectl -n ibm-common-services get route cp-console --template '{{.spec.host}}')` command to get the hostname.
+2. `<LDAP_USERNAME>`: LDAP Username to connect to Infrastructure Management.
+3. `<LDAP_PASSWORD>`: LDAP Password to connect to Infrastructure Management.
+
+**Note:** Perform this step If you want to use `Bearer Token` based authentication method to connect to Infrastructure Management to retrieve Catalog Id & Catalog Item Id.
+
+**Step 2:** Retrieve Catalog Id & Catalog Item Id
+
+If you are using `Bearer Token` based authentication method to connect to Infrastructure Management then use below command to retrieve Catalog Id & Catalog Item Id.
+
+```bash
+curl -k --location --request GET 'https://<Infrastructure Management Host>/api/service_catalogs?expand=resources' \
+--header 'Authorization: Bearer <IAM_Token>'
+```
+
+Where:
+
+1. `<IAM_Token>`: IAM Token retrieved in the above step.
+
+If you are using `Basic Authentication` method to connect to Infrastructure Management then use below command to retrieve Catalog Id & Catalog Item Id.
+
+```bash
 curl --location --request GET 'https://<Infrastructure Management Host>/api/service_catalogs?expand=resources' \
---header 'Authorization: Basic <uthentication details such as username and password to connect to Infrastructure Management>'
+--header 'Authorization: Basic <Authentication details such as username and password to connect to Infrastructure Management>'
 ```
+
+**Note:** Basic Authentication using `Username` and `Password` is no longer supported, so it is recommended to use `Bearer Token` based authentication method to connect to Infrastructure Management.
 
 Sample Response:
 
-```
+```text
 {
   "name": "service_catalogs",
   "count": 1,
@@ -165,22 +224,26 @@ Sample Response:
 From the above response `Catalog Id` is `1000000000005` and `Catalog Item Id` is `1000000000011`
 
 - Go to `Managed services`
-- Navigate to `Manage` -> `Shared parameters` -> `Create data type` -> Enter Name as `Infrastructure Management Authentication Details`, Data type as `im_auth` and Description as `Authentication details such as username and password to connect to Infrastructure Management` -> `Create` -> `Add Attributes`. Fill the following attributes:
+- Navigate to `Manage` -> `Shared parameters` -> `Create data type` -> Enter Name as `Infrastructure Management Authentication Details`, Data type as `im_auth` and Description as `Authentication details such as Username, Password or Bearer token to connect to Infrastructure Management` -> `Create` -> `Add Attributes`. Fill the following attributes:
 
-| Parameter name                  | End-user permission   | Parameter type             | Display name   |
-| :---                            | :---                  | :---                       | :---           |
-| username                        | true                  | string                     | Username       |
-| password                        | true                  | password                   | Password       |
+| Parameter name                  | End-user permission   | Parameter type             | Display name   | Required    |
+| :---                            | :---                  | :---                       | :---           | :---        |
+| username                        | Read & Write          |string                    | Username       | false       |
+| password                        | Read & Write          |password                    | Password       | false       |
+| token                           | Read & Write          |password                    | Bearer token   | false       |
 
 - Navigate to `Manage` -> `Shared parameters` -> In `Search data types`, Enter "Infrastructure Management Authentication Details" -> Verify Data type is present
-- Go to `Create data object` -> Select data type "im_auth" -> Enter Data Object Name for e.g. "im_auth". Fill the following paramaters.
+- Go to `Create data object` -> Select data type "im_auth" -> Enter Data Object Name for e.g. "im_auth". Fill the following parameters.
 
-| Parameter name                  | Type            | Parameter description
-| :---                            | :---            | :---
-| Username                        | string          | Username to connect to  Infrastructure Management
-| Password                        | password        | Password to connect to Infrastructure Management
+| Parameter name                  | Type            | Parameter description                                  |
+| :---                            | :---            | :---                                                   |
+| Username                        | string        | Username to connect to  Infrastructure Management      |
+| Password                        | password        | Password to connect to  Infrastructure Management      |
+| Token                           | password        | Bearer token to connect to  Infrastructure Management  |
 
-- Navigate to `Library` -> `Services` ->  `Approval` -> `Infrastructure Management Approval` -> Navigate to `1.0.0.0` version -> Edit -> Composition -> Click on `Resthook` -> Go to `Create` section -> Enter Infrastructure Management username in `Auth username` and Infrastructure Management password in `Auth password` -> `Save` 
+**Note:** It is not mandatory to provide values of all three. It depends on type of authentication method you want to use. If you want to use `Basic Authentication` then provide values of both `Username` and `Password` and If you want to use `Bearer Token` based authentication method then provide value of `Token`. Basic Authentication using `Username` and `Password` is no longer supported, so it is recommended to use `Bearer Token` based authentication method to connect to Infrastructure Management.
+
+- Navigate to `Library` -> `Services` ->  `Approval` -> `Infrastructure Management Approval` -> Navigate to `1.0.0.0` version -> Edit -> Composition -> Click on `Resthook` -> Go to `Create` section -> Select `Auth type` -> Enter either Username and Password or Bearer Token to connect to Infrastructure Management depending on the Auth Type.
 
 To deploy this service from Managed services navigate to `Library` -> `Services` ->  `Approval` -> `Infrastructure Management Approval`. Fill the following input parameters and deploy the service.
 

@@ -269,6 +269,7 @@
                                     "url": "${resthooks.resthook060a97c8.body.results[0].href}",
                                     "username": "${im_auth.username}",
                                     "password": "${im_auth.password}",
+                                    "token": "${im_auth.token}",
                                     "curl_option": "${input_parameters.curl_option}",
                                     "wait_time": "${input_parameters.wait_time}"
                                 },
@@ -276,7 +277,14 @@
                                     "approval_status"
                                 ],
                                 "editable": true,
-                                "provider_engine_version": "0.12.21",
+                                "provider_engine_version": "0.12.31",
+                                "use_compatible_version": true,
+                                "cloud_connection_names": [
+                                {
+                                    "provider": "Other",
+                                    "connection_name": "Other"
+                                }
+                                ],
                                 "isErrorFlow": false,
                                 "cloud_connection_name": "Other"
                             }
