@@ -322,7 +322,7 @@
             "immutable": true,
             "hidden": false,
             "required": false,
-            "secured": false,
+            "secured": true,
             "description": "",
             "default": "${templates.singlevi4cf68d93.output.private_ssh_key}"
           }
