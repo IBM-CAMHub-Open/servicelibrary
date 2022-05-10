@@ -7,7 +7,7 @@ This [IBM Cloud Pak for Multicloud Management](https://www.ibm.com/support/knowl
 
 This service is composed of following terraform template
 
-- [Google Cloud Single Virtual Machine Example](https://github.com/IBM-CAMHub-Open/starterlibrary/tree/2.4/Google/terraform/hcl/singleVM) terraform template.
+- [Google Cloud Single Virtual Machine Example](https://github.com/IBM-CAMHub-Open/starterlibrary/tree/2.5/Google/terraform/hcl/singleVM) terraform template.
 
 You can first test deploy the service and once satisfied, you can publish the service to the service library and then deploy the production ready service from the service library. 
 By default this service is in global namespace. So before you publish you need to duplicate this service (see IBM Cloud Pak for Multicloud Management documentation on how to duplicate a service) in the user assigned namespace and then publish it to service library.

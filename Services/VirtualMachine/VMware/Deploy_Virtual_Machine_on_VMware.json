@@ -1,6 +1,6 @@
 {
   "service": {
-    "version": "1.0.0.0",
+    "version": "2.0.0.0",
     "specVersion": "v3",
     "catalog_metadata": {
       "name": "Virtual Machine on VMware",
@@ -250,8 +250,8 @@
             {
               "Single Virtual Machine with Private SSH Key": {
                 "title": "Single Virtual Machine with Private SSH Key_65290c",
-                "template_name": "Single Virtual Machine with Private SSH Key",
-                "version": "2.4",
+                "template_name": "Single Virtual Machine with Private SSH Key for Terraform 1.x.x",
+                "version": "2.5",
                 "id": "singlevi4cf68d93",
                 "template_type": "Terraform",
                 "template_content_type": "VMware vSphere",
@@ -289,7 +289,7 @@
                   "private_ssh_key"
                 ],
                 "editable": true,
-                "provider_engine_version": "0.12.21",
+                "provider_engine_version": "1.1.3",
                 "isErrorFlow": false,
                 "cloud_connection_name": "${input_parameters.Connection}"
               }
@@ -322,7 +322,7 @@
             "immutable": true,
             "hidden": false,
             "required": false,
-            "secured": true,
+            "secured": false,
             "description": "",
             "default": "${templates.singlevi4cf68d93.output.private_ssh_key}"
           }

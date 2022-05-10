@@ -1,7 +1,7 @@
 {
   "service": {
     "specVersion": "v3",
-    "version": "1.0.0.0",
+    "version": "2.0.0.0",
     "catalog_metadata": {
       "name": "Azure Kubernetes Service Cluster with RHACM import",
       "description": "Deploys and imports Azure Kubernetes Service cluster v1.11 or higher into an RHACM enabled IBM Cloud Pak For Multicloud Management hub-cluster.",
@@ -494,8 +494,8 @@
             {
               "Microsoft Azure Kubernetes Service": {
                 "title": "Microsoft Azure Kubernetes Service",
-                "template_name": "Microsoft Azure Kubernetes Service for Terraform 0.12.x",
-                "version": "1.11",
+                "template_name": "Microsoft Azure Kubernetes Service for Terraform 1.x.x",
+                "version": "2.0",
                 "id": "microsof4d73694d",
                 "template_type": "Terraform",
                 "template_content_type": "Microsoft Azure",
@@ -531,14 +531,14 @@
                 ],                
                 "warning": false,
                 "error": false,
-                "provider_engine_version": "0.12.21"
+                "provider_engine_version": "1.1.3"
               }
             },
             {
               "Import Microsoft Azure Kubernetes Service into RHACM enabled IBM CP4MCM": {
                 "title": "Import Microsoft Azure Kubernetes Service into RHACM enabled IBM CP4MCM",
-                "template_name": "Import Microsoft Azure Kubernetes Service into RHACM enabled IBM CP4MCM",
-                "version": "5.1.0",
+                "template_name": "Import Microsoft Azure Kubernetes Service into RHACM enabled IBM CP4MCM for Terraform 1.x.x",
+                "version": "5.2.0",
                 "id": "importmi180b207c",
                 "template_type": "Terraform",
                 "template_content_type": "Other",
@@ -562,7 +562,7 @@
                 "outputs": [],
                 "error": false,
                 "immutable": false,
-                "provider_engine_version": "0.12.21"
+                "provider_engine_version": "1.1.3"
               }
             }
           ],

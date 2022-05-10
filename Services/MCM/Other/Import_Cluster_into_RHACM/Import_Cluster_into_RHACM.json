@@ -1,7 +1,7 @@
 {
   "service": {
     "specVersion": "v3",
-    "version": "1.0.0.0",
+    "version": "2.0.0.0",
     "catalog_metadata": {
       "name": "Import existing kubernetes cluster into RHACM enabled IBM CP4MCM",
       "description": "Import an existing kubernetes cluster into RHACM enabled IBM CP4MCM",
@@ -196,8 +196,8 @@
             {
               "Import a kubernetes cluster into RHACM enabled IBM CP4MCM": {
                 "title": "Import a kubernetes cluster into RHACM enabled IBM CP4MCM",
-                "template_name": "Import a kubernetes cluster into RHACM enabled IBM CP4MCM",
-                "version": "5.1.0",
+                "template_name": "Import a kubernetes cluster into RHACM enabled IBM CP4MCM for Terraform 1.x.x",
+                "version": "5.2.0",
                 "id": "importkucc2bc96e",
                 "template_type": "Terraform",
                 "template_content_type": "Other",
@@ -222,7 +222,7 @@
                 "outputs": [],
                 "error": false,
                 "immutable": false,
-                "provider_engine_version": "0.12.21"
+                "provider_engine_version": "1.1.3"
               }
             }
           ],

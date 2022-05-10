@@ -8,9 +8,9 @@ This service also provides custom action on deployed service instance to create 
 
 This service is composed of following terraform templates:
 
-[Amazon Relational Database Service](https://github.com/IBM-CAMHub-Open/starterlibrary/tree/2.4/AWS/terraform/hcl/rds) terraform template which creates a RDS instance from an existing snapshot or create a new RDS from scratch. 
+[Amazon Relational Database Service](https://github.com/IBM-CAMHub-Open/starterlibrary/tree/2.5/AWS/terraform/hcl/rds) terraform template which creates a RDS instance from an existing snapshot or create a new RDS from scratch. 
 
-[Amazon Relational Database Service Snapshot](https://github.com/IBM-CAMHub-Open/starterlibrary/tree/2.4/AWS/terraform/hcl/rds) terraform template which is used in managed service custom action to create a snapshot of provisioned database instance.
+[Amazon Relational Database Service Snapshot](https://github.com/IBM-CAMHub-Open/starterlibrary/tree/2.5/AWS/terraform/hcl/rds) terraform template which is used in managed service custom action to create a snapshot of provisioned database instance.
 
 You can first test deploy the service and once satisfied, you can publish the service to the service library and then deploy the production ready service from the service library. By default this service is in global namespace. So before you publish you need to duplicate this service (see IBM Cloud Pak for Multicloud Management documentation on how to duplicate a service) in the user assigned namespace and then publish it to service library.
 

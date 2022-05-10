@@ -1,7 +1,7 @@
 {
   "service": {
     "specVersion": "v3",
-    "version": "2.4.0.0",
+    "version": "3.0.0.0",
     "catalog_metadata": {
       "name": "Multi Cloud - MEAN Stack deployment",
       "description": "This service deploy MEAN stock on your choice of cloud.",
@@ -18,7 +18,7 @@
         },
         {
           "title": "Operating systems supported",
-          "description": "AWS: Ubuntu 16.04\nIBM Cloud: CentOS 7\nMicrosoft Azure: Ubuntu 16.04\nVMWare: Red Hat Enterprise Linux 7"
+          "description": "AWS: Ubuntu 18.04\nIBM Cloud: CentOS 7\nMicrosoft Azure: Ubuntu 16.04\nVMWare: Red Hat Enterprise Linux 7"
         },
         {
           "title": "Usage and special notes",
@@ -585,7 +585,7 @@
             "required": false,
             "secured": false,
             "description": "Operating system image id / template that should be used when creating the virtual image",
-            "default": "ubuntu/images/hvm-ssd/ubuntu-xenial-16.04-amd64-server-*"
+            "default": "ubuntu/images/hvm-ssd/ubuntu-bionic-18.04-amd64-server-*"
           },
           {
             "name": "aws_ami_owner_id",
@@ -711,8 +711,8 @@
             {
               "MEAN stack deployment": {
                 "title": "MEAN stack VMW",
-                "template_name": "MEAN stack deployment on VMware",
-                "version": "2.4",
+                "template_name": "MEAN stack deployment on VMware for Terraform 1.x.x",
+                "version": "2.5",
                 "id": "meanstac8be2854a",
                 "template_type": "Terraform",
                 "template_content_type": "VMware vSphere",
@@ -770,14 +770,14 @@
                   "user_public_ssh_key": "${input_parameters.user_public_ssh_key}"
                 },
                 "outputs": [],                
-                "provider_engine_version": "0.12.21"
+                "provider_engine_version": "1.1.3"
               }
             },
             {
-              "MEAN stack deployment (hybrid-cloud)": {
+              "MEAN stack deployment (hybrid-cloud) for Terraform 1.x.x": {
                 "title": "MEAN stack SL",
-                "template_name": "MEAN stack deployment (hybrid-cloud)",
-                "version": "2.4",
+                "template_name": "MEAN stack deployment (hybrid-cloud) for Terraform 1.x.x",
+                "version": "2.5",
                 "id": "meanstac79ffc96e",
                 "template_type": "Terraform",
                 "template_content_type": "IBM",
@@ -801,14 +801,14 @@
                   "softlayer_datacenter": "ams01"
                 },
                 "outputs": [],
-                "provider_engine_version": "0.11.11"
+                "provider_engine_version": "1.1.3"
               }
             },
             {
               "MEAN stack deployment": {
                 "title": "MEAN stack AWS",
-                "template_name": "MEAN stack deployment on AWS",
-                "version": "2.4",
+                "template_name": "MEAN stack deployment on AWS for Terraform 1.x.x",
+                "version": "2.5",
                 "id": "meanstac8ca7eecd",
                 "template_type": "Terraform",
                 "template_content_type": "Amazon EC2",
@@ -829,14 +829,14 @@
                   "hostname-nodejs": "${input_parameters.hostname-nodejs}"
                 },
                 "outputs": [],
-                "provider_engine_version": "0.11.11"
+                "provider_engine_version": "1.1.3"
               }
             },
             {
-              "MEAN stack deployment on Microsoft Azure": {
+              "MEAN stack deployment on Microsoft Azure for Terraform 1.x.x": {
                 "title": "MEAN stack Azure",
-                "template_name": "MEAN stack deployment on Microsoft Azure",
-                "version": "2.4",
+                "template_name": "MEAN stack deployment on Microsoft Azure for Terraform 1.x.x",
+                "version": "2.5",
                 "id": "meanstac111cd421",
                 "template_type": "Terraform",
                 "template_content_type": "Microsoft Azure",
@@ -856,14 +856,14 @@
                   "hostname-nodejs": "${input_parameters.hostname-nodejs}"
                 },
                 "outputs": [],
-                "provider_engine_version": "0.11.11"
+                "provider_engine_version": "1.1.3"
               }
             },
             {
-              "ServiceNow CMDB Configuration Template": {
+              "ServiceNow CMDB Configuration Template for Terraform 1.x.x": {
                 "title": "SNow CMDB",
-                "template_name": "ServiceNow CMDB Configuration Template",
-                "version": "2.0",
+                "template_name": "ServiceNow CMDB Configuration Template for Terraform 1.x.x",
+                "version": "2.1",
                 "id": "servicend6b96b5b",
                 "template_type": "Terraform",
                 "template_content_type": "Integration",
@@ -883,7 +883,7 @@
                   }
                 },
                 "outputs": [],
-                "provider_engine_version": "0.11.11"
+                "provider_engine_version": "1.1.3"
               }
             }
           ],
@@ -1339,7 +1339,7 @@
             "required": false,
             "secured": false,
             "description": "Operating system image id / template that should be used when creating the virtual image",
-            "default": "ubuntu/images/hvm-ssd/ubuntu-xenial-16.04-amd64-server-*"
+            "default": "ubuntu/images/hvm-ssd/ubuntu-bionic-18.04-amd64-server-*"
           },
           {
             "name": "aws_ami_owner_id",
@@ -1464,7 +1464,7 @@
             "required": false,
             "secured": false,
             "description": "Operating system image id / template that should be used when creating the virtual image",
-            "default": "ubuntu/images/hvm-ssd/ubuntu-xenial-16.04-amd64-server-*"
+            "default": "ubuntu/images/hvm-ssd/ubuntu-bionic-18.04-amd64-server-*"
           },
           {
             "name": "aws_ami_owner_id",
@@ -2260,7 +2260,7 @@
             "required": false,
             "secured": false,
             "description": "Operating system image id / template that should be used when creating the virtual image",
-            "default": "ubuntu/images/hvm-ssd/ubuntu-xenial-16.04-amd64-server-*"
+            "default": "ubuntu/images/hvm-ssd/ubuntu-bionic-18.04-amd64-server-*"
           },
           {
             "name": "aws_ami_owner_id",
@@ -2643,7 +2643,7 @@
             "required": false,
             "secured": false,
             "description": "Operating system image id / template that should be used when creating the virtual image",
-            "default": "ubuntu/images/hvm-ssd/ubuntu-xenial-16.04-amd64-server-*"
+            "default": "ubuntu/images/hvm-ssd/ubuntu-bionic-18.04-amd64-server-*"
           },
           {
             "name": "aws_ami_owner_id",

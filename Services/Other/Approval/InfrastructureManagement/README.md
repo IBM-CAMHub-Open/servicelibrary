@@ -9,7 +9,7 @@ More details on Managed services Service can be found [here](https://www.ibm.com
 
 This service is composed of following terraform template
 
-- [Poll Infrastructure Management for Approval](https://github.com/IBM-CAMHub-Open/starterlibrary/tree/2.4/Other/Approval/InfrastructureManagement) terraform template.
+- [Poll Infrastructure Management for Approval](https://github.com/IBM-CAMHub-Open/starterlibrary/tree/2.5/Other/Approval/InfrastructureManagement) terraform template.
 
 ## Deploying the service from Managed services
 

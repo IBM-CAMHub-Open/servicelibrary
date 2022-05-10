@@ -1,7 +1,7 @@
 {
   "service": {
     "specVersion": "v3",
-    "version": "1.0.0.0",
+    "version": "2.0.0.0",
     "catalog_metadata": {
       "name": "Amazon Elastic Kubernetes Service Cluster with RHACM import",
       "description": "Deploys and imports Amazon Elastic Kubernetes Service cluster into an RHACM enabled IBM Cloud Pak For Multicloud Management hub-cluster.",
@@ -465,8 +465,8 @@
             {
               "Amazon Web Services EKS": {
                 "title": "Amazon Web Services EKS",
-                "template_name": "Amazon Web Services EKS for Terraform 0.12.x",
-                "version": "1.11",
+                "template_name": "Amazon Web Services EKS for Terraform 1.x.x",
+                "version": "2.0",
                 "id": "amazonwe5e8da292",
                 "template_type": "Terraform",
                 "template_content_type": "Amazon EC2",
@@ -496,14 +496,14 @@
                 "warning": false,
                 "isErrorFlow": false,
                 "error": false,
-                "provider_engine_version": "0.12.21"
+                "provider_engine_version": "1.1.3"
               }
             },
             {
               "Import Amazon Elastic Kubernetes Service into RHACM enabled IBM CP4MCM": {
                 "title": "Import Amazon Elastic Kubernetes Service into RHACM enabled IBM CP4MCM",
-                "template_name": "Import Amazon Elastic Kubernetes Service into RHACM enabled IBM CP4MCM",
-                "version": "5.1.0",
+                "template_name": "Import Amazon Elastic Kubernetes Service into RHACM enabled IBM CP4MCM for Terraform 1.x.x",
+                "version": "5.2.0",
                 "id": "importam803e4a18",
                 "template_type": "Terraform",
                 "template_content_type": "Other",
@@ -532,7 +532,7 @@
                 "immutable": false,
                 "warning": false,
                 "isErrorFlow": false,
-                "provider_engine_version": "0.12.21"
+                "provider_engine_version": "1.1.3"
               }
             }
           ],
