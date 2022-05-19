@@ -471,6 +471,18 @@
             "required": true,
             "secured": true,
             "description": "Credentials for service account used to access the cluster (Base64-encoded)"
+          },
+          {
+            "name": "kube_ctl_version",
+            "label": "The kubectl version to run import commands. (Explicit version is recommended. Do not leave it as latest. Version format must be vM.m.p eg. v1.23.6) ",
+            "customtype": "string",
+            "type": "string",
+            "immutable": false,
+            "hidden": false,
+            "required": true,
+            "secured": false,
+            "description": "The kubectl version to use in import client. For compatibility reasons, this version must match the version in the kubernetes service. The latest client version may not be compatible with the latest kubernetes version used in the server. It is recommended that you set an explicit version. Version format must be vM.m.p eg. v1.23.6",
+            "default": "latest"
           }
         ],
         "flow": {
@@ -522,7 +534,6 @@
                 "template_content_type": "Other",
                 "template_provider": "Other",
                 "instance_name": "",
-                "cloud_connection_name": "Other",
                 "template_data_objects": {
                   "bastionhost": "DefaultNoBastionHostRequired",
                   "kubeconfig": "${input_parameters.cluster_name}",
@@ -536,8 +547,15 @@
                   "ocp_ca_cert": "${oc_login_info.ocp_ca_cert}",                  
                   "cluster_name": "${kubeconfig.cluster_name}",
                   "cluster_config": "${kubeconfig.cluster_config}",
-                  "service_account_credentials": "${input_parameters.service_account_credentials}"
+                  "service_account_credentials": "${input_parameters.service_account_credentials}",
+                  "kube_ctl_version": "${input_parameters.kube_ctl_version}"
                 },
+                "cloud_connection_names": [
+                  {
+                    "connection_name": "Other",
+                    "provider": "Other"
+                  }
+                ],                
                 "outputs": [],
                 "error": false,
                 "immutable": false,

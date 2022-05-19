@@ -35,7 +35,7 @@ To test deploy this service navigate to Automate Infrastructure > Manage Service
 | min\_worker\_count              | string          | Miniumum number of worker nodes permitted within the cluster |
 | max\_worker\_count              | string          | Maximum number of worker nodes permitted within the cluster |
 | initial\_worker\_count          | string          | Initial number of worker nodes to be created within the cluster |
-
+| kube_ctl_version                | string          | The kubectl version to use in import client. For compatibility reasons, this version must match the version in the kubernetes service. The latest client version may not be compatible with the latest kubernetes version used in the server. It is recommended that you set an explicit version. Version format must be vM.m.p eg. v1.23.6. | |
 ## Deploying the service from Service Library
 
 To deploy this service from Service Library navigate to Automate Infrastructure > Service Library, select the published service and fill the following input parameters and install the service.
@@ -57,10 +57,10 @@ Note: Some parameters may have fixed default values. If you need to change them,
 | min\_worker\_count              | string          | Miniumum number of worker nodes permitted within the cluster |
 | max\_worker\_count              | string          | Maximum number of worker nodes permitted within the cluster |
 | initial\_worker\_count          | string          | Initial number of worker nodes to be created within the cluster |
-
+| kube_ctl_version                | string          | The kubectl version to use in import client. For compatibility reasons, this version must match the version in the kubernetes service. The latest client version may not be compatible with the latest kubernetes version used in the server. It is recommended that you set an explicit version. Version format must be vM.m.p eg. v1.23.6. | |
 
 ### License and Maintainer
 
-Copyright IBM Corp. 2020
+Copyright IBM Corp. 2022
 
-Service Version - 1.0.0.0
+Service Version - 2.0.0.0

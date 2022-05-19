@@ -35,7 +35,7 @@ To test deploy this service navigate to Automate Infrastructure > Manage Service
 | initial\_worker\_count          | string          | Initial number of worker nodes |
 | min\_worker\_count              | string          | Minimum number of worker nodes |
 | max\_worker\_count              | string          | Maximum number of worker nodes |
-
+| kube_ctl_version                | string          | The kubectl version to use in import client. For compatibility reasons, this version must match the version in the kubernetes service. The latest client version may not be compatible with the latest kubernetes version used in the server. It is recommended that you set an explicit version. Version format must be vM.m.p eg. v1.23.6. | |
 
 
 ## Deploying the service from Service Library
@@ -58,10 +58,10 @@ Note: Some parameters may have fixed default values. If you need to change them,
 | initial\_worker\_count          | string          | Initial number of worker nodes |
 | min\_worker\_count              | string          | Minimum number of worker nodes |
 | max\_worker\_count              | string          | Maximum number of worker nodes |
-
+| kube_ctl_version                | string          | The kubectl version to use in import client. For compatibility reasons, this version must match the version in the kubernetes service. The latest client version may not be compatible with the latest kubernetes version used in the server. It is recommended that you set an explicit version. Version format must be vM.m.p eg. v1.23.6. | |
 
 ### License and Maintainer
 
-Copyright IBM Corp. 2020
+Copyright IBM Corp. 2022
 
-Service Version - 1.0.0.0
+Service Version - 2.0.0.0

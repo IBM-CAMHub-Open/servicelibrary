@@ -243,7 +243,7 @@ From the above response `Catalog Id` is `1000000000005` and `Catalog Item Id` is
 
 **Note:** It is not mandatory to provide values of all three. It depends on type of authentication method you want to use. If you want to use `Basic Authentication` then provide values of both `Username` and `Password` and If you want to use `Bearer Token` based authentication method then provide value of `Token`. Basic Authentication using `Username` and `Password` is no longer supported, so it is recommended to use `Bearer Token` based authentication method to connect to Infrastructure Management.
 
-- Navigate to `Library` -> `Services` ->  `Approval` -> `Infrastructure Management Approval` -> Navigate to `1.0.0.0` version -> Edit -> Composition -> Click on `Resthook` -> Go to `Create` section -> Select `Auth type` -> Enter either Username and Password or Bearer Token to connect to Infrastructure Management depending on the Auth Type.
+- Navigate to `Library` -> `Services` ->  `Approval` -> `Infrastructure Management Approval` -> Navigate to `2.0.0.0` version -> Edit -> Composition -> Click on `Resthook` -> Go to `Create` section -> Select `Auth type` -> Enter either Username and Password or Bearer Token to connect to Infrastructure Management depending on the Auth Type.
 
 To deploy this service from Managed services navigate to `Library` -> `Services` ->  `Approval` -> `Infrastructure Management Approval`. Fill the following input parameters and deploy the service.
 
@@ -262,6 +262,6 @@ Service offers one standard plan. The standard plan offers quick deployment thro
 
 ### License and Maintainer
 
-Copyright IBM Corp. 2020
+Copyright IBM Corp. 2022
 
-Service Version - 1.0.0.0
+Service Version - 2.0.0.0
