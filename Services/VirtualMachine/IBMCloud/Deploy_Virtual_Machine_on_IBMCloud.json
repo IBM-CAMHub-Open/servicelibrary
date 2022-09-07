@@ -195,6 +195,20 @@
               "view": "create new",
               "editable": true,
               "default": "sample.com"
+            },
+            {
+              "name": "os_reference_code",
+              "label": "Operating System ID",
+              "customtype": "string",
+              "type": "string",
+              "immutable": false,
+              "hidden": false,
+              "required": true,
+              "secured": false,
+              "description": "Operating system image id / template that should be used when creating the virtual image",
+              "view": "create new",
+              "editable": true,
+              "default": "DEBIAN_10_64"
             }
           ],
           "flow": {
@@ -216,7 +230,8 @@
                     "public_ssh_key": "${input_parameters.public_ssh_key}",
                     "datacenter": "dal09",
                     "hostname": "${input_parameters.hostname}",
-                    "domain": "${input_parameters.domain}"
+                    "domain": "${input_parameters.domain}",
+                    "os_reference_code": "${input_parameters.os_reference_code}"
                   },
                   "outputs": [],
                   "editable": true,
