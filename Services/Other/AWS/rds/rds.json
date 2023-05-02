@@ -203,29 +203,9 @@
               "isDynamic": false,
               "options": [
                 {
-                  "label": "MYSQL",
-                  "value": "mysql",
-                  "default": true
-                },
-                {
-                  "label": "Maria DB",
-                  "value": "mariadb",
-                  "default": false
-                },
-                {
-                  "label": "MS SQL",
-                  "value": "sqlserver-ex",
-                  "default": false
-                },
-                {
-                  "label": "Postgres",
-                  "value": "postgres",
-                  "default": false
-                },
-                {
                   "label": "Oracle",
                   "value": "oracle-se",
-                  "default": false
+                  "default": true
                 }
               ]
             },
