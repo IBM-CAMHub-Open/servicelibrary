@@ -145,7 +145,7 @@
               "hidden": false,
               "required": true,
               "secured": false,
-              "description": "",
+              "description": "To establish a connection with AWS, please choose the appropriate connection option from the provided dropdown menu.",
               "view": "create new",
               "editable": true,
               "default": "",
@@ -164,6 +164,7 @@
               "required": false,
               "secured": false,
               "isDynamic": true,
+              "description": "Please select the desired region from the dropdown menu.",
               "editable": true,
               "dynamicDetails": {
                 "provider": "AWS",
