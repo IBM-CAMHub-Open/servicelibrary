@@ -1,552 +1,531 @@
 {
-    "service": {
-      "version": "2.0.0.1",
-      "specVersion": "v3",
-      "catalog_metadata": {
-        "name": "Amazon Relational Database Service",
-        "description": "Creates RDS resources including DB instance and DB snapshot",
-        "image": "serviceicon_1.svg",
-        "category": "Cloud Services",
-        "bullets": [],
-        "providerDisplayName": "IBM",
-        "longDescription": "Creates a new RDS DB instance from scratch or an instance from existing snapshot. \nAllows to take snapshot using custom action flow. ",
-        "documentationUrl": "",
-        "supportUrl": "",
-        "bindable": false,
-        "updatable": "",
-        "systemTags": true
+  "service": {
+    "version": "2.0.0.2",
+    "specVersion": "v3",
+    "catalog_metadata": {
+      "name": "Amazon Relational Database Service",
+      "description": "Creates RDS resources including DB instance and DB snapshot",
+      "image": "serviceicon_1.svg",
+      "category": "Cloud Services",
+      "bullets": [],
+      "providerDisplayName": "IBM",
+      "longDescription": "Creates a new RDS DB instance from scratch or an instance from existing snapshot. \nAllows to take snapshot using custom action flow. ",
+      "documentationUrl": "",
+      "supportUrl": "",
+      "bindable": false,
+      "updatable": "",
+      "systemTags": true
+    },
+    "tags": [
+      {
+        "name": "environment",
+        "label": "Environment",
+        "type": "string",
+        "immutable": false,
+        "hidden": false,
+        "required": true,
+        "secured": false,
+        "description": "Unique identifer added to the provisioned VMs.",
+        "isSystemTag": true,
+        "customtype": "string",
+        "permission": "Read-Write",
+        "options": [
+          {
+            "label": "Development",
+            "value": "dev",
+            "default": true
+          },
+          {
+            "label": "Quality Assurance",
+            "value": "qa",
+            "default": false
+          },
+          {
+            "label": "Production",
+            "value": "prod",
+            "default": false
+          },
+          {
+            "label": "Test",
+            "value": "test",
+            "default": false
+          }
+        ]
       },
-      "tags": [
-        {
-          "name": "environment",
-          "label": "Environment",
-          "type": "string",
-          "immutable": false,
-          "hidden": false,
-          "required": true,
-          "secured": false,
-          "description": "Unique identifer added to the provisioned VMs.",
-          "isSystemTag": true,
-          "customtype": "string",
-          "permission": "Read-Write",
-          "options": [
-            {
-              "label": "Development",
-              "value": "dev",
-              "default": true
+      {
+        "name": "Name",
+        "label": "Name",
+        "type": "string",
+        "immutable": true,
+        "hidden": false,
+        "required": false,
+        "secured": false,
+        "description": "Name provided for the service instance by the end user at time of request",
+        "isSystemTag": true,
+        "customtype": "string",
+        "permission": "Read-Only",
+        "default": "${svc_instance.name}"
+      },
+      {
+        "name": "request_group",
+        "label": "request_group",
+        "type": "string",
+        "immutable": true,
+        "hidden": false,
+        "required": false,
+        "secured": false,
+        "description": "The current context group id of the current user that requested the provisioning of the template. This is important because a user may be part of more than one group and this identifies the context of which group the user made the request.",
+        "isSystemTag": true,
+        "customtype": "string",
+        "permission": "Read-Only",
+        "default": "${svc_instance.group}"
+      },
+      {
+        "name": "request_user",
+        "label": "request_user",
+        "type": "string",
+        "immutable": true,
+        "hidden": false,
+        "required": false,
+        "secured": false,
+        "description": "The user id of the current user that requested the provisioning of the template.",
+        "isSystemTag": true,
+        "customtype": "string",
+        "permission": "Read-Only",
+        "default": "${svc_instance.owner}"
+      },
+      {
+        "name": "service_name",
+        "label": "service_name",
+        "type": "string",
+        "immutable": true,
+        "hidden": false,
+        "required": false,
+        "secured": false,
+        "description": "Name provided for the service instance by the end user at time of request",
+        "isSystemTag": true,
+        "customtype": "string",
+        "permission": "Read-Only",
+        "default": "${svc_instance.name}"
+      },
+      {
+        "name": "service_identifier",
+        "label": "service_identifier",
+        "type": "string",
+        "immutable": true,
+        "hidden": false,
+        "required": false,
+        "secured": false,
+        "description": "Unique identifer generated by ICAM which is mapped to the service instance of the template provisioned.",
+        "isSystemTag": true,
+        "customtype": "string",
+        "permission": "Read-Only",
+        "default": "${svc_instance.service_instance_id}"
+      }
+    ],
+    "upgrade_from": [],
+    "downgrade_to": [],
+    "actions": [
+      {
+        "type": "provision",
+        "name": "Provision",
+        "description": "Default action for deployment of service",
+        "input_parameters": [
+          {
+            "name": "Connection",
+            "label": "Cloud Connection",
+            "customtype": "connection",
+            "type": "connection",
+            "immutable": false,
+            "hidden": false,
+            "required": true,
+            "secured": false,
+            "description": "",
+            "view": "create new",
+            "editable": true,
+            "default": "",
+            "provider": "Amazon EC2",
+            "passbyname": false,
+            "dynamicDetails": {},
+            "isDynamic": false
+          },
+          {
+            "name": "region",
+            "label": "Region",
+            "customtype": "string",
+            "type": "string",
+            "immutable": false,
+            "hidden": false,
+            "required": true,
+            "secured": false,
+            "isDynamic": true,
+            "editable": true,
+            "dynamicDetails": {
+              "provider": "AWS",
+              "assetType": "regions",
+              "dependsOn": {
+                "cloud_connection": "${input_parameters.Connection}"
+              }
             },
+            "passbyname": false,
+            "description": "AWS Region Name"
+          },
+          {
+            "name": "snapshot_identifier",
+            "label": "Snapshot Identifier",
+            "customtype": "string",
+            "type": "string",
+            "immutable": false,
+            "hidden": false,
+            "required": false,
+            "secured": false,
+            "description": "Snapshot ID to create the new database from. You must either provide this value or to create a fresh database provide values for Allocated Storage,  Database engine, Master DB user name and Master DB user password.",
+            "view": "create new",
+            "editable": true,
+            "passbyname": false,
+            "dynamicDetails": {},
+            "isDynamic": false
+          },
+          {
+            "name": "db_engine",
+            "label": "DB Engine  (if snapshot identifier is provided then engine value must match the snapshot engine)",
+            "customtype": "string",
+            "type": "string",
+            "immutable": false,
+            "hidden": false,
+            "required": false,
+            "secured": false,
+            "description": "The database engine to use to create a new RDS instance. Required unless a snapshot identifier is provided. If provided with snaphsot identifier, then this value must match the snapshot engine name.",
+            "view": "create new",
+            "editable": true,
+            "passbyname": false,
+            "dynamicDetails": {},
+            "isDynamic": false,
+            "options": [
+              {
+                "label": "Oracle",
+                "value": "oracle-ee",
+                "default": true
+              }
+            ]
+          },
+          {
+            "name": "allocated_storage",
+            "label": "Allocated Storage (in gibibytes - required unless a snapshot identifier is provided)",
+            "customtype": "string",
+            "type": "string",
+            "immutable": false,
+            "hidden": false,
+            "required": false,
+            "secured": false,
+            "description": "The allocated storage in gibibytes. Required unless a snapshot identifier is provided.",
+            "view": "create new",
+            "editable": true,
+            "default": 10
+          },
+          {
+            "name": "username",
+            "label": "DB Username (required unless a snapshot identifier is provided)",
+            "customtype": "string",
+            "type": "string",
+            "immutable": false,
+            "hidden": false,
+            "required": false,
+            "secured": false,
+            "description": "User name for the master DB. Required unless a snapshot identifier is provided.",
+            "view": "create new",
+            "editable": true,
+            "regex": "^[A-Za-z][A-Za-z0-9]{0,15}$",
+            "regexdesc": "Must begin with a letter and contain only alphanumeric characters. Maximum length is 16 characters."
+          },
+          {
+            "name": "password",
+            "label": "DB Password (required unless a snapshot identifier is provided)",
+            "customtype": "password",
+            "type": "password",
+            "immutable": false,
+            "hidden": false,
+            "required": false,
+            "secured": true,
+            "description": "Password for the master DB user. Required unless a snapshot identifier is provided.",
+            "view": "create new",
+            "editable": true,
+            "passbyname": false,
+            "dynamicDetails": {},
+            "isDynamic": false,
+            "regex": "^((?!['\"/@])[\\x00-\\x7F]){8,}$",
+            "regexdesc": "At least 8 ASCII characters. Can't contain any of the following: forward slash, single quote, double quote and @."
+          },
+          {
+            "name": "engine_version",
+            "label": "DB Engine Version",
+            "customtype": "string",
+            "type": "string",
+            "immutable": false,
+            "hidden": false,
+            "required": false,
+            "secured": false,
+            "description": "The database engine version to use. If empty, it would pick the latest.",
+            "view": "create new",
+            "editable": true,
+            "passbyname": false,
+            "dynamicDetails": {},
+            "isDynamic": false
+          },
+          {
+            "name": "instance_class",
+            "label": "Instance Class",
+            "customtype": "string",
+            "type": "string",
+            "immutable": false,
+            "hidden": false,
+            "required": true,
+            "secured": false,
+            "description": "The instance type of the RDS instance. Like `db.t3.large` for list of supported Instance class please refer : https://aws.amazon.com/rds/oracle/instance-types/",
+            "view": "create new",
+            "editable": true,
+            "passbyname": false,
+            "dynamicDetails": {},
+            "isDynamic": false,
+            "default": "db.t3.large"
+          },
+          {
+            "name": "instance_name",
+            "label": "DB Instance Name",
+            "customtype": "string",
+            "type": "string",
+            "immutable": false,
+            "hidden": false,
+            "required": false,
+            "secured": false,
+            "description": "The name of the database to create when the DB instance is created. This value is also used as prefix for RDS instance unique identifier.",
+            "view": "create new",
+            "editable": true,
+            "regex": "^[A-Za-z][A-Za-z0-9]*$",
+            "regexdesc": "Must begin with a letter and contain only alphanumeric characters."
+          },
+          {
+            "name": "license_model",
+            "label": "License Model (required for some DB like Oracle EE)",
+            "customtype": "string",
+            "type": "string",
+            "immutable": false,
+            "hidden": false,
+            "required": false,
+            "secured": false,
+            "description": "License model information for this DB instance.",
+            "view": "create new",
+            "editable": true,
+            "passbyname": false,
+            "dynamicDetails": {},
+            "isDynamic": false,
+            "default": "",
+            "regex": "^(license-included|bring-your-own-license|general-public-license)$",
+            "regexdesc": "Must be one of the following values license-included, bring-your-own-license or general-public-license"
+          },
+          {
+            "name": "subnet_group_name",
+            "label": "Subnet Group Name",
+            "customtype": "string",
+            "type": "string",
+            "immutable": false,
+            "hidden": false,
+            "required": false,
+            "secured": false,
+            "description": "DB instance will be created in the VPC associated with the DB subnet group. If unspecified, will be created in the default VPC, or in EC2 Classic, if available.",
+            "view": "create new",
+            "editable": true
+          },
+          {
+            "name": "vpc_security_group_ids",
+            "label": "VPC Security Group IDs",
+            "customtype": "list",
+            "type": "list",
+            "immutable": false,
+            "hidden": false,
+            "required": false,
+            "secured": false,
+            "description": "List of VPC security groups to associate with RDS.",
+            "view": "create new",
+            "editable": true
+          }
+        ],
+        "flow": {
+          "conditions": [],
+          "templates": [
             {
-              "label": "Quality Assurance",
-              "value": "qa",
-              "default": false
-            },
-            {
-              "label": "Production",
-              "value": "prod",
-              "default": false
-            },
-            {
-              "label": "Test",
-              "value": "test",
-              "default": false
-            }
-          ]
-        },
-        {
-          "name": "Name",
-          "label": "Name",
-          "type": "string",
-          "immutable": true,
-          "hidden": false,
-          "required": false,
-          "secured": false,
-          "description": "Name provided for the service instance by the end user at time of request",
-          "isSystemTag": true,
-          "customtype": "string",
-          "permission": "Read-Only",
-          "default": "${svc_instance.name}"
-        },
-        {
-          "name": "request_group",
-          "label": "request_group",
-          "type": "string",
-          "immutable": true,
-          "hidden": false,
-          "required": false,
-          "secured": false,
-          "description": "The current context group id of the current user that requested the provisioning of the template. This is important because a user may be part of more than one group and this identifies the context of which group the user made the request.",
-          "isSystemTag": true,
-          "customtype": "string",
-          "permission": "Read-Only",
-          "default": "${svc_instance.group}"
-        },
-        {
-          "name": "request_user",
-          "label": "request_user",
-          "type": "string",
-          "immutable": true,
-          "hidden": false,
-          "required": false,
-          "secured": false,
-          "description": "The user id of the current user that requested the provisioning of the template.",
-          "isSystemTag": true,
-          "customtype": "string",
-          "permission": "Read-Only",
-          "default": "${svc_instance.owner}"
-        },
-        {
-          "name": "service_name",
-          "label": "service_name",
-          "type": "string",
-          "immutable": true,
-          "hidden": false,
-          "required": false,
-          "secured": false,
-          "description": "Name provided for the service instance by the end user at time of request",
-          "isSystemTag": true,
-          "customtype": "string",
-          "permission": "Read-Only",
-          "default": "${svc_instance.name}"
-        },
-        {
-          "name": "service_identifier",
-          "label": "service_identifier",
-          "type": "string",
-          "immutable": true,
-          "hidden": false,
-          "required": false,
-          "secured": false,
-          "description": "Unique identifer generated by ICAM which is mapped to the service instance of the template provisioned.",
-          "isSystemTag": true,
-          "customtype": "string",
-          "permission": "Read-Only",
-          "default": "${svc_instance.service_instance_id}"
-        }
-      ],
-      "upgrade_from": [],
-      "downgrade_to": [],
-      "actions": [
-        {
-          "type": "provision",
-          "name": "Provision",
-          "description": "Default action for deployment of service",
-          "input_parameters": [
-            {
-              "name": "Connection",
-              "label": "Cloud Connection",
-              "customtype": "connection",
-              "type": "connection",
-              "immutable": false,
-              "hidden": false,
-              "required": true,
-              "secured": false,
-              "description": "",
-              "view": "create new",
-              "editable": true,
-              "default": "",
-              "provider": "Amazon EC2",
-              "passbyname": false,
-              "dynamicDetails": {},
-              "isDynamic": false
-            },
-            {
-                "name": "region",
-                "label": "Region",
-                "customtype": "string",
-                "type": "string",
-                "immutable": false,
-                "hidden": false,
-                "required": true,
-                "secured": false,
-                "isDynamic": true,
+              "Amazon Relational Database Service": {
+                "title": "AWS RDS_4b2cd2",
+                "template_name": "Amazon Relational Database Service for Terraform 1.x.x",
+                "version": "2.5",
+                "id": "awsrds909725a3fd",
+                "template_type": "Terraform",
+                "template_content_type": "Amazon EC2",
+                "template_provider": "Amazon EC2",
+                "instance_name": "",
+                "template_data_objects": {},
+                "template_params": {
+                  "aws_region": "${input_parameters.region}",
+                  "allocated_storage": "${input_parameters.allocated_storage}",
+                  "db_engine": "${input_parameters.db_engine}",
+                  "engine_version": "${input_parameters.engine_version}",
+                  "instance_class": "${input_parameters.instance_class}",
+                  "instance_name": "${input_parameters.instance_name}",
+                  "password": "${input_parameters.password}",
+                  "snapshot_identifier": "${input_parameters.snapshot_identifier}",
+                  "subnet_group_name": "${input_parameters.subnet_group_name}",
+                  "username": "${input_parameters.username}",
+                  "vpc_security_group_ids": "${input_parameters.vpc_security_group_ids}",
+                  "license_model": "${input_parameters.license_model}"
+                },
+                "outputs": [
+                  "aws_db_instance_endpoint",
+                  "aws_db_instance_engine",
+                  "aws_db_instance_engine_version",
+                  "aws_db_instance_identifier",
+                  "aws_db_instance_status"
+                ],
                 "editable": true,
-                "dynamicDetails": {
-                  "provider": "AWS",
-                  "assetType": "regions",
-                  "dependsOn": {
-                    "cloud_connection": "${input_parameters.Connection}"
+                "cloud_connection_names": [
+                  {
+                    "provider": "Amazon EC2",
+                    "connection_name": "${input_parameters.Connection}"
                   }
-                },
-                "passbyname": false,
-                "description": "AWS Region Name"
-            },
-            {
-              "name": "snapshot_identifier",
-              "label": "Snapshot Identifier",
-              "customtype": "string",
-              "type": "string",
-              "immutable": false,
-              "hidden": false,
-              "required": false,
-              "secured": false,
-              "description": "Snapshot ID to create the new database from. You must either provide this value or to create a fresh database provide values for Allocated Storage,  Database engine, Master DB user name and Master DB user password.",
-              "view": "create new",
-              "editable": true,
-              "passbyname": false,
-              "dynamicDetails": {},
-              "isDynamic": false
-            },            
-            {
-              "name": "db_engine",
-              "label": "DB Engine  (if snapshot identifier is provided then engine value must match the snapshot engine)",
-              "customtype": "string",
-              "type": "string",
-              "immutable": false,
-              "hidden": false,
-              "required": false,
-              "secured": false,
-              "description": "The database engine to use to create a new RDS instance. Required unless a snapshot identifier is provided. If provided with snaphsot identifier, then this value must match the snapshot engine name.",
-              "view": "create new",
-              "editable": true,
-              "passbyname": false,
-              "dynamicDetails": {},
-              "isDynamic": false,
-              "options": [
-                {
-                  "label": "Oracle",
-                  "value": "oracle-ee",
-                  "default": true
-                }
-              ]
-            },
-            {
-              "name": "allocated_storage",
-              "label": "Allocated Storage (in gibibytes - required unless a snapshot identifier is provided)",
-              "customtype": "string",
-              "type": "string",
-              "immutable": false,
-              "hidden": false,
-              "required": false,
-              "secured": false,
-              "description": "The allocated storage in gibibytes. Required unless a snapshot identifier is provided.",
-              "view": "create new",
-              "editable": true,
-              "default": 10
-            },
-            {
-              "name": "username",
-              "label": "DB Username (required unless a snapshot identifier is provided)",
-              "customtype": "string",
-              "type": "string",
-              "immutable": false,
-              "hidden": false,
-              "required": false,
-              "secured": false,
-              "description": "User name for the master DB. Required unless a snapshot identifier is provided.",
-              "view": "create new",
-              "editable": true,
-              "regex": "^[A-Za-z][A-Za-z0-9]{0,15}$",
-              "regexdesc": "Must begin with a letter and contain only alphanumeric characters. Maximum length is 16 characters."
-            },
-            {
-              "name": "password",
-              "label": "DB Password (required unless a snapshot identifier is provided)",
-              "customtype": "password",
-              "type": "password",
-              "immutable": false,
-              "hidden": false,
-              "required": false,
-              "secured": true,
-              "description": "Password for the master DB user. Required unless a snapshot identifier is provided.",
-              "view": "create new",
-              "editable": true,
-              "passbyname": false,
-              "dynamicDetails": {},
-              "isDynamic": false,
-              "regex": "^((?!['\"/@])[\\x00-\\x7F]){8,}$",
-              "regexdesc": "At least 8 ASCII characters. Can't contain any of the following: forward slash, single quote, double quote and @."
-            },         
-            {
-              "name": "engine_version",
-              "label": "DB Engine Version",
-              "customtype": "string",
-              "type": "string",
-              "immutable": false,
-              "hidden": false,
-              "required": false,
-              "secured": false,
-              "description": "The database engine version to use. If empty, it would pick the latest.",
-              "view": "create new",
-              "editable": true,
-              "passbyname": false,
-              "dynamicDetails": {},
-              "isDynamic": false
-            },               
-            {
-              "name": "instance_class",
-              "label": "Instance Class",
-              "customtype": "string",
-              "type": "string",
-              "immutable": false,
-              "hidden": false,
-              "required": true,
-              "secured": false,
-              "description": "The instance type of the RDS instance.",
-              "view": "create new",
-              "editable": true,
-              "passbyname": false,
-              "dynamicDetails": {},
-              "isDynamic": false,
-              "options": [
-                {
-                  "label": "db.t2.micro",
-                  "value": "db.t2.micro",
-                  "default": true
-                },
-                {
-                  "label": "db.t2.small",
-                  "value": "db.t2.small",
-                  "default": false
-                },
-                {
-                  "label": "db.t2.medium",
-                  "value": "db.t2.medium",
-                  "default": false
-                },
-                {
-                  "label": "db.t2.large",
-                  "value": "db.t2.large",
-                  "default": false
-                }
-              ]
-            },
-            {
-              "name": "instance_name",
-              "label": "DB Instance Name",
-              "customtype": "string",
-              "type": "string",
-              "immutable": false,
-              "hidden": false,
-              "required": false,
-              "secured": false,
-              "description": "The name of the database to create when the DB instance is created. This value is also used as prefix for RDS instance unique identifier.",
-              "view": "create new",
-              "editable": true,
-              "regex": "^[A-Za-z][A-Za-z0-9]*$",
-              "regexdesc": "Must begin with a letter and contain only alphanumeric characters."
-            },          
-            {
-              "name": "license_model",
-              "label": "License Model (required for some DB like Oracle EE)",
-              "customtype": "string",
-              "type": "string",
-              "immutable": false,
-              "hidden": false,
-              "required": false,
-              "secured": false,
-              "description": "License model information for this DB instance.",
-              "view": "create new",
-              "editable": true,
-              "passbyname": false,
-              "dynamicDetails": {},
-              "isDynamic": false,
-              "default": "",
-              "regex": "^(license-included|bring-your-own-license|general-public-license)$",
-              "regexdesc": "Must be one of the following values license-included, bring-your-own-license or general-public-license"
-            },              
-            {
-              "name": "subnet_group_name",
-              "label": "Subnet Group Name",
-              "customtype": "string",
-              "type": "string",
-              "immutable": false,
-              "hidden": false,
-              "required": false,
-              "secured": false,
-              "description": "DB instance will be created in the VPC associated with the DB subnet group. If unspecified, will be created in the default VPC, or in EC2 Classic, if available.",
-              "view": "create new",
-              "editable": true
-            },
-            {
-              "name": "vpc_security_group_ids",
-              "label": "VPC Security Group IDs",
-              "customtype": "list",
-              "type": "list",
-              "immutable": false,
-              "hidden": false,
-              "required": false,
-              "secured": false,
-              "description": "List of VPC security groups to associate with RDS.",
-              "view": "create new",
-              "editable": true
+                ],
+                "provider_engine_version": "1.1.3",
+                "isErrorFlow": false
+              }
             }
           ],
-          "flow": {
-            "conditions": [],
-            "templates": [
-              {
-                "Amazon Relational Database Service": {
-                  "title": "AWS RDS_4b2cd2",
-                  "template_name": "Amazon Relational Database Service for Terraform 1.x.x",
-                  "version": "2.5",
-                  "id": "awsrds909725a3fd",
-                  "template_type": "Terraform",
-                  "template_content_type": "Amazon EC2",
-                  "template_provider": "Amazon EC2",
-                  "instance_name": "",
-                  "template_data_objects": {},
-                  "template_params": {
-                    "aws_region": "${input_parameters.region}",
-                    "allocated_storage": "${input_parameters.allocated_storage}",
-                    "db_engine": "${input_parameters.db_engine}",
-                    "engine_version": "${input_parameters.engine_version}",
-                    "instance_class": "${input_parameters.instance_class}",
-                    "instance_name": "${input_parameters.instance_name}",
-                    "password": "${input_parameters.password}",
-                    "snapshot_identifier": "${input_parameters.snapshot_identifier}",
-                    "subnet_group_name": "${input_parameters.subnet_group_name}",
-                    "username": "${input_parameters.username}",
-                    "vpc_security_group_ids": "${input_parameters.vpc_security_group_ids}",
-                    "license_model": "${input_parameters.license_model}"
-                  },
-                  "outputs": [
-                    "aws_db_instance_endpoint",
-                    "aws_db_instance_engine",
-                    "aws_db_instance_engine_version",
-                    "aws_db_instance_identifier",
-                    "aws_db_instance_status"
-                  ],
-                  "editable": true,
-                  "cloud_connection_names": [
-                    {
-                      "provider": "Amazon EC2",
-                      "connection_name": "${input_parameters.Connection}"
-                    }
-                  ],
-                  "provider_engine_version": "1.1.3",
-                  "isErrorFlow": false
-                }
-              }
-            ],
-            "resthooks": [],
-            "notifications": [],
-            "sequence": {
-              "0": "awsrds909725a3fd"
-            },
-            "error_sequence": {}
+          "resthooks": [],
+          "notifications": [],
+          "sequence": {
+            "0": "awsrds909725a3fd"
           },
-          "output_parameters": [
-            {
-              "name": "aws_db_instance_identifier",
-              "label": "DB Instance Identifier",
-              "customtype": "string",
-              "type": "string",
-              "immutable": true,
-              "hidden": false,
-              "required": false,
-              "secured": false,
-              "default": "${templates.awsrds909725a3fd.output.aws_db_instance_identifier}"
-            },          
-            {
-              "name": "Connection",
-              "label": "Cloud Connection",
-              "customtype": "string",
-              "type": "string",
-              "immutable": true,
-              "hidden": false,
-              "required": false,
-              "secured": false,
-              "default": "${input_parameters.Connection}"
-            },
-            {
-              "name": "aws_region",
-              "label": "AWS Region",
-              "customtype": "string",
-              "type": "string",
-              "immutable": true,
-              "hidden": false,
-              "required": true,
-              "secured": false,
-              "default": "${input_parameters.region}"
-            }			
-          ]
+          "error_sequence": {}
         },
-        {
-          "type": "custom",
-          "name": "Create Snapshot",
-          "description": "Create Snapshot",
-          "input_parameters": [
+        "output_parameters": [
+          {
+            "name": "aws_db_instance_identifier",
+            "label": "DB Instance Identifier",
+            "customtype": "string",
+            "type": "string",
+            "immutable": true,
+            "hidden": false,
+            "required": false,
+            "secured": false,
+            "default": "${templates.awsrds909725a3fd.output.aws_db_instance_identifier}"
+          },
+          {
+            "name": "Connection",
+            "label": "Cloud Connection",
+            "customtype": "string",
+            "type": "string",
+            "immutable": true,
+            "hidden": false,
+            "required": false,
+            "secured": false,
+            "default": "${input_parameters.Connection}"
+          },
+          {
+            "name": "aws_region",
+            "label": "AWS Region",
+            "customtype": "string",
+            "type": "string",
+            "immutable": true,
+            "hidden": false,
+            "required": true,
+            "secured": false,
+            "default": "${input_parameters.region}"
+          }
+        ]
+      },
+      {
+        "type": "custom",
+        "name": "Create Snapshot",
+        "description": "Create Snapshot",
+        "input_parameters": [
+          {
+            "name": "db_snapshot_identifier",
+            "label": "DB Snapshot Identifier",
+            "customtype": "string",
+            "type": "string",
+            "immutable": false,
+            "hidden": false,
+            "required": true,
+            "secured": false,
+            "description": "The Identifier for the snapshot.",
+            "view": "create new",
+            "editable": true,
+            "default": "",
+            "regex": "^((?!.*--)[A-Za-z][A-Za-z0-9-]*(?<!-))$",
+            "regexdesc": "Only alphanumeric characters and hyphens allowed. First character must be a letter. Cannot end with a hyphen or contain two consecutive hyphens."
+          }
+        ],
+        "flow": {
+          "conditions": [],
+          "templates": [
             {
-              "name": "db_snapshot_identifier",
-              "label": "DB Snapshot Identifier",
-              "customtype": "string",
-              "type": "string",
-              "immutable": false,
-              "hidden": false,
-              "required": true,
-              "secured": false,
-              "description": "The Identifier for the snapshot.",
-              "view": "create new",
-              "editable": true,
-              "default": "",
-              "regex": "^((?!.*--)[A-Za-z][A-Za-z0-9-]*(?<!-))$",
-              "regexdesc": "Only alphanumeric characters and hyphens allowed. First character must be a letter. Cannot end with a hyphen or contain two consecutive hyphens."
+              "Amazon Relational Database Service Snapshot": {
+                "title": "AWS RDS Snapshot_9d26ed",
+                "template_name": "Amazon Relational Database Service Snapshot for Terraform 1.x.x",
+                "version": "2.5",
+                "id": "awsrdssnd51102ff",
+                "template_type": "Terraform",
+                "template_content_type": "Amazon EC2",
+                "template_provider": "Amazon EC2",
+                "instance_name": "",
+                "template_data_objects": {},
+                "template_params": {
+                  "aws_region": "${svc_instance.output_parameters.aws_region}",
+                  "db_instance_identifier": "${svc_instance.output_parameters.aws_db_instance_identifier}",
+                  "db_snapshot_identifier": "${input_parameters.db_snapshot_identifier}"
+                },
+                "outputs": [
+                  "aws_db_snapshot_id"
+                ],
+                "editable": true,
+                "cloud_connection_names": [
+                  {
+                    "provider": "Amazon EC2",
+                    "connection_name": "${svc_instance.output_parameters.Connection}"
+                  }
+                ],
+                "provider_engine_version": "1.1.3",
+                "isErrorFlow": false
+              }
             }
           ],
-          "flow": {
-            "conditions": [],
-            "templates": [
-              {
-                "Amazon Relational Database Service Snapshot": {
-                  "title": "AWS RDS Snapshot_9d26ed",
-                  "template_name": "Amazon Relational Database Service Snapshot for Terraform 1.x.x",
-                  "version": "2.5",
-                  "id": "awsrdssnd51102ff",
-                  "template_type": "Terraform",
-                  "template_content_type": "Amazon EC2",
-                  "template_provider": "Amazon EC2",
-                  "instance_name": "",
-                  "template_data_objects": {},
-                  "template_params": {
-                    "aws_region": "${svc_instance.output_parameters.aws_region}",
-                    "db_instance_identifier": "${svc_instance.output_parameters.aws_db_instance_identifier}",
-                    "db_snapshot_identifier": "${input_parameters.db_snapshot_identifier}"
-                  },
-                  "outputs": [
-                    "aws_db_snapshot_id"
-                  ],
-                  "editable": true,
-                  "cloud_connection_names": [
-                    {
-                      "provider": "Amazon EC2",
-                      "connection_name": "${svc_instance.output_parameters.Connection}"
-                    }
-                  ],
-                  "provider_engine_version": "1.1.3",
-                  "isErrorFlow": false
-                }
-              }
-            ],
-            "resthooks": [],
-            "notifications": [],
-            "sequence": {
-              "0": "awsrdssnd51102ff"
-            },
-            "error_sequence": {}
+          "resthooks": [],
+          "notifications": [],
+          "sequence": {
+            "0": "awsrdssnd51102ff"
           },
-          "output_parameters": [
-            {
-              "name": "snapshot_id",
-              "label": "Snapshot Identifier",
-              "customtype": "string",
-              "type": "string",
-              "immutable": true,
-              "hidden": false,
-              "required": false,
-              "secured": false,
-              "description": "",
-              "default": "${templates.awsrdssnd51102ff.output.aws_db_snapshot_id}"
-            }
-          ]
-        }
-      ],
-      "plans": [
-        {
-          "name": "Standard",
-          "description": "To deploy a Standard plan",
-          "actions": [],
-          "plan_parameters": []
-        }
-      ]
-    }
+          "error_sequence": {}
+        },
+        "output_parameters": [
+          {
+            "name": "snapshot_id",
+            "label": "Snapshot Identifier",
+            "customtype": "string",
+            "type": "string",
+            "immutable": true,
+            "hidden": false,
+            "required": false,
+            "secured": false,
+            "description": "",
+            "default": "${templates.awsrdssnd51102ff.output.aws_db_snapshot_id}"
+          }
+        ]
+      }
+    ],
+    "plans": [
+      {
+        "name": "Standard",
+        "description": "To deploy a Standard plan",
+        "actions": [],
+        "plan_parameters": []
+      }
+    ]
   }
+}
